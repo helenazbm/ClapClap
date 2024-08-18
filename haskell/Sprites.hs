@@ -147,11 +147,11 @@ getCor "green" = "\ESC[32m"
 getCor "default" = "\ESC[0m"
 
 aplicaCorPixels :: String -> String -> String
-aplicaCorPixels color content = getCor color ++ content ++ getCor "default"
+aplicaCorPixels cor content = getCor cor ++ content ++ getCor "default"
 
 aplicaCor :: [Char] -> String -> String
-aplicaCor [] color = ""
-aplicaCor (head : tail) color = aplicaCorPixels color [head] ++ aplicaCor tail color
+aplicaCor [] cor = ""
+aplicaCor (head : tail) cor = aplicaCorPixels cor [head] ++ aplicaCor tail cor
 
 concatLinha :: [[String]] -> Int -> String -> String
 concatLinha (h: []) lineNumber spacer = h !! lineNumber
@@ -166,7 +166,7 @@ formataLinhasTexto :: [(Char, String)] -> String -> [String]
 formataLinhasTexto [] spacer = []
 formataLinhasTexto dataList spacer =
     let (head, tail) = splitAt 8 dataList
-        sprites = map (\(char, color) -> aplicaCor (getLetra char) color) head
+        sprites = map (\(char, cor) -> aplicaCor (getLetra char) cor) head
     in (concatLinhas (map (\sprite -> lines sprite) sprites) 0 spacer) ++ formataLinhasTexto tail spacer
 
 
