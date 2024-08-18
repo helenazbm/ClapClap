@@ -1,15 +1,18 @@
 import Licao
 import Exercicio
-import Sprites (formataLinhasTexto, licao1)
+import Sprites (formataLinhasTexto, licoes)
 
-exibeLicao :: Licao -> [(Char, String)]
-exibeLicao licao = getExercio (exercicios licao)
+exibeExercicio :: [Licao] -> [(Char, String)]
+exibeExercicio [] = []
+exibeExercicio (licao:licoes) = if Licao.status licao == "nao_iniciado" || Licao.status licao == "em_processo"
+                                then getExercio (exercicios licao)
+                                else exibeExercicio licoes
 
 getExercio :: [Exercicio] -> [(Char, String)]
 getExercio [] = []
 getExercio (ex:exercicios) = if Exercicio.status ex == "nao_iniciado" 
-                                        then Exercicio.exercicio ex
-                                        else getExercio exercicios
+                             then Exercicio.exercicio ex
+                             else getExercio exercicios
 
 
 main :: IO ()
@@ -19,6 +22,6 @@ main = do
     -- let textLines = formataLinhasTexto (exercicio (ex1 'j'))  " "
     -- mapM_ putStrLn textLines
 
-    let textLines = formataLinhasTexto (exibeLicao licao1) " "
+    let textLines = formataLinhasTexto (exibeExercicio licoes) " "
 
     mapM_ putStrLn textLines

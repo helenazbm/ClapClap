@@ -198,3 +198,6 @@ ex4 char1 char2 char3 = Exercicio [(char1, "default"), (char1, "default"), (char
 
 licao1 :: Licao
 licao1 = Licao "instrucao" [ex1 'j', ex2 'f' 'j', ex3 '_' 'j', ex4 'j' 'f' '_'] "nao_iniciado"
+
+licoes :: [Licao]
+licoes = [licao1]
