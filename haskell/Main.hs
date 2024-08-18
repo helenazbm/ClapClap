@@ -17,8 +17,8 @@ getExercicioLicao (licao:licoes) = if Licao.status licao == "nao_iniciado" || Li
 corrigeExercicio :: String -> [(Char, String)] -> [(Char, String)]
 corrigeExercicio entrada [] = []
 corrigeExercicio (en:entrada) ((gabarito, cor):gabaritos) = if en == gabarito
-                                                then [(gabarito, "green")] ++ corrigeExercicio entrada gabaritos
-                                                else [(gabarito, "red")] ++ corrigeExercicio entrada gabaritos
+                                                            then [(gabarito, "green")] ++ corrigeExercicio entrada gabaritos
+                                                            else [(gabarito, "red")] ++ corrigeExercicio entrada gabaritos
 
 main :: IO ()
 main = do
