@@ -1,12 +1,13 @@
 import Licao
 import Exercicio
+import Sprites (makeTextLines)
 
-exibirExercicio :: Exercicio -> String
-exibirExercicio (Exercicio exercicio _) = unlines exercicio
+ex :: Exercicio
+ex = Exercicio [('a', "green"), ('a', "red"), ('a', "default"), ('a', "default"), ('a', "default"),
+    ('a', "default"), ('a', "default"), ('a', "default"), ('a', "default"), ('a', "default")] "nao_iniciada"
 
-main :: IO()
+main :: IO ()
 main = do
-    conteudo <- readFile "../dados/licoes/licao-1/exercicio-1.txt"
-    let exercicio = Exercicio [conteudo] "0"
-    let licao = Licao "use o indicador" [exercicio] "0"
-    putStrLn (exibirExercicio exercicio)
+    let textLines = makeTextLines (exercicio ex) " "
+
+    mapM_ putStrLn textLines
