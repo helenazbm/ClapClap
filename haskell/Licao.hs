@@ -5,6 +5,5 @@ module Licao where
     data Licao = Licao {
         instrucao :: String,
         exercicios :: [Exercicio],
-        --avaliacao :: Avaliacao
         status :: String
     } deriving (Show, Read)

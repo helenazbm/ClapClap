@@ -132,6 +132,12 @@ getLetterSprite 'z' = unlines [
     "█▄▄▄"
     ]
 
+getLetterSprite '_' = unlines [
+    "████",
+    "████",
+    "████"
+    ]
+
 getColorPrefix :: String -> String
 getColorPrefix "red" = "\ESC[31m"
 getColorPrefix "green" = "\ESC[32m"
@@ -140,9 +146,9 @@ getColorPrefix "default" = "\ESC[0m"
 paintString :: String -> String -> String
 paintString color content = getColorPrefix color ++ content ++ getColorPrefix "default"
 
-paintLetterPixels :: [Char] -> String -> Char -> String
-paintLetterPixels [] color char = ""
-paintLetterPixels (head : tail) color char = paintString color [head] ++ paintLetterPixels tail color char
+paintLetterPixels :: [Char] -> String -> String
+paintLetterPixels [] color = ""
+paintLetterPixels (head : tail) color = paintString color [head] ++ paintLetterPixels tail color
 
 concatLine:: [[String]] -> Int -> String -> String
 concatLine (h: []) lineNumber spacer = h !! lineNumber
@@ -155,5 +161,5 @@ concatLines sprites lineNumber spacer
 
 makeTextLines:: [(Char, String)] -> String -> [String]
 makeTextLines dataList spacer =
-    let sprites = map (\(char, color) -> paintLetterPixels (getLetterSprite char) color '|') dataList
+    let sprites = map (\(char, color) -> paintLetterPixels (getLetterSprite char) color) dataList
     in (concatLines (map (\sprite -> lines sprite) sprites) 0 spacer)
