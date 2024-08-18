@@ -2,6 +2,7 @@ module Sprites where
 
 import Licao
 import Exercicio
+import Data.List.Split (splitOn)
 
 getLetra:: Char -> String
 getLetra 'a' = unlines [
@@ -172,32 +173,62 @@ formataLinhasTexto dataList spacer =
 
 ------------------------------------------- Lições -------------------------------------------
 
-ex1 :: Char -> Exercicio
-ex1 char = Exercicio [(char, "default"), (char, "default"), (char, "default"), (char, "default"),
-    (char, "default"), (char, "default"), (char, "default"), (char, "default")] "nao_iniciado"
+getDadosExercicios :: IO [(String, String, String)]
+getDadosExercicios = do
+    conteudo <- readFile "../dados/tabela_exercicio.txt"
+    let linhas = tail $ map (splitOn ";") (lines conteudo)
+    return $ map (\[id, idLicao, status] -> (id, idLicao, status)) linhas
 
-ex2 :: Char -> Char -> Exercicio
-ex2 char1 char2 = Exercicio [(char1, "default"), (char1, "default"), (char1, "default"), (char2, "default"),
+getStatusExercicios :: String -> String -> [(String, String, String)] -> String
+getStatusExercicios idEx idLic [] = []
+getStatusExercicios idEx idLic dados =
+    let (id, idLicao, status) = head dados
+    in if id == idEx && idLicao == idLic
+        then status
+        else getStatusExercicios idEx idLic (tail dados)
+
+ex1 :: Char -> String -> [(String, String, String)] -> Exercicio
+ex1 char idLicao dados = Exercicio [(char, "default"), (char, "default"), (char, "default"), (char, "default"),
+    (char, "default"), (char, "default"), (char, "default"), (char, "default")] (getStatusExercicios "1" idLicao dados)
+
+ex2 :: (Char, Char) -> Exercicio
+ex2 (char1, char2) = Exercicio [(char1, "default"), (char1, "default"), (char1, "default"), (char2, "default"),
     (char1, "default"), (char1, "default"), (char1, "default"), (char2, "default"),
     (char1, "default"), (char1, "default"), (char1, "default"), (char2, "default"),
     (char1, "default"), (char1, "default"), (char1, "default"), (char2, "default")] "nao_iniciado"
 
-ex3 :: Char -> Char -> Exercicio
-ex3 char1 char2 = Exercicio [(char1, "default"), (char2, "default"), (char1, "default"), (char2, "default"),
+ex3 :: (Char, Char) -> Exercicio
+ex3 (char1, char2) = Exercicio [(char1, "default"), (char2, "default"), (char1, "default"), (char2, "default"),
     (char1, "default"), (char2, "default"), (char1, "default"), (char2, "default"),
     (char1, "default"), (char2, "default"), (char1, "default"), (char2, "default"),
     (char1, "default"), (char2, "default"), (char1, "default"), (char2, "default")] "nao_iniciado"
 
-ex4 :: Char -> Char -> Char -> Exercicio
-ex4 char1 char2 char3 = Exercicio [(char1, "default"), (char1, "default"), (char3, "default"), (char2, "default"),
+ex4 :: (Char, Char, Char) -> Exercicio
+ex4 (char1, char2, char3) = Exercicio [(char1, "default"), (char1, "default"), (char3, "default"), (char2, "default"),
     (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default"),
     (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default"),
     (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default"),
     (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default"),
     (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default")] "nao_iniciado"
 
-licao1 :: Licao
-licao1 = Licao "instrucao" [ex1 'j', ex2 'f' 'j', ex3 '_' 'j', ex4 'j' 'f' '_'] "nao_iniciado"
+getDadosLicoes :: IO [(String, String)]
+getDadosLicoes = do
+    conteudo <- readFile "../dados/tabela_licao.txt"
+    let linhas = tail $ map (splitOn ";") (lines conteudo)
+    return $ map (\[id, status] -> (id, status)) linhas
 
-licoes :: [Licao]
-licoes = [licao1]
+getStatusLicoes :: String -> [(String, String)] -> String
+getStatusLicoes idLicao [] = ""
+getStatusLicoes idLicao dados =
+    let (id, status) = head dados
+    in if id == idLicao
+        then status
+        else getStatusLicoes idLicao (tail dados)
+
+licao1 :: [(String, String)] -> [(String, String, String)] -> Licao
+licao1 dadosLicao dadosExercicios = 
+    Licao "instrucao" [ex1 'j' "1" dadosExercicios, ex2 ('f', 'j'), ex3 ('_', 'j'), ex4 ('j', 'f', '_')]
+    (getStatusLicoes "1" dadosLicao)
+
+licoes :: [(String, String)] -> [(String, String, String)] -> [Licao]
+licoes dadosLicao dadosExercicios = [licao1 dadosLicao dadosExercicios]

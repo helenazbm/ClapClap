@@ -1,6 +1,6 @@
 import Licao
 import Exercicio
-import Sprites (formataLinhasTexto, licoes)
+import Sprites (formataLinhasTexto, licoes, getDadosLicoes, getDadosExercicios)
 
 getExercio :: [Exercicio] -> [(Char, String)]
 getExercio [] = []
@@ -22,15 +22,14 @@ corrigeExercicio (en:entrada) ((gabarito, cor):gabaritos) = if en == gabarito
 
 main :: IO ()
 main = do
-    -- let entrada = 'jjjjajjj'
+    dadosLicoes <- getDadosLicoes
+    dadosExercicios <- getDadosExercicios
+    let textLines = formataLinhasTexto (getExercicioLicao (licoes dadosLicoes dadosExercicios)) " "
 
-    -- let textLines = formataLinhasTexto (exercicio (ex1 'j'))  " "
-    -- mapM_ putStrLn textLines
-
-    let textLines = formataLinhasTexto (getExercicioLicao licoes) " "
     mapM_ putStrLn textLines
 
-    entrada <- readLn :: IO String
-    let textLines2 = formataLinhasTexto (corrigeExercicio entrada (getExercicioLicao licoes)) " "
-    mapM_ putStrLn textLines2
+    -- entrada <- readLn :: IO String
+    -- let textLines2 = formataLinhasTexto (corrigeExercicio entrada (getExercicioLicao licoes)) " "
+    -- mapM_ putStrLn textLines2
+
 
