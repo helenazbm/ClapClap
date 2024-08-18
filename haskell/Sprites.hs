@@ -150,16 +150,16 @@ paintLetterPixels :: [Char] -> String -> String
 paintLetterPixels [] color = ""
 paintLetterPixels (head : tail) color = paintString color [head] ++ paintLetterPixels tail color
 
-concatLine:: [[String]] -> Int -> String -> String
+concatLine :: [[String]] -> Int -> String -> String
 concatLine (h: []) lineNumber spacer = h !! lineNumber
 concatLine (h: t) lineNumber spacer = h !! lineNumber ++ spacer ++ concatLine t lineNumber spacer
 
 concatLines:: [[String]] -> Int -> String -> [String]
 concatLines sprites lineNumber spacer
-  | lineNumber < length (sprites !! 0) = [concatLine sprites lineNumber spacer] ++ concatLines sprites (lineNumber+1) spacer
+  | lineNumber < length (sprites !! 0) = [concatLine sprites lineNumber spacer] ++ concatLines sprites (lineNumber + 1) spacer
   | otherwise = []
 
-makeTextLines:: [(Char, String)] -> String -> [String]
+makeTextLines :: [(Char, String)] -> String -> [String]
 makeTextLines dataList spacer =
     let sprites = map (\(char, color) -> paintLetterPixels (getLetterSprite char) color) dataList
     in (concatLines (map (\sprite -> lines sprite) sprites) 0 spacer)
