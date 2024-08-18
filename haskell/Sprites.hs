@@ -1,165 +1,200 @@
 module Sprites where
 
-getLetterSprite:: Char -> String
-getLetterSprite 'a' = unlines [
+import Licao
+import Exercicio
+
+getLetra:: Char -> String
+getLetra 'a' = unlines [
     "▄▀▀▄",
     "█■■█",
     "█  █"
     ]
-getLetterSprite 'b' = unlines [
+getLetra 'b' = unlines [
     "█▀▀▄",
     "█■■█",
     "█▄▄▀"
     ]
-getLetterSprite 'c' = unlines [
+getLetra 'c' = unlines [
     "▄▀▀▄",
     "█   ",
     "▀▄▄▀"
     ]
-getLetterSprite 'd' = unlines [
+getLetra 'd' = unlines [
     "█▀▀▄",
     "█  █",
     "█▄▄▀"
     ]
-getLetterSprite 'e' = unlines [
+getLetra 'e' = unlines [
     "▄▀▀▀",
     "█■■ ",
     "▀▄▄▄"
     ]
-getLetterSprite 'f' = unlines [
+getLetra 'f' = unlines [
     "▄▀▀▀",
     "█■■ ",
     "█   "
     ]
-getLetterSprite 'g' = unlines [
+getLetra 'g' = unlines [
     "▄▀▀ ",
     "█ ▀█",
     "▀▄▄▀"
     ]
-getLetterSprite 'h' = unlines [
+getLetra 'h' = unlines [
     "█  █",
     "█■■█",
     "█  █"
     ]
-getLetterSprite 'i' = unlines [
+getLetra 'i' = unlines [
     " ▐▌ ",
     " ▐▌ ",
     " ▐▌ "
     ]
-getLetterSprite 'j' = unlines [
+getLetra 'j' = unlines [
     "   █",
     "   █",
     "▀▄▄▀"
     ]
-getLetterSprite 'k' = unlines [
+getLetra 'k' = unlines [
     "█ ▄▀",
     "██  ",
     "█ ▀▄"
     ]
-getLetterSprite 'l' = unlines [
+getLetra 'l' = unlines [
     "█   ",
     "█   ",
     "▀▄▄▄"
     ]
-getLetterSprite 'm' = unlines [
+getLetra 'm' = unlines [
     "█▄▄█",
     "█▐▌█",
     "█  █"
     ]
-getLetterSprite 'n' = unlines [
+getLetra 'n' = unlines [
     "█▄ █",
     "█ ▀█",
     "█  █"
     ]
-getLetterSprite 'o' = unlines [
+getLetra 'o' = unlines [
     "▄▀▀▄",
     "█  █",
     "▀▄▄▀"
     ]
-getLetterSprite 'p' = unlines [
+getLetra 'p' = unlines [
     "█▀▀▄",
     "█▄▄▀",
     "█   "
     ]
-getLetterSprite 'q' = unlines [
+getLetra 'q' = unlines [
     "▄▀▀▄",
     "█  █",
     " ▀▀▄"
     ]
-getLetterSprite 'r' = unlines [
+getLetra 'r' = unlines [
     "█▀▀▄",
     "█▄▄▀",
     "█  █"
     ]
-getLetterSprite 's' = unlines [
+getLetra 's' = unlines [
     "▄▀▀▀",
     " ▀▀▄",
     "▄▄▄▀"
     ]
-getLetterSprite 't' = unlines [
+getLetra 't' = unlines [
     "▀▐▌▀",
     " ▐▌ ",
     " ▐▌ "
     ]
-getLetterSprite 'u' = unlines [
+getLetra 'u' = unlines [
     "█  █",
     "█  █",
     "▀▄▄▀"
     ]
-getLetterSprite 'v' = unlines [
+getLetra 'v' = unlines [
     "█  █",
     "▐▌▐▌",
     " ▐▌ "
     ]
-getLetterSprite 'w' = unlines [
+getLetra 'w' = unlines [
     "█  █",
     "█▐▌█",
     "█▀▀█"
     ]
-getLetterSprite 'x' = unlines [
+getLetra 'x' = unlines [
     "▀▄▄▀",
     " ▐▌ ",
     "▄▀▀▄"
     ]
-getLetterSprite 'y' = unlines [
+getLetra 'y' = unlines [
     "▀▄▄▀",
     " ▐▌ ",
     " ▐▌ "
     ]
-getLetterSprite 'z' = unlines [
+getLetra 'z' = unlines [
     "▀▀▀█",
     " ▄▀ ",
     "█▄▄▄"
     ]
 
-getLetterSprite '_' = unlines [
+getLetra '_' = unlines [
     "████",
     "████",
     "████"
     ]
 
-getColorPrefix :: String -> String
-getColorPrefix "red" = "\ESC[31m"
-getColorPrefix "green" = "\ESC[32m"
-getColorPrefix "default" = "\ESC[0m"
+getCor :: String -> String
+getCor "red" = "\ESC[31m"
+getCor "green" = "\ESC[32m"
+getCor "default" = "\ESC[0m"
 
-paintString :: String -> String -> String
-paintString color content = getColorPrefix color ++ content ++ getColorPrefix "default"
+aplicaCorPixels :: String -> String -> String
+aplicaCorPixels color content = getCor color ++ content ++ getCor "default"
 
-paintLetterPixels :: [Char] -> String -> String
-paintLetterPixels [] color = ""
-paintLetterPixels (head : tail) color = paintString color [head] ++ paintLetterPixels tail color
+aplicaCor :: [Char] -> String -> String
+aplicaCor [] color = ""
+aplicaCor (head : tail) color = aplicaCorPixels color [head] ++ aplicaCor tail color
 
-concatLine :: [[String]] -> Int -> String -> String
-concatLine (h: []) lineNumber spacer = h !! lineNumber
-concatLine (h: t) lineNumber spacer = h !! lineNumber ++ spacer ++ concatLine t lineNumber spacer
+concatLinha :: [[String]] -> Int -> String -> String
+concatLinha (h: []) lineNumber spacer = h !! lineNumber
+concatLinha (h: t) lineNumber spacer = h !! lineNumber ++ spacer ++ concatLinha t lineNumber spacer
 
-concatLines:: [[String]] -> Int -> String -> [String]
-concatLines sprites lineNumber spacer
-  | lineNumber < length (sprites !! 0) = [concatLine sprites lineNumber spacer] ++ concatLines sprites (lineNumber + 1) spacer
+concatLinhas:: [[String]] -> Int -> String -> [String]
+concatLinhas sprites lineNumber spacer
+  | lineNumber < length (sprites !! 0) = [concatLinha sprites lineNumber spacer] ++ concatLinhas sprites (lineNumber + 1) spacer
   | otherwise = []
 
-makeTextLines :: [(Char, String)] -> String -> [String]
-makeTextLines dataList spacer =
-    let sprites = map (\(char, color) -> paintLetterPixels (getLetterSprite char) color) dataList
-    in (concatLines (map (\sprite -> lines sprite) sprites) 0 spacer)
+formataLinhasTexto :: [(Char, String)] -> String -> [String]
+formataLinhasTexto [] spacer = []
+formataLinhasTexto dataList spacer =
+    let (head, tail) = splitAt 8 dataList
+        sprites = map (\(char, color) -> aplicaCor (getLetra char) color) head
+    in (concatLinhas (map (\sprite -> lines sprite) sprites) 0 spacer) ++ formataLinhasTexto tail spacer
+
+
+------------------------------------------- Lições -------------------------------------------
+
+ex1 :: Char -> Exercicio
+ex1 char = Exercicio [(char, "default"), (char, "default"), (char, "default"), (char, "default"),
+    (char, "default"), (char, "default"), (char, "default"), (char, "default")] "nao_iniciado"
+
+ex2 :: Char -> Char -> Exercicio
+ex2 char1 char2 = Exercicio [(char1, "default"), (char1, "default"), (char1, "default"), (char2, "default"),
+    (char1, "default"), (char1, "default"), (char1, "default"), (char2, "default"),
+    (char1, "default"), (char1, "default"), (char1, "default"), (char2, "default"),
+    (char1, "default"), (char1, "default"), (char1, "default"), (char2, "default")] "nao_iniciado"
+
+ex3 :: Char -> Char -> Exercicio
+ex3 char1 char2 = Exercicio [(char1, "default"), (char2, "default"), (char1, "default"), (char2, "default"),
+    (char1, "default"), (char2, "default"), (char1, "default"), (char2, "default"),
+    (char1, "default"), (char2, "default"), (char1, "default"), (char2, "default"),
+    (char1, "default"), (char2, "default"), (char1, "default"), (char2, "default")] "nao_iniciado"
+
+ex4 :: Char -> Char -> Char -> Exercicio
+ex4 char1 char2 char3 = Exercicio [(char1, "default"), (char1, "default"), (char3, "default"), (char2, "default"),
+    (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default"),
+    (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default"),
+    (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default"),
+    (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default"),
+    (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default")] "nao_iniciado"
+
+licao1 :: Licao
+licao1 = Licao "instrucao" [ex1 'j', ex2 'f' 'j', ex3 '_' 'j', ex4 'j' 'f' '_'] "nao_iniciado"
