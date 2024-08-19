@@ -211,23 +211,23 @@ setDadosExercicios idExercicio idLicao = do
     renameFile tempFilePath filePath
 
 ex1 :: Char -> String -> [(String, String, String)] -> Exercicio
-ex1 char idLicao dados = Exercicio [(char, "default"), (char, "default"), (char, "default"), (char, "default"),
+ex1 char idLicao dados = Exercicio "1" idLicao [(char, "default"), (char, "default"), (char, "default"), (char, "default"),
     (char, "default"), (char, "default"), (char, "default"), (char, "default")] (getStatusExercicios "1" idLicao dados)
 
-ex2 :: (Char, Char) -> Exercicio
-ex2 (char1, char2) = Exercicio [(char1, "default"), (char1, "default"), (char1, "default"), (char2, "default"),
+ex2 :: (Char, Char) -> String -> [(String, String, String)] -> Exercicio
+ex2 (char1, char2) idLicao dados = Exercicio "2" idLicao [(char1, "default"), (char1, "default"), (char1, "default"), (char2, "default"),
     (char1, "default"), (char1, "default"), (char1, "default"), (char2, "default"),
     (char1, "default"), (char1, "default"), (char1, "default"), (char2, "default"),
     (char1, "default"), (char1, "default"), (char1, "default"), (char2, "default")] "nao_iniciado"
 
-ex3 :: (Char, Char) -> Exercicio
-ex3 (char1, char2) = Exercicio [(char1, "default"), (char2, "default"), (char1, "default"), (char2, "default"),
+ex3 :: (Char, Char) -> String -> [(String, String, String)] -> Exercicio
+ex3 (char1, char2) idLicao dados = Exercicio "3" idLicao [(char1, "default"), (char2, "default"), (char1, "default"), (char2, "default"),
     (char1, "default"), (char2, "default"), (char1, "default"), (char2, "default"),
     (char1, "default"), (char2, "default"), (char1, "default"), (char2, "default"),
     (char1, "default"), (char2, "default"), (char1, "default"), (char2, "default")] "nao_iniciado"
 
-ex4 :: (Char, Char, Char) -> Exercicio
-ex4 (char1, char2, char3) = Exercicio [(char1, "default"), (char1, "default"), (char3, "default"), (char2, "default"),
+ex4 :: (Char, Char, Char) -> String -> [(String, String, String)] -> Exercicio
+ex4 (char1, char2, char3) idLicao dados = Exercicio "4" idLicao [(char1, "default"), (char1, "default"), (char3, "default"), (char2, "default"),
     (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default"),
     (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default"),
     (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default"),
@@ -250,7 +250,7 @@ getStatusLicoes idLicao dados =
 
 licao1 :: [(String, String)] -> [(String, String, String)] -> Licao
 licao1 dadosLicao dadosExercicios = 
-    Licao "instrucao" [ex1 'j' "1" dadosExercicios, ex2 ('f', 'j'), ex3 ('_', 'j'), ex4 ('j', 'f', '_')]
+    Licao "instrucao" [ex1 'j' "1" dadosExercicios, ex2 ('f', 'j') "1" dadosExercicios, ex3 ('_', 'j') "1" dadosExercicios, ex4 ('j', 'f', '_') "1" dadosExercicios]
     (getStatusLicoes "1" dadosLicao)
 
 licoes :: [(String, String)] -> [(String, String, String)] -> [Licao]

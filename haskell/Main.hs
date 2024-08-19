@@ -18,6 +18,11 @@ corrigeExercicio (en:entrada) ((gabarito, cor):gabaritos) = if en == gabarito
                                                             then [(gabarito, "green")] ++ corrigeExercicio entrada gabaritos
                                                             else [(gabarito, "red")] ++ corrigeExercicio entrada gabaritos
 
+-- teste :: String -> Exercicio -> [(Char, String)]
+-- teste entrada ex = 
+--     let _ = setDadosExercicios "1" "1"
+--     in corrigeExercicio entrada (exercicio ex)
+
 main :: IO ()
 main = do
     dadosLicoes <- getDadosLicoes
@@ -28,10 +33,9 @@ main = do
 
     mapM_ putStrLn textLines
 
-    setDadosExercicios "1" "1"
-
-    -- entrada <- readLn :: IO String
-    -- let textLines2 = formataLinhasTexto (corrigeExercicio entrada ex) " "
-    -- mapM_ putStrLn textLines2
+    entrada <- readLn :: IO String
+    let textLines2 = formataLinhasTexto (corrigeExercicio entrada (exercicio ex)) " "
+    -- setDadosExercicios (Exercicio.id ex) (Exercicio.idLicao ex)
+    mapM_ putStrLn textLines2
 
 
