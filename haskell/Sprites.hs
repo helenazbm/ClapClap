@@ -253,5 +253,8 @@ licao1 dadosLicao dadosExercicios =
     Licao "instrucao" [ex1 'j' "1" dadosExercicios, ex2 ('f', 'j') "1" dadosExercicios, ex3 (' ', 'j') "1" dadosExercicios, ex4 ('j', 'f', ' ') "1" dadosExercicios]
     (getStatusLicoes "1" dadosLicao)
 
+
 licoes :: [(String, String)] -> [(String, String, String)] -> [Licao]
 licoes dadosLicao dadosExercicios = [licao1 dadosLicao dadosExercicios]
+
+

@@ -1,0 +1,31 @@
+
+
+
+                                                                     _  _                         
+                                                                    | |(_)         __               
+                                                                    | | _   ___   ___    ___  ___ 
+                                                                    | || | / __| / _ \  / _ \/ __|
+                                                                    | || || (__ | (_) ||  __/\__ \
+                                                                    |_||_| \___| \___/  \___||___/
+                                                                            //                    
+                                                                            
+                                                                   Selecione uma lição para iniciar:
+
+
+                                                 1 - Teclas J, F e Barra de Espaço           11 - Teclas W e X
+                                                 2 - Teclas U, R e K                         12 - Tecla ç, Til e Acento Agudo
+                                                 3 - Teclas D, E e I                         13 - Acento Grave Acento Circunflexo          
+                                                 4 - Teclas C, G e N                         14 - Teclas Q, Y e P
+                                                 5 - Revisão 1                               15 - Teclas Z e Enter
+                                                 6 - Teclas T, S e L
+                                                 7 - Teclas O, B e A
+                                                 8 - Teclas V, H e M
+                                                 9 - Ponto Final e Vírgula
+                                                10 - Revisão 2 
+
+
+
+
+
+
+                                                               * Pressione Enter para voltar ao Menu principal*
