@@ -139,9 +139,9 @@ getLetra 'z' = unlines [
     "█▄▄▄"
     ]
 
-getLetra '_' = unlines [
-    "████",
-    "████",
+getLetra ' ' = unlines [
+    "    ",
+    "    ",
     "████"
     ]
 
@@ -218,13 +218,13 @@ ex2 :: (Char, Char) -> String -> [(String, String, String)] -> Exercicio
 ex2 (char1, char2) idLicao dados = Exercicio "2" idLicao [(char1, "default"), (char1, "default"), (char1, "default"), (char2, "default"),
     (char1, "default"), (char1, "default"), (char1, "default"), (char2, "default"),
     (char1, "default"), (char1, "default"), (char1, "default"), (char2, "default"),
-    (char1, "default"), (char1, "default"), (char1, "default"), (char2, "default")] "nao_iniciado"
+    (char1, "default"), (char1, "default"), (char1, "default"), (char2, "default")] (getStatusExercicios "2" idLicao dados)
 
 ex3 :: (Char, Char) -> String -> [(String, String, String)] -> Exercicio
 ex3 (char1, char2) idLicao dados = Exercicio "3" idLicao [(char1, "default"), (char2, "default"), (char1, "default"), (char2, "default"),
     (char1, "default"), (char2, "default"), (char1, "default"), (char2, "default"),
     (char1, "default"), (char2, "default"), (char1, "default"), (char2, "default"),
-    (char1, "default"), (char2, "default"), (char1, "default"), (char2, "default")] "nao_iniciado"
+    (char1, "default"), (char2, "default"), (char1, "default"), (char2, "default")] (getStatusExercicios "3" idLicao dados)
 
 ex4 :: (Char, Char, Char) -> String -> [(String, String, String)] -> Exercicio
 ex4 (char1, char2, char3) idLicao dados = Exercicio "4" idLicao [(char1, "default"), (char1, "default"), (char3, "default"), (char2, "default"),
@@ -232,7 +232,7 @@ ex4 (char1, char2, char3) idLicao dados = Exercicio "4" idLicao [(char1, "defaul
     (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default"),
     (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default"),
     (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default"),
-    (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default")] "nao_iniciado"
+    (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default")] (getStatusExercicios "4" idLicao dados)
 
 getDadosLicoes :: IO [(String, String)]
 getDadosLicoes = do
@@ -250,7 +250,7 @@ getStatusLicoes idLicao dados =
 
 licao1 :: [(String, String)] -> [(String, String, String)] -> Licao
 licao1 dadosLicao dadosExercicios = 
-    Licao "instrucao" [ex1 'j' "1" dadosExercicios, ex2 ('f', 'j') "1" dadosExercicios, ex3 ('_', 'j') "1" dadosExercicios, ex4 ('j', 'f', '_') "1" dadosExercicios]
+    Licao "instrucao" [ex1 'j' "1" dadosExercicios, ex2 ('f', 'j') "1" dadosExercicios, ex3 (' ', 'j') "1" dadosExercicios, ex4 ('j', 'f', ' ') "1" dadosExercicios]
     (getStatusLicoes "1" dadosLicao)
 
 licoes :: [(String, String)] -> [(String, String, String)] -> [Licao]

@@ -33,9 +33,9 @@ main = do
 
     mapM_ putStrLn textLines
 
-    entrada <- readLn :: IO String
+    entrada <- getLine :: IO String
     let textLines2 = formataLinhasTexto (corrigeExercicio entrada (exercicio ex)) " "
-    -- setDadosExercicios (Exercicio.id ex) (Exercicio.idLicao ex)
+    setDadosExercicios (Exercicio.id ex) (Exercicio.idLicao ex)
     mapM_ putStrLn textLines2
 
 
