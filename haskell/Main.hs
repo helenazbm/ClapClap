@@ -1,12 +1,20 @@
-import Licao
 import Exercicio
+import Licao (getExercio, getExercicioLicao, corrigeExercicio)
+import Sprites (formataLinhasTexto, licoes, getDadosLicoes, getDadosExercicios, setDadosExercicios)
 
-exibirExercicio :: Exercicio -> String
-exibirExercicio (Exercicio exercicio _) = unlines exercicio
 
-main :: IO()
+-- iniciarLicao
+main :: IO ()
 main = do
-    conteudo <- readFile "../dados/licoes/licao-1/exercicio-1.txt"
-    let exercicio = Exercicio [conteudo] "0"
-    let licao = Licao "use o indicador" [exercicio] "0"
-    putStrLn (exibirExercicio exercicio)
+    dadosLicoes <- getDadosLicoes
+    dadosExercicios <- getDadosExercicios
+
+    let ex = (getExercicioLicao (licoes dadosLicoes dadosExercicios))
+    let textLines = formataLinhasTexto (exercicio ex) " "
+
+    mapM_ putStrLn textLines
+
+    entrada <- getLine :: IO String
+    let textLines2 = formataLinhasTexto (corrigeExercicio entrada (exercicio ex)) " "
+    setDadosExercicios (Exercicio.id ex) (Exercicio.idLicao ex)
+    mapM_ putStrLn textLines2
