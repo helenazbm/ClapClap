@@ -1,15 +1,13 @@
 import Licao
 import Exercicio
-import Sprites (formataLinhasTexto, licoes, getDadosLicoes, getDadosExercicios)
+import Sprites (formataLinhasTexto, licoes, getDadosLicoes, getDadosExercicios, setDadosExercicios)
 
-getExercio :: [Exercicio] -> [(Char, String)]
-getExercio [] = []
+getExercio :: [Exercicio] -> Exercicio
 getExercio (ex:exercicios) = if Exercicio.status ex == "nao_iniciado" 
-                            then Exercicio.exercicio ex
+                            then ex
                             else getExercio exercicios
 
-getExercicioLicao :: [Licao] -> [(Char, String)]
-getExercicioLicao [] = []
+getExercicioLicao :: [Licao] -> Exercicio
 getExercicioLicao (licao:licoes) = if Licao.status licao == "nao_iniciado" || Licao.status licao == "em_processo"
                                 then getExercio (exercicios licao)
                                 else getExercicioLicao licoes
@@ -24,12 +22,16 @@ main :: IO ()
 main = do
     dadosLicoes <- getDadosLicoes
     dadosExercicios <- getDadosExercicios
-    let textLines = formataLinhasTexto (getExercicioLicao (licoes dadosLicoes dadosExercicios)) " "
+
+    let ex = (getExercicioLicao (licoes dadosLicoes dadosExercicios))
+    let textLines = formataLinhasTexto (exercicio ex) " "
 
     mapM_ putStrLn textLines
 
+    setDadosExercicios "1" "1"
+
     -- entrada <- readLn :: IO String
-    -- let textLines2 = formataLinhasTexto (corrigeExercicio entrada (getExercicioLicao licoes)) " "
+    -- let textLines2 = formataLinhasTexto (corrigeExercicio entrada ex) " "
     -- mapM_ putStrLn textLines2
 
 
