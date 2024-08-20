@@ -1,5 +1,5 @@
 import Graphics.Vty
-import Graphics.Vty.Platform.Windows (mkVty)
+import Graphics.Vty.Platform.Unix (mkVty)
 import Control.Concurrent (forkIO, threadDelay)
 import Control.Monad (forever, when)
 import Data.IORef
