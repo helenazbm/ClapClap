@@ -3,9 +3,6 @@ module Sprites where
 import Licao
 import Exercicio
 import System.IO
-import Data.List (intercalate)
-import Data.List.Split (splitOn)
-import System.Directory (renameFile, removeFile)
 
 getLetra:: Char -> String
 getLetra 'a' = unlines [
@@ -176,39 +173,8 @@ formataLinhasTexto dataList spacer =
 
 ------------------------------------------- Lições -------------------------------------------
 
-getDadosExercicios :: IO [(String, String, String)]
-getDadosExercicios = do
-    conteudo <- readFile "../dados/tabela_exercicio.txt"
-    let linhas = tail $ map (splitOn ";") (lines conteudo)
-    return $ map (\[id, idLicao, status] -> (id, idLicao, status)) linhas
-
-getStatusExercicios :: String -> String -> [(String, String, String)] -> String
-getStatusExercicios idEx idLic [] = ""
-getStatusExercicios idEx idLic dados =
-    let (id, idLicao, status) = head dados
-    in if id == idEx && idLicao == idLic
-        then status
-        else getStatusExercicios idEx idLic (tail dados)
-
-atualizaLinha :: String -> String -> String -> String
-atualizaLinha idEx idLic linha =
-    let [id, idLicao, status] = splitOn ";" linha
-    in if id == idEx && idLicao == idLic
-       then intercalate ";" [id, idLicao, "concluido"]
-       else linha
-
-setDadosExercicios :: String -> String -> IO ()
-setDadosExercicios idExercicio idLicao = do
-    let filePath = "../dados/tabela_exercicio.txt"
-        tempFilePath = filePath ++ ".tmp"
-
-    conteudo <- readFile filePath
-    let linhas = lines conteudo
-        linhasProcessadas = map (\linha -> atualizaLinha idExercicio idLicao linha) linhas
-
-    writeFile tempFilePath (unlines linhasProcessadas)
-
-    renameFile tempFilePath filePath
+exFlag :: Exercicio
+exFlag = Exercicio "-1" "-1" [] ""
 
 ex1 :: Char -> String -> [(String, String, String)] -> Exercicio
 ex1 char idLicao dados = Exercicio "1" idLicao [(char, "default"), (char, "default"), (char, "default"), (char, "default"),
@@ -234,25 +200,10 @@ ex4 (char1, char2, char3) idLicao dados = Exercicio "4" idLicao [(char1, "defaul
     (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default"),
     (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default")] (getStatusExercicios "4" idLicao dados)
 
-getDadosLicoes :: IO [(String, String)]
-getDadosLicoes = do
-    conteudo <- readFile "../dados/tabela_licao.txt"
-    let linhas = tail $ map (splitOn ";") (lines conteudo)
-    return $ map (\[id, status] -> (id, status)) linhas
-
-getStatusLicoes :: String -> [(String, String)] -> String
-getStatusLicoes idLicao [] = ""
-getStatusLicoes idLicao dados =
-    let (id, status) = head dados
-    in if id == idLicao
-        then status
-        else getStatusLicoes idLicao (tail dados)
-
 licao1 :: [(String, String)] -> [(String, String, String)] -> Licao
 licao1 dadosLicao dadosExercicios = 
     Licao "instrucao" [ex1 'j' "1" dadosExercicios, ex2 ('f', 'j') "1" dadosExercicios, ex3 (' ', 'j') "1" dadosExercicios, ex4 ('j', 'f', ' ') "1" dadosExercicios]
     (getStatusLicoes "1" dadosLicao)
-
 
 licoes :: [(String, String)] -> [(String, String, String)] -> [Licao]
 licoes dadosLicao dadosExercicios = [licao1 dadosLicao dadosExercicios]
