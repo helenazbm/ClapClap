@@ -1,12 +1,29 @@
 module Licao where
 
 import Exercicio
+import Data.List.Split (splitOn)
 
 data Licao = Licao {
     instrucao :: String,
     exercicios :: [Exercicio],
     status :: String
 } deriving (Show, Read)
+
+getDadosLicoes :: IO [(String, String)]
+getDadosLicoes = do
+    conteudo <- readFile "../dados/tabela_licao.txt"
+    let linhas = tail $ map (splitOn ";") (lines conteudo)
+    return $ map (\[id, status] -> (id, status)) linhas
+
+getStatusLicoes :: String -> [(String, String)] -> String
+getStatusLicoes idLicao [] = ""
+getStatusLicoes idLicao dados =
+    let (id, status) = head dados
+    in if id == idLicao
+        then status
+        else getStatusLicoes idLicao (tail dados)
+
+
 
 getExercio :: [Exercicio] -> Exercicio
 getExercio (ex:exercicios) = if Exercicio.status ex == "nao_iniciado" 
@@ -18,15 +35,13 @@ getExercicioLicao (licao:licoes) = if Licao.status licao == "nao_iniciado" || Li
                                 then getExercio (exercicios licao)
                                 else getExercicioLicao licoes
 
-alteraCorExercicio :: String -> [(Char, String)] -> [(Char, String)]
-alteraCorExercicio entrada [] = []
-alteraCorExercicio (en:entrada) ((gabarito, cor):gabaritos) = if en == gabarito
-                                                            then [(gabarito, "green")] ++ corrigeExercicio entrada gabaritos
-                                                            else [(gabarito, "red")] ++ corrigeExercicio entrada gabaritos
-
+-- implementar
 contaErros :: String -> [(Char, String)] -> Int
 contaErros (en:entrada) ((gabarito, cor):gabaritos) = 0
 
 corrigeExercicio :: String -> [(Char, String)] -> [(Char, String)]
-corrigeExercicio entrada exercicio = alteraCorExercicio entrada exercicio
+corrigeExercicio entrada [] = []
+corrigeExercicio (en:entrada) ((gabarito, cor):gabaritos) = if en == gabarito
+                                                            then [(gabarito, "green")] ++ corrigeExercicio entrada gabaritos
+                                                            else [(gabarito, "red")] ++ corrigeExercicio entrada gabaritos
 

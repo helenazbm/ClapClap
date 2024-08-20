@@ -2,9 +2,9 @@ module Menu where
 import FerramentasIO(limparTela)
 import Data.Char(toLower)
 import Text.Read(readMaybe)
-import Sprites (licoes, getDadosLicoes, getDadosExercicios, setDadosExercicios, formataLinhasTexto)
-import Licao (getExercicioLicao, corrigeExercicio)
-import Exercicio (Exercicio, exercicio, id, idLicao)
+import Sprites (licoes, formataLinhasTexto)
+import Licao (getDadosLicoes, getExercicioLicao, corrigeExercicio, contaErros)
+import Exercicio (Exercicio, exercicio, id, idLicao, getDadosExercicios, setDadosExercicios)
 
 -- Imprime o menu principal e recebe a opção do usuário
 printMenu :: IO()
@@ -64,6 +64,8 @@ iniciarLicao n = do
     setDadosExercicios (Exercicio.id ex) (Exercicio.idLicao ex)
     mapM_ putStrLn textLines2
 
+-- exibirLicao :: Exercicio -> IO ()
+-- exibirLicao 
 
 -- exibe os desafios
 exibirDesafios :: IO ()
