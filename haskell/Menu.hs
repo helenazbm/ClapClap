@@ -65,9 +65,8 @@ iniciarLicao n = do
 loopExercicios :: Licao -> IO ()
 loopExercicios licao = do
     let exs = exercicios licao
-    mapM_ (\ex -> do
-            fazerExercicio ex
-            limparTela) exs
+    mapM_ (\ex -> do fazerExercicio ex) exs
+    limparTela
     licaoConcluida <- readFile "../dados/arteTexto/fimLicao.txt"
     putStrLn licaoConcluida
     voltarMenuLicoes
