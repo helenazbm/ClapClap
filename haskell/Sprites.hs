@@ -205,7 +205,17 @@ licao1 dadosLicao dadosExercicios =
     Licao "instrucao" [ex1 'j' "1" dadosExercicios, ex2 ('f', 'j') "1" dadosExercicios, ex3 (' ', 'j') "1" dadosExercicios, ex4 ('j', 'f', ' ') "1" dadosExercicios]
     (getStatusLicoes "1" dadosLicao)
 
+
+-- criei essa licao 2 para testar 
+licao2 :: [(String, String)] -> [(String, String, String)] -> Licao
+licao2 dadosLicao dadosExercicios = 
+    Licao "instrucao2" [ex1 'u' "1" dadosExercicios, ex2 ('r', 'u') "1" dadosExercicios, ex3 ('u', 'k') "1" dadosExercicios, ex4 ('r', 'u', 'k') "1" dadosExercicios]
+    (getStatusLicoes "2" dadosLicao)
+
+
 licoes :: [(String, String)] -> [(String, String, String)] -> [Licao]
-licoes dadosLicao dadosExercicios = [licao1 dadosLicao dadosExercicios]
-
-
+licoes dadosLicao dadosExercicios = 
+    [ licao1 dadosLicao dadosExercicios
+    , licao2 dadosLicao dadosExercicios
+    -- Adicionar as outras lições aqui
+    ]

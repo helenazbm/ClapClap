@@ -1,9 +1,9 @@
 module Menu where
-import FerramentasIO(limparTela)
+import FerramentasIO(limparTela, delay)
 import Data.Char(toLower)
 import Text.Read(readMaybe)
 import Sprites (licoes, formataLinhasTexto)
-import Licao (getDadosLicoes, getExercicioLicao, corrigeExercicio, contaErros)
+import Licao (Licao (exercicios), getDadosLicoes, getExercicioLicao, corrigeExercicio, contaErros)
 import Exercicio (Exercicio, exercicio, id, idLicao, getDadosExercicios, setDadosExercicios)
 
 -- Imprime o menu principal e recebe a opção do usuário
@@ -21,12 +21,17 @@ voltarMenu = do
     _ <- getLine
     printMenu
 
+-- Volta para o menu de lições
+voltarMenuLicoes :: IO()
+voltarMenuLicoes = do
+    _ <- getLine
+    exibirLicoes            
+
 -- Lida com a resposta do usuário
 opcaoUsuario :: String -> IO()
 opcaoUsuario o
     | o == "l" = exibirLicoes
     | o == "d" = exibirDesafios
-    | o == "r" = exibirRankinng
     | o == "t" = exibirTutorial
     | o == "s" = sair
     | otherwise = printMenu
@@ -53,19 +58,34 @@ iniciarLicao n = do
     limparTela
     dadosLicoes <- getDadosLicoes
     dadosExercicios <- getDadosExercicios
+    let todasLicoes = licoes dadosLicoes dadosExercicios
+    let licaoSelecionada = todasLicoes !! (n - 1)
+    loopExercicios licaoSelecionada dadosExercicios
+  
 
-    let ex = (getExercicioLicao (licoes dadosLicoes dadosExercicios))
+-- Função para fazer todos os exercícios de uma lição
+loopExercicios :: Licao -> [(String, String, String)] -> IO ()
+loopExercicios licao dadosExercicios = do
+    let exs = exercicios licao
+    mapM_ (\ex -> do
+            fazerExercicio ex dadosExercicios
+            limparTela) exs
+    licaoConcluida <- readFile "../dados/arteTexto/fimLicao.txt"
+    putStrLn licaoConcluida
+    voltarMenuLicoes
+
+-- Função para fazer um exercício específico
+fazerExercicio :: Exercicio -> [(String, String, String)] -> IO ()
+fazerExercicio ex dadosExercicios = do
     let textLines = formataLinhasTexto (exercicio ex) " "
-
+    putStrLn ("Exercício " ++ show (Exercicio.id ex) ++ "\n")
     mapM_ putStrLn textLines
-
-    entrada <- getLine :: IO String
+    
+    entrada <- getLine
     let textLines2 = formataLinhasTexto (corrigeExercicio entrada (exercicio ex)) " "
-    setDadosExercicios (Exercicio.id ex) (Exercicio.idLicao ex)
     mapM_ putStrLn textLines2
+    delay
 
--- exibirLicao :: Exercicio -> IO ()
--- exibirLicao 
 
 -- exibe os desafios
 exibirDesafios :: IO ()
@@ -75,13 +95,6 @@ exibirDesafios = do
     putStrLn desafios
     voltarMenu
 
--- exibe o ranking
-exibirRankinng :: IO ()
-exibirRankinng = do
-    limparTela
-    ranking <- readFile "../dados/arteTexto/ranking.txt"
-    putStrLn ranking
-    voltarMenu
 
 -- exibe o tutorial
 exibirTutorial :: IO ()
