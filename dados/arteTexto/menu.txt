@@ -22,10 +22,10 @@
                                        '----------------'  '----------------'  '----------------'  '----------------'                               
 
                                                                     Selecione uma opção:                                                                       
-                                                                                                                                                    
+
+
                                                                          L - Lições                                                    
-                                                                         D - Desafios
-                                                                         R - Ranking                                                            
+                                                                         D - Desafios                                                           
                                                                          T - Tutorial                                                                      
                                                                          S - Sair                                                                  
                                                                                                                                          
