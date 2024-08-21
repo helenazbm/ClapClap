@@ -23,25 +23,8 @@ getStatusLicoes idLicao dados =
         then status
         else getStatusLicoes idLicao (tail dados)
 
-
-
-getExercio :: [Exercicio] -> Exercicio
-getExercio (ex:exercicios) = if Exercicio.status ex == "nao_iniciado" 
-                            then ex
-                            else getExercio exercicios
-
-getExercicioLicao :: [Licao] -> Exercicio
-getExercicioLicao (licao:licoes) = if Licao.status licao == "nao_iniciado" || Licao.status licao == "em_processo"
-                                then getExercio (exercicios licao)
-                                else getExercicioLicao licoes
-
--- implementar
-contaErros :: String -> [(Char, String)] -> Int
-contaErros (en:entrada) ((gabarito, cor):gabaritos) = 0
-
 corrigeExercicio :: String -> [(Char, String)] -> [(Char, String)]
 corrigeExercicio entrada [] = []
 corrigeExercicio (en:entrada) ((gabarito, cor):gabaritos) = if en == gabarito
                                                             then [(gabarito, "green")] ++ corrigeExercicio entrada gabaritos
                                                             else [(gabarito, "red")] ++ corrigeExercicio entrada gabaritos
-
