@@ -22,9 +22,9 @@
                                        '----------------'  '----------------'  '----------------'  '----------------'                               
 
                                                                     Selecione uma opção:                                                                       
+                                                                         
                                                                                                                                                     
                                                                          L - Lições                                                    
-                                                                         D - Desafios
                                                                          R - Ranking                                                            
                                                                          T - Tutorial                                                                      
                                                                          S - Sair                                                                  
