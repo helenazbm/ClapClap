@@ -155,67 +155,65 @@ aplicaCor [] cor = ""
 aplicaCor (head : tail) cor = aplicaCorPixels cor [head] ++ aplicaCor tail cor
 
 concatLinha :: [[String]] -> Int -> String -> String
-concatLinha (h: []) lineNumber spacer = h !! lineNumber
-concatLinha (h: t) lineNumber spacer = h !! lineNumber ++ spacer ++ concatLinha t lineNumber spacer
+concatLinha (h: []) numeroLinha espaco = h !! numeroLinha
+concatLinha (h: t) numeroLinha espaco = h !! numeroLinha ++ espaco ++ concatLinha t numeroLinha espaco
 
 concatLinhas:: [[String]] -> Int -> String -> [String]
-concatLinhas sprites lineNumber spacer
-  | lineNumber < length (sprites !! 0) = [concatLinha sprites lineNumber spacer] ++ concatLinhas sprites (lineNumber + 1) spacer
+concatLinhas sprites numeroLinha espaco
+  | numeroLinha < length (sprites !! 0) = [concatLinha sprites numeroLinha espaco] ++ concatLinhas sprites (numeroLinha + 1) espaco
   | otherwise = []
 
-formataLinhasTexto :: [(Char, String)] -> String -> [String]
+formataLinhasTexto:: [(Char, String)] -> String -> [String]
 formataLinhasTexto [] spacer = []
-formataLinhasTexto dataList spacer =
-    let (head, tail) = splitAt 8 dataList
-        sprites = map (\(char, cor) -> aplicaCor (getLetra char) cor) head
-    in (concatLinhas (map (\sprite -> lines sprite) sprites) 0 spacer) ++ formataLinhasTexto tail spacer
-
+formataLinhasTexto dados espaco =
+    let sprites = map (\(char, cor) -> aplicaCor (getLetra char) cor) dados
+    in (concatLinhas (map (\sprite -> lines sprite) sprites) 0 espaco)
 
 ------------------------------------------- Lições -------------------------------------------
 
-exFlag :: Exercicio
-exFlag = Exercicio "-1" "-1" [] ""
+ex1 :: Char -> String -> Exercicio
+ex1 char idLicao  = Exercicio "1" idLicao [(char, "default"),
+    (char, "default"), (char, "default"), (char, "default"), (char, "default"),
+    (char, "default"), (char, "default"), (char, "default")]
 
-ex1 :: Char -> String -> [(String, String, String)] -> Exercicio
-ex1 char idLicao dados = Exercicio "1" idLicao [(char, "default"), (char, "default"), (char, "default"), (char, "default"),
-    (char, "default"), (char, "default"), (char, "default"), (char, "default")] (getStatusExercicios "1" idLicao dados)
+ex2 :: (Char, Char) -> String -> Exercicio
+ex2 (char1, char2) idLicao  = Exercicio "2" idLicao [(char1, "default"),
+    (char1, "default"), (char1, "default"), (char2, "default"), (char1, "default"),
+    (char1, "default"), (char1, "default"), (char2, "default"), (char1, "default"),
+    (char1, "default"), (char1, "default"), (char2, "default"), (char1, "default"),
+    (char1, "default"), (char1, "default"), (char2, "default")]
 
-ex2 :: (Char, Char) -> String -> [(String, String, String)] -> Exercicio
-ex2 (char1, char2) idLicao dados = Exercicio "2" idLicao [(char1, "default"), (char1, "default"), (char1, "default"), (char2, "default"),
-    (char1, "default"), (char1, "default"), (char1, "default"), (char2, "default"),
-    (char1, "default"), (char1, "default"), (char1, "default"), (char2, "default"),
-    (char1, "default"), (char1, "default"), (char1, "default"), (char2, "default")] (getStatusExercicios "2" idLicao dados)
+ex3 :: (Char, Char) -> String -> Exercicio
+ex3 (char1, char2) idLicao  = Exercicio "3" idLicao [(char1, "default"),
+    (char2, "default"),(char1, "default"), (char2, "default"), (char1, "default"),
+    (char2, "default"), (char1, "default"), (char2, "default"), (char1, "default"),
+    (char2, "default"), (char1, "default"), (char2, "default"), (char1, "default"),
+    (char2, "default"), (char1, "default"), (char2, "default")]
 
-ex3 :: (Char, Char) -> String -> [(String, String, String)] -> Exercicio
-ex3 (char1, char2) idLicao dados = Exercicio "3" idLicao [(char1, "default"), (char2, "default"), (char1, "default"), (char2, "default"),
-    (char1, "default"), (char2, "default"), (char1, "default"), (char2, "default"),
-    (char1, "default"), (char2, "default"), (char1, "default"), (char2, "default"),
-    (char1, "default"), (char2, "default"), (char1, "default"), (char2, "default")] (getStatusExercicios "3" idLicao dados)
+ex4 :: (Char, Char, Char) -> String -> Exercicio
+ex4 (char1, char2, char3) idLicao  = Exercicio "4" idLicao [(char1, "default"),
+    (char1, "default"), (char3, "default"), (char2, "default"), (char2, "default"),
+    (char1, "default"), (char1, "default"), (char3, "default"), (char2, "default"),
+    (char1, "default"), (char1, "default"), (char3, "default"), (char2, "default"),
+    (char1, "default"), (char1, "default"), (char3, "default"), (char2, "default"),
+    (char1, "default"), (char1, "default"), (char3, "default"), (char2, "default"),
+    (char1, "default"), (char1, "default"), (char3, "default")]
 
-ex4 :: (Char, Char, Char) -> String -> [(String, String, String)] -> Exercicio
-ex4 (char1, char2, char3) idLicao dados = Exercicio "4" idLicao [(char1, "default"), (char1, "default"), (char3, "default"), (char2, "default"),
-    (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default"),
-    (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default"),
-    (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default"),
-    (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default"),
-    (char2, "default"), (char1, "default"), (char1, "default"), (char3, "default")] (getStatusExercicios "4" idLicao dados)
-
-licao1 :: [(String, String)] -> [(String, String, String)] -> Licao
-licao1 dadosLicao dadosExercicios = 
-    Licao "instrucao" [ex1 'j' "1" dadosExercicios, ex2 ('f', 'j') "1" dadosExercicios, ex3 (' ', 'j') "1" dadosExercicios, ex4 ('j', 'f', ' ') "1" dadosExercicios]
+licao1 :: [(String, String)] -> Licao
+licao1 dadosLicao = 
+    Licao "instrucao" [ex1 'j' "1", ex2 ('f', 'j') "1", ex3 (' ', 'j') "1", ex4 ('j', 'f', ' ') "1"]
     (getStatusLicoes "1" dadosLicao)
 
-
 -- criei essa licao 2 para testar 
-licao2 :: [(String, String)] -> [(String, String, String)] -> Licao
-licao2 dadosLicao dadosExercicios = 
-    Licao "instrucao2" [ex1 'u' "1" dadosExercicios, ex2 ('r', 'u') "1" dadosExercicios, ex3 ('u', 'k') "1" dadosExercicios, ex4 ('r', 'u', 'k') "1" dadosExercicios]
+licao2 :: [(String, String)] -> Licao
+licao2 dadosLicao = 
+    Licao "instrucao2" [ex1 'u' "1", ex2 ('r', 'u') "1", ex3 ('u', 'k') "1", ex4 ('r', 'u', 'k') "1"]
     (getStatusLicoes "2" dadosLicao)
 
 
-licoes :: [(String, String)] -> [(String, String, String)] -> [Licao]
-licoes dadosLicao dadosExercicios = 
-    [ licao1 dadosLicao dadosExercicios
-    , licao2 dadosLicao dadosExercicios
+licoes :: [(String, String)] -> [Licao]
+licoes dadosLicao = 
+    [ licao1 dadosLicao
+    , licao2 dadosLicao
     -- Adicionar as outras lições aqui
     ]

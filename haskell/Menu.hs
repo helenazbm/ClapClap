@@ -3,8 +3,8 @@ import FerramentasIO(limparTela, delay)
 import Data.Char(toLower)
 import Text.Read(readMaybe)
 import Sprites (licoes, formataLinhasTexto)
-import Licao (Licao (exercicios), getDadosLicoes, getExercicioLicao, corrigeExercicio, contaErros)
-import Exercicio (Exercicio, exercicio, id, idLicao, getDadosExercicios, setDadosExercicios)
+import Licao (Licao (exercicios), getDadosLicoes, corrigeExercicio)
+import Exercicio (Exercicio, exercicio, id, idLicao)
 
 -- Imprime o menu principal e recebe a opção do usuário
 printMenu :: IO()
@@ -57,26 +57,24 @@ iniciarLicao :: Int -> IO ()
 iniciarLicao n = do
     limparTela
     dadosLicoes <- getDadosLicoes
-    dadosExercicios <- getDadosExercicios
-    let todasLicoes = licoes dadosLicoes dadosExercicios
+    let todasLicoes = licoes dadosLicoes
     let licaoSelecionada = todasLicoes !! (n - 1)
-    loopExercicios licaoSelecionada dadosExercicios
-  
+    loopExercicios licaoSelecionada
 
 -- Função para fazer todos os exercícios de uma lição
-loopExercicios :: Licao -> [(String, String, String)] -> IO ()
-loopExercicios licao dadosExercicios = do
+loopExercicios :: Licao -> IO ()
+loopExercicios licao = do
     let exs = exercicios licao
     mapM_ (\ex -> do
-            fazerExercicio ex dadosExercicios
+            fazerExercicio ex
             limparTela) exs
     licaoConcluida <- readFile "../dados/arteTexto/fimLicao.txt"
     putStrLn licaoConcluida
     voltarMenuLicoes
 
 -- Função para fazer um exercício específico
-fazerExercicio :: Exercicio -> [(String, String, String)] -> IO ()
-fazerExercicio ex dadosExercicios = do
+fazerExercicio :: Exercicio -> IO ()
+fazerExercicio ex = do
     let textLines = formataLinhasTexto (exercicio ex) " "
     putStrLn ("Exercício " ++ show (Exercicio.id ex) ++ "\n")
     mapM_ putStrLn textLines
