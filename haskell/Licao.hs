@@ -25,6 +25,7 @@ getStatusLicoes idLicao dados =
 
 corrigeExercicio :: String -> [(Char, String)] -> [(Char, String)]
 corrigeExercicio entrada [] = []
+corrigeExercicio "" ((gabarito, cor):gabaritos) = [(gabarito, "red")] ++ corrigeExercicio "" gabaritos
 corrigeExercicio (en:entrada) ((gabarito, cor):gabaritos) = if en == gabarito
                                                             then [(gabarito, "green")] ++ corrigeExercicio entrada gabaritos
                                                             else [(gabarito, "red")] ++ corrigeExercicio entrada gabaritos
