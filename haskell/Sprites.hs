@@ -260,4 +260,4 @@ licao9 dadosLicao =
 licoes :: [(String, String)] -> [Licao]
 licoes dadosLicao = [licao1 dadosLicao, licao2 dadosLicao, licao3 dadosLicao,
                     licao4 dadosLicao, licao5 dadosLicao, licao6 dadosLicao,
-                    licao7 dadosLicao, licao8 dadosLicao]
+                    licao7 dadosLicao, licao8 dadosLicao, licao9 dadosLicao]
