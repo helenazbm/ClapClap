@@ -4,7 +4,6 @@ import Exercicio
 import Data.List.Split (splitOn)
 
 data Licao = Licao {
-    instrucao :: String,
     exercicios :: [Exercicio],
     status :: String
 } deriving (Show, Read)

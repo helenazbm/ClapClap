@@ -201,35 +201,41 @@ ex4 (char1, char2, char3) idLicao  = Exercicio "4" idLicao [(char1, "default"),
 
 licao1 :: [(String, String)] -> Licao
 licao1 dadosLicao = 
-    Licao "instrucao" [ex1 'j' "1", ex2 ('f', 'j') "1", ex3 (' ', 'j') "1", ex4 ('j', 'f', ' ') "1"]
+    Licao [ex1 'j' "1", ex2 ('f', 'j') "1", ex3 (' ', 'j') "1", ex4 ('j', 'f', ' ') "1"]
     (getStatusLicoes "1" dadosLicao)
 
 -- criei essa licao 2 para testar 
 licao2 :: [(String, String)] -> Licao
 licao2 dadosLicao = 
-    Licao "instrucao2" [ex1 'u' "2", ex2 ('r', 'u') "2", ex3 ('u', 'k') "2", ex4 ('r', 'u', 'k') "2"]
+    Licao [ex1 'u' "2", ex2 ('r', 'u') "2", ex3 ('u', 'k') "2", ex4 ('r', 'u', 'k') "2"]
     (getStatusLicoes "2" dadosLicao)
 
 licao3 :: [(String, String)] -> Licao
 licao3 dadosLicao = 
-    Licao "instrucao2" [ex1 'd' "3", ex2 ('d', 'i') "3", ex3 ('e', 'i') "3", ex4 ('d', 'e', 'i') "3"]
+    Licao [ex1 'd' "3", ex2 ('d', 'i') "3", ex3 ('e', 'i') "3", ex4 ('d', 'e', 'i') "3"]
     (getStatusLicoes "3" dadosLicao)
 
 licao4 :: [(String, String)] -> Licao
 licao4 dadosLicao = 
-    Licao "instrucao2" [ex1 'c' "4", ex2 ('g', 'n') "4", ex3 ('n', 'c') "4", ex4 ('c', 'g', 'n') "4"]
+    Licao [ex1 'c' "4", ex2 ('g', 'n') "4", ex3 ('n', 'c') "4", ex4 ('c', 'g', 'n') "4"]
     (getStatusLicoes "4" dadosLicao)
 
 licao5 :: [(String, String)] -> Licao
 licao5 dadosLicao = 
-    Licao "instrucao2" [ex1 't' "5", ex2 ('t', 'l') "5", ex3 ('s', 'l') "5", ex4 ('t', 's', 'l') "5"]
+    Licao [ex1 't' "5", ex2 ('t', 'l') "5", ex3 ('s', 'l') "5", ex4 ('t', 's', 'l') "5"]
     (getStatusLicoes "5" dadosLicao)
 
 licao6 :: [(String, String)] -> Licao
 licao6 dadosLicao = 
-    Licao "instrucao2" [ex1 'o' "6", ex2 ('b', 'o') "6", ex3 ('o', 'a') "6", ex4 ('o', 'b', 'a') "6"]
+    Licao [ex1 'o' "6", ex2 ('b', 'o') "6", ex3 ('o', 'a') "6", ex4 ('o', 'b', 'a') "6"]
     (getStatusLicoes "6" dadosLicao)
+
+licao7 :: [(String, String)] -> Licao
+licao7 dadosLicao = 
+    Licao [ex1 'v' "7", ex2 ('v', 'm') "7", ex3 ('v', 'h') "7", ex4 ('v', 'h', 'm') "7"]
+    (getStatusLicoes "7" dadosLicao)
 
 licoes :: [(String, String)] -> [Licao]
 licoes dadosLicao = [licao1 dadosLicao, licao2 dadosLicao, licao3 dadosLicao,
-                    licao4 dadosLicao, licao5 dadosLicao, licao6 dadosLicao]
+                    licao4 dadosLicao, licao5 dadosLicao, licao6 dadosLicao,
+                    licao7 dadosLicao]
