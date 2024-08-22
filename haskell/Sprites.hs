@@ -213,22 +213,26 @@ licao1 :: [(String, String)] -> Licao
 licao1 dadosLicao = 
     Licao [ex1 'j' "1", ex2 ('f', 'j') "1", ex3 (' ', 'j') "1", ex4 ('j', 'f', ' ') "1"]
     (getStatusLicoes "1" dadosLicao)
+    "../dados/arteTexto/licoes/licao1"
 
--- criei essa licao 2 para testar 
+
 licao2 :: [(String, String)] -> Licao
 licao2 dadosLicao = 
     Licao [ex1 'u' "2", ex2 ('r', 'u') "2", ex3 ('u', 'k') "2", ex4 ('r', 'u', 'k') "2"]
     (getStatusLicoes "2" dadosLicao)
+    "../dados/arteTexto/licoes/licao2"
 
 licao3 :: [(String, String)] -> Licao
 licao3 dadosLicao = 
     Licao [ex1 'd' "3", ex2 ('d', 'i') "3", ex3 ('e', 'i') "3", ex4 ('d', 'e', 'i') "3"]
     (getStatusLicoes "3" dadosLicao)
+    "../dados/arteTexto/licoes/licao1"
 
 licao4 :: [(String, String)] -> Licao
 licao4 dadosLicao = 
     Licao [ex1 'c' "4", ex2 ('g', 'n') "4", ex3 ('n', 'c') "4", ex4 ('c', 'g', 'n') "4"]
     (getStatusLicoes "4" dadosLicao)
+    "../dados/arteTexto/licoes/licao1"
 
 licao5 :: [(String, String)] -> Licao
 licao5 dadosLicao = 
@@ -236,26 +240,31 @@ licao5 dadosLicao =
         ex5 ('g', 'n', 'j') "5", ex6 ('j', ' ', 'f', ' ', 'u', ' ', 'r') "5",
         ex6 ('k', ' ', 'd', ' ', 'e', ' ', 'i') "5", ex6 ('g', ' ', 'n', ' ', 'j', ' ', 'f') "5"]
     (getStatusLicoes "5" dadosLicao)
+    "../dados/arteTexto/licoes/licao1"
 
 licao6 :: [(String, String)] -> Licao
 licao6 dadosLicao = 
     Licao [ex1 't' "6", ex2 ('t', 'l') "6", ex3 ('s', 'l') "6", ex4 ('t', 's', 'l') "6"]
     (getStatusLicoes "6" dadosLicao)
+    "../dados/arteTexto/licoes/licao1"
 
 licao7 :: [(String, String)] -> Licao
 licao7 dadosLicao = 
     Licao [ex1 't' "7", ex2 ('t', 'l') "7", ex3 ('s', 'l') "7", ex4 ('t', 's', 'l') "7"]
     (getStatusLicoes "7" dadosLicao)
+    "../dados/arteTexto/licoes/licao1"
 
 licao8 :: [(String, String)] -> Licao
 licao8 dadosLicao = 
     Licao [ex1 'o' "8", ex2 ('b', 'o') "8", ex3 ('o', 'a') "8", ex4 ('o', 'b', 'a') "8"]
     (getStatusLicoes "8" dadosLicao)
+    "../dados/arteTexto/licoes/licao1"
 
 licao9 :: [(String, String)] -> Licao
 licao9 dadosLicao = 
     Licao [ex1 'v' "9", ex2 ('v', 'm') "9", ex3 ('v', 'h') "9", ex4 ('v', 'h', 'm') "9"]
     (getStatusLicoes "9" dadosLicao)
+    "../dados/arteTexto/licoes/licao1"
 
 licoes :: [(String, String)] -> [Licao]
 licoes dadosLicao = [licao1 dadosLicao, licao2 dadosLicao, licao3 dadosLicao,
