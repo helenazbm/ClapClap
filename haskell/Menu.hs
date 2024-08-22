@@ -3,7 +3,7 @@ import FerramentasIO(limparTela, delay)
 import Data.Char(toLower)
 import Text.Read(readMaybe)
 import Sprites (licoes, formataLinhasTexto)
-import Licao (Licao (exercicios), getDadosLicoes, corrigeExercicio)
+import Licao (Licao (exercicios), getDadosLicoes, corrigeExercicio, instrucao)
 import Exercicio (Exercicio, exercicio, id, idLicao)
 
 -- Imprime o menu principal e recebe a opção do usuário
@@ -59,6 +59,10 @@ iniciarLicao n = do
     dadosLicoes <- getDadosLicoes
     let todasLicoes = licoes dadosLicoes
     let licaoSelecionada = todasLicoes !! (n - 1)
+    instrucaoLicao <- readFile (instrucao licaoSelecionada)
+    putStrLn instrucaoLicao
+    _ <- getLine
+    limparTela
     loopExercicios licaoSelecionada
 
 -- Função para fazer todos os exercícios de uma lição
