@@ -5,6 +5,7 @@ import Text.Read(readMaybe)
 import Sprites (licoes, formataLinhasTexto)
 import Licao (Licao (exercicios), getDadosLicoes, corrigeExercicio)
 import Exercicio (Exercicio, exercicio, id, idLicao)
+import Avaliacao
 
 -- Imprime o menu principal e recebe a opção do usuário
 printMenu :: IO()
@@ -64,24 +65,44 @@ iniciarLicao n = do
 -- Função para fazer todos os exercícios de uma lição
 loopExercicios :: Licao -> IO ()
 loopExercicios licao = do
+    
     let exs = exercicios licao
-    mapM_ (\ex -> do fazerExercicio ex) exs
-    limparTela
+    resultados <- mapM (\ex -> do
+            erros <- fazerExercicio ex
+            limparTela
+            return erros) exs
+
+    let totalErros = sum $ map fst resultados
+        totalLetras = sum $ map snd resultados
+        precisao = calculaPrecisaoExercicios totalLetras totalErros
+    
+    putStrLn $ "Sua precisão de acertos foi de : " ++ show precisao ++ "%"
     licaoConcluida <- readFile "../dados/arteTexto/fimLicao.txt"
     putStrLn licaoConcluida
     voltarMenuLicoes
 
+-- loopExercicios :: [Exercicio] -> Int -> IO Int
+-- loopExercicios [] cont = return cont
+-- loopExercicios (ex:exercicios) cont = do
+--     let erros = fazerExercicio ex
+--     limparTela
+--     loopExercicios exercicios (cont + erros)
+
 -- Função para fazer um exercício específico
-fazerExercicio :: Exercicio -> IO ()
+fazerExercicio :: Exercicio -> IO (Int, Int)
 fazerExercicio ex = do
-    let textLines = formataLinhasTexto (exercicio ex) " "
+    let texto = formataLinhasTexto (exercicio ex) " "
     putStrLn ("Exercício " ++ show (Exercicio.id ex) ++ "\n")
-    mapM_ putStrLn textLines
+    mapM_ putStrLn texto
     
     entrada <- getLine
-    let textLines2 = formataLinhasTexto (corrigeExercicio entrada (exercicio ex)) " "
-    mapM_ putStrLn textLines2
+    let textoCorrigido = formataLinhasTexto (corrigeExercicio entrada (exercicio ex)) " "
+        erros = contaErrosExercicios entrada (exercicio ex)
+        letras = contaLetrasExercicios (exercicio ex)
+
+    mapM_ putStrLn textoCorrigido
     delay
+    return (erros, letras)
 
 
 -- exibe os desafios
