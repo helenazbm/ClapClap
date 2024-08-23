@@ -85,8 +85,10 @@ loopExercicios licao = do
     let totalErros = sum $ map fst resultados
         totalLetras = sum $ map snd resultados
         precisao = calculaPrecisaoExercicios totalLetras totalErros
+        estrelas = atribuiEstrelasLicao precisao 
     
     putStrLn $ "Sua precisão de acertos foi de : " ++ show precisao ++ "%"
+    putStrLn $ "Você obteve " ++ show estrelas
     licaoConcluida <- readFile "../dados/arteTexto/fimLicao.txt"
     putStrLn licaoConcluida
     voltarMenuLicoes
