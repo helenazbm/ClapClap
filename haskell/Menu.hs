@@ -2,8 +2,8 @@ module Menu where
 import FerramentasIO(limparTela, delay)
 import Data.Char(toLower)
 import Text.Read(readMaybe)
-import Sprites (licoes, formataLinhasTexto)
-import Licao (Licao (exercicios), getDadosLicoes, corrigeExercicio)
+import Sprites (licoes, formataLinhasTexto, exibeProgresso)
+import Licao (Licao (exercicios), getDadosLicoes, corrigeExercicio, instrucao, setStatusLicao, contaLicoesConcluidas)
 import Exercicio (Exercicio, exercicio, id, idLicao)
 import Avaliacao
 
@@ -42,24 +42,34 @@ opcaoUsuario o
 exibirLicoes :: IO ()
 exibirLicoes = do
     limparTela
+
+    dadosLicoes <- getDadosLicoes
+    let todasLicoes = licoes dadosLicoes
+
+    mapM_ putStrLn (exibeProgresso (contaLicoesConcluidas todasLicoes))
+
     licoes <- readFile "../dados/arteTexto/licoes.txt"
     putStrLn licoes
     comandoUsuario <- getLine
     if comandoUsuario == ""
         then printMenu
         else case readMaybe comandoUsuario of
-            Just n | n >= 1 && n <=15 -> iniciarLicao n 
+            Just n | n >= 1 && n <= 15 -> iniciarLicao n todasLicoes
             _ -> do
                 putStrLn "Opção inválida."
                 exibirLicoes
 
 -- inicia lição escolhida pelo usuário
-iniciarLicao :: Int -> IO ()
-iniciarLicao n = do
+iniciarLicao :: Int -> [Licao] -> IO ()
+iniciarLicao idLicao licoes = do
     limparTela
-    dadosLicoes <- getDadosLicoes
-    let todasLicoes = licoes dadosLicoes
-    let licaoSelecionada = todasLicoes !! (n - 1)
+
+    let licaoSelecionada = licoes !! (idLicao - 1)
+    instrucaoLicao <- readFile (instrucao licaoSelecionada)
+    putStrLn instrucaoLicao
+    _ <- getLine
+    limparTela
+    setStatusLicao (show idLicao)
     loopExercicios licaoSelecionada
 
 -- Função para fazer todos os exercícios de uma lição
