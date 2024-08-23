@@ -281,13 +281,13 @@ licao6 dadosLicao =
 
 licao7 :: [(String, String)] -> Licao
 licao7 dadosLicao = 
-    Licao [ex1 't' "7", ex2 ('t', 'l') "7", ex3 ('s', 'l') "7", ex4 ('t', 's', 'l') "7"]
+    Licao [ex1 'o' "7", ex2 ('b', 'o') "7", ex3 ('o', 'a') "7", ex4 ('o', 'b', 'a') "7"]
     (getStatusLicoes "7" dadosLicao)
     "../dados/arteTexto/licoes/licao1.txt"
 
 licao8 :: [(String, String)] -> Licao
 licao8 dadosLicao = 
-    Licao [ex1 'o' "8", ex2 ('b', 'o') "8", ex3 ('o', 'a') "8", ex4 ('o', 'b', 'a') "8"]
+    Licao [ex1 'v' "9", ex2 ('v', 'm') "9", ex3 ('v', 'h') "9", ex4 ('v', 'h', 'm') "9"]
     (getStatusLicoes "8" dadosLicao)
     "../dados/arteTexto/licoes/licao1.txt"
 
