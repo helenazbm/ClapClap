@@ -87,9 +87,15 @@ loopExercicios licao = do
         precisao = calculaPrecisaoExercicios totalLetras totalErros
         estrelas = atribuiEstrelasLicao precisao 
     
-    putStrLn $ "Sua precisão de acertos foi de : " ++ show precisao ++ "%"
-    putStrLn $ "Você obteve " ++ show estrelas
-    licaoConcluida <- readFile "../dados/arteTexto/fimLicao.txt"
+    putStrLn $ replicate 60 ' ' ++ "Sua precisão de acertos foi de: " ++ show precisao ++ "%"
+    putStrLn $ replicate 60 ' ' ++ show (totalLetras - totalErros) ++ "/" ++ show totalLetras ++ " caracteres digitados corretamente\n"
+    
+    licaoConcluida <- case estrelas of
+        0 -> readFile "../dados/arteTexto/avaliacoes/zeroEstrela.txt"
+        1 -> readFile "../dados/arteTexto/avaliacoes/umaEstrela.txt"
+        2 -> readFile "../dados/arteTexto/avaliacoes/duasEstrelas.txt"
+        3 -> readFile "../dados/arteTexto/avaliacoes/tresEstrelas.txt"
+
     putStrLn licaoConcluida
     voltarMenuLicoes
 
