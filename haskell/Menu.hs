@@ -1,12 +1,13 @@
 module Menu where
-import FerramentasIO(limparTela, delay)
+
+import Avaliacao
 import Data.Char(toLower)
 import Text.Read(readMaybe)
-import Sprites (licoes, formataLinhasTexto, exibeProgresso)
-import Licao (Licao (exercicios), getDadosLicoes, corrigeExercicio, instrucao, setStatusLicao, contaLicoesConcluidas)
-import Exercicio (Exercicio, exercicio, id, idLicao)
-import Avaliacao
+import FerramentasIO(limparTela, delay)
+import Sprites (licoes, formatarLinhasTexto, exibirProgresso)
+import Exercicio (Exercicio, exercicio, id, idLicao, corrigeExercicio)
 import Desafio (iniciarDesafio, Desafio (UmMinuto, DoisMinutos, CincoMinutos))
+import Licao (Licao (exercicios), getDadosLicoes, instrucao, setStatusLicao, contarLicoesConcluidas)
 
 -- Imprime o menu principal e recebe a opção do usuário
 printMenu :: IO()
@@ -38,7 +39,6 @@ opcaoUsuario o
     | o == "s" = sair
     | otherwise = printMenu
 
-
 -- exibe as licões e recebe a opção do usuário
 exibirLicoes :: IO ()
 exibirLicoes = do
@@ -47,7 +47,7 @@ exibirLicoes = do
     dadosLicoes <- getDadosLicoes
     let todasLicoes = licoes dadosLicoes
 
-    mapM_ putStrLn (exibeProgresso (contaLicoesConcluidas todasLicoes))
+    mapM_ putStrLn (exibirProgresso (contarLicoesConcluidas todasLicoes))
 
     licoes <- readFile "../dados/arteTexto/licoes.txt"
     putStrLn licoes
@@ -84,8 +84,8 @@ loopExercicios licao = do
 
     let totalErros = sum $ map fst resultados
         totalLetras = sum $ map snd resultados
-        precisao = calculaPrecisaoExercicios totalLetras totalErros
-        estrelas = atribuiEstrelasLicao precisao 
+        precisao = calcularPrecisaoExercicios totalLetras totalErros
+        estrelas = atribuirEstrelasLicao precisao 
 
     limparTela
     putStrLn "\n"
@@ -102,29 +102,21 @@ loopExercicios licao = do
     putStrLn licaoConcluida
     voltarMenuLicoes
 
--- loopExercicios :: [Exercicio] -> Int -> IO Int
--- loopExercicios [] cont = return cont
--- loopExercicios (ex:exercicios) cont = do
---     let erros = fazerExercicio ex
---     limparTela
---     loopExercicios exercicios (cont + erros)
-
 -- Função para fazer um exercício específico
 fazerExercicio :: Exercicio -> IO (Int, Int)
 fazerExercicio ex = do
-    let texto = formataLinhasTexto (exercicio ex) " "
+    let texto = formatarLinhasTexto (exercicio ex) " "
     putStrLn ("Exercício " ++ show (Exercicio.id ex) ++ "\n")
     mapM_ putStrLn texto
     
     entrada <- getLine
-    let textoCorrigido = formataLinhasTexto (corrigeExercicio entrada (exercicio ex)) " "
-        erros = contaErrosExercicios entrada (exercicio ex)
-        letras = contaLetrasExercicios (exercicio ex)
+    let textoCorrigido = formatarLinhasTexto (corrigeExercicio entrada (exercicio ex)) " "
+        erros = contarErrosExercicios entrada (exercicio ex)
+        letras = contarLetrasExercicios (exercicio ex)
 
     mapM_ putStrLn textoCorrigido
     delay
     return (erros, letras)
-
 
 -- exibe os desafios
 exibirDesafios :: IO ()
@@ -149,7 +141,6 @@ exibirTutorial = do
     tutorial <- readFile "../dados/arteTexto/tutorial.txt"
     putStrLn tutorial
     voltarMenu
-
 
 sair :: IO()
 sair = do
