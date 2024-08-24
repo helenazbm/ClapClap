@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Main where
+module Desafio where
 
 import Control.Concurrent.Async (race)
 import System.IO
@@ -11,6 +11,7 @@ import Data.Time.Clock (getCurrentTime, diffUTCTime)
 import System.IO (hFlush, stdout)
 import System.Random (randomRIO)
 import Control.Concurrent.MVar (MVar, newEmptyMVar, putMVar, takeMVar, tryTakeMVar, isEmptyMVar)
+import FerramentasIO (limparTela)
 
 data Desafio = UmMinuto | DoisMinutos | CincoMinutos
 
@@ -79,6 +80,7 @@ executarDesafioSimulado tempoMVar = do
 
 iniciarDesafio :: Desafio -> IO ()
 iniciarDesafio desafio = do
+    limparTela
     let tempo = tempoDesafio desafio
     putStrLn "Prepare-se para o desafio!\n"
     threadDelay 2000000

@@ -6,6 +6,7 @@ import Sprites (licoes, formataLinhasTexto, exibeProgresso)
 import Licao (Licao (exercicios), getDadosLicoes, corrigeExercicio, instrucao, setStatusLicao, contaLicoesConcluidas)
 import Exercicio (Exercicio, exercicio, id, idLicao)
 import Avaliacao
+import Desafio (iniciarDesafio, Desafio (UmMinuto, DoisMinutos, CincoMinutos))
 
 -- Imprime o menu principal e recebe a opção do usuário
 printMenu :: IO()
@@ -79,24 +80,26 @@ loopExercicios licao = do
     let exs = exercicios licao
     resultados <- mapM (\ex -> do
             erros <- fazerExercicio ex
-            limparTela
             return erros) exs
 
     let totalErros = sum $ map fst resultados
         totalLetras = sum $ map snd resultados
         precisao = calculaPrecisaoExercicios totalLetras totalErros
         estrelas = atribuiEstrelasLicao precisao 
-    
-    putStrLn $ replicate 60 ' ' ++ "Sua precisão de acertos foi de: " ++ show precisao ++ "%"
-    putStrLn $ replicate 60 ' ' ++ show (totalLetras - totalErros) ++ "/" ++ show totalLetras ++ " caracteres digitados corretamente\n"
-    
+
+
     licaoConcluida <- case estrelas of
         0 -> readFile "../dados/arteTexto/avaliacoes/zeroEstrela.txt"
         1 -> readFile "../dados/arteTexto/avaliacoes/umaEstrela.txt"
         2 -> readFile "../dados/arteTexto/avaliacoes/duasEstrelas.txt"
         3 -> readFile "../dados/arteTexto/avaliacoes/tresEstrelas.txt"
-
+    
+    limparTela
+    putStrLn "\n"
     putStrLn licaoConcluida
+    putStrLn $ replicate 60 ' ' ++ "Sua precisão de acertos foi de: " ++ show precisao ++ "%"
+    putStrLn $ replicate 60 ' ' ++ show (totalLetras - totalErros) ++ "/" ++ show totalLetras ++ " caracteres digitados corretamente\n"
+    
     voltarMenuLicoes
 
 -- loopExercicios :: [Exercicio] -> Int -> IO Int
@@ -129,8 +132,15 @@ exibirDesafios = do
     limparTela
     desafios <- readFile "../dados/arteTexto/desafios.txt"
     putStrLn desafios
-    voltarMenu
+    opcao <- readLn :: IO Int
+    opcaoUsuarioDesafio opcao
 
+opcaoUsuarioDesafio :: Int -> IO ()
+opcaoUsuarioDesafio o
+    | o == 1 = iniciarDesafio UmMinuto
+    | o == 2 = iniciarDesafio DoisMinutos
+    | o == 5 = iniciarDesafio CincoMinutos
+    | otherwise = exibirDesafios
 
 -- exibe o tutorial
 exibirTutorial :: IO ()
