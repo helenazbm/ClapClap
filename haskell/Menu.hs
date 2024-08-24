@@ -87,6 +87,10 @@ loopExercicios licao = do
         precisao = calculaPrecisaoExercicios totalLetras totalErros
         estrelas = atribuiEstrelasLicao precisao 
 
+    limparTela
+    putStrLn "\n"
+    putStrLn $ replicate 60 ' ' ++ "Sua precisão de acertos foi de: " ++ show precisao ++ "%"
+    putStrLn $ replicate 60 ' ' ++ show (totalLetras - totalErros) ++ "/" ++ show totalLetras ++ " caracteres digitados corretamente\n"
 
     licaoConcluida <- case estrelas of
         0 -> readFile "../dados/arteTexto/avaliacoes/zeroEstrela.txt"
@@ -94,12 +98,8 @@ loopExercicios licao = do
         2 -> readFile "../dados/arteTexto/avaliacoes/duasEstrelas.txt"
         3 -> readFile "../dados/arteTexto/avaliacoes/tresEstrelas.txt"
     
-    limparTela
-    putStrLn "\n"
-    putStrLn licaoConcluida
-    putStrLn $ replicate 60 ' ' ++ "Sua precisão de acertos foi de: " ++ show precisao ++ "%"
-    putStrLn $ replicate 60 ' ' ++ show (totalLetras - totalErros) ++ "/" ++ show totalLetras ++ " caracteres digitados corretamente\n"
     
+    putStrLn licaoConcluida
     voltarMenuLicoes
 
 -- loopExercicios :: [Exercicio] -> Int -> IO Int
