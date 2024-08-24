@@ -257,13 +257,13 @@ licao3 :: [(String, String)] -> Licao
 licao3 dadosLicao = 
     Licao [ex1 'd' "3", ex2 ('d', 'i') "3", ex3 ('e', 'i') "3", ex4 ('d', 'e', 'i') "3"]
     (getStatusLicoes "3" dadosLicao)
-    "../dados/arteTexto/licoes/licao1.txt"
+    "../dados/arteTexto/licoes/licao3.txt"
 
 licao4 :: [(String, String)] -> Licao
 licao4 dadosLicao = 
     Licao [ex1 'c' "4", ex2 ('g', 'n') "4", ex3 ('n', 'c') "4", ex4 ('c', 'g', 'n') "4"]
     (getStatusLicoes "4" dadosLicao)
-    "../dados/arteTexto/licoes/licao1.txt"
+    "../dados/arteTexto/licoes/licao4.txt"
 
 licao5 :: [(String, String)] -> Licao
 licao5 dadosLicao = 
@@ -271,44 +271,44 @@ licao5 dadosLicao =
         ex5 ('g', 'n', 'j') "5", ex6 ('j', ' ', 'f', ' ', 'u', ' ', 'r') "5",
         ex6 ('k', ' ', 'd', ' ', 'e', ' ', 'i') "5", ex6 ('g', ' ', 'n', ' ', 'j', ' ', 'f') "5"]
     (getStatusLicoes "5" dadosLicao)
-    "../dados/arteTexto/licoes/licao1.txt"
+    "../dados/arteTexto/licoes/licao5.txt"
 
 licao6 :: [(String, String)] -> Licao
 licao6 dadosLicao = 
     Licao [ex1 't' "6", ex2 ('t', 'l') "6", ex3 ('s', 'l') "6", ex4 ('t', 's', 'l') "6"]
     (getStatusLicoes "6" dadosLicao)
-    "../dados/arteTexto/licoes/licao1.txt"
+    "../dados/arteTexto/licoes/licao6.txt"
 
 licao7 :: [(String, String)] -> Licao
 licao7 dadosLicao = 
     Licao [ex1 'o' "7", ex2 ('b', 'o') "7", ex3 ('o', 'a') "7", ex4 ('o', 'b', 'a') "7"]
     (getStatusLicoes "7" dadosLicao)
-    "../dados/arteTexto/licoes/licao1.txt"
+    "../dados/arteTexto/licoes/licao7.txt"
 
 licao8 :: [(String, String)] -> Licao
 licao8 dadosLicao = 
     Licao [ex1 'v' "9", ex2 ('v', 'm') "9", ex3 ('v', 'h') "9", ex4 ('v', 'h', 'm') "9"]
     (getStatusLicoes "8" dadosLicao)
-    "../dados/arteTexto/licoes/licao1.txt"
+    "../dados/arteTexto/licoes/licao8.txt"
 
 licao9 :: [(String, String)] -> Licao
 licao9 dadosLicao = 
     Licao [ex2 (',', 'k') "9", ex1 '.' "9", ex3 ('.', 'l') "9", ex4 ('o', 'b', 'a') "9", ex7 ('l', '.', 'k', ',') "9"]
     (getStatusLicoes "9" dadosLicao)
-    "../dados/arteTexto/licoes/licao1.txt"
+    "../dados/arteTexto/licoes/licao9.txt"
 
 -- editar lição 10
 licao10 :: [(String, String)] -> Licao
 licao10 dadosLicao = 
     Licao [ex2 (',', 'k') "10", ex1 '.' "10", ex3 ('.', 'l') "10", ex4 ('o', 'b', 'a') "10", ex7 ('l', '.', 'k', ',') "10"]
     (getStatusLicoes "10" dadosLicao)
-    "../dados/arteTexto/licoes/licao1.txt"
+    "../dados/arteTexto/licoes/licao10.txt"
 
 licao11 :: [(String, String)] -> Licao
 licao11 dadosLicao = 
     Licao [ex1 'w' "11", ex2 ('w', 's') "11", ex1 'x' "11", ex4 ('x', 'l', 's') "11", ex4 ('w', 'l', 'x') "11"]
     (getStatusLicoes "11" dadosLicao)
-    "../dados/arteTexto/licoes/licao1.txt"
+    "../dados/arteTexto/licoes/licao11.txt"
 
 licoes :: [(String, String)] -> [Licao]
 licoes dadosLicao = [licao1 dadosLicao, licao2 dadosLicao, licao3 dadosLicao,
