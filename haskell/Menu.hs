@@ -2,9 +2,10 @@ module Menu where
 import FerramentasIO(limparTela, delay)
 import Data.Char(toLower)
 import Text.Read(readMaybe)
-import Sprites (licoes, formataLinhasTexto)
-import Licao (Licao (exercicios), getDadosLicoes, corrigeExercicio)
+import Sprites (licoes, formataLinhasTexto, exibeProgresso)
+import Licao (Licao (exercicios), getDadosLicoes, corrigeExercicio, instrucao, setStatusLicao, contaLicoesConcluidas)
 import Exercicio (Exercicio, exercicio, id, idLicao)
+import Avaliacao
 
 -- Imprime o menu principal e recebe a opção do usuário
 printMenu :: IO()
@@ -41,47 +42,85 @@ opcaoUsuario o
 exibirLicoes :: IO ()
 exibirLicoes = do
     limparTela
+
+    dadosLicoes <- getDadosLicoes
+    let todasLicoes = licoes dadosLicoes
+
+    mapM_ putStrLn (exibeProgresso (contaLicoesConcluidas todasLicoes))
+
     licoes <- readFile "../dados/arteTexto/licoes.txt"
     putStrLn licoes
     comandoUsuario <- getLine
     if comandoUsuario == ""
         then printMenu
         else case readMaybe comandoUsuario of
-            Just n | n >= 1 && n <=15 -> iniciarLicao n 
+            Just n | n >= 1 && n <= 15 -> iniciarLicao n todasLicoes
             _ -> do
                 putStrLn "Opção inválida."
                 exibirLicoes
 
 -- inicia lição escolhida pelo usuário
-iniciarLicao :: Int -> IO ()
-iniciarLicao n = do
+iniciarLicao :: Int -> [Licao] -> IO ()
+iniciarLicao idLicao licoes = do
     limparTela
-    dadosLicoes <- getDadosLicoes
-    let todasLicoes = licoes dadosLicoes
-    let licaoSelecionada = todasLicoes !! (n - 1)
+
+    let licaoSelecionada = licoes !! (idLicao - 1)
+    instrucaoLicao <- readFile (instrucao licaoSelecionada)
+    putStrLn instrucaoLicao
+    _ <- getLine
+    limparTela
+    setStatusLicao (show idLicao)
     loopExercicios licaoSelecionada
 
 -- Função para fazer todos os exercícios de uma lição
 loopExercicios :: Licao -> IO ()
 loopExercicios licao = do
+    
     let exs = exercicios licao
-    mapM_ (\ex -> do fazerExercicio ex) exs
-    limparTela
-    licaoConcluida <- readFile "../dados/arteTexto/fimLicao.txt"
+    resultados <- mapM (\ex -> do
+            erros <- fazerExercicio ex
+            limparTela
+            return erros) exs
+
+    let totalErros = sum $ map fst resultados
+        totalLetras = sum $ map snd resultados
+        precisao = calculaPrecisaoExercicios totalLetras totalErros
+        estrelas = atribuiEstrelasLicao precisao 
+    
+    putStrLn $ replicate 60 ' ' ++ "Sua precisão de acertos foi de: " ++ show precisao ++ "%"
+    putStrLn $ replicate 60 ' ' ++ show (totalLetras - totalErros) ++ "/" ++ show totalLetras ++ " caracteres digitados corretamente\n"
+    
+    licaoConcluida <- case estrelas of
+        0 -> readFile "../dados/arteTexto/avaliacoes/zeroEstrela.txt"
+        1 -> readFile "../dados/arteTexto/avaliacoes/umaEstrela.txt"
+        2 -> readFile "../dados/arteTexto/avaliacoes/duasEstrelas.txt"
+        3 -> readFile "../dados/arteTexto/avaliacoes/tresEstrelas.txt"
+
     putStrLn licaoConcluida
     voltarMenuLicoes
 
+-- loopExercicios :: [Exercicio] -> Int -> IO Int
+-- loopExercicios [] cont = return cont
+-- loopExercicios (ex:exercicios) cont = do
+--     let erros = fazerExercicio ex
+--     limparTela
+--     loopExercicios exercicios (cont + erros)
+
 -- Função para fazer um exercício específico
-fazerExercicio :: Exercicio -> IO ()
+fazerExercicio :: Exercicio -> IO (Int, Int)
 fazerExercicio ex = do
-    let textLines = formataLinhasTexto (exercicio ex) " "
+    let texto = formataLinhasTexto (exercicio ex) " "
     putStrLn ("Exercício " ++ show (Exercicio.id ex) ++ "\n")
-    mapM_ putStrLn textLines
+    mapM_ putStrLn texto
     
     entrada <- getLine
-    let textLines2 = formataLinhasTexto (corrigeExercicio entrada (exercicio ex)) " "
-    mapM_ putStrLn textLines2
+    let textoCorrigido = formataLinhasTexto (corrigeExercicio entrada (exercicio ex)) " "
+        erros = contaErrosExercicios entrada (exercicio ex)
+        letras = contaLetrasExercicios (exercicio ex)
+
+    mapM_ putStrLn textoCorrigido
     delay
+    return (erros, letras)
 
 
 -- exibe os desafios
