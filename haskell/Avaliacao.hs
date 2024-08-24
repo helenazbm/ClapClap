@@ -34,4 +34,4 @@ atribuiEstrelasLicao precisao
     | precisao < 20.0 = 0
     | precisao <= 60.0 = 1
     | precisao <= 90.0 = 2
-    | otherwise = 3
+    | otherwise = 3    
