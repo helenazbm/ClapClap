@@ -12,6 +12,7 @@ import System.IO (hFlush, stdout)
 import System.Random (randomRIO)
 import Control.Concurrent.MVar (MVar, newEmptyMVar, putMVar, takeMVar, tryTakeMVar, isEmptyMVar)
 import FerramentasIO (limparTela)
+import Sprites (getCor)
 
 data Desafio = UmMinuto | DoisMinutos | CincoMinutos
 
@@ -35,19 +36,15 @@ contarTempo tempo tempoMVar = do
     threadDelay (tempo * 1000000)  
     putMVar tempoMVar ()  
 
-green = "\x1b[32m"
-red = "\x1b[31m"
-reset = "\x1b[0m"
-
-colorWord :: Bool -> String -> String
-colorWord True word = green ++ word ++ reset
-colorWord False word = red ++ word ++ reset
+colorirPalavra :: Bool -> String -> String
+colorirPalavra True palavra = getCor "green" ++ palavra ++ getCor "default"
+colorirPalavra False palavra = getCor "red" ++ palavra ++ getCor "default"
 
 compararPalavras :: [String] -> [String] -> [String]
 compararPalavras [] [] = []
-compararPalavras (c:cs) (d:ds) = colorWord (c == d) c : compararPalavras cs ds
-compararPalavras (c:cs) [] = colorWord False c : compararPalavras cs []
-compararPalavras [] (d:ds) = colorWord False "" : compararPalavras [] ds
+compararPalavras (c:cs) (d:ds) = colorirPalavra (c == d) c : compararPalavras cs ds
+compararPalavras (c:cs) [] = colorirPalavra False c : compararPalavras cs []
+compararPalavras [] (d:ds) = colorirPalavra False "" : compararPalavras [] ds
 
 compararFrases :: String -> String -> String
 compararFrases fraseCorreta fraseDigitada = unwords (compararPalavras palavrasCorretas palavrasDigitadas)
@@ -55,8 +52,8 @@ compararFrases fraseCorreta fraseDigitada = unwords (compararPalavras palavrasCo
     palavrasCorretas = words fraseCorreta
     palavrasDigitadas = words fraseDigitada
 
-executarDesafioSimulado :: MVar () -> IO ()
-executarDesafioSimulado tempoMVar = do
+executarDesafio :: MVar () -> IO ()
+executarDesafio tempoMVar = do
     let loop = do
             frase <- fraseAleatoria
             putStrLn frase
@@ -67,15 +64,16 @@ executarDesafioSimulado tempoMVar = do
             case resultado of
                 Left _ -> do
                     putStrLn ""
+                    limparTela
                     putStrLn "\nTempo esgotado! Pressione enter para ver seu resultado."
                     string <- getLine
                     let resultadoFrase = compararFrases frase string
                     putStrLn resultadoFrase
+                    putStrLn "Fim do desafio!"
                 Right input -> do
-                    let resultadoFrase = compararFrases frase input
+                    limparTela
                     putStrLn ""
-                    putStrLn resultadoFrase
-
+                    putStrLn "O tempo não esgotou, reinicie o desafio!"
     loop
 
 iniciarDesafio :: Desafio -> IO ()
@@ -86,11 +84,4 @@ iniciarDesafio desafio = do
     threadDelay 2000000
     tempoMVar <- newEmptyMVar
     _ <- forkIO (contarTempo tempo tempoMVar)
-    executarDesafioSimulado tempoMVar
-    putStrLn "Fim do desafio!"
-
-main :: IO ()
-main = do
-    iniciarDesafio UmMinuto
--- iniciarDesafio doisMinutos
--- iniciarDesafio cincoMinutos
+    executarDesafio tempoMVar

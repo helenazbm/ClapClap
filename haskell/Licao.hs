@@ -25,23 +25,15 @@ getStatusLicoes idLicao dados =
         then status
         else getStatusLicoes idLicao (tail dados)
 
-contaLicoesConcluidas :: [Licao] -> Int
-contaLicoesConcluidas [] = 0
-contaLicoesConcluidas (licao:licoes) =
+contarLicoesConcluidas :: [Licao] -> Int
+contarLicoesConcluidas [] = 0
+contarLicoesConcluidas (licao:licoes) =
     if (status licao) == "concluido"
-    then 1 + contaLicoesConcluidas licoes
-    else contaLicoesConcluidas licoes
+    then 1 + contarLicoesConcluidas licoes
+    else contarLicoesConcluidas licoes
 
-corrigeExercicio :: String -> [(Char, String)] -> [(Char, String)]
-corrigeExercicio entrada [] = []
-corrigeExercicio "" ((gabarito, cor):gabaritos) = [(gabarito, "red")] ++ corrigeExercicio "" gabaritos
-corrigeExercicio (en:entrada) ((gabarito, cor):gabaritos) =
-    if en == gabarito
-    then [(gabarito, "green")] ++ corrigeExercicio entrada gabaritos
-    else [(gabarito, "red")] ++ corrigeExercicio entrada gabaritos
-
-atualizaLinha :: String -> String -> String
-atualizaLinha idLicao linha =
+atualizarLinha :: String -> String -> String
+atualizarLinha idLicao linha =
     let [id, status] = splitOn ";" linha
     in if id == idLicao
        then intercalate ";" [id, "concluido"]
@@ -54,7 +46,7 @@ setStatusLicao idLicao = do
 
     conteudo <- readFile filePath
     let linhas = lines conteudo
-        linhasProcessadas = map (\linha -> atualizaLinha idLicao linha) linhas
+        linhasProcessadas = map (\linha -> atualizarLinha idLicao linha) linhas
 
     writeFile tempFilePath (unlines linhasProcessadas)
 

@@ -150,12 +150,12 @@ getCor "yellow" = "\ESC[33m"
 getCor "orange" = "\ESC[38;5;208m"
 getCor "default" = "\ESC[0m"
 
-aplicaCorPixels :: String -> String -> String
-aplicaCorPixels cor content = getCor cor ++ content ++ getCor "default"
+aplicarCorPixels :: String -> String -> String
+aplicarCorPixels cor content = getCor cor ++ content ++ getCor "default"
 
-aplicaCor :: [Char] -> String -> String
-aplicaCor [] cor = ""
-aplicaCor (head : tail) cor = aplicaCorPixels cor [head] ++ aplicaCor tail cor
+aplicarCor :: [Char] -> String -> String
+aplicarCor [] cor = ""
+aplicarCor (head : tail) cor = aplicarCorPixels cor [head] ++ aplicarCor tail cor
 
 concatLinha :: [[String]] -> Int -> String -> String
 concatLinha (h: []) numeroLinha espaco = h !! numeroLinha
@@ -166,20 +166,20 @@ concatLinhas sprites numeroLinha espaco
   | numeroLinha < length (sprites !! 0) = [concatLinha sprites numeroLinha espaco] ++ concatLinhas sprites (numeroLinha + 1) espaco
   | otherwise = []
 
-formataLinhasTexto:: [(Char, String)] -> String -> [String]
-formataLinhasTexto [] spacer = []
-formataLinhasTexto dados espaco =
-    let sprites = map (\(char, cor) -> aplicaCor (getLetra char) cor) dados
+formatarLinhasTexto:: [(Char, String)] -> String -> [String]
+formatarLinhasTexto [] spacer = []
+formatarLinhasTexto dados espaco =
+    let sprites = map (\(char, cor) -> aplicarCor (getLetra char) cor) dados
     in (concatLinhas (map (\sprite -> lines sprite) sprites) 0 espaco)
 
-aplicaCorProgresso :: String -> String -> String
-aplicaCorProgresso cor conteudo = getCor cor ++ conteudo ++ getCor "default"
+aplicarCorProgresso :: String -> String -> String
+aplicarCorProgresso cor conteudo = getCor cor ++ conteudo ++ getCor "default"
 
-preencheProgresso :: String -> Int -> String
-preencheProgresso cor total = 
+preencherProgresso :: String -> Int -> String
+preencherProgresso cor total = 
     let totalBlocos = 45 -- número de "blocos" na barra de progresso
         blocosPreenchidos = total * 3
-    in aplicaCorProgresso cor (replicate blocosPreenchidos '▓') ++ replicate (45 - blocosPreenchidos) '░'
+    in aplicarCorProgresso cor (replicate blocosPreenchidos '▓') ++ replicate (45 - blocosPreenchidos) '░'
 
 getCorProgresso :: Int -> String
 getCorProgresso total
@@ -188,9 +188,9 @@ getCorProgresso total
   | total >= 5 = "orange"
   | otherwise = "red" 
 
-exibeProgresso :: Int -> [String]
-exibeProgresso total = ["                                                    Progresso: ["
-    ++ preencheProgresso (getCorProgresso total) total ++ "] " ++ printf "%.1f" percentual ++ "%"]
+exibirProgresso :: Int -> [String]
+exibirProgresso total = ["                                                    Progresso: ["
+    ++ preencherProgresso (getCorProgresso total) total ++ "] " ++ printf "%.1f" percentual ++ "%"]
   where 
     percentual = (fromIntegral total / 15 * 100) :: Double
 
