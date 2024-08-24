@@ -2,17 +2,12 @@ module Avaliacao where
 
 import Exercicio
 import Licao
+--import Desafio
 import Sprites (licao1)
-
-data Avaliacao = Avaliacao {
-        percentualAcertos :: Int,
-        palavrasPorMinuto :: Int
-    } deriving (Show, Read)
 
 contaLetrasExercicios :: [(Char, String)] -> Int
 contaLetrasExercicios [] = 0
 contaLetrasExercicios ((gabarito, cor):gabaritos) = 1 + contaLetrasExercicios gabaritos
-
 
 contaErrosExercicios :: String -> [(Char, String)] -> Int
 contaErrosExercicios _ [] = 0
@@ -35,3 +30,11 @@ atribuiEstrelasLicao precisao
     | precisao <= 60.0 = 1
     | precisao <= 90.0 = 2
     | otherwise = 3    
+
+-- contaLetrasDesafio :: Desafio -> Int
+-- contaLetrasDesafio UmMinuto = contaCaracteres frases
+-- contaLetrasDesafio DoisMinutos = contaCaracteres frases
+-- contaLetrasDesafio CincoMinutos = contaCaracteres frases
+
+-- contaCaracteres :: [String] -> Int
+-- contaCaracteres = sum . map length 
