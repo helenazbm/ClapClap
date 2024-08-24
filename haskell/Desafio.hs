@@ -57,13 +57,12 @@ executarDesafio tempoMVar = do
     let loop = do
             frase <- fraseAleatoria
             putStrLn frase
-            putStr "\nDigite a frase: "
+            putStrLn "\nDigite o texto:"
             hFlush stdout
 
             resultado <- race (takeMVar tempoMVar) getLine
             case resultado of
                 Left _ -> do
-                    putStrLn ""
                     limparTela
                     putStrLn "\nTempo esgotado! Pressione enter para ver seu resultado."
                     string <- getLine
@@ -72,7 +71,6 @@ executarDesafio tempoMVar = do
                     putStrLn "Fim do desafio!"
                 Right input -> do
                     limparTela
-                    putStrLn ""
                     putStrLn "O tempo não esgotou, reinicie o desafio!"
     loop
 
