@@ -2,6 +2,9 @@
 
 module Main where
 
+import Control.Concurrent.Async (race)
+import System.IO
+import System.Console.ANSI
 import Control.Concurrent (threadDelay, forkIO)
 import Control.Monad (unless, forever, void)
 import Data.Time.Clock (getCurrentTime, diffUTCTime)
@@ -54,20 +57,24 @@ compararFrases fraseCorreta fraseDigitada = unwords (compararPalavras palavrasCo
 executarDesafioSimulado :: MVar () -> IO ()
 executarDesafioSimulado tempoMVar = do
     let loop = do
-        tempoAcabou <- isEmptyMVar tempoMVar
-        if not tempoAcabou
-            then do
-                putStrLn "\nTempo esgotado!"
-            else do
-                frase <- fraseAleatoria
-                putStrLn frase
-                putStr "\nDigite a frase: "
-                hFlush stdout
-                input <- getLine
-                let resultado = compararFrases frase input
-                putStrLn ""
-                putStrLn resultado
-                loop
+            frase <- fraseAleatoria
+            putStrLn frase
+            putStr "\nDigite a frase: "
+            hFlush stdout
+
+            resultado <- race (takeMVar tempoMVar) getLine
+            case resultado of
+                Left _ -> do
+                    putStrLn ""
+                    putStrLn "\nTempo esgotado! Pressione enter para ver seu resultado."
+                    string <- getLine
+                    let resultadoFrase = compararFrases frase string
+                    putStrLn resultadoFrase
+                Right input -> do
+                    let resultadoFrase = compararFrases frase input
+                    putStrLn ""
+                    putStrLn resultadoFrase
+
     loop
 
 iniciarDesafio :: Desafio -> IO ()
