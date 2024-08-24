@@ -257,13 +257,13 @@ licao3 :: [(String, String)] -> Licao
 licao3 dadosLicao = 
     Licao [ex1 'd' "3", ex2 ('d', 'i') "3", ex3 ('e', 'i') "3", ex4 ('d', 'e', 'i') "3"]
     (getStatusLicoes "3" dadosLicao)
-    "../dados/arteTexto/licoes/licao1.txt"
+    "../dados/arteTexto/licoes/licao3.txt"
 
 licao4 :: [(String, String)] -> Licao
 licao4 dadosLicao = 
     Licao [ex1 'c' "4", ex2 ('g', 'n') "4", ex3 ('n', 'c') "4", ex4 ('c', 'g', 'n') "4"]
     (getStatusLicoes "4" dadosLicao)
-    "../dados/arteTexto/licoes/licao1.txt"
+    "../dados/arteTexto/licoes/licao4.txt"
 
 licao5 :: [(String, String)] -> Licao
 licao5 dadosLicao = 
