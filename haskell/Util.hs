@@ -24,6 +24,12 @@ lerCaractere = do
     hSetBuffering stdin LineBuffering
     return char
 
+coloreTexto :: String -> String
+coloreTexto semCor = 
+    let semCorTags = substituiTags semCor
+        linhasColoridos = lines semCorTags
+    in unlines linhasColoridos
+
 substituiTags :: String -> String
 substituiTags = replace "[AZUL]" "\ESC[34m"
             . replace "[DEFAULT]" "\ESC[0m"
