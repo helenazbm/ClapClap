@@ -13,6 +13,7 @@ import System.Random (randomRIO)
 import Control.Concurrent.MVar (MVar, newEmptyMVar, putMVar, takeMVar, tryTakeMVar, isEmptyMVar)
 import FerramentasIO (limparTela)
 import Sprites (getCor)
+import Text.Printf
 
 data Desafio = UmMinuto | DoisMinutos | CincoMinutos
 
@@ -91,18 +92,14 @@ executarDesafio desafio tempoMVar = do
                     let ppm = calcularPPM (tempoDesafio desafio) numPalavras
                     let precisao = calcularPrecisaoDesafio numPalavras numPalavrasCorretas
                     let estrelas = atribuirEstrelasDesafio ppm precisao
+                    let min = tempoEmMin (tempoDesafio desafio)
+                    let precisaoFormatada = printf "%.2f" precisao
 
-                    putStrLn $ "numero palavras " ++ show numPalavras
-                    putStrLn $ "numero palavras corretas " ++ show numPalavrasCorretas
-                    putStrLn $ "ppm " ++ show ppm
-                    putStrLn $ "precisao " ++ show precisao
-                    putStrLn $ "estrelas " ++ show estrelas
-
-                    threadDelay 2000000
+                    threadDelay 3000000
                     limparTela
                     putStrLn "\n"
-                    putStrLn $ replicate 60 ' ' ++ "Você fez o desafio de " ++ show (tempoDesafio desafio)  ++ " min."
-                    putStrLn $ replicate 40 ' ' ++ "Sua velocidade foi de: " ++ show ppm ++ " palavras por minuto com " ++ show precisao ++ "% de precisão."
+                    putStrLn $ replicate 60 ' ' ++ "Você fez o desafio de " ++ show min  ++ " min."
+                    putStrLn $ replicate 40 ' ' ++ "Sua velocidade foi de: " ++ show ppm ++ " palavras por minuto com " ++ precisaoFormatada ++ "% de precisão."
 
                     desafioConcluido <- case estrelas of
                         0 -> readFile "../dados/avaliacoes/zeroEstrela.txt"
@@ -154,3 +151,9 @@ atribuirEstrelasDesafio ppm precisao
     | precisao <= 60.0 || ppm <= 30 = 1
     | precisao <= 90.0 || ppm <= 40 = 2
     | otherwise = 3  
+
+tempoEmMin :: Int -> Int
+tempoEmMin tempo
+    | tempo == 60 = 1
+    | tempo == 120 = 2
+    | tempo == 300 = 5
