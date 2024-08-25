@@ -3,7 +3,7 @@ module Menu where
 import Avaliacao
 import Data.Char(toLower)
 import Text.Read(readMaybe)
-import FerramentasIO(limparTela, delay)
+import FerramentasIO(limparTela, delay, lerCaractere)
 import Sprites (licoes, formatarLinhasTexto, exibirProgresso)
 import Exercicio (Exercicio, exercicio, id, idLicao, corrigeExercicio)
 import Desafio (iniciarDesafio, Desafio (UmMinuto, DoisMinutos, CincoMinutos))
@@ -15,28 +15,16 @@ printMenu = do
     limparTela
     menu <- readFile "../dados/arteTexto/menu.txt"
     putStrLn menu 
-    opcaoSelecionada <- getLine
-    opcaoUsuario (map toLower opcaoSelecionada)
-
--- Volta para o menu principal
-voltarMenu :: IO()
-voltarMenu = do
-    _ <- getLine
-    printMenu
-
--- Volta para o menu de lições
-voltarMenuLicoes :: IO()
-voltarMenuLicoes = do
-    _ <- getLine
-    exibirLicoes            
+    opcaoSelecionada <- lerCaractere
+    opcaoUsuario (toLower opcaoSelecionada)
 
 -- Lida com a resposta do usuário
-opcaoUsuario :: String -> IO()
+opcaoUsuario :: Char -> IO()
 opcaoUsuario o
-    | o == "l" = exibirLicoes
-    | o == "d" = exibirDesafios
-    | o == "t" = exibirTutorial
-    | o == "s" = sair
+    | o == 'l' = exibirLicoes
+    | o == 'd' = exibirDesafios
+    | o == 't' = exibirTutorial
+    | o == 's' = sair
     | otherwise = printMenu
 
 -- exibe as licões e recebe a opção do usuário
@@ -68,10 +56,14 @@ iniciarLicao idLicao licoes = do
     let licaoSelecionada = licoes !! (idLicao - 1)
     instrucaoLicao <- readFile (instrucao licaoSelecionada)
     putStrLn instrucaoLicao
-    _ <- getLine
-    limparTela
-    setStatusLicao (show idLicao)
-    loopExercicios licaoSelecionada
+    opcao <- lerCaractere
+    if opcao == 'i'
+        then do 
+        limparTela
+        setStatusLicao (show idLicao)
+        loopExercicios licaoSelecionada
+    else    
+        exibirLicoes
 
 -- Função para fazer todos os exercícios de uma lição
 loopExercicios :: Licao -> IO ()
@@ -124,15 +116,15 @@ exibirDesafios = do
     limparTela
     desafios <- readFile "../dados/arteTexto/desafios.txt"
     putStrLn desafios
-    opcao <- readLn :: IO Int
+    opcao <- lerCaractere
     opcaoUsuarioDesafio opcao
-
-opcaoUsuarioDesafio :: Int -> IO ()
+    
+opcaoUsuarioDesafio :: Char-> IO ()
 opcaoUsuarioDesafio o
-    | o == 1 = iniciarDesafio UmMinuto
-    | o == 2 = iniciarDesafio DoisMinutos
-    | o == 5 = iniciarDesafio CincoMinutos
-    | otherwise = exibirDesafios
+    | o == '1' = iniciarDesafio UmMinuto
+    | o == '2' = iniciarDesafio DoisMinutos
+    | o == '5' = iniciarDesafio CincoMinutos
+    | o == '\n' = printMenu
 
 -- exibe o tutorial
 exibirTutorial :: IO ()
@@ -148,3 +140,15 @@ sair = do
     sair <- readFile "../dados/arteTexto/sair.txt"
     putStrLn sair
     return ()
+
+-- Volta para o menu principal
+voltarMenu :: IO()
+voltarMenu = do
+    _ <- getLine
+    printMenu
+
+-- Volta para o menu de lições
+voltarMenuLicoes :: IO()
+voltarMenuLicoes = do
+    _ <- getLine
+    exibirLicoes            

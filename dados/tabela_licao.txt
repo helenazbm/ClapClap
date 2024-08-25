@@ -1,7 +1,7 @@
 id;status
 1;concluido
 2;concluido
-3;nao_iniciado
+3;concluido
 4;nao_iniciado
 5;nao_iniciado
 6;nao_iniciado
