@@ -2,8 +2,6 @@ module Menu where
 
 import Avaliacao
 import Data.Char(toLower)
-import Data.List (intercalate)
-import Data.List.Split (splitOn)
 import Text.Read(readMaybe)
 import FerramentasIO(limparTela, delay, lerCaractere)
 import Sprites (licoes, formatarLinhasTexto, exibirProgresso, exibirLicoesConcluida)
@@ -11,16 +9,6 @@ import Exercicio (Exercicio, exercicio, id, idLicao, corrigeExercicio)
 import Desafio (iniciarDesafio, Desafio (UmMinuto, DoisMinutos, CincoMinutos))
 import Licao (Licao (exercicios), getDadosLicoes, instrucao, setStatusLicao, contarLicoesConcluidas)
 import Control.Arrow (ArrowLoop(loop))
-
-
--- Função para substituir as tags por sequências ANSI
-substituiTags :: String -> String
-substituiTags = replace "[AZUL]" "\ESC[34m"
-            . replace "[DEFAULT]" "\ESC[0m"
-
--- Função auxiliar para substituição
-replace :: Eq a => [a] -> [a] -> [a] -> [a]
-replace old new = intercalate new . splitOn old
 
 -- Imprime o menu principal e recebe a opção do usuário
 printMenu :: IO()
@@ -68,10 +56,7 @@ iniciarLicao idLicao licoes = do
 
     let licaoSelecionada = licoes !! (idLicao - 1)
     instrucaoLicao <- readFile (instrucao licaoSelecionada)
-    let instrucaoColorida = substituiTags instrucaoLicao
-    let linesInstrucao = lines instrucaoColorida
-    putStrLn $ unlines linesInstrucao
-    --putStrLn instrucaoLicao
+    putStrLn instrucaoLicao
     opcao <- lerCaractere
     if opcao == 'i' then do
         limparTela
