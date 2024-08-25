@@ -2,7 +2,10 @@ module Exercicio where
 
 import Data.List (intercalate)
 import Data.List.Split (splitOn)
+import FerramentasIO (limparTela, lerCaractere)
+
 import System.Directory (renameFile, removeFile)
+
 
 data Exercicio = Exercicio {
     id :: String,
@@ -18,3 +21,5 @@ corrigeExercicio (en:entrada) ((exercicioCorreto, cor):exerciciosCorreto) =
     if en == exercicioCorreto
     then [(exercicioCorreto, "green")] ++ corrigeExercicio entrada exerciciosCorreto
     else [(exercicioCorreto, "red")] ++ corrigeExercicio entrada exerciciosCorreto
+
+

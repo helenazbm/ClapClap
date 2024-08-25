@@ -16,16 +16,16 @@ printMenu = do
     limparTela
     menu <- readFile "../dados/arteTexto/menu.txt"
     putStrLn menu 
-    opcaoSelecionada <- lerCaractere
-    opcaoUsuario (toLower opcaoSelecionada)
+    opcaoSelecionada <- getLine
+    opcaoUsuario (map toLower opcaoSelecionada)
 
 -- Lida com a resposta do usuário
-opcaoUsuario :: Char -> IO()
+opcaoUsuario :: String -> IO()
 opcaoUsuario o
-    | o == 'l' = exibirLicoes
-    | o == 'd' = exibirDesafios
-    | o == 't' = exibirTutorial
-    | o == 's' = sair
+    | o == "l" = exibirLicoes
+    | o == "d" = exibirDesafios
+    | o == "t" = exibirTutorial
+    | o == "s" = sair
     | otherwise = printMenu
 
 -- exibe as licões e recebe a opção do usuário
@@ -118,15 +118,16 @@ exibirDesafios = do
     limparTela
     desafios <- readFile "../dados/arteTexto/desafios.txt"
     putStrLn desafios
-    opcao <- lerCaractere
+    opcao <- getLine
     opcaoUsuarioDesafio opcao
     
-opcaoUsuarioDesafio :: Char-> IO ()
+opcaoUsuarioDesafio :: String-> IO ()
 opcaoUsuarioDesafio o
-    | o == '1' = iniciarDesafio UmMinuto
-    | o == '2' = iniciarDesafio DoisMinutos
-    | o == '5' = iniciarDesafio CincoMinutos
-    | o == '\n' = printMenu
+    | o == "1" = iniciarDesafio UmMinuto
+    | o == "2" = iniciarDesafio DoisMinutos
+    | o == "3" = iniciarDesafio CincoMinutos
+    | o == "" = printMenu
+    | otherwise = exibirDesafios
 
 -- exibe o tutorial
 exibirTutorial :: IO ()
