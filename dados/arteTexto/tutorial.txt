@@ -1,31 +1,31 @@
-
-
-                                                                     _           _                 _         _ 
-                                                                    | |         | |               (_)       | |
-                                                                    | |_  _   _ | |_   ___   _ __  _   __ _ | |
-                                                                    | __|| | | || __| / _ \ | '__|| | / _` || |
-                                                                    | |_ | |_| || |_ | (_) || |   | || (_| || |
-                                                                     \__| \__,_| \__| \___/ |_|   |_| \__,_||_|
-                                           
-                                           
-                                                 Loreem ipsum dolor sit amet. Ut eaque nobis in nisi dicta est sapiente quae qui quis
-                                                 necessitatibus 
-
-
-                                                 At tempora doloremque. Eum galisum vitae eum provident minima est assumenda ullam.
-                                                 Et velit maxime et recusandae vitae non expedita eveniet. Ea beatae eaque non impedit 
-                                                                                       
-                                                                                       
-                                                                                       
-                                                                                       
-                                                                                doloribus est 
-                                                 laborum consequatur sit unde dolores sed quam necessitatibus id quibusdam placeat. 
-
-
-
-
-                                       
-
-
-
-                                                               * Pressione Enter para voltar ao menu principal* 
+        ║                                                                                                                                                        ║
+        ║                                                        _           _                 _         _                                                       ║
+        ║                                                       | |         | |               (_)       | |                                                      ║
+        ║                                                       | |_  _   _ | |_   ___   _ __  _   __ _ | |                                                      ║
+        ║                                                       | __|| | | || __| / _ \ | '__|| | / _` || |                                                      ║
+        ║                                                       | |_ | |_| || |_ | (_) || |   | || (_| || |                                                      ║
+        ║                                                        \__| \__,_| \__| \___/ |_|   |_| \__,_||_|                                                      ║
+        ║                                                                                                                                                        ║
+        ║                                                                                                                                                        ║
+        ║                                                                                                                                                        ║
+        ║                                                                                                                                                        ║
+        ║                                                                                                                                                        ║
+        ║                                                                                                                                                        ║
+        ║                                                                                                                                                        ║
+        ║                                                                                                                                                        ║
+        ║                                                                                                                                                        ║
+        ║                                                                                                                                                        ║
+        ║                                                                                                                                                        ║
+        ║                                                                                                                                                        ║
+        ║                                                                                                                                                        ║
+        ║                                                                                                                                                        ║
+        ║                                                                                                                                                        ║
+        ║                                                                                                                                                        ║
+        ║                                                                                                                                                        ║
+        ║                                                                                                                                                        ║
+        ║                                                    * Pressione Enter para voltar ao Menu principal *                                                   ║
+        ║                                                                                                                                                        ║
+        ║                                                                                                                                                        ║
+        ║                                                                                                                                                        ║
+        ║                                                                                                                                                        ║
+        ╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
