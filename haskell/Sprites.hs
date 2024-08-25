@@ -328,6 +328,12 @@ licao11 dadosLicao =
     (getStatusLicoes "11" dadosLicao)
     "../dados/arteTexto/licoes/licao11.txt"
 
+licao14 :: [(String, String)] -> Licao
+licao14 dadosLicao = 
+    Licao [ex1 'q' "14", ex2 ('y', 'q') "14", ex3 ('q', 'p') "14", ex4 ('q', 'y', 'p') "14"]
+    (getStatusLicoes "14" dadosLicao)
+    "../dados/arteTexto/licoes/licao14.txt"
+
 licoes :: [(String, String)] -> [Licao]
 licoes dadosLicao = [licao1 dadosLicao, licao2 dadosLicao, licao3 dadosLicao,
                     licao4 dadosLicao, licao5 dadosLicao, licao6 dadosLicao,
