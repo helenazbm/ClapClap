@@ -161,6 +161,36 @@ getLetra ';' = unlines [
     "▄▀  "
     ]
 
+getLetra '~' = unlines [
+    "    ",
+    "▀▄▀▄",
+    "    "
+    ]
+
+getLetra '´' = unlines [
+    "  ▄▀",
+    "    ",
+    "    "
+    ]
+
+getLetra '`' = unlines [
+    "▀▄  ",
+    "    ",
+    "    "
+    ]
+
+getLetra '^' = unlines [
+    "▄▀▀▄",
+    "    ",
+    "    "
+    ]
+
+getLetra 'ç' = unlines [
+    "▄▀▀▄",
+    "█  ▄",
+    "▀█▀▀"
+    ]
+
 getCor :: String -> String
 getCor "red" = "\ESC[31m"
 getCor "green" = "\ESC[32m"
@@ -327,6 +357,18 @@ licao11 dadosLicao =
     Licao [ex1 'w' "11", ex2 ('w', ';') "11", ex3 (';', 'x') "11", ex4 ('w', 'x', ';') "11"]
     (getStatusLicoes "11" dadosLicao)
     "../dados/arteTexto/licoes/licao11.txt"
+
+licao12 :: [(String, String)] -> Licao
+licao12 dadosLicao = 
+    Licao [ex1 'ç' "12", ex2 ('ç', '~') "12", ex3 ('~', '´') "12", ex4 ('ç', '~', '´') "12"]
+    (getStatusLicoes "12" dadosLicao)
+    "../dados/arteTexto/licoes/licao12.txt"
+
+licao13 :: [(String, String)] -> Licao
+licao13 dadosLicao = 
+    Licao [ex1 '`' "13", ex2 ('`', '^') "13", ex1 '^' "13", ex4 ('`', '^', '´') "13", ex4 ('`', '^', '~') "13"]
+    (getStatusLicoes "13" dadosLicao)
+    "../dados/arteTexto/licoes/licao13.txt"
 
 licao14 :: [(String, String)] -> Licao
 licao14 dadosLicao = 
