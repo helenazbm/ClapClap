@@ -16,7 +16,7 @@
                                                  2 - Teclas U, R e K                         12 - Tecla ç, Til e Acento Agudo
                                                  3 - Teclas D, E e I                         13 - Acento Grave Acento Circunflexo          
                                                  4 - Teclas C, G e N                         14 - Teclas Q, Y e P
-                                                 5 - Revisão 1                               15 - Teclas Z e Enter
+                                                 5 - Revisão 1                               15 - Tecla Z
                                                  6 - Teclas T, S e L
                                                  7 - Teclas O, B e A
                                                  8 - Teclas V, H e M
