@@ -1,9 +1,12 @@
-module FerramentasIO where
+module Util where
+
+import System.IO
+import System.Console.ANSI
 import System.Process(callCommand)
 import Control.Concurrent (threadDelay)
 import System.IO.Unsafe (unsafePerformIO)
-import System.IO
-import System.Console.ANSI
+import Data.List (intercalate)
+import Data.List.Split (splitOn)
 
 
 limparTela :: IO()
@@ -21,12 +24,9 @@ lerCaractere = do
     hSetBuffering stdin LineBuffering
     return char
 
-lerInt :: IO Int
-lerInt = do
-    hSetBuffering stdin NoBuffering
-    hSetEcho stdin False
-    int <- getChar
-    hSetEcho stdin True
-    hSetBuffering stdin LineBuffering
-    return (read [int])
-    
+substituiTags :: String -> String
+substituiTags = replace "[AZUL]" "\ESC[34m"
+            . replace "[DEFAULT]" "\ESC[0m"
+
+replace :: Eq a => [a] -> [a] -> [a] -> [a]
+replace old new = intercalate new . splitOn old

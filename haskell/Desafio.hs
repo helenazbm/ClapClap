@@ -2,18 +2,16 @@
 
 module Desafio where
 
-import Control.Concurrent.Async (race)
-import System.IO
-import System.Console.ANSI
-import Control.Concurrent (threadDelay, forkIO)
-import Control.Monad (unless, forever, void)
-import Data.Time.Clock (getCurrentTime, diffUTCTime)
-import System.IO (hFlush, stdout)
-import System.Random (randomRIO)
-import Control.Concurrent.MVar (MVar, newEmptyMVar, putMVar, takeMVar, tryTakeMVar, isEmptyMVar)
-import FerramentasIO (limparTela)
-import Sprites (getCor, colorirPalavra)
 import Text.Printf
+import Util (limparTela)
+import System.Random (randomRIO)
+import System.IO (hFlush, stdout)
+import Control.Concurrent.Async (race)
+import Sprites (getCor, colorirPalavra)
+import Control.Concurrent (threadDelay, forkIO)
+import Control.Concurrent.MVar (MVar, newEmptyMVar, putMVar, takeMVar, tryTakeMVar, isEmptyMVar)
+
+
 
 data Desafio = UmMinuto | DoisMinutos | CincoMinutos
 
@@ -70,7 +68,6 @@ executarDesafio desafio tempoMVar = do
     let loop = do
             frase <- fraseAleatoria
             putStrLn frase
---            putStrLn "\nDigite o texto:"
             hFlush stdout
 
             resultado <- race (takeMVar tempoMVar) getLine
@@ -81,34 +78,40 @@ executarDesafio desafio tempoMVar = do
                     string <- getLine
                     let resultadoFrase = compararFrases frase string
                     putStrLn resultadoFrase
-                    putStrLn "Fim do desafio!"
-
-                    let numPalavras = contarPalavrasDesafio string
-                    let numPalavrasCorretas = contarPalavrasCorretas frase string
-                    let ppm = calcularPPM (tempoDesafio desafio) numPalavras
-                    let precisao = calcularPrecisaoDesafio numPalavras numPalavrasCorretas
-                    let estrelas = atribuirEstrelasDesafio ppm precisao
-                    let min = tempoEmMin (tempoDesafio desafio)
-                    let precisaoFormatada = printf "%.2f" precisao
-
-                    threadDelay 3000000
-                    limparTela
-                    putStrLn "\n"
-                    putStrLn $ replicate 60 ' ' ++ "Você fez o desafio de " ++ show min  ++ " min."
-                    putStrLn $ replicate 40 ' ' ++ "Sua velocidade foi de: " ++ show ppm ++ " palavras por minuto com " ++ precisaoFormatada ++ "% de precisão."
-
-                    desafioConcluido <- case estrelas of
-                        0 -> readFile "../dados/avaliacoes/zeroEstrela.txt"
-                        1 -> readFile "../dados/avaliacoes/desafio/umaEstrela.txt"
-                        2 -> readFile "../dados/avaliacoes/duasEstrelas.txt"
-                        3 -> readFile "../dados/avaliacoes/desafio/tresEstrelas.txt"   
-    
-                    putStrLn desafioConcluido
+                    putStrLn "Fim do desafio! Pressione Enter para ver a sua velocidade e precisão"
+                    entrada <- getLine
+                    if entrada == "" then avaliaDesafio desafio frase string
+                    else putStrLn "Opção Inválida!"
 
                 Right input -> do
                     limparTela
                     putStrLn "O tempo não esgotou, reinicie o desafio!"
     loop
+
+avaliaDesafio :: Desafio -> String -> String -> IO()
+avaliaDesafio desafio frase string = do
+    let numPalavras = contarPalavrasDesafio string
+    let numPalavrasCorretas = contarPalavrasCorretas frase string
+    let ppm = calcularPPM (tempoDesafio desafio) numPalavras
+    let precisao = calcularPrecisaoDesafio numPalavras numPalavrasCorretas
+    let estrelas = atribuirEstrelasDesafio ppm precisao
+    let min = tempoEmMin (tempoDesafio desafio)
+    let precisaoFormatada = printf "%.2f" precisao
+
+    
+    limparTela
+    putStrLn "\n"
+    putStrLn $ replicate 60 ' ' ++ "Você fez o desafio de " ++ show min  ++ " min."
+    putStrLn $ replicate 40 ' ' ++ "Sua velocidade foi de: " ++ show ppm ++ " palavras por minuto com " ++ precisaoFormatada ++ "% de precisão."
+
+    desafioConcluido <- case estrelas of
+        0 -> readFile "../dados/avaliacoes/zeroEstrela.txt"
+        1 -> readFile "../dados/avaliacoes/desafio/umaEstrela.txt"
+        2 -> readFile "../dados/avaliacoes/duasEstrelas.txt"
+        3 -> readFile "../dados/avaliacoes/desafio/tresEstrelas.txt"   
+
+    putStrLn desafioConcluido
+
 
 iniciarDesafio :: Desafio -> IO ()
 iniciarDesafio desafio = do
