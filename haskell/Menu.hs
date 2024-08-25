@@ -6,7 +6,7 @@ import Data.Char(toLower)
 import Controller (licoes)
 import Text.Read(readMaybe)
 import Sprites (exibirProgresso)
-import Util(limparTela, lerCaractere, substituiTags)
+import Util(limparTela, lerCaractere, coloreTexto)
 import Desafio (iniciarDesafio, Desafio (UmMinuto, DoisMinutos, CincoMinutos))
 
 
@@ -52,9 +52,7 @@ exibirLicao idLicao licoes = do
     limparTela
     let licaoSelecionada = licoes !! (idLicao - 1)
     instrucaoLicao <- readFile (instrucao licaoSelecionada)
-    let instrucaoColorida = substituiTags instrucaoLicao
-    let linesInstrucao = lines instrucaoColorida
-    putStrLn $ unlines linesInstrucao
+    putStrLn $ coloreTexto instrucaoLicao
     opcao <- lerCaractere
     if opcao == 'i' then do
         limparTela
