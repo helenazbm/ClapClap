@@ -345,10 +345,11 @@ licao9 dadosLicao =
     (getStatusLicoes "9" dadosLicao)
     "../dados/arteTexto/licoes/licao9.txt"
 
--- editar lição 10
 licao10 :: [(String, String)] -> Licao
 licao10 dadosLicao = 
-    Licao [ex2 (',', 'k') "10", ex1 '.' "10", ex3 ('.', 'l') "10", ex4 ('o', 'b', 'a') "10", ex7 ('l', '.', 'k', ',') "10"]
+    Licao [ex5 ('t', 's', 'l') "10", ex5 ('o', 'b', 'a') "10", ex5 ('v', 'h', 'm') "10",
+       ex5 ('.', ',', 't') "10", ex6 ('t', '.', 's', ',', 'l', '.', 'h') "10",
+       ex6 ('b', '.', 'a', '.', 'h', '.', 'o') "10", ex6 ('m', ',', 'o', ',', 't', ',', 'v') "10"]
     (getStatusLicoes "10" dadosLicao)
     "../dados/arteTexto/licoes/licao10.txt"
 
