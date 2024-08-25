@@ -1,16 +1,15 @@
+{-# LANGUAGE BlockArguments #-}
 module Menu where
 
-import Avaliacao
+import Licao
 import Data.Char(toLower)
+import Controller (licoes)
 import Text.Read(readMaybe)
-import FerramentasIO(limparTela, delay, lerCaractere)
-import Sprites (licoes, formatarLinhasTexto, exibirProgresso, exibirLicoesConcluida)
-import Exercicio (Exercicio, exercicio, id, idLicao, corrigeExercicio)
+import Sprites (exibirProgresso)
+import Util(limparTela, lerCaractere)
 import Desafio (iniciarDesafio, Desafio (UmMinuto, DoisMinutos, CincoMinutos))
-import Licao (Licao (exercicios), getDadosLicoes, instrucao, setStatusLicao, contarLicoesConcluidas)
-import Control.Arrow (ArrowLoop(loop))
 
--- Imprime o menu principal e recebe a opção do usuário
+
 printMenu :: IO()
 printMenu = do
     limparTela
@@ -19,18 +18,17 @@ printMenu = do
     opcaoSelecionada <- getLine
     opcaoUsuario (map toLower opcaoSelecionada)
 
--- Lida com a resposta do usuário
 opcaoUsuario :: String -> IO()
 opcaoUsuario o
-    | o == "l" = exibirLicoes
+    | o == "l" = listarLicoes
     | o == "d" = exibirDesafios
     | o == "t" = exibirTutorial
     | o == "s" = sair
     | otherwise = printMenu
 
--- exibe as licões e recebe a opção do usuário
-exibirLicoes :: IO ()
-exibirLicoes = do
+
+listarLicoes :: IO ()
+listarLicoes = do
     limparTela
 
     dadosLicoes <- getDadosLicoes
@@ -45,74 +43,27 @@ exibirLicoes = do
     if comandoUsuario == ""
         then printMenu
         else case readMaybe comandoUsuario of
-            Just n | n >= 1 && n <= 15 -> iniciarLicao n todasLicoes
+            Just n | n >= 1 && n <= 15 -> exibirLicao n todasLicoes
             _ -> do
-                exibirLicoes
+                listarLicoes
 
--- inicia lição escolhida pelo usuário
-iniciarLicao :: Int -> [Licao] -> IO ()
-iniciarLicao idLicao licoes = do
+exibirLicao :: Int -> [Licao] -> IO ()
+exibirLicao idLicao licoes = do
     limparTela
-
     let licaoSelecionada = licoes !! (idLicao - 1)
     instrucaoLicao <- readFile (instrucao licaoSelecionada)
     putStrLn instrucaoLicao
     opcao <- lerCaractere
     if opcao == 'i' then do
         limparTela
+        iniciarLicao licaoSelecionada
         setStatusLicao (show idLicao)
-        loopExercicios licaoSelecionada
-    else if opcao == '\n' then 
-        exibirLicoes
-    else do
-        iniciarLicao idLicao licoes 
-
--- Função para fazer todos os exercícios de uma lição
-loopExercicios :: Licao -> IO ()
-loopExercicios licao = do
+        voltarMenuLicoes
+     else if opcao == '\n' then 
+        listarLicoes
+     else do
+        exibirLicao idLicao licoes
     
-    let exs = exercicios licao
-    resultados <- mapM (\ex -> do
-            erros <- fazerExercicio ex
-            return erros) exs
-
-    let totalErros = sum $ map fst resultados
-        totalLetras = sum $ map snd resultados
-        precisao = calcularPrecisaoExercicios totalLetras totalErros
-        estrelas = atribuirEstrelasLicao precisao 
-
-    limparTela
-    putStrLn "\n"
-    putStrLn $ replicate 60 ' ' ++ "Sua precisão de acertos foi de: " ++ show precisao ++ "%"
-    putStrLn $ replicate 60 ' ' ++ show (totalLetras - totalErros) ++ "/" ++ show totalLetras ++ " caracteres digitados corretamente\n"
-
-    licaoConcluida <- case estrelas of
-        0 -> readFile "../dados/avaliacoes/zeroEstrela.txt"
-        1 -> readFile "../dados/avaliacoes/licao/umaEstrela.txt"
-        2 -> readFile "../dados/avaliacoes/duasEstrelas.txt"
-        3 -> readFile "../dados/avaliacoes/licao/tresEstrelas.txt" 
-    
-    
-    putStrLn licaoConcluida
-    voltarMenuLicoes
-
--- Função para fazer um exercício específico
-fazerExercicio :: Exercicio -> IO (Int, Int)
-fazerExercicio ex = do
-    let texto = formatarLinhasTexto (exercicio ex) " "
-    putStrLn ("Exercício " ++ show (Exercicio.id ex) ++ "\n")
-    mapM_ putStrLn texto
-    
-    entrada <- getLine
-    let textoCorrigido = formatarLinhasTexto (corrigeExercicio entrada (exercicio ex)) " "
-        erros = contarErrosExercicios entrada (exercicio ex)
-        letras = contarLetrasExercicios (exercicio ex)
-
-    mapM_ putStrLn textoCorrigido
-    delay
-    return (erros, letras)
-
--- exibe os desafios
 exibirDesafios :: IO ()
 exibirDesafios = do
     limparTela
@@ -120,6 +71,8 @@ exibirDesafios = do
     putStrLn desafios
     opcao <- getLine
     opcaoUsuarioDesafio opcao
+    -- ir para o ranking
+    voltarMenu
     
 opcaoUsuarioDesafio :: String-> IO ()
 opcaoUsuarioDesafio o
@@ -129,7 +82,7 @@ opcaoUsuarioDesafio o
     | o == "" = printMenu
     | otherwise = exibirDesafios
 
--- exibe o tutorial
+
 exibirTutorial :: IO ()
 exibirTutorial = do
     limparTela
@@ -144,14 +97,12 @@ sair = do
     putStrLn sair
     return ()
 
--- Volta para o menu principal
 voltarMenu :: IO()
 voltarMenu = do
     _ <- getLine
     printMenu
 
--- Volta para o menu de lições
 voltarMenuLicoes :: IO()
 voltarMenuLicoes = do
     _ <- getLine
-    exibirLicoes            
+    listarLicoes            

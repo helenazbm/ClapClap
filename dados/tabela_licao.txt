@@ -2,13 +2,13 @@ id;status
 1;concluido
 2;concluido
 3;concluido
-4;nao_iniciado
+4;concluido
 5;nao_iniciado
 6;nao_iniciado
-7;nao_iniciado
+7;concluido
 8;nao_iniciado
 9;nao_iniciado
-10;nao_iniciado
+10;concluido
 11;nao_iniciado
 12;nao_iniciado
 13;nao_iniciado

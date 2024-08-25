@@ -1,10 +1,8 @@
 module Avaliacao where
 
-import Exercicio
-import Licao
-import Desafio
-import Sprites (licao1)
+
 import GHC.Base (Float)
+import Data.Fixed (E0)
 
 -- Lições --
 
@@ -33,6 +31,8 @@ atribuirEstrelasLicao precisao
     | precisao <= 60.0 = 1
     | precisao <= 90.0 = 2
     | otherwise = 3    
+
+
 
 -- -- Desafios --
 

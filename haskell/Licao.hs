@@ -1,9 +1,14 @@
 module Licao where
 
-import Exercicio
+import Exercicio (Exercicio, iniciarExercicio)
+
+import Util (limparTela, lerCaractere)
 import Data.List (intercalate)
 import Data.List.Split (splitOn)
 import System.Directory (renameFile, removeFile)
+import Sprites (colorirPalavra)
+import Avaliacao (atribuirEstrelasLicao, calcularPrecisaoExercicios)
+
 
 data Licao = Licao {
     id :: String,
@@ -52,3 +57,43 @@ setStatusLicao idLicao = do
     writeFile tempFilePath (unlines linhasProcessadas)
 
     renameFile tempFilePath filePath
+
+
+------lição ------
+
+-- Função para fazer todos os exercícios de uma lição
+iniciarLicao :: Licao -> IO ()
+iniciarLicao licao = do
+    
+    let exs = exercicios licao
+    resultados <- mapM (\ex -> do
+            erros <- iniciarExercicio ex
+            return erros) exs
+    avaliaLicao resultados
+
+
+avaliaLicao :: [(Int, Int)] -> IO ()
+avaliaLicao resultados = do
+    let totalErros = sum $ map fst resultados
+        totalLetras = sum $ map snd resultados
+        precisao = calcularPrecisaoExercicios totalLetras totalErros
+        estrelas = atribuirEstrelasLicao precisao 
+
+    limparTela
+    putStrLn "\n"
+    putStrLn $ replicate 60 ' ' ++ "Sua precisão de acertos foi de: " ++ show precisao ++ "%"
+    putStrLn $ replicate 60 ' ' ++ show (totalLetras - totalErros) ++ "/" ++ show totalLetras ++ " caracteres digitados corretamente\n"
+
+    licaoConcluida <- case estrelas of
+        0 -> readFile "../dados/avaliacoes/zeroEstrela.txt"
+        1 -> readFile "../dados/avaliacoes/licao/umaEstrela.txt"
+        2 -> readFile "../dados/avaliacoes/duasEstrelas.txt"
+        3 -> readFile "../dados/avaliacoes/licao/tresEstrelas.txt" 
+    putStrLn licaoConcluida
+
+formataLicoesConcluida :: [Licao] -> String
+formataLicoesConcluida (licao:[]) = colorirPalavra ((status licao) == "concluido") (Licao.id licao)
+formataLicoesConcluida (licao:licoes) = colorirPalavra ((status licao) == "concluido") (Licao.id licao) ++ ", " ++ formataLicoesConcluida licoes
+
+exibirLicoesConcluida :: [Licao] -> String
+exibirLicoesConcluida licoes = "\n                                                    Concluídas: [" ++ formataLicoesConcluida licoes ++ "]"

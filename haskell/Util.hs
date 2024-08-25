@@ -1,4 +1,4 @@
-module FerramentasIO where
+module Util where
 import System.Process(callCommand)
 import Control.Concurrent (threadDelay)
 import System.IO.Unsafe (unsafePerformIO)
@@ -20,13 +20,3 @@ lerCaractere = do
     hSetEcho stdin True
     hSetBuffering stdin LineBuffering
     return char
-
-lerInt :: IO Int
-lerInt = do
-    hSetBuffering stdin NoBuffering
-    hSetEcho stdin False
-    int <- getChar
-    hSetEcho stdin True
-    hSetBuffering stdin LineBuffering
-    return (read [int])
-    
