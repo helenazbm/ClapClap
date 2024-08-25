@@ -12,7 +12,7 @@ import System.IO (hFlush, stdout)
 import System.Random (randomRIO)
 import Control.Concurrent.MVar (MVar, newEmptyMVar, putMVar, takeMVar, tryTakeMVar, isEmptyMVar)
 import FerramentasIO (limparTela)
-import Sprites (getCor)
+import Sprites (getCor, colorirPalavra)
 import Text.Printf
 
 data Desafio = UmMinuto | DoisMinutos | CincoMinutos
@@ -52,10 +52,6 @@ contarTempo :: Int -> MVar () -> IO ()
 contarTempo tempo tempoMVar = do
     threadDelay (tempo * 1000000)  
     putMVar tempoMVar ()  
-
-colorirPalavra :: Bool -> String -> String
-colorirPalavra True palavra = getCor "green" ++ palavra ++ getCor "default"
-colorirPalavra False palavra = getCor "red" ++ palavra ++ getCor "default"
 
 compararPalavras :: [String] -> [String] -> [String]
 compararPalavras [] [] = []
