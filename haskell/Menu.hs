@@ -86,10 +86,10 @@ loopExercicios licao = do
     putStrLn $ replicate 60 ' ' ++ show (totalLetras - totalErros) ++ "/" ++ show totalLetras ++ " caracteres digitados corretamente\n"
 
     licaoConcluida <- case estrelas of
-        0 -> readFile "../dados/arteTexto/avaliacoes/zeroEstrela.txt"
-        1 -> readFile "../dados/arteTexto/avaliacoes/umaEstrela.txt"
-        2 -> readFile "../dados/arteTexto/avaliacoes/duasEstrelas.txt"
-        3 -> readFile "../dados/arteTexto/avaliacoes/tresEstrelas.txt"
+        0 -> readFile "../dados/avaliacoes/zeroEstrela.txt"
+        1 -> readFile "../dados/avaliacoes/licao/umaEstrela.txt"
+        2 -> readFile "../dados/avaliacoes/duasEstrelas.txt"
+        3 -> readFile "../dados/avaliacoes/licao/tresEstrelas.txt" 
     
     
     putStrLn licaoConcluida

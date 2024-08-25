@@ -68,8 +68,8 @@ compararFrases fraseCorreta fraseDigitada = unwords (compararPalavras palavrasCo
     palavrasCorretas = words fraseCorreta
     palavrasDigitadas = words fraseDigitada
 
-executarDesafio :: MVar () -> IO ()
-executarDesafio tempoMVar = do
+executarDesafio :: Desafio -> MVar () -> IO ()
+executarDesafio desafio tempoMVar = do
     let loop = do
             frase <- fraseAleatoria
             putStrLn frase
@@ -85,6 +85,33 @@ executarDesafio tempoMVar = do
                     let resultadoFrase = compararFrases frase string
                     putStrLn resultadoFrase
                     putStrLn "Fim do desafio!"
+
+                    let numPalavras = contarPalavrasDesafio string
+                    let numPalavrasCorretas = contarPalavrasCorretas frase string
+                    let ppm = calcularPPM (tempoDesafio desafio) numPalavras
+                    let precisao = calcularPrecisaoDesafio numPalavras numPalavrasCorretas
+                    let estrelas = atribuirEstrelasDesafio ppm precisao
+
+                    putStrLn $ "numero palavras " ++ show numPalavras
+                    putStrLn $ "numero palavras corretas " ++ show numPalavrasCorretas
+                    putStrLn $ "ppm " ++ show ppm
+                    putStrLn $ "precisao " ++ show precisao
+                    putStrLn $ "estrelas " ++ show estrelas
+
+                    threadDelay 2000000
+                    limparTela
+                    putStrLn "\n"
+                    putStrLn $ replicate 60 ' ' ++ "Você fez o desafio de " ++ show (tempoDesafio desafio)  ++ " min."
+                    putStrLn $ replicate 40 ' ' ++ "Sua velocidade foi de: " ++ show ppm ++ " palavras por minuto com " ++ show precisao ++ "% de precisão."
+
+                    desafioConcluido <- case estrelas of
+                        0 -> readFile "../dados/avaliacoes/zeroEstrela.txt"
+                        1 -> readFile "../dados/avaliacoes/desafio/umaEstrela.txt"
+                        2 -> readFile "../dados/avaliacoes/duasEstrelas.txt"
+                        3 -> readFile "../dados/avaliacoes/desafio/tresEstrelas.txt"   
+    
+                    putStrLn desafioConcluido
+
                 Right input -> do
                     limparTela
                     putStrLn "O tempo não esgotou, reinicie o desafio!"
@@ -99,4 +126,31 @@ iniciarDesafio desafio = do
     threadDelay 2000000
     tempoMVar <- newEmptyMVar
     _ <- forkIO (contarTempo tempo tempoMVar)
-    executarDesafio tempoMVar
+    executarDesafio desafio tempoMVar
+
+-- retorna a quantidade de palavras que o usuário digitou (certas e erradas)
+contarPalavrasDesafio :: String -> Int
+contarPalavrasDesafio input = length (words input)
+
+-- retorna a quantidade de palavras corretas que o usuário digitou 
+contarPalavrasCorretas :: String -> String -> Int
+contarPalavrasCorretas fraseCorreta fraseDigitada =
+    let palavrasCorretas = words fraseCorreta
+        palavrasDigitadas = words fraseDigitada
+        palavrasCorretasDigitadas = zip palavrasCorretas palavrasDigitadas
+        palavrasCorretasCorretas = filter (\(c, d) -> c == d) palavrasCorretasDigitadas
+    in length palavrasCorretasCorretas
+
+calcularPPM :: Int -> Int -> Int
+calcularPPM tempo palavras = (palavras * 60) `div` tempo
+
+calcularPrecisaoDesafio :: Int -> Int -> Float
+calcularPrecisaoDesafio palavrasDigitadas palavrasCorretas = 
+    (100.0 * fromIntegral palavrasCorretas) / fromIntegral palavrasDigitadas
+
+atribuirEstrelasDesafio :: Int -> Float -> Int
+atribuirEstrelasDesafio ppm precisao
+    | precisao < 20.0 || ppm < 20 = 0
+    | precisao <= 60.0 || ppm <= 30 = 1
+    | precisao <= 90.0 || ppm <= 40 = 2
+    | otherwise = 3  
