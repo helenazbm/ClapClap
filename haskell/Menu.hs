@@ -8,6 +8,7 @@ import Sprites (licoes, formatarLinhasTexto, exibirProgresso)
 import Exercicio (Exercicio, exercicio, id, idLicao, corrigeExercicio)
 import Desafio (iniciarDesafio, Desafio (UmMinuto, DoisMinutos, CincoMinutos))
 import Licao (Licao (exercicios), getDadosLicoes, instrucao, setStatusLicao, contarLicoesConcluidas)
+import Control.Arrow (ArrowLoop(loop))
 
 -- Imprime o menu principal e recebe a opção do usuário
 printMenu :: IO()
@@ -45,7 +46,6 @@ exibirLicoes = do
         else case readMaybe comandoUsuario of
             Just n | n >= 1 && n <= 15 -> iniciarLicao n todasLicoes
             _ -> do
-                putStrLn "Opção inválida."
                 exibirLicoes
 
 -- inicia lição escolhida pelo usuário
@@ -57,13 +57,14 @@ iniciarLicao idLicao licoes = do
     instrucaoLicao <- readFile (instrucao licaoSelecionada)
     putStrLn instrucaoLicao
     opcao <- lerCaractere
-    if opcao == 'i'
-        then do 
+    if opcao == 'i' then do
         limparTela
         setStatusLicao (show idLicao)
         loopExercicios licaoSelecionada
-    else    
+    else if opcao == '\n' then 
         exibirLicoes
+    else do
+        iniciarLicao idLicao licoes 
 
 -- Função para fazer todos os exercícios de uma lição
 loopExercicios :: Licao -> IO ()
