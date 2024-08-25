@@ -386,5 +386,6 @@ licao15 dadosLicao =
 licoes :: [(String, String)] -> [Licao]
 licoes dadosLicao = [licao1 dadosLicao, licao2 dadosLicao, licao3 dadosLicao,
                     licao4 dadosLicao, licao5 dadosLicao, licao6 dadosLicao,
-                    licao7 dadosLicao, licao8 dadosLicao, licao10 dadosLicao,
-                    licao10 dadosLicao, licao11 dadosLicao]
+                    licao7 dadosLicao, licao8 dadosLicao, licao9 dadosLicao,
+                    licao10 dadosLicao, licao11 dadosLicao, licao12 dadosLicao,
+                    licao13 dadosLicao, licao14 dadosLicao, licao15 dadosLicao]
