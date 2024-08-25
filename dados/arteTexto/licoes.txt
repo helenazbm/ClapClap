@@ -12,7 +12,7 @@
                                                                    Selecione uma lição para iniciar:
 
 
-                                                 1 - Teclas J, F e Barra de Espaço           11 - Teclas W e X
+                                                 1 - Teclas J, F e Barra de Espaço           11 - Teclas W, X e Ponto e Vírgula
                                                  2 - Teclas U, R e K                         12 - Tecla ç, Til e Acento Agudo
                                                  3 - Teclas D, E e I                         13 - Acento Grave Acento Circunflexo          
                                                  4 - Teclas C, G e N                         14 - Teclas Q, Y e P

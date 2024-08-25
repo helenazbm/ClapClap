@@ -143,6 +143,24 @@ getLetra ' ' = unlines [
     "████"
     ]
 
+getLetra '.' = unlines [
+    "    ",
+    "    ",
+    " ▄  "
+    ]
+
+getLetra ',' = unlines [
+    "    ",
+    "    ",
+    "▄▀  "
+    ]
+
+getLetra ';' = unlines [
+    "    ",
+    " ▀  ",
+    "▄▀  "
+    ]
+
 getCor :: String -> String
 getCor "red" = "\ESC[31m"
 getCor "green" = "\ESC[32m"
@@ -306,9 +324,15 @@ licao10 dadosLicao =
 
 licao11 :: [(String, String)] -> Licao
 licao11 dadosLicao = 
-    Licao [ex1 'w' "11", ex2 ('w', 's') "11", ex1 'x' "11", ex4 ('x', 'l', 's') "11", ex4 ('w', 'l', 'x') "11"]
+    Licao [ex1 'w' "11", ex2 ('w', ';') "11", ex3 (';', 'x') "11", ex4 ('w', 'x', ';') "11"]
     (getStatusLicoes "11" dadosLicao)
     "../dados/arteTexto/licoes/licao11.txt"
+
+licao14 :: [(String, String)] -> Licao
+licao14 dadosLicao = 
+    Licao [ex1 'q' "14", ex2 ('y', 'q') "14", ex3 ('q', 'p') "14", ex4 ('q', 'y', 'p') "14"]
+    (getStatusLicoes "14" dadosLicao)
+    "../dados/arteTexto/licoes/licao14.txt"
 
 licoes :: [(String, String)] -> [Licao]
 licoes dadosLicao = [licao1 dadosLicao, licao2 dadosLicao, licao3 dadosLicao,
