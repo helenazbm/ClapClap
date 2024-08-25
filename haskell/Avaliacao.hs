@@ -1,11 +1,6 @@
 module Avaliacao where
 
 
-import GHC.Base (Float)
-import Data.Fixed (E0)
-
--- Lições --
-
 contarLetrasExercicios :: [(Char, String)] -> Int
 contarLetrasExercicios [] = 0
 contarLetrasExercicios ((gabarito, cor):gabaritos) = 1 + contarLetrasExercicios gabaritos

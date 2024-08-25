@@ -1,12 +1,11 @@
 module Licao where
 
-import Exercicio (Exercicio, iniciarExercicio)
-
-import Util (limparTela, lerCaractere)
 import Data.List (intercalate)
-import Data.List.Split (splitOn)
-import System.Directory (renameFile, removeFile)
 import Sprites (colorirPalavra)
+import Data.List.Split (splitOn)
+import Util (limparTela, lerCaractere)
+import Exercicio (Exercicio, iniciarExercicio)
+import System.Directory (renameFile, removeFile)
 import Avaliacao (atribuirEstrelasLicao, calcularPrecisaoExercicios)
 
 
@@ -58,10 +57,6 @@ setStatusLicao idLicao = do
 
     renameFile tempFilePath filePath
 
-
-------lição ------
-
--- Função para fazer todos os exercícios de uma lição
 iniciarLicao :: Licao -> IO ()
 iniciarLicao licao = do
     

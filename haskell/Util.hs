@@ -1,9 +1,10 @@
 module Util where
+
+import System.IO
+import System.Console.ANSI
 import System.Process(callCommand)
 import Control.Concurrent (threadDelay)
 import System.IO.Unsafe (unsafePerformIO)
-import System.IO
-import System.Console.ANSI
 
 
 limparTela :: IO()

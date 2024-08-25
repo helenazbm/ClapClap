@@ -2,18 +2,16 @@
 
 module Desafio where
 
-import Control.Concurrent.Async (race)
-import System.IO
-import System.Console.ANSI
-import Control.Concurrent (threadDelay, forkIO)
-import Control.Monad (unless, forever, void)
-import Data.Time.Clock (getCurrentTime, diffUTCTime)
-import System.IO (hFlush, stdout)
-import System.Random (randomRIO)
-import Control.Concurrent.MVar (MVar, newEmptyMVar, putMVar, takeMVar, tryTakeMVar, isEmptyMVar)
-import Util (limparTela)
-import Sprites (getCor, colorirPalavra)
 import Text.Printf
+import Util (limparTela)
+import System.Random (randomRIO)
+import System.IO (hFlush, stdout)
+import Control.Concurrent.Async (race)
+import Sprites (getCor, colorirPalavra)
+import Control.Concurrent (threadDelay, forkIO)
+import Control.Concurrent.MVar (MVar, newEmptyMVar, putMVar, takeMVar, tryTakeMVar, isEmptyMVar)
+
+
 
 data Desafio = UmMinuto | DoisMinutos | CincoMinutos
 
