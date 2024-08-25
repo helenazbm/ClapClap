@@ -6,6 +6,7 @@ import Data.List.Split (splitOn)
 import System.Directory (renameFile, removeFile)
 
 data Licao = Licao {
+    id :: String,
     exercicios :: [Exercicio],
     status :: String,
     instrucao  :: String

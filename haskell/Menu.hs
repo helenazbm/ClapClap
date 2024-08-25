@@ -4,7 +4,7 @@ import Avaliacao
 import Data.Char(toLower)
 import Text.Read(readMaybe)
 import FerramentasIO(limparTela, delay, lerCaractere)
-import Sprites (licoes, formatarLinhasTexto, exibirProgresso)
+import Sprites (licoes, formatarLinhasTexto, exibirProgresso, exibirLicoesConcluida)
 import Exercicio (Exercicio, exercicio, id, idLicao, corrigeExercicio)
 import Desafio (iniciarDesafio, Desafio (UmMinuto, DoisMinutos, CincoMinutos))
 import Licao (Licao (exercicios), getDadosLicoes, instrucao, setStatusLicao, contarLicoesConcluidas)
@@ -36,7 +36,8 @@ exibirLicoes = do
     dadosLicoes <- getDadosLicoes
     let todasLicoes = licoes dadosLicoes
 
-    mapM_ putStrLn (exibirProgresso (contarLicoesConcluidas todasLicoes))
+    putStrLn (exibirProgresso (contarLicoesConcluidas todasLicoes))
+    putStrLn (exibirLicoesConcluida todasLicoes)
 
     licoes <- readFile "../dados/arteTexto/licoes.txt"
     putStrLn licoes
