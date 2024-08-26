@@ -25,35 +25,4 @@ atribuirEstrelasLicao precisao
     | precisao < 20.0 = 0
     | precisao <= 60.0 = 1
     | precisao <= 90.0 = 2
-    | otherwise = 3    
-
-
-
--- -- Desafios --
-
--- -- retorna a quantidade de palavras que o usuário digitou (certas e erradas)
--- contarPalavrasDesafio :: String -> Int
--- contarPalavrasDesafio input = length (words input)
-
--- -- retorna a quantidade de palavras que o usuário digitou (certas)
--- contarPalavrasCorretas :: String -> String -> Int
--- contarPalavrasCorretas fraseCorreta fraseDigitada =
---     let palavrasCorretas = words fraseCorreta
---         palavrasDigitadas = words fraseDigitada
---         palavrasCorretasDigitadas = zip palavrasCorretas palavrasDigitadas
---         palavrasCorretasCorretas = filter (\(c, d) -> c == d) palavrasCorretasDigitadas
---     in length palavrasCorretasCorretas
-
--- contarWPM :: Int -> Int -> Int
--- contarWPM tempo palavras = (palavras * 60) `div` tempo
-
--- calcularPrecisaoDesafio :: Int -> Int -> Float
--- calcularPrecisaoDesafio palavrasDigitadas palavrasCorretas = 
---     100.0 * fromIntegral (palavrasDigitadas - palavrasCorretas) / fromIntegral palavrasDigitadas
-
--- atribuirEstrelasDesafio :: Float -> Int
--- atribuirEstrelasDesafio precisao
---     | precisao < 20.0 = 0
---     | precisao <= 60.0 = 1
---     | precisao <= 90.0 = 2
---     | otherwise = 3    
+    | otherwise = 3     
