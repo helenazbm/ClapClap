@@ -180,11 +180,9 @@ iniciarDesafio desafio = do
     _ <- forkIO (contarTempo tempo tempoMVar)
     executarDesafio desafio tempoMVar
 
--- retorna a quantidade de palavras que o usuário digitou (certas e erradas)
 contarPalavrasDesafio :: String -> Int
 contarPalavrasDesafio input = length (words input)
 
--- retorna a quantidade de palavras corretas que o usuário digitou 
 contarPalavrasCorretas :: String -> String -> Int
 contarPalavrasCorretas fraseCorreta fraseDigitada =
     let palavrasCorretas = words fraseCorreta
