@@ -4,14 +4,15 @@ module Desafio where
 
 import Text.Printf
 import Util (limparTela)
+import Control.Monad (when)
 import Data.List (intercalate)
 import Data.List.Split (splitOn)
 import System.Random (randomRIO)
 import System.IO (hFlush, stdout)
 import Control.Concurrent.Async (race)
-import Sprites (getCor, colorirPalavra)
 import Control.Concurrent (threadDelay, forkIO)
 import System.Directory (renameFile, removeFile)
+import Sprites (getCor, colorirPalavra, formataRanking)
 import Control.Concurrent.MVar (MVar, newEmptyMVar, putMVar, takeMVar, tryTakeMVar, isEmptyMVar)
 
 
@@ -81,25 +82,25 @@ executarDesafio desafio tempoMVar = do
                     string <- getLine
                     let resultadoFrase = compararFrases frase string
                     putStrLn resultadoFrase
-                    putStrLn "Fim do desafio! Pressione Enter para ver a sua velocidade e precisão"
-                    entrada <- getLine
-                    if entrada == "" then avaliaDesafio desafio frase string
-                    else putStrLn "Opção Inválida!"
+                    putStrLn "\nFim do desafio! Pressione Enter para ver a sua velocidade e precisão."
+                    _ <- getLine
+                    avaliaDesafio desafio frase string
 
                 Right input -> do
                     limparTela
                     putStrLn "O tempo não esgotou, reinicie o desafio!"
+                    getRanking
     loop
 
 avaliaDesafio :: Desafio -> String -> String -> IO()
 avaliaDesafio desafio frase string = do
     let numPalavras = contarPalavrasDesafio string
-    let numPalavrasCorretas = contarPalavrasCorretas frase string
-    let wpm = calcularWpm (tempoDesafio desafio) numPalavras
-    let precisao = calcularPrecisaoDesafio numPalavras numPalavrasCorretas
-    let estrelas = atribuirEstrelasDesafio wpm precisao
-    let tempo = tempoEmMin (tempoDesafio desafio)
-    let precisaoFormatada = printf "%.2f" precisao
+        numPalavrasCorretas = contarPalavrasCorretas frase string
+        wpm = calcularWpm (tempoDesafio desafio) numPalavras
+        precisao = calcularPrecisaoDesafio numPalavras numPalavrasCorretas
+        estrelas = atribuirEstrelasDesafio wpm precisao
+        tempo = tempoEmMin (tempoDesafio desafio)
+        precisaoFormatada = printf "%.2f" precisao
     
     limparTela
     putStrLn "\n"
@@ -113,31 +114,29 @@ avaliaDesafio desafio frase string = do
         3 -> readFile "../dados/avaliacoes/desafio/tresEstrelas.txt"
 
     putStrLn desafioConcluido
-    bateuRecorde tempo wpm
-    formataRanking
 
-bateuRecorde :: Int -> Int -> IO()
-bateuRecorde tempo wpm = do
-    dadosRankingFiltrado <- filtrarPorID (show tempo)
-    let [(idRecorde, nomeRecorde, wpmRecordeStr)] = dadosRankingFiltrado  -- Renomeando para deixar claro que é uma String
-    let wpmRecorde = read wpmRecordeStr :: Int  -- Converte de String para Int
+    _ <- getLine
+    verificaRecorde tempo wpm
+    getRanking
 
+verificaRecorde :: Int -> Int -> IO ()
+verificaRecorde tempo wpmUsuario = do
+    dadosRankingFiltrado <- filtraRecorde (show tempo)
+    let [(id, _, wpmStr)] = dadosRankingFiltrado
+        wpmRecorde = read wpmStr :: Int
+    
+    when (wpmUsuario > wpmRecorde) $ do
+        limparTela
+        putStrLn "Parabéns, você bateu o recorde! Digite seu nome:"
+        nomeNovo <- getLine
+        setDadosRanking id nomeNovo (show wpmUsuario)
 
-    if wpm > (wpmRecorde) then do
-        putStrLn "parabéns, você bateu o recorde! Digite seu nome"
-        nome <- getLine
-        setDadosRanking idRecorde nome (show wpm)
-    else putStrLn ""
-
-formataRanking :: IO()
-formataRanking = do
+getRanking :: IO()
+getRanking = do
     dadosRanking <- getDadosRanking
-    let (idRecorde1, nomeRecorde1, wpmRecordeStr1) : (idRecorde2, nomeRecorde2, wpmRecordeStr2) : (idRecorde5, nomeRecorde5, wpmRecordeStr5) : _ = dadosRanking
-
-    putStrLn ("                                                   Tempo --------------- Nome --------------- WPM" )
-    putStrLn ("                                                   " ++ idRecorde1 ++ " --------------- " ++ nomeRecorde1 ++ " --------------- " ++ show wpmRecordeStr1)
-    putStrLn ("                                                   " ++ idRecorde2 ++ " --------------- " ++ nomeRecorde2 ++ " --------------- " ++ show wpmRecordeStr2)
-    putStrLn ("                                                   " ++ idRecorde5 ++ " --------------- " ++ nomeRecorde5 ++ " --------------- " ++ show wpmRecordeStr5)
+    let (id1, nome1, wpm1) : (id2, nome2, wpm2) : (id5, nome5, wpm5) : _ = dadosRanking
+    limparTela
+    formataRanking id1 nome1 wpm1 id2 nome2 wpm2 id5 nome5 wpm5
 
 getDadosRanking :: IO [(String, String, String)]
 getDadosRanking = do
@@ -145,9 +144,8 @@ getDadosRanking = do
     let linhas = tail $ map (splitOn ";") (lines conteudo)
     return $ map (\[id, nome, wpm] -> (id, nome, wpm)) linhas
 
--- Função para filtrar os dados pelo ID
-filtrarPorID :: String -> IO [(String, String, String)]
-filtrarPorID idFiltro = do
+filtraRecorde :: String -> IO [(String, String, String)]
+filtraRecorde idFiltro = do
     ranking <- getDadosRanking
     return $ filter (\(id, _, _) -> id == idFiltro) ranking
 
