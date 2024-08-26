@@ -4,11 +4,14 @@ module Desafio where
 
 import Text.Printf
 import Util (limparTela)
+import Data.List (intercalate)
+import Data.List.Split (splitOn)
 import System.Random (randomRIO)
 import System.IO (hFlush, stdout)
 import Control.Concurrent.Async (race)
 import Sprites (getCor, colorirPalavra)
 import Control.Concurrent (threadDelay, forkIO)
+import System.Directory (renameFile, removeFile)
 import Control.Concurrent.MVar (MVar, newEmptyMVar, putMVar, takeMVar, tryTakeMVar, isEmptyMVar)
 
 
@@ -92,26 +95,80 @@ avaliaDesafio :: Desafio -> String -> String -> IO()
 avaliaDesafio desafio frase string = do
     let numPalavras = contarPalavrasDesafio string
     let numPalavrasCorretas = contarPalavrasCorretas frase string
-    let ppm = calcularPPM (tempoDesafio desafio) numPalavras
+    let wpm = calcularWpm (tempoDesafio desafio) numPalavras
     let precisao = calcularPrecisaoDesafio numPalavras numPalavrasCorretas
-    let estrelas = atribuirEstrelasDesafio ppm precisao
-    let min = tempoEmMin (tempoDesafio desafio)
+    let estrelas = atribuirEstrelasDesafio wpm precisao
+    let tempo = tempoEmMin (tempoDesafio desafio)
     let precisaoFormatada = printf "%.2f" precisao
-
     
     limparTela
     putStrLn "\n"
-    putStrLn $ replicate 60 ' ' ++ "Você fez o desafio de " ++ show min  ++ " min."
-    putStrLn $ replicate 40 ' ' ++ "Sua velocidade foi de: " ++ show ppm ++ " palavras por minuto com " ++ precisaoFormatada ++ "% de precisão."
+    putStrLn $ replicate 60 ' ' ++ "Você fez o desafio de " ++ show tempo  ++ " min."
+    putStrLn $ replicate 40 ' ' ++ "Sua velocidade foi de: " ++ show wpm ++ " palavras por minuto com " ++ precisaoFormatada ++ "% de precisão."
 
     desafioConcluido <- case estrelas of
         0 -> readFile "../dados/avaliacoes/zeroEstrela.txt"
         1 -> readFile "../dados/avaliacoes/desafio/umaEstrela.txt"
         2 -> readFile "../dados/avaliacoes/duasEstrelas.txt"
-        3 -> readFile "../dados/avaliacoes/desafio/tresEstrelas.txt"   
+        3 -> readFile "../dados/avaliacoes/desafio/tresEstrelas.txt"
+
+    
+    bateuRecorde tempo wpm
 
     putStrLn desafioConcluido
 
+bateuRecorde :: Int -> Int -> IO()
+bateuRecorde tempo wpm = do
+
+    dadosRanking <- getDadosRanking
+    let (idRecorde1, nomeRecorde1, wpmRecordeStr1) : (idRecorde2, nomeRecorde2, wpmRecordeStr2) : (idRecorde5, nomeRecorde5, wpmRecordeStr5) : _ = dadosRanking
+
+    dadosRankingFiltrado <- filtrarPorID (show tempo)
+    let [(idRecorde, nomeRecorde, wpmRecordeStr)] = dadosRankingFiltrado  -- Renomeando para deixar claro que é uma String
+    let wpmRecorde = read wpmRecordeStr :: Int  -- Converte de String para Int
+
+
+    if wpm > (wpmRecorde) then do
+        putStrLn "parabéns, você bateu o recorde! Digite seu nome"
+        nome <- getLine
+        setDadosRanking idRecorde nome (show wpm)
+    else putStrLn ""
+
+    putStrLn (idRecorde1 ++ "-----" ++ nomeRecorde1 ++ "-----" ++ show wpmRecordeStr1)
+    putStrLn (idRecorde2 ++ "-----" ++ nomeRecorde2 ++ "-----" ++ show wpmRecordeStr2)
+    putStrLn (idRecorde5 ++ "-----" ++ nomeRecorde5 ++ "-----" ++ show wpmRecordeStr5)
+
+getDadosRanking :: IO [(String, String, String)]
+getDadosRanking = do
+    conteudo <- readFile "../dados/tabela_ranking.txt"
+    let linhas = tail $ map (splitOn ";") (lines conteudo)
+    return $ map (\[id, nome, wpm] -> (id, nome, wpm)) linhas
+
+-- Função para filtrar os dados pelo ID
+filtrarPorID :: String -> IO [(String, String, String)]
+filtrarPorID idFiltro = do
+    ranking <- getDadosRanking
+    return $ filter (\(id, _, _) -> id == idFiltro) ranking
+
+setDadosRanking :: String -> String -> String -> IO()
+setDadosRanking id nome wpm = do
+    let filePath = "../dados/tabela_ranking.txt"
+        tempFilePath = filePath ++ ".tmp"
+    
+    conteudo <- readFile filePath
+    let linhas = lines conteudo
+        linhasProcessadas = map (\linha -> atualizarLinha id nome wpm linha) linhas
+    
+    writeFile tempFilePath (unlines linhasProcessadas)
+
+    renameFile tempFilePath filePath
+
+atualizarLinha :: String -> String -> String -> String -> String
+atualizarLinha id nome wpm linha =
+    let [idRecorde, nomeRecorde, wpmRecorde] = splitOn ";" linha
+    in if idRecorde == id
+       then intercalate ";" [id, nome, wpm]
+       else linha
 
 iniciarDesafio :: Desafio -> IO ()
 iniciarDesafio desafio = do
@@ -137,8 +194,8 @@ contarPalavrasCorretas fraseCorreta fraseDigitada =
         palavrasCorretasCorretas = filter (\(c, d) -> c == d) palavrasCorretasDigitadas
     in length palavrasCorretasCorretas
 
-calcularPPM :: Int -> Int -> Int
-calcularPPM tempo palavras = (palavras * 60) `div` tempo
+calcularWpm :: Int -> Int -> Int
+calcularWpm tempo palavras = (palavras * 60) `div` tempo
 
 calcularPrecisaoDesafio :: Int -> Int -> Float
 calcularPrecisaoDesafio palavrasDigitadas palavrasCorretas = 
