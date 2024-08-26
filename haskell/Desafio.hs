@@ -134,9 +134,10 @@ formataRanking = do
     dadosRanking <- getDadosRanking
     let (idRecorde1, nomeRecorde1, wpmRecordeStr1) : (idRecorde2, nomeRecorde2, wpmRecordeStr2) : (idRecorde5, nomeRecorde5, wpmRecordeStr5) : _ = dadosRanking
 
-    putStrLn (idRecorde1 ++ "-----" ++ nomeRecorde1 ++ "-----" ++ show wpmRecordeStr1)
-    putStrLn (idRecorde2 ++ "-----" ++ nomeRecorde2 ++ "-----" ++ show wpmRecordeStr2)
-    putStrLn (idRecorde5 ++ "-----" ++ nomeRecorde5 ++ "-----" ++ show wpmRecordeStr5)
+    putStrLn ("                                                   Tempo --------------- Nome --------------- WPM" )
+    putStrLn ("                                                   " ++ idRecorde1 ++ " --------------- " ++ nomeRecorde1 ++ " --------------- " ++ show wpmRecordeStr1)
+    putStrLn ("                                                   " ++ idRecorde2 ++ " --------------- " ++ nomeRecorde2 ++ " --------------- " ++ show wpmRecordeStr2)
+    putStrLn ("                                                   " ++ idRecorde5 ++ " --------------- " ++ nomeRecorde5 ++ " --------------- " ++ show wpmRecordeStr5)
 
 getDadosRanking :: IO [(String, String, String)]
 getDadosRanking = do
