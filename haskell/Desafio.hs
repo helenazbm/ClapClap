@@ -112,17 +112,12 @@ avaliaDesafio desafio frase string = do
         2 -> readFile "../dados/avaliacoes/duasEstrelas.txt"
         3 -> readFile "../dados/avaliacoes/desafio/tresEstrelas.txt"
 
-    
-    bateuRecorde tempo wpm
-
     putStrLn desafioConcluido
+    bateuRecorde tempo wpm
+    formataRanking
 
 bateuRecorde :: Int -> Int -> IO()
 bateuRecorde tempo wpm = do
-
-    dadosRanking <- getDadosRanking
-    let (idRecorde1, nomeRecorde1, wpmRecordeStr1) : (idRecorde2, nomeRecorde2, wpmRecordeStr2) : (idRecorde5, nomeRecorde5, wpmRecordeStr5) : _ = dadosRanking
-
     dadosRankingFiltrado <- filtrarPorID (show tempo)
     let [(idRecorde, nomeRecorde, wpmRecordeStr)] = dadosRankingFiltrado  -- Renomeando para deixar claro que é uma String
     let wpmRecorde = read wpmRecordeStr :: Int  -- Converte de String para Int
@@ -133,6 +128,11 @@ bateuRecorde tempo wpm = do
         nome <- getLine
         setDadosRanking idRecorde nome (show wpm)
     else putStrLn ""
+
+formataRanking :: IO()
+formataRanking = do
+    dadosRanking <- getDadosRanking
+    let (idRecorde1, nomeRecorde1, wpmRecordeStr1) : (idRecorde2, nomeRecorde2, wpmRecordeStr2) : (idRecorde5, nomeRecorde5, wpmRecordeStr5) : _ = dadosRanking
 
     putStrLn (idRecorde1 ++ "-----" ++ nomeRecorde1 ++ "-----" ++ show wpmRecordeStr1)
     putStrLn (idRecorde2 ++ "-----" ++ nomeRecorde2 ++ "-----" ++ show wpmRecordeStr2)
