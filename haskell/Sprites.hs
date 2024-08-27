@@ -197,12 +197,12 @@ getCor "yellow" = "\ESC[33m"
 getCor "orange" = "\ESC[38;5;208m"
 getCor "default" = "\ESC[0m"
 
-aplicarCorPixels :: String -> String -> String
-aplicarCorPixels cor content = getCor cor ++ content ++ getCor "default"
+aplicarCorConteudo :: String -> String -> String
+aplicarCorConteudo cor conteudo = getCor cor ++ conteudo ++ getCor "default"
 
 aplicarCor :: [Char] -> String -> String
 aplicarCor [] cor = ""
-aplicarCor (head : tail) cor = aplicarCorPixels cor [head] ++ aplicarCor tail cor
+aplicarCor (head : tail) cor = aplicarCorConteudo cor [head] ++ aplicarCor tail cor
 
 concatLinha :: [[String]] -> Int -> String -> String
 concatLinha (h: []) numeroLinha espaco = h !! numeroLinha

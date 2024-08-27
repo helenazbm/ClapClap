@@ -14,8 +14,7 @@ import Control.Concurrent (threadDelay, forkIO)
 import System.Directory (renameFile, removeFile)
 import Sprites (getCor, colorirPalavra, formataRanking)
 import Control.Concurrent.MVar (MVar, newEmptyMVar, putMVar, takeMVar, tryTakeMVar, isEmptyMVar)
-
-
+import Avaliacao (contarPalavrasDesafio, contarPalavrasCorretas, calcularWpm, calcularPrecisaoDesafio, atribuirEstrelasDesafio)
 
 data Desafio = UmMinuto | DoisMinutos | CincoMinutos
 
@@ -78,7 +77,7 @@ executarDesafio desafio tempoMVar = do
             case resultado of
                 Left _ -> do
                     limparTela
-                    putStrLn "\nTempo esgotado! Pressione enter para ver seu resultado."
+                    putStrLn "Tempo esgotado! Pressione enter para ver seu resultado."
                     string <- getLine
                     let resultadoFrase = compararFrases frase string
                     putStrLn resultadoFrase
@@ -89,7 +88,6 @@ executarDesafio desafio tempoMVar = do
                 Right input -> do
                     limparTela
                     putStrLn "O tempo não esgotou, reinicie o desafio!"
-                    getRanking
     loop
 
 avaliaDesafio :: Desafio -> String -> String -> IO()
@@ -125,11 +123,12 @@ verificaRecorde tempo wpmUsuario = do
     let [(id, _, wpmStr)] = dadosRankingFiltrado
         wpmRecorde = read wpmStr :: Int
     
-    when (wpmUsuario > wpmRecorde) $ do
+    if wpmUsuario > wpmRecorde then do
         limparTela
         putStrLn "Parabéns, você bateu o recorde! Digite seu nome:"
         nomeNovo <- getLine
         setDadosRanking id nomeNovo (show wpmUsuario)
+    else putStr ""
 
 getRanking :: IO()
 getRanking = do
@@ -179,31 +178,6 @@ iniciarDesafio desafio = do
     tempoMVar <- newEmptyMVar
     _ <- forkIO (contarTempo tempo tempoMVar)
     executarDesafio desafio tempoMVar
-
-contarPalavrasDesafio :: String -> Int
-contarPalavrasDesafio input = length (words input)
-
-contarPalavrasCorretas :: String -> String -> Int
-contarPalavrasCorretas fraseCorreta fraseDigitada =
-    let palavrasCorretas = words fraseCorreta
-        palavrasDigitadas = words fraseDigitada
-        palavrasCorretasDigitadas = zip palavrasCorretas palavrasDigitadas
-        palavrasCorretasCorretas = filter (\(c, d) -> c == d) palavrasCorretasDigitadas
-    in length palavrasCorretasCorretas
-
-calcularWpm :: Int -> Int -> Int
-calcularWpm tempo palavras = (palavras * 60) `div` tempo
-
-calcularPrecisaoDesafio :: Int -> Int -> Float
-calcularPrecisaoDesafio palavrasDigitadas palavrasCorretas = 
-    (100.0 * fromIntegral palavrasCorretas) / fromIntegral palavrasDigitadas
-
-atribuirEstrelasDesafio :: Int -> Float -> Int
-atribuirEstrelasDesafio ppm precisao
-    | precisao < 20.0 || ppm < 20 = 0
-    | precisao <= 60.0 || ppm <= 30 = 1
-    | precisao <= 90.0 || ppm <= 40 = 2
-    | otherwise = 3  
 
 tempoEmMin :: Int -> Int
 tempoEmMin tempo = tempo `div` 60
