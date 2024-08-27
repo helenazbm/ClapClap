@@ -112,6 +112,7 @@ avaliaDesafio desafio frase string = do
         3 -> readFile "../dados/avaliacoes/desafio/tresEstrelas.txt"
 
     putStrLn desafioConcluido
+    putStrLn $ replicate 56 ' ' ++ "* Pressione Enter para voltar ao Menu de Desafios *" 
 
     _ <- getLine
     verificaRecorde tempo wpm
@@ -181,7 +182,4 @@ iniciarDesafio desafio = do
     executarDesafio desafio tempoMVar
 
 tempoEmMin :: Int -> Int
-tempoEmMin tempo
-    | tempo == 60 = 1
-    | tempo == 120 = 2
-    | tempo == 300 = 5
+tempoEmMin tempo = tempo `div` 60
