@@ -1,4 +1,4 @@
 id;nome;wpm
-1;hihih;29
-2;?;0
+1;helena;54
+2;helena;44
 5;hihihihihihi;1

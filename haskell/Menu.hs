@@ -5,9 +5,10 @@ import Licao
 import Data.Char(toLower)
 import Controller (licoes)
 import Text.Read(readMaybe)
-import Sprites (exibirProgresso)
+import Sprites (exibirProgresso, formataRanking)
 import Util(limparTela, lerCaractere, coloreTexto)
-import Desafio (iniciarDesafio, Desafio (UmMinuto, DoisMinutos, CincoMinutos))
+import Desafio (iniciarDesafio, Desafio (UmMinuto, DoisMinutos, CincoMinutos), getRanking)
+import System.Posix.Internals (o_RDONLY)
 
 
 printMenu :: IO()
@@ -69,19 +70,23 @@ exibirDesafios = do
     limparTela
     desafios <- readFile "../dados/arteTexto/desafios.txt"
     putStrLn desafios
-    opcao <- getLine
-    opcaoUsuarioDesafio opcao
-    -- ir para o ranking
-    voltarMenu
-    
+    opcao <- getLine 
+    opcaoUsuarioDesafio (map toLower opcao)
+
 opcaoUsuarioDesafio :: String-> IO ()
 opcaoUsuarioDesafio o
     | o == "1" = iniciarDesafio UmMinuto
     | o == "2" = iniciarDesafio DoisMinutos
     | o == "5" = iniciarDesafio CincoMinutos
+    | o == "r" = exibirRanking
     | o == "" = printMenu
     | otherwise = exibirDesafios
 
+exibirRanking :: IO ()
+exibirRanking = do
+    limparTela
+    getRanking
+    voltarMenuDesafios
 
 exibirTutorial :: IO ()
 exibirTutorial = do
@@ -106,3 +111,8 @@ voltarMenuLicoes :: IO()
 voltarMenuLicoes = do
     _ <- getLine
     listarLicoes
+
+voltarMenuDesafios :: IO()
+voltarMenuDesafios = do
+    _ <- getLine
+    exibirDesafios

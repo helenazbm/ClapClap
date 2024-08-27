@@ -255,7 +255,11 @@ ajustaWpm wpm =
 
 formataRanking :: String -> String -> String -> String -> String -> String -> String -> String -> String -> IO()
 formataRanking id1 nome1 wpm1 id2 nome2 wpm2 id5 nome5 wpm5 = do
-    putStrLn ("                                                   Tempo --------------- Nome ---------------- WPM" )
-    putStrLn ("                                                       " ++ id1 ++ " --------------- " ++ ajustaNome nome1 ++ " --------------- " ++ ajustaWpm wpm1)
-    putStrLn ("                                                       " ++ id2 ++ " --------------- " ++ ajustaNome nome2 ++ " --------------- " ++ ajustaWpm wpm2)
-    putStrLn ("                                                       " ++ id5 ++ " --------------- " ++ ajustaNome nome5 ++ " --------------- " ++ ajustaWpm wpm5)
+    arteRanking <- readFile "../dados/arteTexto/ranking.txt"
+    putStrLn arteRanking
+    putStrLn "\n"
+    putStrLn ("                                                            Desafio --------------- Nome ---------------- WPM\n" )
+    putStrLn ("                                                             " ++ id1 ++ " min" ++ " --------------- " ++ ajustaNome nome1 ++ " --------------- " ++ ajustaWpm wpm1)
+    putStrLn ("                                                             " ++ id2 ++ " min" ++ " --------------- " ++ ajustaNome nome2 ++ " --------------- " ++ ajustaWpm wpm2)
+    putStrLn ("                                                             " ++ id5 ++ " min" ++ " --------------- " ++ ajustaNome nome5 ++ " --------------- " ++ ajustaWpm wpm5)
+    putStrLn "\n\n\n                                                           * Pressione Enter para voltar ao Menu de Desafios *"
