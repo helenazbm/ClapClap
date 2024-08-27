@@ -95,6 +95,7 @@ avaliaDesafio desafio frase string = do
     let numPalavras = contarPalavrasDesafio string
         numPalavrasCorretas = contarPalavrasCorretas frase string
         wpm = calcularWpm (tempoDesafio desafio) numPalavras
+        wpmCorretas = calcularWpm (tempoDesafio desafio) numPalavrasCorretas
         precisao = calcularPrecisaoDesafio numPalavras numPalavrasCorretas
         estrelas = atribuirEstrelasDesafio wpm precisao
         tempo = tempoEmMin (tempoDesafio desafio)
@@ -112,9 +113,10 @@ avaliaDesafio desafio frase string = do
         3 -> readFile "../dados/avaliacoes/desafio/tresEstrelas.txt"
 
     putStrLn desafioConcluido
+    putStrLn $ replicate 56 ' ' ++ "* Pressione Enter para voltar ao Menu de Desafios *" 
 
     _ <- getLine
-    verificaRecorde tempo wpm
+    verificaRecorde tempo wpmCorretas
     getRanking
 
 verificaRecorde :: Int -> Int -> IO ()
@@ -181,7 +183,4 @@ iniciarDesafio desafio = do
     executarDesafio desafio tempoMVar
 
 tempoEmMin :: Int -> Int
-tempoEmMin tempo
-    | tempo == 60 = 1
-    | tempo == 120 = 2
-    | tempo == 300 = 5
+tempoEmMin tempo = tempo `div` 60

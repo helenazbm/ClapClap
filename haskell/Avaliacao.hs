@@ -1,5 +1,6 @@
 module Avaliacao where
 
+-- lições --
 contarLetrasExercicios :: [(Char, String)] -> Int
 contarLetrasExercicios [] = 0
 contarLetrasExercicios ((gabarito, cor):gabaritos) = 1 + contarLetrasExercicios gabaritos
@@ -26,6 +27,7 @@ atribuirEstrelasLicao precisao
     | precisao <= 90.0 = 2
     | otherwise = 3
 
+-- desafios --
 contarPalavrasDesafio :: String -> Int
 contarPalavrasDesafio input = length (words input)
 
