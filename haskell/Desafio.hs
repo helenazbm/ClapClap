@@ -4,17 +4,17 @@ module Desafio where
 
 import Text.Printf
 import Util (limparTela)
+import Control.Monad (when)
 import Data.List (intercalate)
 import Data.List.Split (splitOn)
 import System.Random (randomRIO)
 import System.IO (hFlush, stdout)
 import Control.Concurrent.Async (race)
-import Sprites (getCor, colorirPalavra)
 import Control.Concurrent (threadDelay, forkIO)
 import System.Directory (renameFile, removeFile)
+import Sprites (getCor, colorirPalavra, formataRanking)
 import Control.Concurrent.MVar (MVar, newEmptyMVar, putMVar, takeMVar, tryTakeMVar, isEmptyMVar)
-
-
+import Avaliacao (contarPalavrasDesafio, contarPalavrasCorretas, calcularWpm, calcularPrecisaoDesafio, atribuirEstrelasDesafio)
 
 data Desafio = UmMinuto | DoisMinutos | CincoMinutos
 
@@ -77,14 +77,13 @@ executarDesafio desafio tempoMVar = do
             case resultado of
                 Left _ -> do
                     limparTela
-                    putStrLn "\nTempo esgotado! Pressione enter para ver seu resultado."
+                    putStrLn "Tempo esgotado! Pressione Enter para ver seu resultado."
                     string <- getLine
                     let resultadoFrase = compararFrases frase string
                     putStrLn resultadoFrase
-                    putStrLn "Fim do desafio! Pressione Enter para ver a sua velocidade e precisão"
-                    entrada <- getLine
-                    if entrada == "" then avaliaDesafio desafio frase string
-                    else putStrLn "Opção Inválida!"
+                    putStrLn "\nFim do desafio! Pressione Enter para ver a sua velocidade e precisão."
+                    _ <- getLine
+                    avaliaDesafio desafio frase string
 
                 Right input -> do
                     limparTela
@@ -94,12 +93,12 @@ executarDesafio desafio tempoMVar = do
 avaliaDesafio :: Desafio -> String -> String -> IO()
 avaliaDesafio desafio frase string = do
     let numPalavras = contarPalavrasDesafio string
-    let numPalavrasCorretas = contarPalavrasCorretas frase string
-    let wpm = calcularWpm (tempoDesafio desafio) numPalavras
-    let precisao = calcularPrecisaoDesafio numPalavras numPalavrasCorretas
-    let estrelas = atribuirEstrelasDesafio wpm precisao
-    let tempo = tempoEmMin (tempoDesafio desafio)
-    let precisaoFormatada = printf "%.2f" precisao
+        numPalavrasCorretas = contarPalavrasCorretas frase string
+        wpm = calcularWpm (tempoDesafio desafio) numPalavras
+        precisao = calcularPrecisaoDesafio numPalavras numPalavrasCorretas
+        estrelas = atribuirEstrelasDesafio wpm precisao
+        tempo = tempoEmMin (tempoDesafio desafio)
+        precisaoFormatada = printf "%.2f" precisao
     
     limparTela
     putStrLn "\n"
@@ -112,31 +111,31 @@ avaliaDesafio desafio frase string = do
         2 -> readFile "../dados/avaliacoes/duasEstrelas.txt"
         3 -> readFile "../dados/avaliacoes/desafio/tresEstrelas.txt"
 
-    
-    bateuRecorde tempo wpm
-
     putStrLn desafioConcluido
 
-bateuRecorde :: Int -> Int -> IO()
-bateuRecorde tempo wpm = do
+    _ <- getLine
+    verificaRecorde tempo wpm
+    getRanking
 
-    dadosRanking <- getDadosRanking
-    let (idRecorde1, nomeRecorde1, wpmRecordeStr1) : (idRecorde2, nomeRecorde2, wpmRecordeStr2) : (idRecorde5, nomeRecorde5, wpmRecordeStr5) : _ = dadosRanking
-
-    dadosRankingFiltrado <- filtrarPorID (show tempo)
-    let [(idRecorde, nomeRecorde, wpmRecordeStr)] = dadosRankingFiltrado  -- Renomeando para deixar claro que é uma String
-    let wpmRecorde = read wpmRecordeStr :: Int  -- Converte de String para Int
-
-
-    if wpm > (wpmRecorde) then do
-        putStrLn "parabéns, você bateu o recorde! Digite seu nome"
+verificaRecorde :: Int -> Int -> IO ()
+verificaRecorde tempo wpmUsuario = do
+    dadosRankingFiltrado <- filtraRecorde (show tempo)
+    let [(id, _, wpmStr)] = dadosRankingFiltrado
+        wpmRecorde = read wpmStr :: Int
+    
+    if wpmUsuario > wpmRecorde then do
+        limparTela
+        putStrLn "Parabéns, você bateu o recorde! Digite seu nome:"
         nome <- getLine
-        setDadosRanking idRecorde nome (show wpm)
-    else putStrLn ""
+        setDadosRanking id nome (show wpmUsuario)
+    else putStr ""
 
-    putStrLn (idRecorde1 ++ "-----" ++ nomeRecorde1 ++ "-----" ++ show wpmRecordeStr1)
-    putStrLn (idRecorde2 ++ "-----" ++ nomeRecorde2 ++ "-----" ++ show wpmRecordeStr2)
-    putStrLn (idRecorde5 ++ "-----" ++ nomeRecorde5 ++ "-----" ++ show wpmRecordeStr5)
+getRanking :: IO()
+getRanking = do
+    dadosRanking <- getDadosRanking
+    let (id1, nome1, wpm1) : (id2, nome2, wpm2) : (id5, nome5, wpm5) : _ = dadosRanking
+    limparTela
+    formataRanking id1 nome1 wpm1 id2 nome2 wpm2 id5 nome5 wpm5
 
 getDadosRanking :: IO [(String, String, String)]
 getDadosRanking = do
@@ -144,9 +143,8 @@ getDadosRanking = do
     let linhas = tail $ map (splitOn ";") (lines conteudo)
     return $ map (\[id, nome, wpm] -> (id, nome, wpm)) linhas
 
--- Função para filtrar os dados pelo ID
-filtrarPorID :: String -> IO [(String, String, String)]
-filtrarPorID idFiltro = do
+filtraRecorde :: String -> IO [(String, String, String)]
+filtraRecorde idFiltro = do
     ranking <- getDadosRanking
     return $ filter (\(id, _, _) -> id == idFiltro) ranking
 
@@ -180,33 +178,6 @@ iniciarDesafio desafio = do
     tempoMVar <- newEmptyMVar
     _ <- forkIO (contarTempo tempo tempoMVar)
     executarDesafio desafio tempoMVar
-
--- retorna a quantidade de palavras que o usuário digitou (certas e erradas)
-contarPalavrasDesafio :: String -> Int
-contarPalavrasDesafio input = length (words input)
-
--- retorna a quantidade de palavras corretas que o usuário digitou 
-contarPalavrasCorretas :: String -> String -> Int
-contarPalavrasCorretas fraseCorreta fraseDigitada =
-    let palavrasCorretas = words fraseCorreta
-        palavrasDigitadas = words fraseDigitada
-        palavrasCorretasDigitadas = zip palavrasCorretas palavrasDigitadas
-        palavrasCorretasCorretas = filter (\(c, d) -> c == d) palavrasCorretasDigitadas
-    in length palavrasCorretasCorretas
-
-calcularWpm :: Int -> Int -> Int
-calcularWpm tempo palavras = (palavras * 60) `div` tempo
-
-calcularPrecisaoDesafio :: Int -> Int -> Float
-calcularPrecisaoDesafio palavrasDigitadas palavrasCorretas = 
-    (100.0 * fromIntegral palavrasCorretas) / fromIntegral palavrasDigitadas
-
-atribuirEstrelasDesafio :: Int -> Float -> Int
-atribuirEstrelasDesafio ppm precisao
-    | precisao < 20.0 || ppm < 20 = 0
-    | precisao <= 60.0 || ppm <= 30 = 1
-    | precisao <= 90.0 || ppm <= 40 = 2
-    | otherwise = 3  
 
 tempoEmMin :: Int -> Int
 tempoEmMin tempo

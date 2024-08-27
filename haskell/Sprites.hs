@@ -197,12 +197,12 @@ getCor "yellow" = "\ESC[33m"
 getCor "orange" = "\ESC[38;5;208m"
 getCor "default" = "\ESC[0m"
 
-aplicarCorPixels :: String -> String -> String
-aplicarCorPixels cor content = getCor cor ++ content ++ getCor "default"
+aplicarCorConteudo :: String -> String -> String
+aplicarCorConteudo cor conteudo = getCor cor ++ conteudo ++ getCor "default"
 
 aplicarCor :: [Char] -> String -> String
 aplicarCor [] cor = ""
-aplicarCor (head : tail) cor = aplicarCorPixels cor [head] ++ aplicarCor tail cor
+aplicarCor (head : tail) cor = aplicarCorConteudo cor [head] ++ aplicarCor tail cor
 
 concatLinha :: [[String]] -> Int -> String -> String
 concatLinha (h: []) numeroLinha espaco = h !! numeroLinha
@@ -245,3 +245,17 @@ colorirPalavra :: Bool -> String -> String
 colorirPalavra True palavra = getCor "green" ++ palavra ++ getCor "default"
 colorirPalavra False palavra = getCor "red" ++ palavra ++ getCor "default"
 
+ajustaNome :: String -> String
+ajustaNome label =
+    if length label > 5 then take 5 label else label ++ replicate (5 - length label) ' '
+
+ajustaWpm :: String -> String
+ajustaWpm wpm =
+    if length wpm > 3 then take 3 wpm else replicate (3 - length wpm) ' ' ++ wpm
+
+formataRanking :: String -> String -> String -> String -> String -> String -> String -> String -> String -> IO()
+formataRanking id1 nome1 wpm1 id2 nome2 wpm2 id5 nome5 wpm5 = do
+    putStrLn ("                                                   Tempo --------------- Nome ---------------- WPM" )
+    putStrLn ("                                                       " ++ id1 ++ " --------------- " ++ ajustaNome nome1 ++ " --------------- " ++ ajustaWpm wpm1)
+    putStrLn ("                                                       " ++ id2 ++ " --------------- " ++ ajustaNome nome2 ++ " --------------- " ++ ajustaWpm wpm2)
+    putStrLn ("                                                       " ++ id5 ++ " --------------- " ++ ajustaNome nome5 ++ " --------------- " ++ ajustaWpm wpm5)

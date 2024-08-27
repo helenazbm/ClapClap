@@ -78,7 +78,7 @@ opcaoUsuarioDesafio :: String-> IO ()
 opcaoUsuarioDesafio o
     | o == "1" = iniciarDesafio UmMinuto
     | o == "2" = iniciarDesafio DoisMinutos
-    | o == "3" = iniciarDesafio CincoMinutos
+    | o == "5" = iniciarDesafio CincoMinutos
     | o == "" = printMenu
     | otherwise = exibirDesafios
 
