@@ -95,6 +95,7 @@ avaliaDesafio desafio frase string = do
     let numPalavras = contarPalavrasDesafio string
         numPalavrasCorretas = contarPalavrasCorretas frase string
         wpm = calcularWpm (tempoDesafio desafio) numPalavras
+        wpmCorretas = calcularWpm (tempoDesafio desafio) numPalavrasCorretas
         precisao = calcularPrecisaoDesafio numPalavras numPalavrasCorretas
         estrelas = atribuirEstrelasDesafio wpm precisao
         tempo = tempoEmMin (tempoDesafio desafio)
@@ -115,7 +116,7 @@ avaliaDesafio desafio frase string = do
     putStrLn $ replicate 56 ' ' ++ "* Pressione Enter para voltar ao Menu de Desafios *" 
 
     _ <- getLine
-    verificaRecorde tempo wpm
+    verificaRecorde tempo wpmCorretas
     getRanking
 
 verificaRecorde :: Int -> Int -> IO ()
