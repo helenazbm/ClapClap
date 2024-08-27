@@ -125,7 +125,8 @@ verificaRecorde tempo wpmUsuario = do
     
     if wpmUsuario > wpmRecorde then do
         limparTela
-        putStrLn "Parabéns, você bateu o recorde! Digite seu nome:"
+        arteRecorde <- readFile "../dados/arteTexto/recordRanking.txt"
+        putStrLn  arteRecorde
         nome <- getLine
         setDadosRanking id nome (show wpmUsuario)
     else putStr ""

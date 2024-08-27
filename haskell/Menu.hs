@@ -72,6 +72,7 @@ exibirDesafios = do
     putStrLn desafios
     opcao <- getLine 
     opcaoUsuarioDesafio (map toLower opcao)
+    voltarMenuDesafios
 
 opcaoUsuarioDesafio :: String-> IO ()
 opcaoUsuarioDesafio o
