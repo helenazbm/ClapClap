@@ -77,7 +77,7 @@ executarDesafio desafio tempoMVar = do
             case resultado of
                 Left _ -> do
                     limparTela
-                    putStrLn "Tempo esgotado! Pressione enter para ver seu resultado."
+                    putStrLn "Tempo esgotado! Pressione Enter para ver seu resultado."
                     string <- getLine
                     let resultadoFrase = compararFrases frase string
                     putStrLn resultadoFrase
@@ -126,8 +126,8 @@ verificaRecorde tempo wpmUsuario = do
     if wpmUsuario > wpmRecorde then do
         limparTela
         putStrLn "Parabéns, você bateu o recorde! Digite seu nome:"
-        nomeNovo <- getLine
-        setDadosRanking id nomeNovo (show wpmUsuario)
+        nome <- getLine
+        setDadosRanking id nome (show wpmUsuario)
     else putStr ""
 
 getRanking :: IO()
