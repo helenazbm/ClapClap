@@ -94,8 +94,8 @@ avaliaDesafio :: Desafio -> String -> String -> IO()
 avaliaDesafio desafio frase string = do
     let numPalavras = contarPalavrasDesafio string
         numPalavrasCorretas = contarPalavrasCorretas frase string
-        wpm = calcularWpm (tempoDesafio desafio) numPalavras
-        wpmCorretas = calcularWpm (tempoDesafio desafio) numPalavrasCorretas
+        wpm = calcularWpm (tempoDesafio desafio) numPalavrasCorretas
+        wpmTotalPalavras = calcularWpm (tempoDesafio desafio) numPalavras
         precisao = calcularPrecisaoDesafio numPalavras numPalavrasCorretas
         estrelas = atribuirEstrelasDesafio wpm precisao
         tempo = tempoEmMin (tempoDesafio desafio)
@@ -104,7 +104,8 @@ avaliaDesafio desafio frase string = do
     limparTela
     putStrLn "\n"
     putStrLn $ replicate 60 ' ' ++ "Você fez o desafio de " ++ show tempo  ++ " min."
-    putStrLn $ replicate 40 ' ' ++ "Sua velocidade foi de: " ++ show wpm ++ " palavras por minuto com " ++ precisaoFormatada ++ "% de precisão."
+    putStrLn $ replicate 45 ' ' ++ "Sua velocidade foi de: " ++ show wpm ++ " wpm com " ++ precisaoFormatada ++ "% de precisão."
+    putStrLn $ replicate 58 ' ' ++ show wpm ++ "/" ++ show wpmTotalPalavras ++ " palavras digitadas corretamente.\n"
 
     desafioConcluido <- case estrelas of
         0 -> readFile "../dados/avaliacoes/zeroEstrela.txt"
@@ -116,7 +117,7 @@ avaliaDesafio desafio frase string = do
     putStrLn $ replicate 56 ' ' ++ "* Pressione Enter para voltar ao Menu de Desafios *" 
 
     _ <- getLine
-    verificaRecorde tempo wpmCorretas
+    verificaRecorde tempo wpm
     getRanking
 
 verificaRecorde :: Int -> Int -> IO ()
