@@ -194,6 +194,7 @@ getCor :: String -> String
 getCor "red" = "\ESC[31m"
 getCor "green" = "\ESC[32m"
 getCor "yellow" = "\ESC[33m"
+getCor "blue" = "\ESC[34m"
 getCor "orange" = "\ESC[38;5;208m"
 getCor "default" = "\ESC[0m"
 
@@ -256,10 +257,15 @@ ajustaWpm wpm =
 formataRanking :: String -> String -> String -> String -> String -> String -> String -> String -> String -> IO()
 formataRanking id1 nome1 wpm1 id2 nome2 wpm2 id5 nome5 wpm5 = do
     arteRanking <- readFile "../dados/arteTexto/ranking.txt"
+    let cabecalho = aplicarCorConteudo "blue" "Desafio --------------- Nome ---------------- WPM"
+        linha1 = id1 ++ " min" ++ " --------------- " ++ ajustaNome nome1 ++ " --------------- " ++ ajustaWpm wpm1
+        linha2 = id2 ++ " min" ++ " --------------- " ++ ajustaNome nome2 ++ " --------------- " ++ ajustaWpm wpm2
+        linha3 = id5 ++ " min" ++ " --------------- " ++ ajustaNome nome5 ++ " --------------- " ++ ajustaWpm wpm5
+
     putStrLn arteRanking
     putStrLn "\n"
-    putStrLn ("                                                            Desafio --------------- Nome ---------------- WPM\n" )
-    putStrLn ("                                                             " ++ id1 ++ " min" ++ " --------------- " ++ ajustaNome nome1 ++ " --------------- " ++ ajustaWpm wpm1)
-    putStrLn ("                                                             " ++ id2 ++ " min" ++ " --------------- " ++ ajustaNome nome2 ++ " --------------- " ++ ajustaWpm wpm2)
-    putStrLn ("                                                             " ++ id5 ++ " min" ++ " --------------- " ++ ajustaNome nome5 ++ " --------------- " ++ ajustaWpm wpm5)
+    putStrLn ("                                                            " ++ cabecalho)
+    putStrLn ("                                                              " ++ linha1)
+    putStrLn ("                                                              " ++ linha2)
+    putStrLn ("                                                              " ++ linha3)
     putStrLn "\n\n\n                                                           * Pressione Enter para voltar ao Menu de Desafios *"
