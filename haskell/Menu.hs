@@ -9,6 +9,7 @@ import Sprites (exibirProgresso, formataRanking)
 import Util(limparTela, lerCaractere, coloreTexto)
 import Desafio (iniciarDesafio, Desafio (UmMinuto, DoisMinutos, CincoMinutos), getRanking)
 import System.Posix.Internals (o_RDONLY)
+import System.Exit (exitSuccess)
 
 
 printMenu :: IO()
@@ -101,7 +102,7 @@ sair = do
     limparTela
     sair <- readFile "../dados/arteTexto/sair.txt"
     putStrLn sair
-    return ()
+    exitSuccess
 
 voltarMenu :: IO()
 voltarMenu = do

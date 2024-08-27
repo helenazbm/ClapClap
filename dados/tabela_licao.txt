@@ -3,10 +3,10 @@ id;status
 2;concluido
 3;concluido
 4;concluido
-5;nao_iniciado
-6;nao_iniciado
+5;concluido
+6;concluido
 7;concluido
-8;nao_iniciado
+8;concluido
 9;nao_iniciado
 10;concluido
 11;nao_iniciado
