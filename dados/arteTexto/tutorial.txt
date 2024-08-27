@@ -6,26 +6,26 @@
             ║                                                  | |_ | |_| || |_ | (_) || |   | || (_| || |                                                 ║
             ║                                                   \__| \__,_| \__| \___/ |_|   |_| \__,_||_|                                                 ║
             ║                                                                                                                                              ║
+            ║                                                          🎮 Bem-vindo ao ClapClap!                                                           ║
+            ║       Prepare-se para uma jornada que vai transformar suas habilidades de digitação! O ClapClap! foi criado para ensinar técnicas de         ║
+            ║      digitação de forma lúdica e intuitiva, ajudando você a se tornar mais ágil e preciso a cada tecla pressionada.                          ║
+            ║                                                                                                                                              ║
+            ║                                                            🏁 Por onde começar?                                                              ║
+            ║       Nós recomendamos que você comece pelas lições. Nelas, você vai conhecer as principais teclas e aprender a usar os dedos corretos       ║
+            ║      para cada uma. As lições são a base para o seu progresso, então siga a ordem numérica para tirar o máximo proveito dessa experiência.   ║
+            ║                                                                                                                                              ║
+            ║                                                             🎯 Como funciona?                                                                ║
+            ║       Em cada lição, você encontrará instruções detalhadas sobre qual dedo usar para cada tecla. Quando iniciar um exercício, digite as      ║
+            ║      letras e símbolos na ordem que aparecerem e pressione Enter para ver seus acertos e erros imediatamente. Ao final, você receberá        ║
+            ║      uma avaliação completa do seu desempenho.                                                                                               ║
+            ║                                                           🔥 Desafio aceito?                                                                 ║
+            ║       Se você está pronto para testar sua velocidade e precisão em um nível mais alto, mergulhe nos desafios! Escolha um tempo para          ║
+            ║      o desafio, digite o texto exibido o mais rápido possível, e ao final, confira sua pontuação, incluindo as palavras digitadas            ║
+            ║      corretamente e sua avaliação de WPM.                                                                                                    ║
+            ║                                                                                                                                              ║
+            ║                                                            🏆 Suba no ranking!                                                               ║
             ║                                                                                                                                              ║
             ║                                                                                                                                              ║
             ║                                                                                                                                              ║
-            ║                                                                                                                                              ║
-            ║                                                                                                                                              ║
-            ║                                                                                                                                              ║
-            ║                                                                                                                                              ║
-            ║                                                                                                                                              ║
-            ║                                                                                                                                              ║
-            ║                                                                                                                                              ║
-            ║                                                                                                                                              ║
-            ║                                                                                                                                              ║
-            ║                                                                                                                                              ║
-            ║                                                                                                                                              ║
-            ║                                                                                                                                              ║
-            ║                                                                                                                                              ║
-            ║                                                                                                                                              ║
-            ║                                                                                                                                              ║
-            ║                                                                                                                                              ║
-            ║                                                 * Pressione Enter para voltar ao Menu principal *                                            ║
-            ║                                                                                                                                              ║
-            ║                                                                                                                                              ║
+            ║                                                * Pressione Enter para voltar ao Menu principal *                                             ║
             ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝

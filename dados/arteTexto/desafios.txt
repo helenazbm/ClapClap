@@ -20,12 +20,12 @@
             ║                                                               5 - 5 MINUTOS                                                                  ║
             ║                                                                                                                                              ║
             ║                                                                                                                                              ║
+            ║                                                                R - Ranking                                                                   ║
             ║                                                                                                                                              ║
             ║                                                                                                                                              ║
             ║                                                                                                                                              ║
             ║                                                                                                                                              ║
-            ║                                                                                                                                              ║
-            ║                                                 * Pressione Enter para voltar ao Menu principal *                                            ║
+            ║                                                * Pressione Enter para voltar ao Menu principal *                                             ║
             ║                                                                                                                                              ║
             ║                                                                                                                                              ║ 
             ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
