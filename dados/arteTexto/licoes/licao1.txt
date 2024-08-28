@@ -1,35 +1,35 @@
-                                                                            Lição 1 - J , F e barra de espaço
-                                       
-                                                | A fileira principal do teclado é a linha onde seus dedos devem descansar naturalmente. 
-                                                | Essa fileira é composta pelas teclas: A, S, D, F, G, H, J, K, L, Ç.
-                                                | Seus dedos devem retornar a essa fileira após pressionar qualquer outra tecla.
-                                                | As teclas J e F possuem marcações pararientar o retorno dos dedos. 
-                                                                           
-                                                                        _________________________________
-                                                                                  
-                                                                                Para essa lição:
-                                                                        _________________________________
-
-                                                                              [AZUL]Indicador direito no J[DEFAULT]
-
-                                                                              [VERDE]Indicador esquerdo no F[DEFAULT]
-                                             
-                                                                     [MAGENTA]Polegar da mão dominante na barra de espaço[DEFAULT]
+                                                                  Lição 1 - J , F e barra de espaço
+                                
+                                        | A fileira principal do teclado é a linha onde seus dedos devem descansar naturalmente. 
+                                        | Essa fileira é composta pelas teclas: A, S, D, F, G, H, J, K, L, Ç.
+                                        | Seus dedos devem retornar a essa fileira após pressionar qualquer outra tecla.
+                                        | As teclas J e F possuem marcações para orientar o retorno dos dedos. 
+                                                                        
+                                                                _________________________________
                                                                                 
-                                                            ⠀⠀⠀⠀⢀⣀⠀⠀⠀⣾⢿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⡿⣷⡀⠀⠀⣀⡀⠀⠀⠀⠀⠀
-                                                            ⠀⠀⠀⠀⣿⠛⣿⡄⢰⣿⠀⣿⡇⠀[VERDE]⢀⣴⣶⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[AZUL]⢠⣶⣦⡀[DEFAULT]⠀⢰⡿⠀⣿⡇⢠⣿⠛⣿⠀⠀⠀⠀⠀
-                                                            ⣴⣦⡄⠀⣿⡆⢸⣷⢸⣿⠀⢸⡇⠀[VERDE]⣾⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[AZUL]⢸⣿⣿⣷[DEFAULT]⠀⢸⡇⠀⣿⡇⣾⡇⢰⣿⠀⢀⣴⣦⠀
-                                                            ⣿⡜⢿⣆⢹⣇⠀⣿⡆⣿⠀⢸⣿[VERDE]⢰⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[AZUL]⢸⣿⣿⣿⡆[DEFAULT]⢸⡇⠀⣿⣷⣿⠀⢸⡿⣠⡿⢃⣿⠃
-                                                            ⢹⣧⠘⣿⡼⣿⠀⢻⣧⣿⠀⢸⣿[VERDE]⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[AZUL]⣿⣿⣿⣿[DEFAULT]⣾⡇⠀⣿⣿⡟⠀⣾⣧⣿⠃⣸⡟⠀
-                                                            ⠈⣿⡄⠘⣿⣿⠀⠈⠻⠟⠀⠘⠿[VERDE]⠇⠀⢸⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[AZUL]⢹⡏⠁⠈⠿[DEFAULT]⠃⠀⠻⠟⠁⠀⣿⣿⠃⢠⣿⠃⠀
-                                                            ⠀⠸⣷⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀[MAGENTA]⣀⣴⣶⣦⡄⠀⠀⠀⠀⠀⠀⢠⣴⣶⣦⣀[DEFAULT]⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⡇⠀⠀
-                                                            ⠀⠀⢻⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇[MAGENTA]⣠⣾⣿⣿⣿⡿⠋⠀⠀⠀⠀⠀⠀⠛⢿⣿⣿⣿⣷⣄[DEFAULT]⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡟⠀⠀⠀
-                                                            ⠀⠀⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[MAGENTA]⢸⣿⢿⣿⣿⣿⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣿⣿⡿⠻⣿⡇[DEFAULT]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀
-                                                            ⠀⠀⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[MAGENTA]⢉⣿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⣷⡅[DEFAULT]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀
-                                                            ⠀⠀⠈⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⠃⠀⠀⠀
-                                                            ⠀⠀⠀⢹⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⡿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⡟⠀⠀⠀⠀
-                                                            ⠀⠀⠀⠀⢿⣧⠀⠀⠀⠀⠀⠀⠀⣤⣶⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⣶⣤⠀⠀⠀⠀⠀⠀⠀⣴⡿⠁⠀⠀⠀⠀
-                                                            ⠀⠀⠀⠀⠀⣿⡄⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⡀⠀⠀⠀⠀⠀⢠⣿⠀⠀⠀⠀⠀⠀
-                                                            ⠀⠀⠀⠀⠀⣿⠇⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠇⠀⠀⠀⠀⠀⠸⣿⠀⠀⠀⠀⠀⠀
+                                                                        Para essa lição:
+                                                                _________________________________
 
-                                                            * Pressione 'I' para iniciar ou 'Enter' para voltar *
+                                                                    [AZUL]Indicador direito no J[DEFAULT]
+
+                                                                    [VERDE]Indicador esquerdo no F[DEFAULT]
+                                        
+                                                           [MAGENTA]Polegar da mão dominante na barra de espaço[DEFAULT]
+                                                                        
+                                                        ⠀⠀⠀⠀⢀⣀⠀⠀⠀⣾⢿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⡿⣷⡀⠀⠀⣀⡀⠀⠀⠀⠀⠀
+                                                        ⠀⠀⠀⠀⣿⠛⣿⡄⢰⣿⠀⣿⡇⠀[VERDE]⢀⣴⣶⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[AZUL]⢠⣶⣦⡀[DEFAULT]⠀⢰⡿⠀⣿⡇⢠⣿⠛⣿⠀⠀⠀⠀⠀
+                                                        ⣴⣦⡄⠀⣿⡆⢸⣷⢸⣿⠀⢸⡇⠀[VERDE]⣾⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[AZUL]⢸⣿⣿⣷[DEFAULT]⠀⢸⡇⠀⣿⡇⣾⡇⢰⣿⠀⢀⣴⣦⠀
+                                                        ⣿⡜⢿⣆⢹⣇⠀⣿⡆⣿⠀⢸⣿[VERDE]⢰⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[AZUL]⢸⣿⣿⣿⡆[DEFAULT]⢸⡇⠀⣿⣷⣿⠀⢸⡿⣠⡿⢃⣿⠃
+                                                        ⢹⣧⠘⣿⡼⣿⠀⢻⣧⣿⠀⢸⣿[VERDE]⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[AZUL]⣿⣿⣿⣿[DEFAULT]⣾⡇⠀⣿⣿⡟⠀⣾⣧⣿⠃⣸⡟⠀
+                                                        ⠈⣿⡄⠘⣿⣿⠀⠈⠻⠟⠀⠘⠿[VERDE]⠇⠀⢸⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[AZUL]⢹⡏⠁⠈⠿[DEFAULT]⠃⠀⠻⠟⠁⠀⣿⣿⠃⢠⣿⠃⠀
+                                                        ⠀⠸⣷⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀[MAGENTA]⣀⣴⣶⣦⡄⠀⠀⠀⠀⠀⠀⢠⣴⣶⣦⣀[DEFAULT]⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⡇⠀⠀
+                                                        ⠀⠀⢻⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇[MAGENTA]⣠⣾⣿⣿⣿⡿⠋⠀⠀⠀⠀⠀⠀⠛⢿⣿⣿⣿⣷⣄[DEFAULT]⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡟⠀⠀⠀
+                                                        ⠀⠀⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[MAGENTA]⢸⣿⢿⣿⣿⣿⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣿⣿⡿⠻⣿⡇[DEFAULT]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀
+                                                        ⠀⠀⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[MAGENTA]⢉⣿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⣷⡅[DEFAULT]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀
+                                                        ⠀⠀⠈⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⠃⠀⠀⠀
+                                                        ⠀⠀⠀⢹⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⡿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⡟⠀⠀⠀⠀
+                                                        ⠀⠀⠀⠀⢿⣧⠀⠀⠀⠀⠀⠀⠀⣤⣶⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⣶⣤⠀⠀⠀⠀⠀⠀⠀⣴⡿⠁⠀⠀⠀⠀
+                                                        ⠀⠀⠀⠀⠀⣿⡄⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⡀⠀⠀⠀⠀⠀⢠⣿⠀⠀⠀⠀⠀⠀
+                                                        ⠀⠀⠀⠀⠀⣿⠇⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠇⠀⠀⠀⠀⠀⠸⣿⠀⠀⠀⠀⠀⠀
+
+                                                        * Pressione 'I' para iniciar ou 'Enter' para voltar *

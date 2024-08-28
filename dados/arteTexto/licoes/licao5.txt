@@ -1,35 +1,35 @@
-                                                                                     Revisão 1
-                                       
-                              
-                                                | Lembre-se: seus dedos devem retornar à fileira principal após pressionar qualquer
-                                                | outra tecla.
-                                                | As teclas j e f possuem marcações pararientar o retorno dos dedos.
-                                                                           
-                                                                        _________________________________
-                                                                                  
-                                                                                     PARABÉNS!
-                                                                        _________________________________
+                                                                               Revisão 1
+                                    
+                            
+                                            | Lembre-se: seus dedos devem retornar à fileira principal após pressionar qualquer
+                                            | outra tecla.
+                                            | As teclas J e F possuem marcações para orientar o retorno dos dedos.
+                                                                        
+                                                                    _________________________________
+                                                                                
+                                                                                PARABÉNS!
+                                                                    _________________________________
 
-                                                                       Você concluiu as 4 lições iniciais!
+                                                                    Você concluiu as 4 lições iniciais!
 
-                                                                   Agora você irá revisar as lições anteriores.
-                                                                                                                
-                                                            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[VERDE]⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                                                            ⠀⠀⠀⠀⠀⠀⠀⣄⠀⠀⠀⠀⢸⠀⠀⠀⠀⣴⠂⠀⠀⠀⠀⠀    ⠀⠀⠀⠀⠀⠀⠀⣄⠀⠀⠀⠀⢸⠀⠀⠀⠀⣴⠂⠀⠀⠀⠀⠀
-                                                            ⠀⠀⠀⠀⠀⠀⠀⠈⠳⣄⠀⠀⠼⠆⠀⢀⡾⠁⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⠀⠀⠀⠀⠈⠳⣄⠀⠀⠼⠆⠀⢀⡾⠁⠀⠀⠀⠀⠀⠀
-                                                            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣈⣟⠀⠀⠀⠀⣉⣀⠀⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣈⣟⠀⠀⠀⠀⣉⣀⠀⠀⠀⠀⠀⠀⠀
-                                                            ⠀⠀⠀⠀⠀[AMARELO]⣀⡤⠔⠊⠁⢈⣆⡤⢒⡩⡀⢀⡧⠤⢄⠀⠀⠀⠀    ⠀⠀⠀⠀⠀⣀⡤⠔⠊⠁⢈⣆⡤⢒⡩⡀⢀⡧⠤⢄⠀⠀⠀⠀
-                                                            ⠀⠀⣠⠔⠋⠁⠀⣀⠤⢒⠏⠀⢸⠃⠀⣸⣁⠀⣀⡼⠀⠀⠀⠀    ⠀⠀⣠⠔⠋⠁⠀⣀⠤⢒⠏⠀⢸⠃⠀⣸⣁⠀⣀⡼⠀⠀⠀⠀
-                                                            ⠀⡜⠁⠀⠀⠀⡯⣀⢀⠎⠀⢠⠃⠀⡰⠁⠀⡯⠉⢱⠀⠀⠀⠀    ⠀⡜⠁⠀⠀⠀⡯⣀⢀⠎⠀⢠⠃⠀⡰⠁⠀⡯⠉⢱⠀⠀⠀⠀
-                                                            [AMARELO]⢸⠀⠀⠀⠀⡜⠀⢈⠏⠀⢠⠃⠀⣰⠃⠀⣰⢵⡚⢁[VERDE]⣀⣠⡤⠦    [AMARELO]⢸⠀⠀⠀⠀⡜⠀⢈⠏⠀⢠⠃⠀⣰⠃⠀⣰⢵⡚⢁[VERDE]⣀⣠⡤⠦
-                                                           [AMARELO] ⢸⠀⠀⠀⡜⠀⢀⠎⠀⢠⠃⠀⢠⠃⠀⡰⠁⠀⡵[VERDE]⠈⠁[AMARELO]⠀⠀⠀    ⢸⠀⠀⠀⡜⠀⢀⠎⠀⢠⠃⠀⢠⠃⠀⡰⠁⠀⡵[VERDE]⠈⠁⠀⠀⠀
-                                                           [AMARELO] ⠈⢆⠀⡜⠀⠀⠎⠀⠀⠈⠀⠰⠃⠀⡰⠁⠀⡜⠀[VERDE]⠶⣤⣀[AMARELO]⠀⠀    ⠀⢆⠀⡜⠀⠀⠎⠀⠀⠈⠀⠰⠃⠀⡰⠁⠀⡜[VERDE]⠀⠶⣤⣀⠀⠀
-                                                            [AMARELO]⠀⠈⢻⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠴⠁⠀⡼[VERDE]⣦⠀⠀⠀⠉⠛⠂[AMARELO]    ⠀⠈⢻⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠴⠁⠀⡼[VERDE]⣦⠀⠀⠀⠉⠛⠂
-                                                            [AMARELO]⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⠀[VERDE]⠘⣆⠀⠀[AMARELO]⠀⠀⠀    ⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⠀[VERDE]⠘⣆⠀⠀⠀⠀⠀
-                                                           [AMARELO] ⠀⠀⠘⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⠀⠀[VERDE]⠀⠘⠂[AMARELO]⠀⠀⠀⠀    ⠀⠀⠘⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⠀⠀⠀[VERDE]⠘⠂⠀⠀⠀⠀
-                                                            ⠀[AMARELO]⠀⠀⠈⠢⣀⠀⠀⠀⠀⠀⠀⡠⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⠈⠢⣀⠀⠀⠀⠀⠀⠀⡠⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                                                            ⠀⠀⠀⠀⠀⠈⠉⠒⠒⠒⠊⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⠀⠀⠈⠉⠒⠒⠒⠊⠉
+                                                                Agora você irá revisar as lições anteriores.
+                                                                                                            
+                                                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[VERDE]⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                                                        ⠀⠀⠀⠀⠀⠀⠀⣄⠀⠀⠀⠀⢸⠀⠀⠀⠀⣴⠂⠀⠀⠀⠀⠀    ⠀⠀⠀⠀⠀⠀⠀⣄⠀⠀⠀⠀⢸⠀⠀⠀⠀⣴⠂⠀⠀⠀⠀⠀
+                                                        ⠀⠀⠀⠀⠀⠀⠀⠈⠳⣄⠀⠀⠼⠆⠀⢀⡾⠁⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⠀⠀⠀⠀⠈⠳⣄⠀⠀⠼⠆⠀⢀⡾⠁⠀⠀⠀⠀⠀⠀
+                                                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣈⣟⠀⠀⠀⠀⣉⣀⠀⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣈⣟⠀⠀⠀⠀⣉⣀⠀⠀⠀⠀⠀⠀⠀
+                                                        ⠀⠀⠀⠀⠀[AMARELO]⣀⡤⠔⠊⠁⢈⣆⡤⢒⡩⡀⢀⡧⠤⢄⠀⠀⠀⠀    ⠀⠀⠀⠀⠀⣀⡤⠔⠊⠁⢈⣆⡤⢒⡩⡀⢀⡧⠤⢄⠀⠀⠀⠀
+                                                        ⠀⠀⣠⠔⠋⠁⠀⣀⠤⢒⠏⠀⢸⠃⠀⣸⣁⠀⣀⡼⠀⠀⠀⠀    ⠀⠀⣠⠔⠋⠁⠀⣀⠤⢒⠏⠀⢸⠃⠀⣸⣁⠀⣀⡼⠀⠀⠀⠀
+                                                        ⠀⡜⠁⠀⠀⠀⡯⣀⢀⠎⠀⢠⠃⠀⡰⠁⠀⡯⠉⢱⠀⠀⠀⠀    ⠀⡜⠁⠀⠀⠀⡯⣀⢀⠎⠀⢠⠃⠀⡰⠁⠀⡯⠉⢱⠀⠀⠀⠀
+                                                        [AMARELO]⢸⠀⠀⠀⠀⡜⠀⢈⠏⠀⢠⠃⠀⣰⠃⠀⣰⢵⡚⢁[VERDE]⣀⣠⡤⠦    [AMARELO]⢸⠀⠀⠀⠀⡜⠀⢈⠏⠀⢠⠃⠀⣰⠃⠀⣰⢵⡚⢁[VERDE]⣀⣠⡤⠦
+                                                        [AMARELO] ⢸⠀⠀⠀⡜⠀⢀⠎⠀⢠⠃⠀⢠⠃⠀⡰⠁⠀⡵[VERDE]⠈⠁[AMARELO]⠀⠀⠀    ⢸⠀⠀⠀⡜⠀⢀⠎⠀⢠⠃⠀⢠⠃⠀⡰⠁⠀⡵[VERDE]⠈⠁⠀⠀⠀
+                                                        [AMARELO] ⠈⢆⠀⡜⠀⠀⠎⠀⠀⠈⠀⠰⠃⠀⡰⠁⠀⡜⠀[VERDE]⠶⣤⣀[AMARELO]⠀⠀    ⠀⢆⠀⡜⠀⠀⠎⠀⠀⠈⠀⠰⠃⠀⡰⠁⠀⡜[VERDE]⠀⠶⣤⣀⠀⠀
+                                                        [AMARELO]⠀⠈⢻⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠴⠁⠀⡼[VERDE]⣦⠀⠀⠀⠉⠛⠂[AMARELO]    ⠀⠈⢻⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠴⠁⠀⡼[VERDE]⣦⠀⠀⠀⠉⠛⠂
+                                                        [AMARELO]⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⠀[VERDE]⠘⣆⠀⠀[AMARELO]⠀⠀⠀    ⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⠀[VERDE]⠘⣆⠀⠀⠀⠀⠀
+                                                        [AMARELO] ⠀⠀⠘⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⠀⠀[VERDE]⠀⠘⠂[AMARELO]⠀⠀⠀⠀    ⠀⠀⠘⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⠀⠀⠀[VERDE]⠘⠂⠀⠀⠀⠀
+                                                        ⠀[AMARELO]⠀⠀⠈⠢⣀⠀⠀⠀⠀⠀⠀⡠⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⠈⠢⣀⠀⠀⠀⠀⠀⠀⡠⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                                                        ⠀⠀⠀⠀⠀⠈⠉⠒⠒⠒⠊⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⠀⠀⠈⠉⠒⠒⠒⠊⠉
 
 
 
-                                                            [DEFAULT]* Pressione 'I' para iniciar ou 'Enter' para voltar *
+                                                        [DEFAULT]* Pressione 'I' para iniciar ou 'Enter' para voltar *

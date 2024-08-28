@@ -1,34 +1,35 @@
-                                                                            LIÇÃO 6 - T, S e L
-                                       
-                              
-                                        |  LEMBRE-SE: SEUS DEDOS DEVEM RETORNAR À FILEIRA PRINCIPAL APÓS PRESSIONAR QUALQUER OUTRA TECLA.
-                                        |  AS TECLAS J E F POSSUEM MARCAÇÕES paraRIENTAR O RETORNO DOS DEDOS 
-                                                                           
-                                                                        _________________________________
-                                                                                  
-                                                                                Para essa lição:
-                                                                        _________________________________
-
-                                                                           ☞  [AZUL]INDICADOR ESQUERDO VAI para T[DEFAULT]
-
-                                                                           ☞  [VERDE]ANELAR DIREITO VAI para L[DEFAULT]
-                                             
-                                                                           ☞  [MAGENTA]ANELAR ESQUERDO VAI para S[DEFAULT]
+                                                                        Lição 6 - T, S e L
+                                
+                        
+                                        | Lembre-se: seus dedos devem retornar à fileira principal após pressionar qualquer
+                                        | outra tecla.
+                                        | As teclas J e F possuem marcações para orientar o retorno dos dedos.
+                                                                        
+                                                                _________________________________
                                                                                 
-                                                            ⠀⠀⠀⠀[MAGENTA]⢀⣀[DEFAULT]⠀⠀⠀⣾⢿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⡿⣷⡀⠀⠀[VERDE]⣀⡀[DEFAULT]⠀⠀⠀⠀⠀
-                                                            ⠀⠀⠀⠀[MAGENTA]⣿⣿⣿⡄[DEFAULT]⢰⣿⠀⣿⡇⠀[AZUL]⢀⣴⣶⡄[DEFAULT]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣶⣦⡀⠀⢰⡿⠀⣿⡇[VERDE]⢠⣿⣿⣿[DEFAULT]⠀⠀⠀⠀⠀
-                                                            ⣴⣦⡄⠀[MAGENTA]⣿⣿⣿⣷[DEFAULT]⢸⣿⠀⢸⡇⠀[AZUL]⣾⣿⣿⡇[DEFAULT]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿ ⣷⠀⢸⡇⠀⣿⡇[VERDE]⣾⣿⣿⣿[DEFAULT]⠀⢀⣴⣦⠀
-                                                            ⣿⡜⢿⣆[MAGENTA]⢹⣿⣿⣿⡆[DEFAULT]⣿⠀⢸⣿[AZUL]⢰⣿⣿⣿⡇[DEFAULT]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿ ⣿⡆⣾⡇⠀⣿⣷[VERDE]⣿⣿⣿⡿[DEFAULT]⣠⡿⢃⣿⠀
-                                                            ⢹⣧⠘⣿[MAGENTA]⡼⣿⡿⢿⣧[DEFAULT]⣿⠀⢸⣿[AZUL]⣿⣿⣿⣿[DEFAULT]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇ ⢿⣾⡇ ⢿[VERDE]⣿⡿⢿⣿⣧[DEFAULT]⣿⠃⣸⡟⠀
-                                                            ⠈⣿⡄⠘⣿[MAGENTA]⣿⠀⠈⠻[DEFAULT]⠟⠀⠘⠿[AZUL]⠏⠀⣹⡏[DEFAULT]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⡟ ⠀⠹⠃⠀⠈[VERDE]⠟⠁⠈⣿[DEFAULT]⣿⠃⢠⣿⠃⠀
-                                                            ⠀⠸⣷⠀⠀[MAGENTA]⠁[DEFAULT]⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⣀⣴⣶⣦⡄⠀⠀⠀⠀⠀⠀⢠⣴⡶⣦⣀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⡇⠀⠀
-                                                            ⠀⠀⢻⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⣠⣾⠏⠁⢸⡿⠋⠀⠀⠀⠀⠀⠀⠛⢿⡀⠈⠙⢷⣄⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡟⠀⠀⠀
-                                                            ⠀⠀⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⠿⠉⢀⣴⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣦⡀⠀⠻⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀
-                                                            ⠀⠀⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀
-                                                            ⠀⠀⠈⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⠃⠀⠀⠀
-                                                            ⠀⠀⠀⢹⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⡿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⡟⠀⠀⠀⠀
-                                                            ⠀⠀⠀⠀⢿⣧⠀⠀⠀⠀⠀⠀⠀⣤⣶⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⣶⣤⠀⠀⠀⠀⠀⠀⠀⣴⡿⠁⠀⠀⠀⠀
-                                                            ⠀⠀⠀⠀⠀⣿⡄⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⡀⠀⠀⠀⠀⠀⢠⣿⠀⠀⠀⠀⠀⠀
-                                                            ⠀⠀⠀⠀⠀⣿⠇⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠇⠀⠀⠀⠀⠀⠸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                                                                          
-                                                            * Pressione 'I' para iniciar ou 'Enter' para voltar *
+                                                                        Para essa lição:
+                                                                _________________________________
+
+                                                                  [AZUL]Indicador esquerdo vai para T[DEFAULT]
+
+                                                                    [VERDE]Anelar direito vai para L[DEFAULT]
+                                        
+                                                                    [MAGENTA]Anelar esquerdo vai para S[DEFAULT]
+                                                                        
+                                                        ⠀⠀⠀⠀[MAGENTA]⢀⣀[DEFAULT]⠀⠀⠀⣾⢿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⡿⣷⡀⠀⠀[VERDE]⣀⡀[DEFAULT]⠀⠀⠀⠀⠀
+                                                        ⠀⠀⠀⠀[MAGENTA]⣿⣿⣿⡄[DEFAULT]⢰⣿⠀⣿⡇⠀[AZUL]⢀⣴⣶⡄[DEFAULT]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣶⣦⡀⠀⢰⡿⠀⣿⡇[VERDE]⢠⣿⣿⣿[DEFAULT]⠀⠀⠀⠀⠀
+                                                        ⣴⣦⡄⠀[MAGENTA]⣿⣿⣿⣷[DEFAULT]⢸⣿⠀⢸⡇⠀[AZUL]⣾⣿⣿⡇[DEFAULT]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿ ⣷⠀⢸⡇⠀⣿⡇[VERDE]⣾⣿⣿⣿[DEFAULT]⠀⢀⣴⣦⠀
+                                                        ⣿⡜⢿⣆[MAGENTA]⢹⣿⣿⣿⡆[DEFAULT]⣿⠀⢸⣿[AZUL]⢰⣿⣿⣿⡇[DEFAULT]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿ ⣿⡆⣾⡇⠀⣿⣷[VERDE]⣿⣿⣿⡿[DEFAULT]⣠⡿⢃⣿⠀
+                                                        ⢹⣧⠘⣿[MAGENTA]⡼⣿⡿⢿⣧[DEFAULT]⣿⠀⢸⣿[AZUL]⣿⣿⣿⣿[DEFAULT]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇ ⢿⣾⡇ ⢿[VERDE]⣿⡿⢿⣿⣧[DEFAULT]⣿⠃⣸⡟⠀
+                                                        ⠈⣿⡄⠘⣿[MAGENTA]⣿⠀⠈⠻[DEFAULT]⠟⠀⠘⠿[AZUL]⠏⠀⣹⡏[DEFAULT]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⡟ ⠀⠹⠃⠀⠈[VERDE]⠟⠁⠈⣿[DEFAULT]⣿⠃⢠⣿⠃⠀
+                                                        ⠀⠸⣷⠀⠀[MAGENTA]⠁[DEFAULT]⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⣀⣴⣶⣦⡄⠀⠀⠀⠀⠀⠀⢠⣴⡶⣦⣀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⡇⠀⠀
+                                                        ⠀⠀⢻⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⣠⣾⠏⠁⢸⡿⠋⠀⠀⠀⠀⠀⠀⠛⢿⡀⠈⠙⢷⣄⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡟⠀⠀⠀
+                                                        ⠀⠀⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⠿⠉⢀⣴⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣦⡀⠀⠻⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀
+                                                        ⠀⠀⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀
+                                                        ⠀⠀⠈⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⠃⠀⠀⠀
+                                                        ⠀⠀⠀⢹⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⡿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⡟⠀⠀⠀⠀
+                                                        ⠀⠀⠀⠀⢿⣧⠀⠀⠀⠀⠀⠀⠀⣤⣶⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⣶⣤⠀⠀⠀⠀⠀⠀⠀⣴⡿⠁⠀⠀⠀⠀
+                                                        ⠀⠀⠀⠀⠀⣿⡄⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⡀⠀⠀⠀⠀⠀⢠⣿⠀⠀⠀⠀⠀⠀
+                                                        ⠀⠀⠀⠀⠀⣿⠇⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠇⠀⠀⠀⠀⠀⠸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                                                                        
+                                                        * Pressione 'I' para iniciar ou 'Enter' para voltar *
