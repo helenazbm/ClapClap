@@ -2,18 +2,18 @@
                                        
                               
                                         |  LEMBRE-SE: SEUS DEDOS DEVEM RETORNAR À FILEIRA PRINCIPAL APÓS PRESSIONAR QUALQUER OUTRA TECLA.
-                                        |  AS TECLAS J E F POSSUEM MARCAÇÕES PARA ORIENTAR O RETORNO DOS DEDOS 
+                                        |  AS TECLAS J E F POSSUEM MARCAÇÕES paraRIENTAR O RETORNO DOS DEDOS 
                                                                            
-                                                                           _____________________________
+                                                                        _________________________________
                                                                                   
-                                                                                  PARA ESSA LIÇÃO:
-                                                                            ____________________________
+                                                                                Para essa lição:
+                                                                        _________________________________
 
-                                                                           ☞  ANELAR ESQUERDO VAI PARA O W
+                                                                           ☞  ANELAR ESQUERDO VAI para W
                                                                            
-                                                                           ☞  ANELAR ESQUERDO VAI PARA O X
+                                                                           ☞  ANELAR ESQUERDO VAI para X
                                                                            
-                                                                           ☞  DEDO MÍNIMO DIREITO VAI PARA O PONTO E VÍRGULA
+                                                                           ☞  DEDO MÍNIMO DIREITO VAI para PONTO E VÍRGULA
                                                                                 
                                                             ⠀⠀⠀⠀⢀⣀⠀⠀⠀⣾⢿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣷⡀⠀⠀⣀⡀⠀⠀⠀⠀⠀
                                                             ⠀⠀⠀⠀⣿⠛⣿⡄⢰⣿⠀⣿⡇⠀⢀⣴⣶⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣶⣦⡀⠀⢰⣿⣿⣿⡇⢠⣿⠛⣿⠀⠀⠀⠀⠀
@@ -31,4 +31,4 @@
                                                             ⠀⠀⠀⠀⠀⣿⡄⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⡀⠀⠀⠀⠀⠀⢠⣿⠀⠀⠀⠀⠀⠀
                                                             ⠀⠀⠀⠀⠀⣿⠇⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠇⠀⠀⠀⠀⠀⠸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
                                                                           
-                                                                  * Pressione 'i' para iniciar ou 'Enter' para voltar *
+                                                            * Pressione 'I' para iniciar ou 'Enter' para voltar *

@@ -1,4 +1,4 @@
 id;nome;wpm
-1;teste;4
+1;ray;28
 2;-;0
 3;-;0
