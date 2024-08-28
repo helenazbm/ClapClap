@@ -77,7 +77,9 @@ executarDesafio desafio tempoMVar = do
             case resultado of
                 Left _ -> do
                     limparTela
-                    putStrLn "Tempo esgotado! Pressione Enter para ver seu resultado."
+                    tempoEsgotado <- readFile "../dados/arteTexto/tempo.txt"
+                    putStrLn tempoEsgotado
+                    putStrLn "Pressione Enter para ver seu resultado."
                     string <- getLine
                     let resultadoFrase = compararFrases frase string
                     putStrLn resultadoFrase
