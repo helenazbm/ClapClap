@@ -16,12 +16,12 @@ import Sprites (getCor, colorirPalavra, formataRanking)
 import Control.Concurrent.MVar (MVar, newEmptyMVar, putMVar, takeMVar, tryTakeMVar, isEmptyMVar)
 import Avaliacao (contarPalavrasDesafio, contarPalavrasCorretas, calcularWpm, calcularPrecisaoDesafio, atribuirEstrelasDesafio)
 
-data Desafio = UmMinuto | DoisMinutos | CincoMinutos
+data Desafio = UmMinuto | DoisMinutos | TresMinutos
 
 tempoDesafio :: Desafio -> Int
 tempoDesafio UmMinuto     = 60
 tempoDesafio DoisMinutos  = 120
-tempoDesafio CincoMinutos = 300
+tempoDesafio TresMinutos = 180
 
 frases :: [String]
 frases = 
@@ -137,9 +137,9 @@ verificaRecorde tempo wpmUsuario = do
 getRanking :: IO()
 getRanking = do
     dadosRanking <- getDadosRanking
-    let (id1, nome1, wpm1) : (id2, nome2, wpm2) : (id5, nome5, wpm5) : _ = dadosRanking
+    let (id1, nome1, wpm1) : (id2, nome2, wpm2) : (id3, nome3, wpm3) : _ = dadosRanking
     limparTela
-    formataRanking id1 nome1 wpm1 id2 nome2 wpm2 id5 nome5 wpm5
+    formataRanking id1 nome1 wpm1 id2 nome2 wpm2 id3 nome3 wpm3
 
 getDadosRanking :: IO [(String, String, String)]
 getDadosRanking = do

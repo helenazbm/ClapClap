@@ -7,7 +7,7 @@ import Controller (licoes)
 import Text.Read(readMaybe)
 import Sprites (exibirProgresso, formataRanking)
 import Util(limparTela, lerCaractere, coloreTexto)
-import Desafio (iniciarDesafio, Desafio (UmMinuto, DoisMinutos, CincoMinutos), getRanking)
+import Desafio (iniciarDesafio, Desafio (UmMinuto, DoisMinutos, TresMinutos), getRanking)
 import System.Posix.Internals (o_RDONLY)
 import System.Exit (exitSuccess)
 
@@ -79,7 +79,7 @@ opcaoUsuarioDesafio :: String-> IO ()
 opcaoUsuarioDesafio o
     | o == "1" = iniciarDesafio UmMinuto
     | o == "2" = iniciarDesafio DoisMinutos
-    | o == "5" = iniciarDesafio CincoMinutos
+    | o == "3" = iniciarDesafio TresMinutos
     | o == "r" = exibirRanking
     | o == "" = printMenu
     | otherwise = exibirDesafios
