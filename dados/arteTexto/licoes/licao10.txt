@@ -2,9 +2,9 @@
                                        
                               
                                         |  LEMBRE-SE: SEUS DEDOS DEVEM RETORNAR À FILEIRA PRINCIPAL APÓS PRESSIONAR QUALQUER OUTRA TECLA.
-                                        |  AS TECLAS J E F POSSUEM MARCAÇÕES PARA ORIENTAR O RETORNO DOS DEDOS 
+                                        |  AS TECLAS J E F POSSUEM MARCAÇÕES paraRIENTAR O RETORNO DOS DEDOS 
                                                                            
-                                                                           _____________________________
+                                                                        _________________________________
                                                                                   
                                                                                      PARABÉNS!
                                                                             ____________________________
@@ -31,4 +31,4 @@
 
 
 
-                                                                  [DEFAULT]* Pressione 'i' para iniciar ou 'Enter' para voltar *
+                                                            [DEFAULT]* Pressione 'I' para iniciar ou 'Enter' para voltar *

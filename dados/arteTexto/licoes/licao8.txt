@@ -2,18 +2,18 @@
                                        
                               
                                         |  LEMBRE-SE: SEUS DEDOS DEVEM RETORNAR À FILEIRA PRINCIPAL APÓS PRESSIONAR QUALQUER OUTRA TECLA.
-                                        |  AS TECLAS J E F POSSUEM MARCAÇÕES PARA ORIENTAR O RETORNO DOS DEDOS 
+                                        |  AS TECLAS J E F POSSUEM MARCAÇÕES paraRIENTAR O RETORNO DOS DEDOS 
                                                                            
-                                                                           _____________________________
+                                                                        _________________________________
                                                                                   
-                                                                                  PARA ESSA LIÇÃO:
-                                                                            ____________________________
+                                                                                Para essa lição:
+                                                                        _________________________________
 
-                                                                           ☞  [AZUL]INDICADOR ESQUERDO VAI PARA O V[DEFAULT]
+                                                                           ☞  [AZUL]INDICADOR ESQUERDO VAI para V[DEFAULT]
 
-                                                                           ☞  [VERDE]INDICADOR DIREITO VAI PARA O H[DEFAULT]
+                                                                           ☞  [VERDE]INDICADOR DIREITO VAI para H[DEFAULT]
                                              
-                                                                           ☞  [VERDE]INDICADOR DIREITO VAI PARA O M[DEFAULT]
+                                                                           ☞  [VERDE]INDICADOR DIREITO VAI para M[DEFAULT]
                                                                                 
                                                             ⠀⠀⠀⠀⢀⣀⠀⠀⠀⣾⢿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣷⡀⠀⠀⣀⡀⠀⠀⠀⠀⠀
                                                             ⠀⠀⠀⠀⣿⠛⣿⡄⢰⣿⠀⣿⡇⠀[AZUL]⢀⣴⣶⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[VERDE]⢠⣶⣦⡀[DEFAULT]⠀⢰⣿ ⣿⡇⢠⣿⠛⣿⠀⠀⠀⠀⠀
@@ -31,4 +31,4 @@
                                                             ⠀⠀⠀⠀⠀⣿⡄⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⡀⠀⠀⠀⠀⠀⢠⣿⠀⠀⠀⠀⠀⠀
                                                             ⠀⠀⠀⠀⠀⣿⠇⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠇⠀⠀⠀⠀⠀⠸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
                                                                           
-                                                                  * Pressione 'i' para iniciar ou 'Enter' para voltar *
+                                                            * Pressione 'I' para iniciar ou 'Enter' para voltar *
