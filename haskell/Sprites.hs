@@ -258,14 +258,16 @@ formataRanking :: String -> String -> String -> String -> String -> String -> St
 formataRanking id1 nome1 wpm1 id2 nome2 wpm2 id5 nome5 wpm5 = do
     arteRanking <- readFile "../dados/arteTexto/ranking.txt"
     let cabecalho = aplicarCorConteudo "blue" "Desafio --------------- Nome ---------------- WPM"
-        linha1 = id1 ++ " min" ++ " --------------- " ++ ajustaNome nome1 ++ " --------------- " ++ ajustaWpm wpm1
-        linha2 = id2 ++ " min" ++ " --------------- " ++ ajustaNome nome2 ++ " --------------- " ++ ajustaWpm wpm2
-        linha3 = id5 ++ " min" ++ " --------------- " ++ ajustaNome nome5 ++ " --------------- " ++ ajustaWpm wpm5
+        linha1 = id1 ++ " min" ++ "   --------------- " ++ ajustaNome nome1 ++ " --------------- " ++ ajustaWpm wpm1
+        linha2 = id2 ++ " min" ++ "   --------------- " ++ ajustaNome nome2 ++ " --------------- " ++ ajustaWpm wpm2
+        linha3 = id5 ++ " min" ++ "   --------------- " ++ ajustaNome nome5 ++ " --------------- " ++ ajustaWpm wpm5
 
     putStrLn arteRanking
     putStrLn "\n"
-    putStrLn ("                                                            " ++ cabecalho)
-    putStrLn ("                                                              " ++ linha1)
-    putStrLn ("                                                              " ++ linha2)
-    putStrLn ("                                                              " ++ linha3)
+    putStrLn ("                                                           " ++ aplicarCorConteudo "blue" "_____________________________________________________" ++ "\n")
+    putStrLn ("                                                             " ++ cabecalho)
+    putStrLn ("                                                             " ++ linha1)
+    putStrLn ("                                                             " ++ linha2)
+    putStrLn ("                                                             " ++ linha3)
+    putStrLn ("                                                           " ++ aplicarCorConteudo "blue" "_____________________________________________________" ++ "\n")
     putStrLn "\n\n\n                                                           * Pressione Enter para voltar ao Menu de Desafios *"
