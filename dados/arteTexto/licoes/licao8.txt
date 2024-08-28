@@ -10,11 +10,11 @@
                                                                         Para essa lição:
                                                                 _________________________________
 
-                                                                  [AZUL]Indicador esquerdo vai para V[DEFAULT]
+                                                                  [AZUL]Indicador esquerdo vai para V
 
-                                                                    [VERDE]Indicador direito para H[DEFAULT]
+                                                                    [VERDE]Indicador direito para H
                                         
-                                                                  [VERDE]Indicador direito vai para M[DEFAULT]
+                                                                  Indicador direito vai para M[DEFAULT]
                                                                         
                                                         ⠀⠀⠀⠀⢀⣀⠀⠀⠀⣾⢿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣷⡀⠀⠀⣀⡀⠀⠀⠀⠀⠀
                                                         ⠀⠀⠀⠀⣿⠛⣿⡄⢰⣿⠀⣿⡇⠀[AZUL]⢀⣴⣶⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[VERDE]⢠⣶⣦⡀[DEFAULT]⠀⢰⣿ ⣿⡇⢠⣿⠛⣿⠀⠀⠀⠀⠀

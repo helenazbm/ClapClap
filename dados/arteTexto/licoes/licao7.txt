@@ -10,9 +10,9 @@
                                                                         Para essa lição:
                                                                 _________________________________
 
-                                                                   [AZUL]Anelar direito vai para O[DEFAULT]
+                                                                   [AZUL]Anelar direito vai para O
 
-                                                                 [VERDE]Indicador esquerdo vai para B[DEFAULT]
+                                                                 [VERDE]Indicador esquerdo vai para B
                                         
                                                                 [MAGENTA]Dedo mínimo esquerdo vai para A[DEFAULT]
                                                                         

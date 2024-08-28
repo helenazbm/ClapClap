@@ -10,9 +10,9 @@
                                                                         Para essa lição:
                                                                 _________________________________
 
-                                                                  [AZUL]Indicador esquerdo vai para T[DEFAULT]
+                                                                  [AZUL]Indicador esquerdo vai para T
 
-                                                                    [VERDE]Anelar direito vai para L[DEFAULT]
+                                                                    [VERDE]Anelar direito vai para L
                                         
                                                                     [MAGENTA]Anelar esquerdo vai para S[DEFAULT]
                                                                         
