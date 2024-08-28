@@ -10,7 +10,7 @@ import System.IO.Unsafe (unsafePerformIO)
 
 
 limparTela :: IO()
-limparTela = callCommand "cls"
+limparTela = callCommand "clear"
 
 delay :: IO ()
 delay = threadDelay (1 * 1000000) -- 1.0 segundo
