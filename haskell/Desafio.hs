@@ -106,9 +106,9 @@ avaliaDesafio desafio frase string = do
     
     limparTela
     putStrLn "\n"
-    putStrLn $ replicate 60 ' ' ++ "Você fez o desafio de " ++ show tempo  ++ " min."
-    putStrLn $ replicate 45 ' ' ++ "Sua velocidade foi de: " ++ show wpm ++ " wpm com " ++ precisaoFormatada ++ "% de precisão."
-    putStrLn $ replicate 58 ' ' ++ show wpm ++ "/" ++ show wpmTotalPalavras ++ " palavras digitadas corretamente.\n"
+    putStrLn $ replicate 68 ' ' ++ "Você fez o desafio de " ++ show tempo  ++ " min."
+    putStrLn $ replicate 56 ' ' ++ "Sua velocidade foi de: " ++ show wpm ++ " wpm com " ++ precisaoFormatada ++ "% de precisão."
+    putStrLn $ replicate 64 ' ' ++ show wpm ++ "/" ++ show wpmTotalPalavras ++ " palavras digitadas corretamente.\n"
 
     desafioConcluido <- case estrelas of
         0 -> readFile "../dados/avaliacoes/zeroEstrela.txt"
@@ -117,7 +117,7 @@ avaliaDesafio desafio frase string = do
         3 -> readFile "../dados/avaliacoes/desafio/tresEstrelas.txt"
 
     putStrLn desafioConcluido
-    putStrLn $ replicate 56 ' ' ++ "* Pressione Enter para ver o ranking *" 
+    putStrLn $ replicate 66 ' ' ++ "* Pressione Enter para ver o ranking *" 
 
     _ <- getLine
     verificaRecorde tempo wpm
