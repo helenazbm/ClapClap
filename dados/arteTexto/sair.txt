@@ -7,14 +7,14 @@
                            ⠀⠀⠀⠀⣸⢠⠞⠁⠀⢠⠏⠀⠀⢀⡴⠋⠁⠀⢀⣠⡴⠿⣶⡇⢰⠇⠀⠀⢠⠇         
                            ⠀⠀⠀⢠⢿⠏⠀⠀⠀⠉⠀⠀⣠⠞⠁⠀⡴⠚⠉⠁⠀⢀⡟⠀⣼⠀⠀⠀⢸⠀                                                                                           
                            ⠀⠀⠀⡾⣼⢀⠀⠀⠀⠀⠀⠈⠉⠀⣠⠞⠁⠀⠀⢀⡴⠋⠙⢼⠃⠀⠀⠀⣸⠀                                                                                           
-                           ⠀⠀⠀⡇⠉⡎⠀⣰⠃⠀⠀⠀⠀⠀⠁⠀⠀⠀⡼⠉⠀⠀⠀⠘⠂⠀⠀⣠⠇⠀                [DEFAULT]DESCANSE OS DEDOS POR AGORA, MAS NÃO DEMORE A VOLTAR.[AMARELO]                                                                          
-                           ⠀⠀⠀⡇⢸⠀⣰⠃⠀⡴⠀⠀⠀⠀⠀⠀⣠⠞⠁⠀⠀⠀⠀⠀⠀⣠⠖⠁⠀⠀                                      
-                           ⠀⠀⢸⠁⡏⢠⠃⢀⠞⠀⠀⠀⠀⠀⠀⢸⠁⠀⠀⠀⠀⢀⣠⠖⠋⠁⠀⠀⠀⠀                                                                                           
-                           ⠀⠀⡞⠀⠃⡎⢀⠏⠀⠀⠀⠀⠀⠀⢀⡏⠀⣀⡤⠴⠚⠉⠀⠀⠀⠀⠀⠀⠀⠀                                                                                           
-                           ⡴⢺⠇⠀⠀⠀⠞⠀⠀⠀⠀⠀⠀⢀⡾⠒⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                                                                           
-                          ⡇⠘⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀              [DEFAULT]NOS VEMOS EM BREVE PARA MAIS LIÇÕES, DESAFIOS E CONQUISTAS.[AMARELO]                  
-                           ⢳⡀⠘⢦⡀⠀⠀⠀⠀⠀⠀⡰⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                                                                           
-                           ⠀⠳⣄⠀⠙⠲⣤⣀⣠⠴⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                                                                           
+                           ⠀⠀⠀⡇[DEFAULT]⠉⡎⠀⣰⠃⠀⠀⠀⠀[AMARELO]⠀⠁⠀⠀⠀⡼⠉⠀⠀⠀⠘⠂⠀⠀⣠⠇⠀                [DEFAULT]DESCANSE OS DEDOS POR AGORA, MAS NÃO DEMORE A VOLTAR.[AMARELO]                                                                          
+                           ⠀⠀⠀⡇[DEFAULT]⢸⠀⣰⠃⠀⡴⠀⠀⠀⠀⠀⠀[AMARELO]⣠⠞⠁⠀⠀⠀⠀⠀⠀⣠⠖⠁⠀⠀                                      
+                           ⠀⠀⢸⠁[DEFAULT]⡏⢠⠃⢀⠞⠀⠀⠀⠀⠀⠀[AMARELO]⢸⠁⠀⠀⠀⠀⢀⣠⠖⠋⠁⠀⠀⠀⠀                                                                                           
+                           ⠀⠀⡞⠀[DEFAULT]⠃⡎⢀⠏⠀⠀⠀⠀⠀⠀[AMARELO]⢀⡏⠀⣀⡤⠴⠚⠉⠀⠀⠀⠀⠀⠀⠀⠀                                                                                           
+                           [AZUL]⡴[AMARELO]⢺⠇⠀⠀⠀[DEFAULT]⠞⠀⠀⠀⠀⠀⠀[AMARELO]⢀⡾⠒⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                                                                           
+                          [AZUL]⡇⠘⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀[AMARELO]⢠⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀              [DEFAULT]NOS VEMOS EM BREVE PARA MAIS LIÇÕES, DESAFIOS E CONQUISTAS.[AMARELO]                  
+                          [AZUL] ⢳⡀⠘⢦⡀⠀⠀⠀⠀⠀⠀[AMARELO]⡰⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                                                                           
+                           [AZUL]⠀⠳⣄⠀⠙⠲⣤⣀⣠⠴⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                                                                           
                             ⠀⠀⠈⠓⠦⣄⣀⡠⠎⠀[DEFAULT]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                                                                                  
                                                                                                                                                          
             

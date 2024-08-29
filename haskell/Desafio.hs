@@ -3,12 +3,12 @@
 module Desafio where
 
 import Text.Printf
-import Util (limparTela)
 import Control.Monad (when)
 import Data.List (intercalate)
 import Data.List.Split (splitOn)
 import System.Random (randomRIO)
 import System.IO (hFlush, stdout)
+import Util (limparTela, coloreTexto)
 import Control.Concurrent.Async (race)
 import Control.Concurrent (threadDelay, forkIO)
 import System.Directory (renameFile, removeFile)
@@ -132,7 +132,7 @@ verificaRecorde tempo wpmUsuario = do
     if wpmUsuario > wpmRecorde then do
         limparTela
         arteRecorde <- readFile "../dados/arteTexto/recordRanking.txt"
-        putStrLn  arteRecorde
+        putStrLn $ coloreTexto arteRecorde
         nome <- getLine
         setDadosRanking id nome (show wpmUsuario)
     else putStr ""
