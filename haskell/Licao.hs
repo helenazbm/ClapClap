@@ -76,8 +76,8 @@ avaliaLicao resultados = do
 
     limparTela
     putStrLn "\n"
-    putStrLn $ replicate 60 ' ' ++ "Sua precisão de acertos foi de: " ++ show precisao ++ "%"
-    putStrLn $ replicate 60 ' ' ++ show (totalLetras - totalErros) ++ "/" ++ show totalLetras ++ " caracteres digitados corretamente\n"
+    putStrLn $ replicate 64 ' ' ++ "Sua precisão de acertos foi de: " ++ show precisao ++ "%"
+    putStrLn $ replicate 64 ' ' ++ show (totalLetras - totalErros) ++ "/" ++ show totalLetras ++ " caracteres digitados corretamente\n"
 
     licaoConcluida <- case estrelas of
         0 -> readFile "../dados/avaliacoes/zeroEstrela.txt"
@@ -85,7 +85,7 @@ avaliaLicao resultados = do
         2 -> readFile "../dados/avaliacoes/duasEstrelas.txt"
         3 -> readFile "../dados/avaliacoes/licao/tresEstrelas.txt" 
     putStrLn licaoConcluida
-    putStrLn $ replicate 56 ' ' ++ "* Pressione Enter para voltar ao Menu de Lições *"
+    putStrLn $ replicate 60 ' ' ++ "* Pressione Enter para voltar ao Menu de Lições *"
 
 formataLicoesConcluida :: [Licao] -> String
 formataLicoesConcluida (licao:[]) = colorirPalavra ((status licao) == "concluido") (Licao.id licao)
