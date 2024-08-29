@@ -10,9 +10,9 @@
                                                                         Para essa lição:
                                                                 _________________________________
 
-                                                                  [AZUL]Indicador direito vai para U[DEFAULT]
+                                                                  [AZUL]Indicador direito vai para U
 
-                                                                  [VERDE]Indicador esquerdo vai para R[DEFAULT]
+                                                                  [VERDE]Indicador esquerdo vai para R
                                         
                                                                   [MAGENTA]Dedo médio direito vai para K[DEFAULT]
                                                                         

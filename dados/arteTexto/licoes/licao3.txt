@@ -10,9 +10,9 @@
                                                                         Para essa lição:
                                                                 _________________________________
 
-                                                                [AZUL]Dedo médio esquerdo vai para D[DEFAULT]
+                                                                [AZUL]Dedo médio esquerdo vai para D
 
-                                                                [AZUL]Dedo médio esquerdo vai para E[DEFAULT]
+                                                                Dedo médio esquerdo vai para E
                                         
                                                                  [VERDE]Dedo médio direito vai para I[DEFAULT]
                                                                         

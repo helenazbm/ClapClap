@@ -10,7 +10,7 @@
                                                                         Para essa lição:
                                                                 _________________________________
 
-                                                              [AZUL]Dedo médio direito vai para a vírgula[DEFAULT]
+                                                              [AZUL]Dedo médio direito vai para a vírgula
 
                                                               [VERDE]Anelar direito vai para o ponto final[DEFAULT]
                                         

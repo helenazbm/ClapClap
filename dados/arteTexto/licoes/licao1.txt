@@ -10,9 +10,9 @@
                                                                         Para essa lição:
                                                                 _________________________________
 
-                                                                    [AZUL]Indicador direito no J[DEFAULT]
+                                                                    [AZUL]Indicador direito no J
 
-                                                                    [VERDE]Indicador esquerdo no F[DEFAULT]
+                                                                    [VERDE]Indicador esquerdo no F
                                         
                                                            [MAGENTA]Polegar da mão dominante na barra de espaço[DEFAULT]
                                                                         

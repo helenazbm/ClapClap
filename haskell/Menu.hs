@@ -101,7 +101,7 @@ sair :: IO()
 sair = do
     limparTela
     sair <- readFile "../dados/arteTexto/sair.txt"
-    putStrLn sair
+    putStrLn $ coloreTexto sair
     exitSuccess
 
 voltarMenu :: IO()

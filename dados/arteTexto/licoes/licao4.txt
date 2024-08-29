@@ -10,9 +10,9 @@
                                                                         Para essa lição:
                                                                 _________________________________
 
-                                                                  [AZUL]Dedo médio esquerdo vai para C[DEFAULT]
+                                                                  [AZUL]Dedo médio esquerdo vai para C
 
-                                                                  [VERDE]Indicador esquerdo vai para G[DEFAULT]
+                                                                  [VERDE]Indicador esquerdo vai para G
                                         
                                                                    [MAGENTA]Indicador direito vai para N[DEFAULT]
                                                                         
