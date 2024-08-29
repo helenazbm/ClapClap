@@ -20,4 +20,4 @@
                                                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠛⠷⢶⣤⣤⣤⣤⣤⣀⣈⣉⢉⠉⠉⠙⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠉⠉⠉⣉⣁⣀⣀⣤⣤⣤⣤⡶⠾⠛⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀
                                                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠉⠉⠉⠁[DEFAULT]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
                                                
-                                        PARABÉNS, VOCÊ BATEU O RECORD!! DIGITE UM NOME PARA REGISTRAR (ATÉ 5 CARACTERES):
+                                        Parabéns, você bateu o recorde! Digite um nome para registrar (máximo de 5 CARACTERES):
