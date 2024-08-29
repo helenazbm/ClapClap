@@ -3,12 +3,12 @@
 module Desafio where
 
 import Text.Printf
-import Util (limparTela, coloreTexto)
 import Control.Monad (when)
 import Data.List (intercalate)
 import Data.List.Split (splitOn)
 import System.Random (randomRIO)
 import System.IO (hFlush, stdout)
+import Util (limparTela, coloreTexto)
 import Control.Concurrent.Async (race)
 import Control.Concurrent (threadDelay, forkIO)
 import System.Directory (renameFile, removeFile)
