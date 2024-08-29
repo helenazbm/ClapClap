@@ -2,17 +2,17 @@
                            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⢠⠏⠀⠀⢱⡀⣸⠁⠀⡴⠋⠀⠀⣹⠀                                                                                           
                            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡴⠋⠉⢿⢀⡤⠶⣴⠇⣯⠀⣼⠁⠀⢀⡴⠷⣄                                                                                           
                            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠞⠁⠀⣀⡾⠋⠀⠀⢹⣼⠁⢠⡇⠀⡴⠋⠀⠀⡼                                                                           
-                           ⠀⠀⠀⠀⢠⠊⠑⢦⠀⡴⠋⢀⣠⠞⠉⠀⠀⠀⣠⣿⠧⣄⡾⠁⡼⠁⣀⣤⠾⡁                                     [DEFAULT]ATÉ A PRÓXIMA![AMARELO]                                                      
+                           ⠀⠀⠀⠀⢠⠊⠑⢦⠀⡴⠋⢀⣠⠞⠉⠀⠀⠀⣠⣿⠧⣄⡾⠁⡼⠁⣀⣤⠾⡁                                     [DEFAULT]Até a próxima![AMARELO]                                                      
                            ⠀⠀⠀⠀⢸⠀⠀⣨⠟⠁⢠⡞⠁⠀⠀⠀⣠⡾⠛⠁⠀⣿⠃⣰⠃⣴⠋⠀⠀⣷                                                                                           
                            ⠀⠀⠀⠀⣸⢠⠞⠁⠀⢠⠏⠀⠀⢀⡴⠋⠁⠀⢀⣠⡴⠿⣶⡇⢰⠇⠀⠀⢠⠇         
                            ⠀⠀⠀⢠⢿⠏⠀⠀⠀⠉⠀⠀⣠⠞⠁⠀⡴⠚⠉⠁⠀⢀⡟⠀⣼⠀⠀⠀⢸⠀                                                                                           
                            ⠀⠀⠀⡾⣼⢀⠀⠀⠀⠀⠀⠈⠉⠀⣠⠞⠁⠀⠀⢀⡴⠋⠙⢼⠃⠀⠀⠀⣸⠀                                                                                           
-                           ⠀⠀⠀⡇[DEFAULT]⠉⡎⠀⣰⠃⠀⠀⠀⠀[AMARELO]⠀⠁⠀⠀⠀⡼⠉⠀⠀⠀⠘⠂⠀⠀⣠⠇⠀                [DEFAULT]DESCANSE OS DEDOS POR AGORA, MAS NÃO DEMORE A VOLTAR.[AMARELO]                                                                          
+                           ⠀⠀⠀⡇[DEFAULT]⠉⡎⠀⣰⠃⠀⠀⠀⠀[AMARELO]⠀⠁⠀⠀⠀⡼⠉⠀⠀⠀⠘⠂⠀⠀⣠⠇⠀                [DEFAULT]Descanse os dedos por agora, mas não demore a voltar.[AMARELO]                                                                          
                            ⠀⠀⠀⡇[DEFAULT]⢸⠀⣰⠃⠀⡴⠀⠀⠀⠀⠀⠀[AMARELO]⣠⠞⠁⠀⠀⠀⠀⠀⠀⣠⠖⠁⠀⠀                                      
                            ⠀⠀⢸⠁[DEFAULT]⡏⢠⠃⢀⠞⠀⠀⠀⠀⠀⠀[AMARELO]⢸⠁⠀⠀⠀⠀⢀⣠⠖⠋⠁⠀⠀⠀⠀                                                                                           
                            ⠀⠀⡞⠀[DEFAULT]⠃⡎⢀⠏⠀⠀⠀⠀⠀⠀[AMARELO]⢀⡏⠀⣀⡤⠴⠚⠉⠀⠀⠀⠀⠀⠀⠀⠀                                                                                           
                            [AZUL]⡴[AMARELO]⢺⠇⠀⠀⠀[DEFAULT]⠞⠀⠀⠀⠀⠀⠀[AMARELO]⢀⡾⠒⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                                                                           
-                          [AZUL]⡇⠘⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀[AMARELO]⢠⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀              [DEFAULT]NOS VEMOS EM BREVE PARA MAIS LIÇÕES, DESAFIOS E CONQUISTAS.[AMARELO]                  
+                          [AZUL]⡇⠘⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀[AMARELO]⢠⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀              [DEFAULT]Nos vemos em breve para mais lições, desafios e conquistas.[AMARELO]                  
                           [AZUL] ⢳⡀⠘⢦⡀⠀⠀⠀⠀⠀⠀[AMARELO]⡰⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                                                                           
                            [AZUL]⠀⠳⣄⠀⠙⠲⣤⣀⣠⠴⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                                                                           
                             ⠀⠀⠈⠓⠦⣄⣀⡠⠎⠀[DEFAULT]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                                                                                  

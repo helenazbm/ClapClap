@@ -23,7 +23,7 @@
             ║                                                                                                                                              ║
             ║                                                                                                                                              ║
             ║                                                                                                                                              ║
-            ║                                               * Pressione Enter para voltar ao Menu principal *                                              ║
+            ║                                               * Pressione Enter para voltar ao Menu Principal *                                              ║
             ║                                                                                                                                              ║
             ║                                                                                                                                              ║
             ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝

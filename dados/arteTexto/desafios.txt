@@ -11,13 +11,13 @@
             ║                                                                                                                                              ║
             ║                                                                                                                                              ║
             ║                                                                                                                                              ║
-            ║                                                               1 - 1 MINUTO                                                                   ║
+            ║                                                               1 - 1 minuto                                                                   ║
             ║                                                                                                                                              ║
             ║                                                                                                                                              ║
-            ║                                                               2 - 2 MINUTOS                                                                  ║
+            ║                                                               2 - 2 minutos                                                                  ║
             ║                                                                                                                                              ║
             ║                                                                                                                                              ║
-            ║                                                               3 - 3 MINUTOS                                                                  ║
+            ║                                                               3 - 3 minutos                                                                  ║
             ║                                                                                                                                              ║
             ║                                                                                                                                              ║
             ║                                                                R - Ranking                                                                   ║
@@ -25,7 +25,7 @@
             ║                                                                                                                                              ║
             ║                                                                                                                                              ║
             ║                                                                                                                                              ║
-            ║                                                * Pressione Enter para voltar ao Menu principal *                                             ║
+            ║                                                * Pressione Enter para voltar ao Menu Principal *                                             ║
             ║                                                                                                                                              ║
             ║                                                                                                                                              ║ 
             ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
