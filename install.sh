@@ -19,3 +19,7 @@ cabal install async --lib
 cabal install ansi-terminal --lib
 
 echo "Todas as dependências foram instaladas com sucesso! Agora está tudo pronto para você usar o ClapClap!"
+
+echo "Executando o programa..."
+cd haskell
+runhaskell Main.hs
