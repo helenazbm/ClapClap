@@ -16,6 +16,7 @@ cabal install process --lib
 cabal install random --lib
 cabal install time --lib
 cabal install async --lib
+cabal install ansi-terminal
 cabal install ansi-terminal --lib
 
 echo "Todas as dependências foram instaladas com sucesso! Agora está tudo pronto para você usar o ClapClap!"
