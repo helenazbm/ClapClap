@@ -16,7 +16,7 @@ git clone https://github.com/helenazbm/ClapClap.git
 ```
 Após isso, na raiz do projeto, execute o comando a seguir para instalar todos as importações necessárias para jogar no ClapClap!
 ```bash
-install.sh
+./install.sh
 ```
 Em seguida, você verá a seguinte tela:
 
