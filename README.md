@@ -22,6 +22,8 @@ Em seguida, você verá a seguinte tela:
 
 ![Captura de tela de 2024-08-29 23-48-34](https://github.com/user-attachments/assets/4c4ec094-b330-4a10-918a-d96166cf0c7c)
 
+Recomendamos que você jogue com o terminal em tela cheia para evitar problemas na interface. Caso ainda assim a interface esteja quebrada, tente diminuir o zoom do seu terminal.
+
 ## Funcionalidades do ClapClap!
 ### 🏁 Lições
 Em cada lição, você encontrará instruções detalhadas sobre qual dedo usar para cada tecla. Quando iniciar um exercício, digite as letras e símbolos na ordem que aparecerem e pressione Enter para ver seus acertos e erros imediatamente. Ao final, você receberá uma avaliação completa do seu desempenho e, conforme avança, uma barra de progresso acompanha o status das lições. 
@@ -39,4 +41,4 @@ Se você está pronto para testar sua velocidade e precisão em um nível mais a
 - [Maria Fernanda](https://github.com/MFernandaRicarte)
 - [Maria Helena](https://github.com/helenazbm)
 - [Márcia Thaís](https://github.com/marseathais)
-- [Rayanne](https://github.com/rayanne-on)
+- [Rayanne Bento](https://github.com/rayanne-on)
