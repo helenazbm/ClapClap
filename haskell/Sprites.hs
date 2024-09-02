@@ -166,10 +166,41 @@ getLetra '~' = unlines [
     "    "
     ]
 
+getLetra 'ã' = unlines [
+    "▀▄▀▄",
+    "▄▀▀▄",
+    "█▀▀█"
+    ]
+
+getLetra 'õ' = unlines [
+    "▀▄▀▄",
+    "▄■■▄",
+    "▀▄▄▀"
+    ]
+
 getLetra '´' = unlines [
     "  ▄▀",
     "    ",
     "    "
+    ]
+
+getLetra 'á' = unlines [
+    "  ▄▀",
+    "▄▀▀▄",
+    "█▀▀█"
+    ]
+
+getLetra 'é' = unlines [
+    "  ▄▀",
+    "▄▀▀▀",
+    "█■■ ",
+    "▀▄▄▄"
+    ]
+
+getLetra 'ó' = unlines [
+    "  ▄▀",
+    "▄■■▄",
+    "▀▄▄▀"
     ]
 
 getLetra '`' = unlines [
@@ -178,10 +209,41 @@ getLetra '`' = unlines [
     "    "
     ]
 
+getLetra 'à' = unlines [
+    "▀▄  ",
+    "▄▀▀▄",
+    "█▀▀█"
+    ]
+
+getLetra 'ò' = unlines [
+    "▀▄  ",
+    "▄■■▄",
+    "▀▄▄▀"
+    ]
+
 getLetra '^' = unlines [
     "▄▀▀▄",
     "    ",
     "    "
+    ]
+
+getLetra 'â' = unlines [
+    "▄▀▀▄",
+    "▄▀▀▄",
+    "█▀▀█"
+    ]
+
+getLetra 'ê' = unlines [
+    "▄▀▀▄",
+    "▄▀▀▀",
+    "█■■ ",
+    "▀▄▄▄"
+    ]
+
+getLetra 'ô' = unlines [
+    "▄▀▀▄",
+    "▄■■▄",
+    "▀▄▄▀"
     ]
 
 getLetra 'ç' = unlines [
