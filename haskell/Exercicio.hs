@@ -21,10 +21,10 @@ corrigeExercicio (en:entrada) ((exercicioCorreto, cor):exerciciosCorreto) =
     then [(exercicioCorreto, "verde")] ++ corrigeExercicio entrada exerciciosCorreto
     else [(exercicioCorreto, "vermelho")] ++ corrigeExercicio entrada exerciciosCorreto
 
-iniciaExercicio :: Exercicio -> IO (Int, Int)
-iniciaExercicio ex = do
+iniciaExercicio :: Exercicio -> Int -> IO (Int, Int)
+iniciaExercicio ex numero = do
     let texto = formataLinhasTexto (exercicio ex) " "
-    putStrLn ("Exercício " ++ show (Exercicio.id ex) ++ "\n")
+    putStrLn ("Exercício " ++ show numero ++ "\n")
     mapM_ putStrLn texto
     
     entrada <- getLine
