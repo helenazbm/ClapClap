@@ -1,13 +1,12 @@
 module Licao where
 
 import Data.List (intercalate)
-import Sprites (colorirPalavra)
+import Sprites (aplicaCorSucessoFalha)
 import Data.List.Split (splitOn)
-import Util (limparTela, lerCaractere)
-import Exercicio (Exercicio, iniciarExercicio)
+import Util (limpaTela, leCaractere)
+import Exercicio (Exercicio, iniciaExercicio)
 import System.Directory (renameFile, removeFile)
-import Avaliacao (atribuirEstrelasLicao, calcularPrecisaoExercicios)
-
+import Avaliacao (atribuaEstrelasLicao, calculaPrecisaoExercicios)
 
 data Licao = Licao {
     id :: String,
@@ -30,15 +29,15 @@ getStatusLicoes idLicao dados =
         then status
         else getStatusLicoes idLicao (tail dados)
 
-contarLicoesConcluidas :: [Licao] -> Int
-contarLicoesConcluidas [] = 0
-contarLicoesConcluidas (licao:licoes) =
+contaLicoesConcluidas :: [Licao] -> Int
+contaLicoesConcluidas [] = 0
+contaLicoesConcluidas (licao:licoes) =
     if (status licao) == "concluido"
-    then 1 + contarLicoesConcluidas licoes
-    else contarLicoesConcluidas licoes
+    then 1 + contaLicoesConcluidas licoes
+    else contaLicoesConcluidas licoes
 
-atualizarLinha :: String -> String -> String
-atualizarLinha idLicao linha =
+atualizaLinha :: String -> String -> String
+atualizaLinha idLicao linha =
     let [id, status] = splitOn ";" linha
     in if id == idLicao
        then intercalate ";" [id, "concluido"]
@@ -51,18 +50,18 @@ setStatusLicao idLicao = do
 
     conteudo <- readFile filePath
     let linhas = lines conteudo
-        linhasProcessadas = map (\linha -> atualizarLinha idLicao linha) linhas
+        linhasProcessadas = map (\linha -> atualizaLinha idLicao linha) linhas
 
     writeFile tempFilePath (unlines linhasProcessadas)
 
     renameFile tempFilePath filePath
 
-iniciarLicao :: Licao -> IO ()
-iniciarLicao licao = do
+iniciaLicao :: Licao -> IO ()
+iniciaLicao licao = do
     
     let exs = exercicios licao
     resultados <- mapM (\ex -> do
-            erros <- iniciarExercicio ex
+            erros <- iniciaExercicio ex
             return erros) exs
     avaliaLicao resultados
 
@@ -71,10 +70,10 @@ avaliaLicao :: [(Int, Int)] -> IO ()
 avaliaLicao resultados = do
     let totalErros = sum $ map fst resultados
         totalLetras = sum $ map snd resultados
-        precisao = calcularPrecisaoExercicios totalLetras totalErros
-        estrelas = atribuirEstrelasLicao precisao 
+        precisao = calculaPrecisaoExercicios totalLetras totalErros
+        estrelas = atribuaEstrelasLicao precisao 
 
-    limparTela
+    limpaTela
     putStrLn "\n"
     putStrLn $ replicate 64 ' ' ++ "Sua precisão de acertos foi de: " ++ show precisao ++ "%"
     putStrLn $ replicate 64 ' ' ++ show (totalLetras - totalErros) ++ "/" ++ show totalLetras ++ " caracteres digitados corretamente\n"
@@ -88,8 +87,8 @@ avaliaLicao resultados = do
     putStrLn $ replicate 60 ' ' ++ "* Pressione Enter para voltar ao Menu de Lições *"
 
 formataLicoesConcluida :: [Licao] -> String
-formataLicoesConcluida (licao:[]) = colorirPalavra ((status licao) == "concluido") (Licao.id licao)
-formataLicoesConcluida (licao:licoes) = colorirPalavra ((status licao) == "concluido") (Licao.id licao) ++ ", " ++ formataLicoesConcluida licoes
+formataLicoesConcluida (licao:[]) = aplicaCorSucessoFalha ((status licao) == "concluido") (Licao.id licao)
+formataLicoesConcluida (licao:licoes) = aplicaCorSucessoFalha ((status licao) == "concluido") (Licao.id licao) ++ ", " ++ formataLicoesConcluida licoes
 
-exibirLicoesConcluida :: [Licao] -> String
-exibirLicoesConcluida licoes = "\n                                                    Concluídas: [" ++ formataLicoesConcluida licoes ++ "]"
+exibeLicoesConcluida :: [Licao] -> String
+exibeLicoesConcluida licoes = "\n                                                    Concluídas: [" ++ formataLicoesConcluida licoes ++ "]"

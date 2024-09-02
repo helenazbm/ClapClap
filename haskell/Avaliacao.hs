@@ -1,14 +1,13 @@
 module Avaliacao where
 
--- lições --
-contarLetrasExercicios :: [(Char, String)] -> Int
-contarLetrasExercicios [] = 0
-contarLetrasExercicios ((gabarito, cor):gabaritos) = 1 + contarLetrasExercicios gabaritos
+contaLetrasExercicios :: [(Char, String)] -> Int
+contaLetrasExercicios [] = 0
+contaLetrasExercicios ((gabarito, cor):gabaritos) = 1 + contaLetrasExercicios gabaritos
 
-contarErrosExercicios :: String -> [(Char, String)] -> Int
-contarErrosExercicios _ [] = 0
-contarErrosExercicios [] gabaritos = length gabaritos
-contarErrosExercicios entrada gabaritos =
+contaErrosExercicios :: String -> [(Char, String)] -> Int
+contaErrosExercicios _ [] = 0
+contaErrosExercicios [] gabaritos = length gabaritos
+contaErrosExercicios entrada gabaritos =
     let tamanhoEntrada = length entrada
         tamanhoGabarito = length gabaritos
         zipped = zip (take tamanhoEntrada (map fst gabaritos)) entrada
@@ -16,38 +15,37 @@ contarErrosExercicios entrada gabaritos =
            then tamanhoGabarito - tamanhoEntrada + sum [if e == g then 0 else 1 | (g, e) <- zipped]
            else sum [if e == g then 0 else 1 | (g, e) <- zipped]
 
-calcularPrecisaoExercicios :: Int -> Int -> Float
-calcularPrecisaoExercicios totalLetras totalErros =
+calculaPrecisaoExercicios :: Int -> Int -> Float
+calculaPrecisaoExercicios totalLetras totalErros =
     100.0 * fromIntegral (totalLetras - totalErros) / fromIntegral totalLetras
 
-atribuirEstrelasLicao :: Float -> Int
-atribuirEstrelasLicao precisao
+atribuaEstrelasLicao :: Float -> Int
+atribuaEstrelasLicao precisao
     | precisao < 20.0 = 0
     | precisao <= 60.0 = 1
     | precisao <= 90.0 = 2
     | otherwise = 3
 
--- desafios --
-contarPalavrasDesafio :: String -> Int
-contarPalavrasDesafio input = length (words input)
+contaPalavrasDesafio :: String -> Int
+contaPalavrasDesafio input = length (words input)
 
-contarPalavrasCorretas :: String -> String -> Int
-contarPalavrasCorretas fraseCorreta fraseDigitada =
+contaPalavrasCorretas :: String -> String -> Int
+contaPalavrasCorretas fraseCorreta fraseDigitada =
     let palavrasCorretas = words fraseCorreta
         palavrasDigitadas = words fraseDigitada
         palavrasCorretasDigitadas = zip palavrasCorretas palavrasDigitadas
         palavrasCorretasCorretas = filter (\(c, d) -> c == d) palavrasCorretasDigitadas
     in length palavrasCorretasCorretas
 
-calcularWpm :: Int -> Int -> Int
-calcularWpm tempo palavras = (palavras * 60) `div` tempo
+calculaWpm :: Int -> Int -> Int
+calculaWpm tempo palavras = (palavras * 60) `div` tempo
 
-calcularPrecisaoDesafio :: Int -> Int -> Float
-calcularPrecisaoDesafio palavrasDigitadas palavrasCorretas = 
+calculaPrecisaoDesafio :: Int -> Int -> Float
+calculaPrecisaoDesafio palavrasDigitadas palavrasCorretas = 
     (100.0 * fromIntegral palavrasCorretas) / fromIntegral palavrasDigitadas
 
-atribuirEstrelasDesafio :: Int -> Float -> Int
-atribuirEstrelasDesafio ppm precisao
+atribuaEstrelasDesafio :: Int -> Float -> Int
+atribuaEstrelasDesafio ppm precisao
     | precisao < 20.0 || ppm < 20 = 0
     | precisao <= 60.0 || ppm <= 30 = 1
     | precisao <= 90.0 || ppm <= 40 = 2

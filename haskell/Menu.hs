@@ -5,116 +5,116 @@ import Licao
 import Data.Char(toLower)
 import Controller (licoes)
 import Text.Read(readMaybe)
-import Sprites (exibirProgresso, formataRanking)
-import Util(limparTela, lerCaractere, coloreTexto)
-import Desafio (iniciarDesafio, Desafio (UmMinuto, DoisMinutos, TresMinutos), getRanking)
-import System.Posix.Internals (o_RDONLY)
 import System.Exit (exitSuccess)
+import Util(limpaTela, leCaractere)
+import System.Posix.Internals (o_RDONLY)
+import Sprites (exibeProgresso, formataRanking, aplicaCorInstrucao)
+import Desafio (iniciaDesafio, Desafio (UmMinuto, DoisMinutos, TresMinutos), getRanking)
 
 
-printMenu :: IO()
-printMenu = do
-    limparTela
+imprimeMenu :: IO()
+imprimeMenu = do
+    limpaTela
     menu <- readFile "../dados/arteTexto/menu.txt"
     putStrLn menu 
     opcaoSelecionada <- getLine
-    opcaoUsuario (map toLower opcaoSelecionada)
+    opcoesMenuPrincipal (map toLower opcaoSelecionada)
 
-opcaoUsuario :: String -> IO()
-opcaoUsuario o
-    | o == "l" = listarLicoes
-    | o == "d" = exibirDesafios
-    | o == "t" = exibirTutorial
-    | o == "s" = sair
-    | otherwise = printMenu
+opcoesMenuPrincipal :: String -> IO()
+opcoesMenuPrincipal o
+    | o == "l" = listaLicoes
+    | o == "d" = listaDesafios
+    | o == "t" = exibeTutorial
+    | o == "s" = sai
+    | otherwise = imprimeMenu
 
 
-listarLicoes :: IO ()
-listarLicoes = do
-    limparTela
+listaLicoes :: IO ()
+listaLicoes = do
+    limpaTela
 
     dadosLicoes <- getDadosLicoes
     let todasLicoes = licoes dadosLicoes
 
-    putStrLn (exibirProgresso (contarLicoesConcluidas todasLicoes))
-    putStrLn (exibirLicoesConcluida todasLicoes)
+    putStrLn (exibeProgresso (contaLicoesConcluidas todasLicoes))
+    putStrLn (exibeLicoesConcluida todasLicoes)
 
     licoes <- readFile "../dados/arteTexto/licoes.txt"
     putStrLn licoes
     comandoUsuario <- getLine
     if comandoUsuario == ""
-        then printMenu
+        then imprimeMenu
         else case readMaybe comandoUsuario of
-            Just n | n >= 1 && n <= 15 -> exibirLicao n todasLicoes
+            Just n | n >= 1 && n <= 15 -> exibeLicao n todasLicoes
             _ -> do
-                listarLicoes
+                listaLicoes
 
-exibirLicao :: Int -> [Licao] -> IO ()
-exibirLicao idLicao licoes = do
-    limparTela
+exibeLicao :: Int -> [Licao] -> IO ()
+exibeLicao idLicao licoes = do
+    limpaTela
     let licaoSelecionada = licoes !! (idLicao - 1)
     instrucaoLicao <- readFile (instrucao licaoSelecionada)
-    putStrLn $ coloreTexto instrucaoLicao
-    opcao <- lerCaractere
+    putStrLn $ aplicaCorInstrucao instrucaoLicao
+    opcao <- leCaractere
     if opcao == 'i' then do
-        limparTela
-        iniciarLicao licaoSelecionada
+        limpaTela
+        iniciaLicao licaoSelecionada
         setStatusLicao (show idLicao)
-        voltarMenuLicoes
+        voltaMenuLicoes
      else if opcao == '\n' then 
-        listarLicoes
+        listaLicoes
      else do
-        exibirLicao idLicao licoes
+        exibeLicao idLicao licoes
     
-exibirDesafios :: IO ()
-exibirDesafios = do
-    limparTela
+listaDesafios :: IO ()
+listaDesafios = do
+    limpaTela
     desafios <- readFile "../dados/arteTexto/desafios.txt"
     putStrLn desafios
     opcao <- getLine 
-    opcaoUsuarioDesafio (map toLower opcao)
-    voltarMenuDesafios
+    opcoesMenuDesafio (map toLower opcao)
+    voltaMenuDesafios
 
-opcaoUsuarioDesafio :: String-> IO ()
-opcaoUsuarioDesafio o
-    | o == "1" = iniciarDesafio UmMinuto
-    | o == "2" = iniciarDesafio DoisMinutos
-    | o == "3" = iniciarDesafio TresMinutos
-    | o == "r" = exibirRanking
-    | o == "" = printMenu
-    | otherwise = exibirDesafios
+opcoesMenuDesafio :: String-> IO ()
+opcoesMenuDesafio o
+    | o == "1" = iniciaDesafio UmMinuto
+    | o == "2" = iniciaDesafio DoisMinutos
+    | o == "3" = iniciaDesafio TresMinutos
+    | o == "r" = exibeRanking
+    | o == "" = imprimeMenu
+    | otherwise = listaDesafios
 
-exibirRanking :: IO ()
-exibirRanking = do
-    limparTela
+exibeRanking :: IO ()
+exibeRanking = do
+    limpaTela
     getRanking
-    voltarMenuDesafios
+    voltaMenuDesafios
 
-exibirTutorial :: IO ()
-exibirTutorial = do
-    limparTela
+exibeTutorial :: IO ()
+exibeTutorial = do
+    limpaTela
     tutorial <- readFile "../dados/arteTexto/tutorial.txt"
     putStrLn tutorial
-    voltarMenu
+    voltaMenuPrincipal
 
-sair :: IO()
-sair = do
-    limparTela
-    sair <- readFile "../dados/arteTexto/sair.txt"
-    putStrLn $ coloreTexto sair
+sai :: IO()
+sai = do
+    limpaTela
+    sai <- readFile "../dados/arteTexto/sai.txt"
+    putStrLn $ aplicaCorInstrucao sai
     exitSuccess
 
-voltarMenu :: IO()
-voltarMenu = do
+voltaMenuPrincipal :: IO()
+voltaMenuPrincipal = do
     _ <- getLine
-    printMenu
+    imprimeMenu
 
-voltarMenuLicoes :: IO()
-voltarMenuLicoes = do
+voltaMenuLicoes :: IO()
+voltaMenuLicoes = do
     _ <- getLine
-    listarLicoes
+    listaLicoes
 
-voltarMenuDesafios :: IO()
-voltarMenuDesafios = do
+voltaMenuDesafios :: IO()
+voltaMenuDesafios = do
     _ <- getLine
-    exibirDesafios
+    listaDesafios

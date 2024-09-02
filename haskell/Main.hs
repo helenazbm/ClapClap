@@ -1,7 +1,7 @@
-import Menu (printMenu)
+import Menu (imprimeMenu)
 
 
 main :: IO ()
 main = do
-    printMenu
+    imprimeMenu
 

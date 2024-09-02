@@ -3,8 +3,6 @@ module Controller where
 import Licao
 import Exercicio
 
-
------------ exercicios-----------
 ex1 :: Char -> String -> Exercicio
 ex1 char idLicao  = Exercicio "1" idLicao [(char, "default"),
     (char, "default"), (char, "default"), (char, "default"), (char, "default"),
@@ -49,7 +47,6 @@ ex7 (char1, char2, char3, char4) idLicao = Exercicio "7" idLicao [(char1, "defau
     (char2, "default"), (char2, "default"), (char3, "default"), (char4, "default"),
     (char4, "default")]
 
---------------lições------------
 licao1 :: [(String, String)] -> Licao
 licao1 dadosLicao = 
     Licao "1" [ex1 'j' "1", ex2 ('f', 'j') "1", ex3 (' ', 'j') "1", ex4 ('j', 'f', ' ') "1"]
@@ -151,5 +148,3 @@ licoes dadosLicao = [licao1 dadosLicao, licao2 dadosLicao, licao3 dadosLicao,
                     licao7 dadosLicao, licao8 dadosLicao, licao9 dadosLicao,
                     licao10 dadosLicao, licao11 dadosLicao, licao12 dadosLicao,
                     licao13 dadosLicao, licao14 dadosLicao, licao15 dadosLicao]
-
-------- desafios 
