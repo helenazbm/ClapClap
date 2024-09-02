@@ -240,14 +240,11 @@ formataLinhasTexto dados espaco =
     let sprites = map (\(char, cor) -> aplicarCor (getLetra char) cor) dados
     in (concatenaLinhas (map (\sprite -> lines sprite) sprites) 0 espaco)
 
-aplicaCorProgresso :: String -> String -> String
-aplicaCorProgresso cor conteudo = getCor cor ++ conteudo ++ getCor "default"
-
 preencheProgresso :: String -> Int -> String
 preencheProgresso cor total = 
     let totalBlocos = 45 -- número de "blocos" na barra de progresso
         blocosPreenchidos = total * 3
-    in aplicaCorProgresso cor (replicate blocosPreenchidos '▓') ++ replicate (45 - blocosPreenchidos) '░'
+    in aplicaCorConteudo cor (replicate blocosPreenchidos '▓') ++ replicate (45 - blocosPreenchidos) '░'
 
 getCorProgresso :: Int -> String
 getCorProgresso total

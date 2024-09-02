@@ -7,7 +7,6 @@ import Util (limpaTela, leCaractere, delay)
 import System.Directory (renameFile, removeFile)
 import Avaliacao (contaErrosExercicios, contaLetrasExercicios)
 
-
 data Exercicio = Exercicio {
     id :: String,
     idLicao :: String,
@@ -22,8 +21,6 @@ corrigeExercicio (en:entrada) ((exercicioCorreto, cor):exerciciosCorreto) =
     then [(exercicioCorreto, "verde")] ++ corrigeExercicio entrada exerciciosCorreto
     else [(exercicioCorreto, "vermelho")] ++ corrigeExercicio entrada exerciciosCorreto
 
-
--- Função para fazer um exercício específico
 iniciaExercicio :: Exercicio -> IO (Int, Int)
 iniciaExercicio ex = do
     let texto = formataLinhasTexto (exercicio ex) " "
