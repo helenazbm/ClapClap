@@ -16,11 +16,11 @@ data Exercicio = Exercicio {
 
 corrigeExercicio :: String -> [(Char, String)] -> [(Char, String)]
 corrigeExercicio entrada [] = []
-corrigeExercicio "" ((exercicioCorreto, cor):exerciciosCorreto) = [(exercicioCorreto, "vemelho")] ++ corrigeExercicio "" exerciciosCorreto
+corrigeExercicio "" ((exercicioCorreto, cor):exerciciosCorreto) = [(exercicioCorreto, "vermelho")] ++ corrigeExercicio "" exerciciosCorreto
 corrigeExercicio (en:entrada) ((exercicioCorreto, cor):exerciciosCorreto) =
     if en == exercicioCorreto
     then [(exercicioCorreto, "verde")] ++ corrigeExercicio entrada exerciciosCorreto
-    else [(exercicioCorreto, "vemelho")] ++ corrigeExercicio entrada exerciciosCorreto
+    else [(exercicioCorreto, "vermelho")] ++ corrigeExercicio entrada exerciciosCorreto
 
 
 -- Função para fazer um exercício específico

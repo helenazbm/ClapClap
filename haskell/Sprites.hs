@@ -191,7 +191,7 @@ getLetra 'ç' = unlines [
     ]
 
 getCor :: String -> String
-getCor "vemelho" = "\ESC[31m"
+getCor "vermelho" = "\ESC[31m"
 getCor "verde" = "\ESC[32m"
 getCor "amarelo" = "\ESC[33m"
 getCor "azul" = "\ESC[34m"
@@ -254,7 +254,7 @@ getCorProgresso total
   | total == 15 = "verde"
   | total >= 10 = "amarelo"
   | total >= 5 = "laranja"
-  | otherwise = "vemelho" 
+  | otherwise = "vermelho" 
 
 exibeProgresso :: Int -> String
 exibeProgresso total = "                                                    Progresso: ["
@@ -264,7 +264,7 @@ exibeProgresso total = "                                                    Prog
 
 aplicaCorSucessoFalha :: Bool -> String -> String
 aplicaCorSucessoFalha True palavra = aplicaCorConteudo "verde" palavra
-aplicaCorSucessoFalha False palavra = aplicaCorConteudo "vemelho" palavra
+aplicaCorSucessoFalha False palavra = aplicaCorConteudo "vermelho" palavra
 
 ajustaNome :: String -> String
 ajustaNome label =
