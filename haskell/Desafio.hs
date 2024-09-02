@@ -109,10 +109,10 @@ avaliaDesafio desafio frase string = do
     putStrLn $ replicate 64 ' ' ++ show numPalavrasCorretas ++ "/" ++ show numPalavras ++ " palavras digitadas corretamente.\n"
 
     desafioConcluido <- case estrelas of
-        0 -> readFile "../dados/avaliacoes/zeroEstrela.txt"
-        1 -> readFile "../dados/avaliacoes/desafio/umaEstrela.txt"
-        2 -> readFile "../dados/avaliacoes/duasEstrelas.txt"
-        3 -> readFile "../dados/avaliacoes/desafio/tresEstrelas.txt"
+        0 -> readFile "../dados/arteTxt/avaliacoes/zeroEstrela.txt"
+        1 -> readFile "../dados/arteTxt/avaliacoes/desafio/umaEstrela.txt"
+        2 -> readFile "../dados/arteTxt/avaliacoes/duasEstrelas.txt"
+        3 -> readFile "../dados/arteTxt/avaliacoes/desafio/tresEstrelas.txt"
 
     putStrLn desafioConcluido
     putStrLn $ replicate 66 ' ' ++ "* Pressione Enter para ver o ranking *" 
