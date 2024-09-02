@@ -38,7 +38,7 @@ frases =
     "\no sistema binário é a base da computação moderna, utilizando apenas dois dígitos, 0 e 1, para representar todas as informações. cada dígito binário é chamado de bit, e conjuntos de bits são usados para representar dados mais complexos. por exemplo, uma sequência de 8 bits pode representar um caractere de texto, como a letra a. o sistema binário é usado porque é simples e se adapta bem aos circuitos eletrônicos dos computadores, onde os sinais elétricos podem ser facilmente representados como ligados ou desligados. apesar de sua simplicidade, o sistema binário é extremamente poderoso e capaz de representar qualquer tipo de dado digital, desde números e textos até imagens e sons. a capacidade de combinar e manipular bits de maneira eficiente é o que permite que os computadores realizem uma ampla gama de tarefas.\n",
     "\na história da computação é uma jornada fascinante que começou com as primeiras ferramentas para cálculos simples e evoluiu para os poderosos computadores que usamos hoje. as primeiras máquinas de calcular mecânicas foram desenvolvidas para ajudar com operações matemáticas básicas. com o tempo, as calculadoras evoluíram para computadores eletrônicos, que usavam tubos de vácuo para processar informações. o advento dos transistores e circuitos integrados permitiu a criação de computadores menores e mais acessíveis. pioneiros como charles babbage e alan turing foram fundamentais no desenvolvimento dos conceitos básicos da computação, incluindo a ideia de uma máquina programável e o conceito de algoritmos. com o avanço da tecnologia, os computadores se tornaram uma parte essencial da vida cotidiana, influenciando tudo, desde a maneira como trabalhamos até a forma como nos comunicamos e nos divertimos. hoje, os computadores são indispensáveis para a sociedade moderna e continuam a evoluir rapidamente.\n",
     "\nalan turing foi um matemático e cientista da computação britânico, considerado um dos pais da ciência da computação moderna. ele é mais conhecido por desenvolver o conceito de uma máquina teórica, agora chamada de máquina de turing, que ajudou a definir o que é computação e quais problemas podem ser resolvidos por um computador. turing também desempenhou um papel crucial durante a segunda guerra mundial ao decifrar códigos criptografados usados pelos nazistas, o que ajudou a encurtar a guerra. seu trabalho na teoria da computação e na inteligência artificial influenciou profundamente o desenvolvimento de computadores e algoritmos. embora sua vida tenha sido marcada por desafios pessoais e profissionais, o legado de alan turing continua a impactar a tecnologia e a ciência da computação até hoje. seu trabalho estabeleceu as bases para muitas das tecnologias que usamos e dependemos no mundo moderno.\n",
-    "\nestruturas de dados são maneiras de organizar e armazenar informações para que sejam fáceis de acessar e modificar. imagine uma caixa de ferramentas com compartimentos para diferentes tipos de ferramentas. da mesma forma, as estruturas de dados ajudam a organizar informações em um computador. a lista é uma estrutura que armazena uma sequência de itens, permitindo adicionar, remover e acessar qualquer item facilmente, como uma lista de compras. a pilha funciona como uma pilha de pratos onde você só pode adicionar ou remover itens do topo, ideal para quando a ordem de entrada e saída é importante. a fila é semelhante a uma fila de pessoas, onde o primeiro a entrar é o primeiro a sair, útil para processos onde a ordem é crucial, como em sistemas de impressão. as árvores são estruturas hierárquicas, como uma árvore genealógica, organizando dados em um formato de ramificação que facilita a busca e a organização. as tabelas hash ajudam a encontrar informações rapidamente, funcionando como um índice em um livro, onde um código é usado para acessar diretamente a informação desejada. cada tipo de estrutura de dados tem suas vantagens e desvantagens, e a escolha certa depende da tarefa específica. compreender essas estruturas é essencial para criar programas que sejam eficientes e funcionem bem, economizando tempo e recursos no processamento de dados.\n",
+    "\nestruturas de dados são maneiras de organizar e armazenar informações para que sejam fáceis de acessar e modificar. imagine uma caixa de ferramentas com compartimentos para diferentes tipos de ferramentas. da mesma forma, as estruturas de dados ajudam a organizar informações em um computador. a lista é uma estrutura que armazena uma sequência de itens, permitindo adicionar, remover e acessar qualquer item facilmente, como uma lista de compras. a pilha funciona como uma pilha de pratos onde você só pode adicionar ou remover itens do topo, ideal para quando a ordem de entrada e saída é importante. a fila é semelhante a uma fila de pessoas, onde o primeiro a entrar é o primeiro a sair, útil para processos onde a ordem é crucial, como em sistemas de impressão. as árvores são estruturas hierárquicas, como uma árvore genealógica, organizando dados em um formato de ramificação que facilita a busca e a organização. as /tabelas/tabelas hash ajudam a encontrar informações rapidamente, funcionando como um índice em um livro, onde um código é usado para acessar diretamente a informação desejada. cada tipo de estrutura de dados tem suas vantagens e desvantagens, e a escolha certa depende da tarefa específica. compreender essas estruturas é essencial para criar programas que sejam eficientes e funcionem bem, economizando tempo e recursos no processamento de dados.\n",
     "\na orientação a objetos é um estilo de programação que usa objetos para organizar o código. imagine objetos como peças de um quebra-cabeça, onde cada peça tem características e comportamentos específicos. por exemplo, em um sistema de gerenciamento de biblioteca, um objeto pode representar um livro, com atributos como título e autor, e métodos como emprestar e devolver. esses objetos são criados a partir de classes, que são como moldes que definem as características e comportamentos comuns. a encapsulação é um princípio importante, onde cada objeto é responsável por suas próprias informações e ações, tornando o código mais modular e fácil de entender. a herança permite criar novas classes baseadas em classes existentes, compartilhando características e comportamentos, enquanto o polimorfismo permite que objetos diferentes usem a mesma interface de forma diferente, facilitando a extensão e a manutenção do código. a orientação a objetos ajuda a criar software mais organizado e flexível, tornando o desenvolvimento mais eficiente e a manutenção mais simples, permitindo que desenvolvedores construam sistemas complexos de forma mais gerenciável.\n"
     ]
 
@@ -75,7 +75,7 @@ executaDesafio desafio tempoMVar = do
             case resultado of
                 Left _ -> do
                     limpaTela
-                    tempoEsgotado <- readFile "../dados/arteTexto/tempo.txt"
+                    tempoEsgotado <- readFile "../dados/arteTxt/tempo.txt"
                     putStrLn tempoEsgotado
                     putStrLn "Pressione Enter para ver seu resultado."
                     string <- getLine
@@ -129,7 +129,7 @@ verificaRecorde tempo wpmUsuario = do
     
     if wpmUsuario > wpmRecorde then do
         limpaTela
-        arteRecorde <- readFile "../dados/arteTexto/recordRanking.txt"
+        arteRecorde <- readFile "../dados/arteTxt/recordRanking.txt"
         putStrLn $ aplicaCorInstrucao arteRecorde
         nome <- getLine
         setDadosRanking id nome (show wpmUsuario)
@@ -144,7 +144,7 @@ getRanking = do
 
 getDadosRanking :: IO [(String, String, String)]
 getDadosRanking = do
-    conteudo <- readFile "../dados/tabela_ranking.txt"
+    conteudo <- readFile "../dados//tabelas/tabela_ranking.txt"
     let linhas = tail $ map (splitOn ";") (lines conteudo)
     return $ map (\[id, nome, wpm] -> (id, nome, wpm)) linhas
 
@@ -155,7 +155,7 @@ filtraRecorde idFiltro = do
 
 setDadosRanking :: String -> String -> String -> IO()
 setDadosRanking id nome wpm = do
-    let filePath = "../dados/tabela_ranking.txt"
+    let filePath = "../dados//tabelas/tabela_ranking.txt"
         tempFilePath = filePath ++ ".tmp"
     
     conteudo <- readFile filePath

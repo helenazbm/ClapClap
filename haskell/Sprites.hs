@@ -288,7 +288,7 @@ formataLinhasRanking (id1, nome1, wpm1) (id2, nome2, wpm2) (id3, nome3, wpm3) =
 
 formataRanking :: (String, String, String) -> (String, String, String) -> (String, String, String) -> IO()
 formataRanking linha1 linha2 linha3 = do
-    arteRanking <- readFile "../dados/arteTexto/ranking.txt"
+    arteRanking <- readFile "../dados/arteTxt/ranking.txt"
     let cabecalho = aplicaCorConteudo "azul" "Desafio --------------- Nome ---------------- WPM"
 
     putStrLn arteRanking
