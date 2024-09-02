@@ -88,6 +88,8 @@ executaDesafio desafio tempoMVar = do
                 Right input -> do
                     limpaTela
                     putStrLn "O tempo não esgotou, reinicie o desafio!"
+                    putStrLn "Pressione Enter para ver o Ranking e voltar ao Menu de Desafios."
+                    _ <- getLine
                     getRanking
     loop
 
