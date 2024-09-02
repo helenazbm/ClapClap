@@ -1,8 +1,8 @@
 module Sprites where
 
 import Text.Printf (printf)
-
-
+import Data.List (intercalate)
+import Data.List.Split (splitOn)
 
 getLetra:: Char -> String
 getLetra 'a' = unlines [
@@ -191,60 +191,80 @@ getLetra 'ç' = unlines [
     ]
 
 getCor :: String -> String
-getCor "red" = "\ESC[31m"
-getCor "green" = "\ESC[32m"
-getCor "yellow" = "\ESC[33m"
-getCor "blue" = "\ESC[34m"
-getCor "orange" = "\ESC[38;5;208m"
+getCor "vemelho" = "\ESC[31m"
+getCor "verde" = "\ESC[32m"
+getCor "amarelo" = "\ESC[33m"
+getCor "azul" = "\ESC[34m"
+getCor "laranja" = "\ESC[38;5;208m"
+getCor "magenta" = "\ESC[35m"
+getCor "ciano" = "\ESC[36m"
 getCor "default" = "\ESC[0m"
 
-aplicarCorConteudo :: String -> String -> String
-aplicarCorConteudo cor conteudo = getCor cor ++ conteudo ++ getCor "default"
+aplicaCorInstrucao :: String -> String
+aplicaCorInstrucao semCor = 
+    let semCorTags = substituiTags semCor
+        linhasColoridos = lines semCorTags
+    in unlines linhasColoridos
+
+substituiTags :: String -> String
+substituiTags = substituiTag "[AZUL]" "azul"
+            . substituiTag "[DEFAULT]" "default"
+            . substituiTag "[VERMELHO]" "vermelho"
+            . substituiTag "[VERDE]" "verde"
+            . substituiTag "[AMARELO]" "amarelo"
+            . substituiTag "[MAGENTA]" "magenta"
+            . substituiTag "[CIANO]" "ciano"
+
+substituiTag :: String -> String -> String -> String
+substituiTag tag cor = intercalate (getCor cor) . splitOn tag
+
+aplicaCorConteudo :: String -> String -> String
+aplicaCorConteudo cor conteudo = getCor cor ++ conteudo ++ getCor "default"
 
 aplicarCor :: [Char] -> String -> String
 aplicarCor [] cor = ""
-aplicarCor (head : tail) cor = aplicarCorConteudo cor [head] ++ aplicarCor tail cor
+aplicarCor (head : tail) cor = aplicaCorConteudo cor [head] ++ aplicarCor tail cor
 
-concatLinha :: [[String]] -> Int -> String -> String
-concatLinha (h: []) numeroLinha espaco = h !! numeroLinha
-concatLinha (h: t) numeroLinha espaco = h !! numeroLinha ++ espaco ++ concatLinha t numeroLinha espaco
+concatenaLinha :: [[String]] -> Int -> String -> String
+concatenaLinha (h: []) numeroLinha espaco = h !! numeroLinha
+concatenaLinha (h: t) numeroLinha espaco = h !! numeroLinha ++ espaco ++ concatenaLinha t numeroLinha espaco
 
-concatLinhas:: [[String]] -> Int -> String -> [String]
-concatLinhas sprites numeroLinha espaco
-  | numeroLinha < length (sprites !! 0) = [concatLinha sprites numeroLinha espaco] ++ concatLinhas sprites (numeroLinha + 1) espaco
+concatenaLinhas:: [[String]] -> Int -> String -> [String]
+concatenaLinhas sprites numeroLinha espaco
+  | numeroLinha < length (sprites !! 0) = [concatenaLinha sprites numeroLinha espaco] ++ concatenaLinhas sprites (numeroLinha + 1) espaco
   | otherwise = []
 
-formatarLinhasTexto:: [(Char, String)] -> String -> [String]
-formatarLinhasTexto [] spacer = []
-formatarLinhasTexto dados espaco =
+formataLinhasTexto:: [(Char, String)] -> String -> [String]
+formataLinhasTexto [] spacer = []
+formataLinhasTexto dados espaco =
     let sprites = map (\(char, cor) -> aplicarCor (getLetra char) cor) dados
-    in (concatLinhas (map (\sprite -> lines sprite) sprites) 0 espaco)
+    in (concatenaLinhas (map (\sprite -> lines sprite) sprites) 0 espaco)
 
-aplicarCorProgresso :: String -> String -> String
-aplicarCorProgresso cor conteudo = getCor cor ++ conteudo ++ getCor "default"
+aplicaCorProgresso :: String -> String -> String
+aplicaCorProgresso cor conteudo = getCor cor ++ conteudo ++ getCor "default"
 
-preencherProgresso :: String -> Int -> String
-preencherProgresso cor total = 
+preencheProgresso :: String -> Int -> String
+preencheProgresso cor total = 
     let totalBlocos = 45 -- número de "blocos" na barra de progresso
         blocosPreenchidos = total * 3
-    in aplicarCorProgresso cor (replicate blocosPreenchidos '▓') ++ replicate (45 - blocosPreenchidos) '░'
+    in aplicaCorProgresso cor (replicate blocosPreenchidos '▓') ++ replicate (45 - blocosPreenchidos) '░'
 
 getCorProgresso :: Int -> String
 getCorProgresso total
-  | total == 15 = "green"
-  | total >= 10 = "yellow"
-  | total >= 5 = "orange"
-  | otherwise = "red" 
+  | total == 15 = "verde"
+  | total >= 10 = "amarelo"
+  | total >= 5 = "laranja"
+  | otherwise = "vemelho" 
 
-exibirProgresso :: Int -> String
-exibirProgresso total = "                                                    Progresso: ["
-    ++ preencherProgresso (getCorProgresso total) total ++ "] " ++ printf "%.1f" percentual ++ "%"
+exibeProgresso :: Int -> String
+exibeProgresso total = "                                                    Progresso: ["
+    ++ preencheProgresso (getCorProgresso total) total ++ "] " ++ printf "%.1f" percentual ++ "%"
   where 
     percentual = (fromIntegral total / 15 * 100) :: Double
 
-colorirPalavra :: Bool -> String -> String
-colorirPalavra True palavra = getCor "green" ++ palavra ++ getCor "default"
-colorirPalavra False palavra = getCor "red" ++ palavra ++ getCor "default"
+aplicaCorSucessoFalha :: Bool -> String -> String
+aplicaCorSucessoFalha True palavra = aplicaCorConteudo "verde" palavra
+aplicaCorSucessoFalha False palavra = aplicaCorConteudo "vemelho" palavra
 
 ajustaNome :: String -> String
 ajustaNome label =
@@ -254,20 +274,23 @@ ajustaWpm :: String -> String
 ajustaWpm wpm =
     if length wpm > 3 then take 3 wpm else replicate (3 - length wpm) ' ' ++ wpm
 
-formataRanking :: String -> String -> String -> String -> String -> String -> String -> String -> String -> IO()
-formataRanking id1 nome1 wpm1 id2 nome2 wpm2 id5 nome5 wpm5 = do
+formataLinhaRanking :: String -> String -> String -> String
+formataLinhaRanking id nome wpm = id ++ " min" ++ "   --------------- " ++ ajustaNome nome ++ " --------------- " ++ ajustaWpm wpm
+
+formataLinhasRanking :: (String, String, String) -> (String, String, String) -> (String, String, String) -> String
+formataLinhasRanking (id1, nome1, wpm1) (id2, nome2, wpm2) (id3, nome3, wpm3) =
+    "                                                           " ++ aplicaCorConteudo "azul" "_____________________________________________________\n\n" ++
+    "                                                             " ++ aplicaCorConteudo "azul" "Desafio --------------- Nome ---------------- WPM\n" ++ 
+    "                                                             " ++ formataLinhaRanking id1 nome1 wpm1 ++ "\n" ++
+    "                                                             " ++ formataLinhaRanking id2 nome2 wpm2 ++ "\n" ++
+    "                                                             " ++ formataLinhaRanking id3 nome3 wpm3 ++ "\n" ++
+    "                                                           " ++ aplicaCorConteudo "azul" "_____________________________________________________" ++ "\n"
+
+formataRanking :: (String, String, String) -> (String, String, String) -> (String, String, String) -> IO()
+formataRanking linha1 linha2 linha3 = do
     arteRanking <- readFile "../dados/arteTexto/ranking.txt"
-    let cabecalho = aplicarCorConteudo "blue" "Desafio --------------- Nome ---------------- WPM"
-        linha1 = id1 ++ " min" ++ "   --------------- " ++ ajustaNome nome1 ++ " --------------- " ++ ajustaWpm wpm1
-        linha2 = id2 ++ " min" ++ "   --------------- " ++ ajustaNome nome2 ++ " --------------- " ++ ajustaWpm wpm2
-        linha3 = id5 ++ " min" ++ "   --------------- " ++ ajustaNome nome5 ++ " --------------- " ++ ajustaWpm wpm5
+    let cabecalho = aplicaCorConteudo "azul" "Desafio --------------- Nome ---------------- WPM"
 
     putStrLn arteRanking
-    putStrLn "\n"
-    putStrLn ("                                                           " ++ aplicarCorConteudo "blue" "_____________________________________________________" ++ "\n")
-    putStrLn ("                                                             " ++ cabecalho)
-    putStrLn ("                                                             " ++ linha1)
-    putStrLn ("                                                             " ++ linha2)
-    putStrLn ("                                                             " ++ linha3)
-    putStrLn ("                                                           " ++ aplicarCorConteudo "blue" "_____________________________________________________" ++ "\n")
+    putStr (formataLinhasRanking linha1 linha2 linha3)
     putStrLn "\n\n\n                                                           * Pressione Enter para voltar ao Menu de Desafios *"

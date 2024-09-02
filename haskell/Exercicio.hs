@@ -2,10 +2,10 @@ module Exercicio where
 
 import Data.List (intercalate)
 import Data.List.Split (splitOn)
-import Util (limparTela, lerCaractere, delay)
-import Avaliacao (contarErrosExercicios, contarLetrasExercicios)
+import Sprites (formataLinhasTexto)
+import Util (limpaTela, leCaractere, delay)
 import System.Directory (renameFile, removeFile)
-import Sprites (formatarLinhasTexto)
+import Avaliacao (contaErrosExercicios, contaLetrasExercicios)
 
 
 data Exercicio = Exercicio {
@@ -16,24 +16,24 @@ data Exercicio = Exercicio {
 
 corrigeExercicio :: String -> [(Char, String)] -> [(Char, String)]
 corrigeExercicio entrada [] = []
-corrigeExercicio "" ((exercicioCorreto, cor):exerciciosCorreto) = [(exercicioCorreto, "red")] ++ corrigeExercicio "" exerciciosCorreto
+corrigeExercicio "" ((exercicioCorreto, cor):exerciciosCorreto) = [(exercicioCorreto, "vemelho")] ++ corrigeExercicio "" exerciciosCorreto
 corrigeExercicio (en:entrada) ((exercicioCorreto, cor):exerciciosCorreto) =
     if en == exercicioCorreto
-    then [(exercicioCorreto, "green")] ++ corrigeExercicio entrada exerciciosCorreto
-    else [(exercicioCorreto, "red")] ++ corrigeExercicio entrada exerciciosCorreto
+    then [(exercicioCorreto, "verde")] ++ corrigeExercicio entrada exerciciosCorreto
+    else [(exercicioCorreto, "vemelho")] ++ corrigeExercicio entrada exerciciosCorreto
 
 
 -- Função para fazer um exercício específico
-iniciarExercicio :: Exercicio -> IO (Int, Int)
-iniciarExercicio ex = do
-    let texto = formatarLinhasTexto (exercicio ex) " "
+iniciaExercicio :: Exercicio -> IO (Int, Int)
+iniciaExercicio ex = do
+    let texto = formataLinhasTexto (exercicio ex) " "
     putStrLn ("Exercício " ++ show (Exercicio.id ex) ++ "\n")
     mapM_ putStrLn texto
     
     entrada <- getLine
-    let textoCorrigido = formatarLinhasTexto (corrigeExercicio entrada (exercicio ex)) " "
-        erros = contarErrosExercicios entrada (exercicio ex)
-        letras = contarLetrasExercicios (exercicio ex)
+    let textoCorrigido = formataLinhasTexto (corrigeExercicio entrada (exercicio ex)) " "
+        erros = contaErrosExercicios entrada (exercicio ex)
+        letras = contaLetrasExercicios (exercicio ex)
 
     mapM_ putStrLn textoCorrigido
     delay

@@ -1,20 +1,18 @@
-{-# LANGUAGE OverloadedStrings #-}
-
 module Desafio where
 
 import Text.Printf
+import Util (limpaTela)
 import Control.Monad (when)
 import Data.List (intercalate)
 import Data.List.Split (splitOn)
 import System.Random (randomRIO)
 import System.IO (hFlush, stdout)
-import Util (limparTela, coloreTexto)
 import Control.Concurrent.Async (race)
 import Control.Concurrent (threadDelay, forkIO)
 import System.Directory (renameFile, removeFile)
-import Sprites (getCor, colorirPalavra, formataRanking)
+import Sprites (getCor, aplicaCorInstrucao, aplicaCorSucessoFalha, formataRanking)
 import Control.Concurrent.MVar (MVar, newEmptyMVar, putMVar, takeMVar, tryTakeMVar, isEmptyMVar)
-import Avaliacao (contarPalavrasDesafio, contarPalavrasCorretas, calcularWpm, calcularPrecisaoDesafio, atribuirEstrelasDesafio)
+import Avaliacao (contaPalavrasDesafio, contaPalavrasCorretas, calculaWpm, calculaPrecisaoDesafio, atribuaEstrelasDesafio)
 
 data Desafio = UmMinuto | DoisMinutos | TresMinutos
 
@@ -49,25 +47,25 @@ fraseAleatoria = do
     index <- randomRIO (0, length frases - 1)
     return (frases !! index)
 
-contarTempo :: Int -> MVar () -> IO ()
-contarTempo tempo tempoMVar = do
+contaTempo :: Int -> MVar () -> IO ()
+contaTempo tempo tempoMVar = do
     threadDelay (tempo * 1000000)  
     putMVar tempoMVar ()  
 
-compararPalavras :: [String] -> [String] -> [String]
-compararPalavras [] [] = []
-compararPalavras (c:cs) (d:ds) = colorirPalavra (c == d) c : compararPalavras cs ds
-compararPalavras (c:cs) [] = colorirPalavra False c : compararPalavras cs []
-compararPalavras [] (d:ds) = colorirPalavra False "" : compararPalavras [] ds
+comparaPalavras :: [String] -> [String] -> [String]
+comparaPalavras [] [] = []
+comparaPalavras (c:cs) (d:ds) = aplicaCorSucessoFalha (c == d) c : comparaPalavras cs ds
+comparaPalavras (c:cs) [] = aplicaCorSucessoFalha False c : comparaPalavras cs []
+comparaPalavras [] (d:ds) = aplicaCorSucessoFalha False "" : comparaPalavras [] ds
 
-compararFrases :: String -> String -> String
-compararFrases fraseCorreta fraseDigitada = unwords (compararPalavras palavrasCorretas palavrasDigitadas)
+comparaTexto :: String -> String -> String
+comparaTexto fraseCorreta fraseDigitada = unwords (comparaPalavras palavrasCorretas palavrasDigitadas)
   where
     palavrasCorretas = words fraseCorreta
     palavrasDigitadas = words fraseDigitada
 
-executarDesafio :: Desafio -> MVar () -> IO ()
-executarDesafio desafio tempoMVar = do
+executaDesafio :: Desafio -> MVar () -> IO ()
+executaDesafio desafio tempoMVar = do
     let loop = do
             frase <- fraseAleatoria
             putStrLn frase
@@ -76,35 +74,35 @@ executarDesafio desafio tempoMVar = do
             resultado <- race (takeMVar tempoMVar) getLine
             case resultado of
                 Left _ -> do
-                    limparTela
+                    limpaTela
                     tempoEsgotado <- readFile "../dados/arteTexto/tempo.txt"
                     putStrLn tempoEsgotado
                     putStrLn "Pressione Enter para ver seu resultado."
                     string <- getLine
-                    let resultadoFrase = compararFrases frase string
+                    let resultadoFrase = comparaTexto frase string
                     putStrLn resultadoFrase
                     putStrLn "\nFim do desafio! Pressione Enter para ver a sua velocidade e precisão."
                     _ <- getLine
                     avaliaDesafio desafio frase string
 
                 Right input -> do
-                    limparTela
+                    limpaTela
                     putStrLn "O tempo não esgotou, reinicie o desafio!"
                     getRanking
     loop
 
 avaliaDesafio :: Desafio -> String -> String -> IO()
 avaliaDesafio desafio frase string = do
-    let numPalavras = contarPalavrasDesafio string
-        numPalavrasCorretas = contarPalavrasCorretas frase string
-        wpm = calcularWpm (tempoDesafio desafio) numPalavrasCorretas
-        wpmTotalPalavras = calcularWpm (tempoDesafio desafio) numPalavras
-        precisao = calcularPrecisaoDesafio numPalavras numPalavrasCorretas
-        estrelas = atribuirEstrelasDesafio wpm precisao
-        tempo = tempoEmMin (tempoDesafio desafio)
+    let numPalavras = contaPalavrasDesafio string
+        numPalavrasCorretas = contaPalavrasCorretas frase string
+        wpm = calculaWpm (tempoDesafio desafio) numPalavrasCorretas
+        wpmTotalPalavras = calculaWpm (tempoDesafio desafio) numPalavras
+        precisao = calculaPrecisaoDesafio numPalavras numPalavrasCorretas
+        estrelas = atribuaEstrelasDesafio wpm precisao
+        tempo = converteParaMin (tempoDesafio desafio)
         precisaoFormatada = printf "%.2f" precisao
     
-    limparTela
+    limpaTela
     putStrLn "\n"
     putStrLn $ replicate 68 ' ' ++ "Você fez o desafio de " ++ show tempo  ++ " min."
     putStrLn $ replicate 56 ' ' ++ "Sua velocidade foi de: " ++ show wpm ++ " wpm com " ++ precisaoFormatada ++ "% de precisão."
@@ -130,9 +128,9 @@ verificaRecorde tempo wpmUsuario = do
         wpmRecorde = read wpmStr :: Int
     
     if wpmUsuario > wpmRecorde then do
-        limparTela
+        limpaTela
         arteRecorde <- readFile "../dados/arteTexto/recordRanking.txt"
-        putStrLn $ coloreTexto arteRecorde
+        putStrLn $ aplicaCorInstrucao arteRecorde
         nome <- getLine
         setDadosRanking id nome (show wpmUsuario)
     else putStr ""
@@ -140,9 +138,9 @@ verificaRecorde tempo wpmUsuario = do
 getRanking :: IO()
 getRanking = do
     dadosRanking <- getDadosRanking
-    let (id1, nome1, wpm1) : (id2, nome2, wpm2) : (id3, nome3, wpm3) : _ = dadosRanking
-    limparTela
-    formataRanking id1 nome1 wpm1 id2 nome2 wpm2 id3 nome3 wpm3
+    let linha1 : linha2 : linha3 : _ = dadosRanking
+    limpaTela
+    formataRanking linha1 linha2 linha3
 
 getDadosRanking :: IO [(String, String, String)]
 getDadosRanking = do
@@ -162,29 +160,29 @@ setDadosRanking id nome wpm = do
     
     conteudo <- readFile filePath
     let linhas = lines conteudo
-        linhasProcessadas = map (\linha -> atualizarLinha id nome wpm linha) linhas
+        linhasProcessadas = map (\linha -> atualizaLinha id nome wpm linha) linhas
     
     writeFile tempFilePath (unlines linhasProcessadas)
 
     renameFile tempFilePath filePath
 
-atualizarLinha :: String -> String -> String -> String -> String
-atualizarLinha id nome wpm linha =
+atualizaLinha :: String -> String -> String -> String -> String
+atualizaLinha id nome wpm linha =
     let [idRecorde, nomeRecorde, wpmRecorde] = splitOn ";" linha
     in if idRecorde == id
        then intercalate ";" [id, nome, wpm]
        else linha
 
-iniciarDesafio :: Desafio -> IO ()
-iniciarDesafio desafio = do
-    limparTela
+iniciaDesafio :: Desafio -> IO ()
+iniciaDesafio desafio = do
+    limpaTela
     let tempo = tempoDesafio desafio
     putStrLn "Prepare-se para desafio!\n"
     putStrLn $ "Você terá " ++ show tempo ++ " segundos para digitar o texto abaixo."
     threadDelay 2000000
     tempoMVar <- newEmptyMVar
-    _ <- forkIO (contarTempo tempo tempoMVar)
-    executarDesafio desafio tempoMVar
+    _ <- forkIO (contaTempo tempo tempoMVar)
+    executaDesafio desafio tempoMVar
 
-tempoEmMin :: Int -> Int
-tempoEmMin tempo = tempo `div` 60
+converteParaMin :: Int -> Int
+converteParaMin tempo = tempo `div` 60
