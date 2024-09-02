@@ -1,4 +1,4 @@
-# ClapClap
+# ClapClap!
 
 ## Conteúdos
 - [Descrição](#descrição)
@@ -37,8 +37,8 @@ Se você está pronto para testar sua velocidade e precisão em um nível mais a
 
 ## Equipe
 - [Gustavo Farrant](https://github.com/GustavoFarrant)
-- [Lucas André](https://github.com/lucsa-a)
-- [Maria Fernanda](https://github.com/MFernandaRicarte)
-- [Maria Helena](https://github.com/helenazbm)
+- [Lucas André Monty](https://github.com/lucsa-a)
+- [Maria Fernanda Ricarte](https://github.com/MFernandaRicarte)
+- [Maria Helena Barros](https://github.com/helenazbm)
 - [Márcia Thaís](https://github.com/marseathais)
 - [Rayanne Bento](https://github.com/rayanne-on)
