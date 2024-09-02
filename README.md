@@ -37,8 +37,8 @@ Se você está pronto para testar sua velocidade e precisão em um nível mais a
 
 ## Equipe
 - [Gustavo Farrant](https://github.com/GustavoFarrant)
-- [Lucas André Monty](https://github.com/lucsa-a)
+- [Lucas André Monteiro](https://github.com/lucsa-a)
 - [Maria Fernanda Ricarte](https://github.com/MFernandaRicarte)
 - [Maria Helena Barros](https://github.com/helenazbm)
-- [Márcia Thaís](https://github.com/marseathais)
+- [Márcia Thaís Aires](https://github.com/marseathais)
 - [Rayanne Bento](https://github.com/rayanne-on)
