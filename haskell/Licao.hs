@@ -65,7 +65,6 @@ iniciaLicao licao = do
             return erros) exs
     avaliaLicao resultados
 
-
 avaliaLicao :: [(Int, Int)] -> IO ()
 avaliaLicao resultados = do
     let totalErros = sum $ map fst resultados

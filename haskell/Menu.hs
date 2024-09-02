@@ -1,4 +1,3 @@
-{-# LANGUAGE BlockArguments #-}
 module Menu where
 
 import Licao
@@ -10,7 +9,6 @@ import Util(limpaTela, leCaractere)
 import System.Posix.Internals (o_RDONLY)
 import Sprites (exibeProgresso, formataRanking, aplicaCorInstrucao)
 import Desafio (iniciaDesafio, Desafio (UmMinuto, DoisMinutos, TresMinutos), getRanking)
-
 
 imprimeMenu :: IO()
 imprimeMenu = do
@@ -27,7 +25,6 @@ opcoesMenuPrincipal o
     | o == "t" = exibeTutorial
     | o == "s" = sai
     | otherwise = imprimeMenu
-
 
 listaLicoes :: IO ()
 listaLicoes = do
