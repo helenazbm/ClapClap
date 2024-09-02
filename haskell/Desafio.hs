@@ -106,7 +106,7 @@ avaliaDesafio desafio frase string = do
     putStrLn "\n"
     putStrLn $ replicate 68 ' ' ++ "Você fez o desafio de " ++ show tempo  ++ " min."
     putStrLn $ replicate 56 ' ' ++ "Sua velocidade foi de: " ++ show wpm ++ " wpm com " ++ precisaoFormatada ++ "% de precisão."
-    putStrLn $ replicate 64 ' ' ++ show wpm ++ "/" ++ show wpmTotalPalavras ++ " palavras digitadas corretamente.\n"
+    putStrLn $ replicate 64 ' ' ++ show numPalavrasCorretas ++ "/" ++ show numPalavras ++ " palavras digitadas corretamente.\n"
 
     desafioConcluido <- case estrelas of
         0 -> readFile "../dados/avaliacoes/zeroEstrela.txt"
