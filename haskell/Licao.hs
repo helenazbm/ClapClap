@@ -59,9 +59,9 @@ setStatusLicao idLicao = do
 iniciaLicao :: Licao -> IO ()
 iniciaLicao licao = do
     
-    let exs = exercicios licao
-    resultados <- mapM (\ex -> do
-            erros <- iniciaExercicio ex
+    let exs = (zip [1..] (exercicios licao))
+    resultados <- mapM (\(numero, ex) -> do
+            erros <- iniciaExercicio ex numero
             return erros) exs
     avaliaLicao resultados
 

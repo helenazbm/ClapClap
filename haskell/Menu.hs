@@ -97,7 +97,7 @@ exibeTutorial = do
 sai :: IO()
 sai = do
     limpaTela
-    sai <- readFile "../dados/arteTxt/sai.txt"
+    sai <- readFile "../dados/arteTxt/sair.txt"
     putStrLn $ aplicaCorInstrucao sai
     exitSuccess
 
