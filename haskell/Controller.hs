@@ -120,7 +120,7 @@ licao11 dadosLicao =
 
 licao12 :: [(String, String)] -> Licao
 licao12 dadosLicao = 
-    Licao "12" [ex1 'ç' "12", ex1 '´' "12", ex1 'é' "12", ex2 ('ç', 'á') "12", ex1 '~' "12", ex2 ('ã', 'ç') "12", ex3 ('õ', 'á') "12", ex4 ('ç', 'ã', 'ó') "12"]
+    Licao "12" [ex1 'ç' "12", ex1 '´' "12", ex1 'é' "12", ex2 ('ç', 'á') "12", ex2 ('é', 'ç') "12", ex1 '~' "12", ex2 ('ã', 'ç') "12", ex3 ('õ', 'á') "12", ex4 ('ç', 'ã', 'é') "12"]
     (getStatusLicoes "12" dadosLicao)
     "../dados/arteTxt/licoes/licao12.txt"
 
