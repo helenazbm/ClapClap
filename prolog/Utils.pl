@@ -1,6 +1,6 @@
-:- module(Utils, [limparTela/0, delay/0,ler_entrada/1, ler_arquivo/1]).
+:- module(Utils, [limpar_tela/0, delay/0,ler_entrada/1, ler_arquivo/1]).
 
-limparTela :-
+limpar_tela :-
     shell('clear').
 
 delay :-

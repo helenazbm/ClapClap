@@ -2,4 +2,4 @@
 :- use_module('Menu.pl').
 
 main :-
-    imprimeMenu.
+    imprime_menu.
