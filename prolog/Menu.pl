@@ -23,7 +23,7 @@ lista_Licoes :-
         (   NumeroLicao >= 1, NumeroLicao =< 15 -> writeln(['Você escolheu a lição:', NumeroLicao])
         ; lista_Licoes)
     ).
-
+    
 lista_desafios :-
     limpar_tela,
     ler_arquivo('../dados/arteTxt/desafios.txt'),
