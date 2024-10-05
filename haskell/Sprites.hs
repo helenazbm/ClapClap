@@ -10,126 +10,151 @@ getLetra 'a' = unlines [
     "█■■█",
     "█  █"
     ]
+
 getLetra 'b' = unlines [
     "█▀▀▄",
     "█■■█",
     "█▄▄▀"
     ]
+
 getLetra 'c' = unlines [
     "▄▀▀▄",
     "█   ",
     "▀▄▄▀"
     ]
+
 getLetra 'd' = unlines [
     "█▀▀▄",
     "█  █",
     "█▄▄▀"
     ]
+
 getLetra 'e' = unlines [
     "▄▀▀▀",
     "█■■ ",
     "▀▄▄▄"
     ]
+
 getLetra 'f' = unlines [
     "▄▀▀▀",
     "█■■ ",
     "█   "
     ]
+
 getLetra 'g' = unlines [
     "▄▀▀ ",
     "█ ▀█",
     "▀▄▄▀"
     ]
+
 getLetra 'h' = unlines [
     "█  █",
     "█■■█",
     "█  █"
     ]
+
 getLetra 'i' = unlines [
     " ▐▌ ",
     " ▐▌ ",
     " ▐▌ "
     ]
+
 getLetra 'j' = unlines [
     "   █",
     "   █",
     "▀▄▄▀"
     ]
+
 getLetra 'k' = unlines [
     "█ ▄▀",
     "██  ",
     "█ ▀▄"
     ]
+
 getLetra 'l' = unlines [
     "█   ",
     "█   ",
     "▀▄▄▄"
     ]
+
 getLetra 'm' = unlines [
     "█▄▄█",
     "█▐▌█",
     "█  █"
     ]
+
 getLetra 'n' = unlines [
     "█▄ █",
     "█ ▀█",
     "█  █"
     ]
+
 getLetra 'o' = unlines [
     "▄▀▀▄",
     "█  █",
     "▀▄▄▀"
     ]
+
 getLetra 'p' = unlines [
     "█▀▀▄",
     "█▄▄▀",
     "█   "
     ]
+
 getLetra 'q' = unlines [
     "▄▀▀▄",
     "█  █",
     " ▀▀▄"
     ]
+
 getLetra 'r' = unlines [
     "█▀▀▄",
     "█▄▄▀",
     "█  █"
     ]
+
 getLetra 's' = unlines [
     "▄▀▀▀",
     " ▀▀▄",
     "▄▄▄▀"
     ]
+
 getLetra 't' = unlines [
     "▀▐▌▀",
     " ▐▌ ",
     " ▐▌ "
     ]
+
 getLetra 'u' = unlines [
     "█  █",
     "█  █",
     "▀▄▄▀"
     ]
+
 getLetra 'v' = unlines [
     "█  █",
     "▐▌▐▌",
     " ▐▌ "
     ]
+
 getLetra 'w' = unlines [
     "█  █",
     "█▐▌█",
     "█▀▀█"
     ]
+
 getLetra 'x' = unlines [
     "▀▄▄▀",
     " ▐▌ ",
     "▄▀▀▄"
     ]
+
 getLetra 'y' = unlines [
     "▀▄▄▀",
     " ▐▌ ",
     " ▐▌ "
     ]
+
 getLetra 'z' = unlines [
     "▀▀▀█",
     " ▄▀ ",
@@ -299,9 +324,9 @@ substituiTag tag cor = intercalate (getCor cor) . splitOn tag
 aplicaCorConteudo :: String -> String -> String
 aplicaCorConteudo cor conteudo = getCor cor ++ conteudo ++ getCor "default"
 
-aplicarCor :: [Char] -> String -> String
-aplicarCor [] cor = ""
-aplicarCor (head : tail) cor = aplicaCorConteudo cor [head] ++ aplicarCor tail cor
+aplicaCor :: [Char] -> String -> String
+aplicaCor [] cor = ""
+aplicaCor (head : tail) cor = aplicaCorConteudo cor [head] ++ aplicaCor tail cor
 
 concatenaLinha :: [[String]] -> Int -> String -> String
 concatenaLinha (h: []) numeroLinha espaco = h !! numeroLinha
@@ -315,12 +340,12 @@ concatenaLinhas sprites numeroLinha espaco
 formataLinhasTexto:: [(Char, String)] -> String -> [String]
 formataLinhasTexto [] spacer = []
 formataLinhasTexto dados espaco =
-    let sprites = map (\(char, cor) -> aplicarCor (getLetra char) cor) dados
+    let sprites = map (\(char, cor) -> aplicaCor (getLetra char) cor) dados
     in (concatenaLinhas (map (\sprite -> lines sprite) sprites) 0 espaco)
 
 preencheProgresso :: String -> Int -> String
 preencheProgresso cor total = 
-    let totalBlocos = 45 -- número de "blocos" na barra de progresso
+    let totalBlocos = 45
         blocosPreenchidos = total * 3
     in aplicaCorConteudo cor (replicate blocosPreenchidos '▓') ++ replicate (45 - blocosPreenchidos) '░'
 
