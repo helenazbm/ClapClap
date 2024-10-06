@@ -341,6 +341,33 @@ formata_linhas_texto(Dados, Espaco, R) :-
     maplist(lines, SpritesColoridos, R2),
     concatena_linhas(R2, 0, Espaco, R).
 
+replica(0, _, "") :- !.
+replica(N, Caracter, R) :-
+    N2 is N - 1,
+    replica(N2, Caracter, R2),
+    concatena_strings([Caracter, R2], R).
+
+preenche_progresso(Cor, Total, R) :-
+    TotalBlocos = 45,
+    BlocosPreenchidos = Total * 3,
+    replica(BlocosPreenchidos, '▓', Progresso),
+    aplica_cor_conteudo(Cor, Progresso, ProgressoColoridos),
+    RestanteBlocos is TotalBlocos - BlocosPreenchidos,
+    replica(RestanteBlocos, '░', ProgressoRestante),
+    concatena_strings([ProgressoColoridos, ProgressoRestante], R).
+
+get_cor_progresso(Total, "verde") :- Total =:= 15, !.
+get_cor_progresso(Total, "amarelo") :- Total >= 10, !.
+get_cor_progresso(Total, "laranja") :- Total >= 5, !.
+get_cor_progresso(Total, "vermelho").
+
+exibe_progresso(Total, R) :-
+    get_cor_progresso(Total, Cor),
+    preenche_progresso(Cor, Total, Progresso),
+    Percentual is Total / 15 * 100,
+    PercentualArredondado is round(Percentual * 100) / 100,
+    concatena_strings(["Progresso: [", Progresso, "] ", PercentualArredondado, "%"], R).
+
 teste2 :-
     licao(1, Exercicios, _),
     nth0(0, Exercicios, Exercicio),
@@ -355,3 +382,7 @@ teste :-
     formata_linhas_texto(Exercicio, " ", Sprites),
     unlines(Sprites, R),
     writeln(R).
+
+teste3 :-
+    exibe_progresso(10, Progresso),
+    writeln(Progresso).
