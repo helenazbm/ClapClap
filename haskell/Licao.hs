@@ -17,7 +17,7 @@ data Licao = Licao {
 
 getDadosLicoes :: IO [(String, String)]
 getDadosLicoes = do
-    conteudo <- readFile "../dados//tabelas/tabela_licao.txt"
+    conteudo <- readFile "../dados/tabelas/tabela_licao.txt"
     let linhas = tail $ map (splitOn ";") (lines conteudo)
     return $ map (\[id, status] -> (id, status)) linhas
 
@@ -45,7 +45,7 @@ atualizaLinha idLicao linha =
 
 setStatusLicao :: String -> IO ()
 setStatusLicao idLicao = do
-    let filePath = "../dados//tabelas/tabela_licao.txt"
+    let filePath = "../dados/tabelas/tabela_licao.txt"
         tempFilePath = filePath ++ ".tmp"
 
     conteudo <- readFile filePath
