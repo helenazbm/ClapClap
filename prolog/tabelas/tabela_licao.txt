@@ -1,1 +1,1 @@
-[(1, "concluida"), (2, "pendente"), (3, "pendente"), (4, "pendente"), (5, "pendente"), (6, "pendente"), (7, "pendente"), (8, "pendente"), (9, "pendente"), (10, "pendente"), (11, "pendente"), (12, "pendente"), (13, "pendente"), (14, "pendente"), (15, "pendente")].
+[(1,concluida),(2,pendente),(3,pendente),(4,pendente),(5,pendente),(6,pendente),(7,pendente),(8,pendente),(9,pendente),(10,pendente),(11,pendente),(12,pendente),(13,pendente),(14,pendente),(15,pendente)].

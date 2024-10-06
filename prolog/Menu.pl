@@ -22,7 +22,7 @@ opcoes_menu_principal(_) :- imprime_menu.
 lista_licoes :-
     limpar_tela,
     conta_licoes_concluidas(Cont),
-    exibe_progresso(0, Progresso),
+    exibe_progresso(Cont, Progresso),
     writeln(Progresso),
     ler_arquivo('../dados/arteTxt/licoes.txt'),
     ler_entrada(Entrada),
