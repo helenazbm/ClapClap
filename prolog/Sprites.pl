@@ -1,7 +1,7 @@
 :- module(Sprites, [get_letra/2]).
 
 :- use_module('./Utils.pl').
-:- use_module('./Licao.pl').
+:- use_module('./Controller.pl').
 
 get_letra('a', R) :- unlines([
     "▄▀▀▄",
