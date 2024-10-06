@@ -15,11 +15,11 @@ data Exercicio = Exercicio {
 
 corrigeExercicio :: String -> [(Char, String)] -> [(Char, String)]
 corrigeExercicio entrada [] = []
-corrigeExercicio "" ((exercicioCorreto, cor):exerciciosCorreto) = [(exercicioCorreto, "vermelho")] ++ corrigeExercicio "" exerciciosCorreto
-corrigeExercicio (en:entrada) ((exercicioCorreto, cor):exerciciosCorreto) =
-    if en == exercicioCorreto
-    then [(exercicioCorreto, "verde")] ++ corrigeExercicio entrada exerciciosCorreto
-    else [(exercicioCorreto, "vermelho")] ++ corrigeExercicio entrada exerciciosCorreto
+corrigeExercicio "" ((gab, cor):gabarito) = [(gab, "vermelho")] ++ corrigeExercicio "" gabarito
+corrigeExercicio (en:entrada) ((gab, cor):gabarito) =
+    if en == gab
+    then [(gab, "verde")] ++ corrigeExercicio entrada gabarito
+    else [(gab, "vermelho")] ++ corrigeExercicio entrada gabarito
 
 iniciaExercicio :: Exercicio -> Int -> IO (Int, Int)
 iniciaExercicio ex numero = do
