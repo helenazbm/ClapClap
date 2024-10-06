@@ -34,7 +34,7 @@ inicia_exercicio(Exercicios, Numero) :-
     Numero >= Tamanho,  
     writeln('fim da lição').
 
-corrige_exercicio([], [], []).
+corrige_exercicio(_, [], []).
 corrige_exercicio([], [[Gab, _]|Gabarito], [[Gab, "vermelho"]|R]) :-
     corrige_exercicio([], Gabarito, R).
 corrige_exercicio([En|Entrada], [[Gab, _]|Gabarito], [[Gab, "verde"]|R]) :-
