@@ -1,6 +1,7 @@
 :- module(Sprites, [get_letra/2]).
 
 :- use_module('./Utils.pl').
+:- use_module('./Licao.pl').
 
 get_letra('a', R) :- unlines([
     "▄▀▀▄",
@@ -305,10 +306,11 @@ aplica_cor_conteudo(Cor, Conteudo, R) :-
     get_cor("default", CodigoDefaultCor),
     concatena_strings([CodigoCor, Conteudo, CodigoDefaultCor], R).
 
-aplica_cor([], _, []).
-aplica_cor([Conteudo|Conteudos], Cor, [R|R2]) :-
-    aplica_cor_conteudo(Cor, Conteudo, R),
-    aplica_cor(Conteudos, Cor, R2).
+aplica_cor([], _, "").
+aplica_cor([Sprite|Sprites], Cor, R) :-
+    aplica_cor_conteudo(Cor, Sprite, R2),
+    aplica_cor(Sprites, Cor, R3),
+    concatena_strings([R2, R3], R).
 
 concatena_linha([Sprite|[]], NumeroLinha, _, R) :-
     nth0(NumeroLinha, Sprite, R).
@@ -326,14 +328,21 @@ concatena_linhas(Sprites, NumeroLinha, Espaco, [R2|R3]) :-
     concatena_linhas(Sprites, NumeroLinhaInc, Espaco, R3), !.
 concatena_linhas(_, _, _, []).
 
+aplica_cor_sprites([], []).
+aplica_cor_sprites([[Char, Cor|_]|Dados], [SpriteColorida|R]) :-
+    get_letra(Char, Sprite),
+    string_chars(Sprite, Chars),
+    aplica_cor(Chars, Cor, SpriteColorida),
+    aplica_cor_sprites(Dados, R).
+
 formata_linhas_texto(Dados, Espaco, R) :-
-    string_chars(Dados, Chars),
-    maplist(get_letra, Chars, Sprites),
-    aplica_cor(Sprites, "verde", SpritesColoridos),
+    aplica_cor_sprites(Dados, SpritesColoridos),
     maplist(lines, SpritesColoridos, R2),
     concatena_linhas(R2, 0, Espaco, R).
 
 teste :-
-    formata_linhas_texto(['a','b'], " ", Sprites),
+    licao(1, Exercicios),
+    nth0(3, Exercicios, Exercicio),
+    formata_linhas_texto(Exercicio, " ", Sprites),
     unlines(Sprites, R),
     writeln(R).
