@@ -1,7 +1,9 @@
 :- module(Menu, [imprime_menu/0, exibe_licao/1]).
+
 :- use_module('./Utils.pl').
 :- use_module('./Controller.pl').
 :- use_module('./Licao.pl').
+:- use_module('./Sprites.pl').
 
 imprime_menu :-
     limpar_tela,
@@ -19,6 +21,9 @@ opcoes_menu_principal(_) :- imprime_menu.
 
 lista_licoes :-
     limpar_tela,
+    conta_licoes_concluidas(Cont),
+    exibe_progresso(0, Progresso),
+    writeln(Progresso),
     ler_arquivo('../dados/arteTxt/licoes.txt'),
     ler_entrada(Entrada),
     (  Entrada = "" -> imprime_menu; number_string(NumeroLicao, Entrada),

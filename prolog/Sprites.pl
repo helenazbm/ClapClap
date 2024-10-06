@@ -1,4 +1,4 @@
-:- module(Sprites, [get_letra/2, formata_linhas_texto/3]).
+:- module(Sprites, [get_letra/2, formata_linhas_texto/3, exibe_progresso/2]).
 
 :- use_module('./Utils.pl').
 :- use_module('./Controller.pl').
@@ -347,6 +347,7 @@ replica(N, Caracter, R) :-
     replica(N2, Caracter, R2),
     concatena_strings([Caracter, R2], R).
 
+preenche_progresso(Cor, 0, R) :- replica(45, '░', R).
 preenche_progresso(Cor, Total, R) :-
     TotalBlocos = 45,
     BlocosPreenchidos = Total * 3,
@@ -366,7 +367,7 @@ exibe_progresso(Total, R) :-
     preenche_progresso(Cor, Total, Progresso),
     Percentual is Total / 15 * 100,
     PercentualArredondado is round(Percentual * 100) / 100,
-    concatena_strings(["Progresso: [", Progresso, "] ", PercentualArredondado, "%"], R).
+    concatena_strings(["                                                    Progresso: [", Progresso, "] ", PercentualArredondado, "%"], R).
 
 teste2 :-
     licao(1, Exercicios, _),
