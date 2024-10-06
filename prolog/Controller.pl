@@ -87,7 +87,6 @@ licao(8, [Ex1, Ex2, Ex3, Ex4], "../dados/arteTxt/licoes/licao8.txt") :-
     ex(3, 'v', 'h', Ex3),
     ex(4, 'v', 'h', 'm', Ex4).
 
-%que erro é esse
 licao(9, [Ex1, Ex2, Ex3, Ex4, Ex5], "../dados/arteTxt/licoes/licao9.txt") :- 
     ex(2, ',', 'k', Ex1),
     ex(1, '.', Ex2),
