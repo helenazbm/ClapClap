@@ -110,7 +110,7 @@ licao(11, [Ex1, Ex2, Ex3, Ex4], "../dados/arteTxt/licoes/licao11.txt") :-
     ex(3, ';', 'x', Ex3),
     ex(4, 'w', 'x', ';', Ex4).
 
-licao(12, [Ex1, Ex2, Ex3, Ex4, Ex5, Ex5, Ex6, Ex7, Ex8, Ex9], "../dados/arteTxt/licoes/licao12.txt") :-
+licao(12, [Ex1, Ex2, Ex3, Ex4, Ex5, Ex6, Ex7, Ex8, Ex9], "../dados/arteTxt/licoes/licao12.txt") :-
     ex(1, 'ç', Ex1),
     ex(1, ' ', Ex2),
     ex(1, 'é', Ex3),
