@@ -1,7 +1,8 @@
 :- module(Sprites, [get_letra/2]).
 
 :- use_module('./Utils.pl').
-:- use_module('./Licao.pl').
+:- use_module('./Controller.pl').
+:- use_module('./Exercicio.pl').
 
 get_letra('a', R) :- unlines([
     "▄▀▀▄",
@@ -329,7 +330,7 @@ concatena_linhas(Sprites, NumeroLinha, Espaco, [R2|R3]) :-
 concatena_linhas(_, _, _, []).
 
 aplica_cor_sprites([], []).
-aplica_cor_sprites([[Char, Cor|_]|Dados], [SpriteColorida|R]) :-
+aplica_cor_sprites([[Char, Cor]|Dados], [SpriteColorida|R]) :-
     get_letra(Char, Sprite),
     string_chars(Sprite, Chars),
     aplica_cor(Chars, Cor, SpriteColorida),
@@ -339,6 +340,14 @@ formata_linhas_texto(Dados, Espaco, R) :-
     aplica_cor_sprites(Dados, SpritesColoridos),
     maplist(lines, SpritesColoridos, R2),
     concatena_linhas(R2, 0, Espaco, R).
+
+teste2 :-
+    licao(1, Exercicios),
+    nth0(0, Exercicios, Exercicio),
+    corrige_exercicio(['j', 'j', 'j', 'j', 'j', 'j', 'j', 'j'], Exercicio, ExercicioCorrigido),
+    formata_linhas_texto(ExercicioCorrigido, " ", Sprites),
+    unlines(Sprites, R),
+    writeln(R).
 
 teste :-
     licao(1, Exercicios),
