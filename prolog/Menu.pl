@@ -1,5 +1,7 @@
-:- module(Menu, [imprime_menu/0]).
+:- module(Menu, [imprime_menu/0, exibe_licao/1]).
 :- use_module('./Utils.pl').
+:- use_module('./Controller.pl').
+:- use_module('./Licao.pl').
 
 imprime_menu :-
     limpar_tela,
@@ -8,21 +10,29 @@ imprime_menu :-
     downcase_atom(Entrada, OpcaoMenu),
     opcoes_menu_principal(OpcaoMenu).
 
-opcoes_menu_principal('l') :- lista_Licoes.
+opcoes_menu_principal('l') :- lista_licoes.
 opcoes_menu_principal('d') :- lista_desafios.
 opcoes_menu_principal('t') :- exibe_tutorial.
 opcoes_menu_principal('s') :- sair.
 opcoes_menu_principal(_) :- imprime_menu.
 
 
-lista_Licoes :-
+lista_licoes :-
     limpar_tela,
     ler_arquivo('../dados/arteTxt/licoes.txt'),
     ler_entrada(Entrada),
     (  Entrada = "" -> imprime_menu; number_string(NumeroLicao, Entrada),
-        (   NumeroLicao >= 1, NumeroLicao =< 15 -> writeln(['Você escolheu a lição:', NumeroLicao])
-        ; lista_Licoes)
-    ).
+        (   NumeroLicao >= 1, NumeroLicao =< 15 -> exibe_licao(NumeroLicao))
+        ; lista_licoes).
+
+exibe_licao(NumeroLicao) :-
+    limpar_tela,
+    licao(NumeroLicao, _Exercicios, Arquivo),
+    ler_arquivo(Arquivo),
+    ler_entrada(Entrada),
+    downcase_atom(Entrada, Opcao),
+    ( Entrada = "" -> lista_licoes; Opcao = 'i' -> inicia_licao(NumeroLicao)
+    ; exibe_licao(NumeroLicao)).
     
 lista_desafios :-
     limpar_tela,

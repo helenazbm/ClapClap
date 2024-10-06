@@ -1,4 +1,4 @@
-:- module(Sprites, [get_letra/2]).
+:- module(Sprites, [get_letra/2, formata_linhas_texto/3]).
 
 :- use_module('./Utils.pl').
 :- use_module('./Controller.pl').
@@ -342,7 +342,7 @@ formata_linhas_texto(Dados, Espaco, R) :-
     concatena_linhas(R2, 0, Espaco, R).
 
 teste2 :-
-    licao(1, Exercicios),
+    licao(1, Exercicios, _),
     nth0(0, Exercicios, Exercicio),
     corrige_exercicio(['j', 'j', 'j', 'j', 'j', 'j', 'j', 'j'], Exercicio, ExercicioCorrigido),
     formata_linhas_texto(ExercicioCorrigido, " ", Sprites),
@@ -350,7 +350,7 @@ teste2 :-
     writeln(R).
 
 teste :-
-    licao(1, Exercicios),
+    licao(1, Exercicios, _),
     nth0(3, Exercicios, Exercicio),
     formata_linhas_texto(Exercicio, " ", Sprites),
     unlines(Sprites, R),
