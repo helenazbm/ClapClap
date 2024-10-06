@@ -146,7 +146,7 @@ getRanking = do
 
 getDadosRanking :: IO [(String, String, String)]
 getDadosRanking = do
-    conteudo <- readFile "../dados//tabelas/tabela_ranking.txt"
+    conteudo <- readFile "../dados/tabelas/tabela_ranking.txt"
     let linhas = tail $ map (splitOn ";") (lines conteudo)
     return $ map (\[id, nome, wpm] -> (id, nome, wpm)) linhas
 
@@ -157,7 +157,7 @@ filtraRecorde idFiltro = do
 
 setDadosRanking :: String -> String -> String -> IO()
 setDadosRanking id nome wpm = do
-    let filePath = "../dados//tabelas/tabela_ranking.txt"
+    let filePath = "../dados/tabelas/tabela_ranking.txt"
         tempFilePath = filePath ++ ".tmp"
     
     conteudo <- readFile filePath
