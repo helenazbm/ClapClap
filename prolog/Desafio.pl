@@ -1,5 +1,7 @@
 :- module(Desafio, [inicia_desafio/1]).
+
 :- use_module(library(ansi_term)).
+:- use_module('./Utils.pl').
 :- use_module('./Utils.pl').
 
 frase_aleatoria("\nO paradigma funcional é um estilo de programação onde o foco está em usar funções para resolver problemas. Imagine uma função como uma pequena caixa preta que recebe um input, faz algum tipo de cálculo ou processamento e retorna um output. O que torna o paradigma funcional especial é que, em vez de mudar o estado do programa ou dos dados, ele usa funções que operam sobre entradas e retornam saídas sem modificar nada fora delas. Isso ajuda a evitar muitos erros comuns, pois as funções são independentes e não têm efeitos colaterais. Por exemplo, se você tem uma função que soma dois números, sempre que você a chama com os mesmos números, ela sempre retornará o mesmo resultado, não importa quando ou onde você a use. Esse estilo de programação é muito útil em projetos grandes, pois facilita o teste e a manutenção do código. Linguagens como Haskell são conhecidas por adotar o paradigma funcional, oferecendo um ambiente onde o código é mais previsível e mais fácil de entender. Outro benefício do paradigma funcional é que ele facilita a criação de código paralelo, pois funções independentes podem ser executadas simultaneamente sem causar problemas. Em resumo, o paradigma funcional é uma abordagem que torna o desenvolvimento de software mais organizado e menos propenso a erros, utilizando funções puras e evitando mudanças inesperadas no estado dos dados.").
@@ -44,22 +46,22 @@ inicia_desafio(Desafio) :-
     delay,
     desafio(Tempo).
 
-desafio(Tempo) :-
-    exibir_frase(Frase), 
-    get_time(Inicio),
-    read_line_to_string(user_input, Entrada),
-    loop_desafio(Inicio, Tempo, Frase, Entrada).
-
-loop_desafio(Inicio, Tempo, Frase, Entrada) :-
+loop_desafio(Inicio, Tempo) :-
     get_time(Agora),
     Duracao is Agora - Inicio,
     (Duracao < Tempo -> 
-        loop_desafio(Inicio, Tempo, Frase, Entrada)
+        loop_desafio(Inicio, Tempo)
     ; 
-        writeln('\nTempo esgotado! Pressione Enter para ver o seu resultado:'),
-        comparar_frase(Frase, Entrada)
+        limpar_tela
     ).
 
+desafio(Tempo) :-
+    exibir_frase(Frase), 
+    get_time(Inicio),
+    loop_desafio(Inicio, Tempo),
+    writeln('\nTempo esgotado! Pressione Enter para ver o seu resultado:'),
+    read_line_to_string(user_input, Entrada),
+    comparar_frase(Frase, Entrada).
 
 menu :-
     writeln('Escolha o tempo de desafio:'),
