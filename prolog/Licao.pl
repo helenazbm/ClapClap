@@ -24,7 +24,6 @@ salva_dado(Id) :-
     le_dados(Dados),
     altera_status(Id, Dados, DadosAtual),
     open("tabelas/tabela_licao.txt", write, Stream),
-    writeln(DadosAtual),
     write(Stream, DadosAtual),
     write(Stream, "."),
     nl(Stream),
