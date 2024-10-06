@@ -56,7 +56,8 @@ loop_desafio(Inicio, Tempo) :-
     ).
 
 desafio(Tempo) :-
-    exibir_frase(Frase), 
+    exibir_frase(Frase),
+    writeln(""),
     get_time(Inicio),
     loop_desafio(Inicio, Tempo),
     writeln('\nTempo esgotado! Pressione Enter para ver o seu resultado:'),
