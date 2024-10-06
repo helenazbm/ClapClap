@@ -1,4 +1,4 @@
-:- module(Utils, [limpar_tela/0, delay/0,ler_entrada/1, ler_arquivo/1, map/3, concatena_strings/2, unlines/2, lines/2]).
+:- module(Utils, [limpar_tela/0, delay/0,ler_entrada/1, ler_arquivo/1, concatena_strings/2, unlines/2, lines/2]).
 
 :- use_module('./Sprites.pl').
 
@@ -25,16 +25,11 @@ ler_linhas(Fluxo) :-
     ;   true
     ).
 
-map([], _, []).
-map([H|T], Transformation, [H2|T2]) :-
-    call(Transformation, H, H2),
-    map(T, Transformation, T2).
+concatena_strings([], "").
+concatena_strings([H], H).
+concatena_strings([H|T], R) :-
+  concatena_strings(T, R2), !,
+  atom_concat(H, R2, R).
 
-concatena_strings([], '').
-concatena_strings([X], X).
-concatena_strings([Head|Tail], Result) :-
-  concatena_strings(Tail, R2), !,
-  string_concat(Head, R2, Result).
-
-unlines(Strings, Result) :- atomic_list_concat(Strings, '\n', Result).
+unlines(Strings, R) :- atomic_list_concat(Strings, '\n', R).
 lines(String, Lines) :- atomic_list_concat(Lines, '\n', String).

@@ -299,23 +299,23 @@ get_cor("magenta", "\e[35m").
 get_cor("ciano", "\e[36m").
 get_cor("default", "\e[0m").
 
+aplica_cor_conteudo(_, "", "").
 aplica_cor_conteudo(Cor, Conteudo, R) :-
     get_cor(Cor, CodigoCor),
     get_cor("default", CodigoDefaultCor),
     concatena_strings([CodigoCor, Conteudo, CodigoDefaultCor], R).
 
-aplica_cor([], _, "").
-aplica_cor([Sprite|Sprites], Cor, R) :-
-    aplica_cor_conteudo(Cor, Sprite, R2),
-    aplica_cor(Sprites, Cor, R3),
-    concatena_strings([R2, R3], R).
+aplica_cor([], _, []).
+aplica_cor([Conteudo|Conteudos], Cor, [R|R2]) :-
+    aplica_cor_conteudo(Cor, Conteudo, R),
+    aplica_cor(Conteudos, Cor, R2).
 
 concatena_linha([Sprite|[]], NumeroLinha, _, R) :-
     nth0(NumeroLinha, Sprite, R).
 concatena_linha([Sprite|Sprites], NumeroLinha, Espaco, R) :-
     nth0(NumeroLinha, Sprite, Elemento),
     concatena_linha(Sprites, NumeroLinha, Espaco, R2),
-    concatena_strings([Elemento, Espaco, R2], R), !.
+    concatena_strings([Elemento, Espaco, R2], R).
 
 concatena_linhas(Sprites, NumeroLinha, Espaco, [R2|R3]) :-
     nth0(0, Sprites, Sprite),
@@ -328,11 +328,12 @@ concatena_linhas(_, _, _, []).
 
 formata_linhas_texto(Dados, Espaco, R) :-
     string_chars(Dados, Chars),
-    map(Chars, get_letra, Sprites),
-    map(Sprites, lines, R2),
+    maplist(get_letra, Chars, Sprites),
+    aplica_cor(Sprites, "verde", SpritesColoridos),
+    maplist(lines, SpritesColoridos, R2),
     concatena_linhas(R2, 0, Espaco, R).
 
 teste :-
-    formata_linhas_texto(['a', 'b'], " ", Sprites),
+    formata_linhas_texto(['a','b'], " ", Sprites),
     unlines(Sprites, R),
     writeln(R).
