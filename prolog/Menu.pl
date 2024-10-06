@@ -4,6 +4,7 @@
 :- use_module('./Controller.pl').
 :- use_module('./Licao.pl').
 :- use_module('./Sprites.pl').
+:- use_module('./Desafio.pl').
 
 imprime_menu :-
     limpar_tela,
@@ -45,9 +46,9 @@ lista_desafios :-
     ler_entrada(Entrada),
     ( Entrada = "" -> imprime_menu; Entrada = "r" -> writeln('Exibir o ranking'); number_string(NumeroDesafio, Entrada), opcoes_menu_desafios(NumeroDesafio)).
 
-opcoes_menu_desafios(1) :- writeln('Desafio 1').
-opcoes_menu_desafios(2) :- writeln('Desafio 2').
-opcoes_menu_desafios(3) :- writeln('Desafio 3').
+opcoes_menu_desafios(1) :- inicia_desafio(um_minuto).
+opcoes_menu_desafios(2) :- inicia_desafio(dois_minutos).
+opcoes_menu_desafios(3) :- inicia_desafio(tres_minutos).
 opcoes_menu_desafios(_) :- lista_desafios.
 
 exibe_tutorial:-
