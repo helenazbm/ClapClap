@@ -1,4 +1,4 @@
-:- module(Sprites, [get_letra/2, formata_linhas_texto/3, exibe_progresso/2]).
+:- module(Sprites, [get_letra/2, formata_linhas_texto/3, exibe_progresso/2, exibe_licoes_concluidas/2]).
 
 :- use_module('./Utils.pl').
 :- use_module('./Controller.pl').
@@ -347,6 +347,11 @@ replica(N, Caracter, R) :-
     replica(N2, Caracter, R2),
     concatena_strings([Caracter, R2], R).
 
+get_cor_progresso(Total, "verde") :- Total =:= 15, !.
+get_cor_progresso(Total, "amarelo") :- Total >= 10, !.
+get_cor_progresso(Total, "laranja") :- Total >= 5, !.
+get_cor_progresso(Total, "vermelho").
+
 preenche_progresso(Cor, 0, R) :- replica(45, '░', R).
 preenche_progresso(Cor, Total, R) :-
     TotalBlocos = 45,
@@ -357,17 +362,33 @@ preenche_progresso(Cor, Total, R) :-
     replica(RestanteBlocos, '░', ProgressoRestante),
     concatena_strings([ProgressoColoridos, ProgressoRestante], R).
 
-get_cor_progresso(Total, "verde") :- Total =:= 15, !.
-get_cor_progresso(Total, "amarelo") :- Total >= 10, !.
-get_cor_progresso(Total, "laranja") :- Total >= 5, !.
-get_cor_progresso(Total, "vermelho").
-
 exibe_progresso(Total, R) :-
     get_cor_progresso(Total, Cor),
     preenche_progresso(Cor, Total, Progresso),
     Percentual is Total / 15 * 100,
     PercentualArredondado is round(Percentual * 100) / 100,
     concatena_strings(["                                                    Progresso: [", Progresso, "] ", PercentualArredondado, "%"], R).
+
+get_cor_status("concluida", "verde").
+get_cor_status("pendente", "vermelho").
+
+aplica_cor_licoes([], "").
+aplica_cor_licoes([(Id, Status)], R) :-
+    atom_string(Status, String),
+    get_cor_status(String, Cor),
+    aplica_cor_licoes([], R2),
+    aplica_cor_conteudo(Cor, Id, IdColorido),
+    concatena_strings([IdColorido, R2], R), !.
+aplica_cor_licoes([(Id, Status)|Dados], R) :-
+    atom_string(Status, String),
+    get_cor_status(String, Cor),
+    aplica_cor_licoes(Dados, R2),
+    aplica_cor_conteudo(Cor, Id, IdColorido),
+    concatena_strings([IdColorido, ", ", R2], R).
+
+exibe_licoes_concluidas(Dados, R) :-
+    aplica_cor_licoes(Dados, LicoesConcluidas),
+    concatena_strings(["                                                    Concluídas: [", LicoesConcluidas, "]"], R).
 
 teste2 :-
     licao(1, Exercicios, _),
@@ -385,5 +406,5 @@ teste :-
     writeln(R).
 
 teste3 :-
-    exibe_progresso(10, Progresso),
-    writeln(Progresso).
+    exibe_licoes_concluidas([(1,concluida),(2,concluida),(3,pendente),(4,pendente)], R),
+    writeln(R).
