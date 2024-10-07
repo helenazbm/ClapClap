@@ -424,7 +424,7 @@ exibe_ranking(Dados, R) :-
     aplica_cor_conteudo("azul", "                                                             Desafio --------------- Nome ---------------- WPM\n", Cabecalho),
     aplica_cor_conteudo("azul", "                                                           _____________________________________________________\n\n", Linha),
     formata_ranking(Dados, LinhasFormatadas),
-    concatena_strings([Linha, Cabecalho, LinhasFormatadas, Linha], R).
+    concatena_strings([Linha, Cabecalho, LinhasFormatadas, Linha, "                                                            * Pressione Enter para voltar ao Menu de Desafios *\n"], R).
 
 teste :-
     exibe_ranking([(1,"Ray", 10),(2,"Teste", 80),(3,"Oi",70)], R),

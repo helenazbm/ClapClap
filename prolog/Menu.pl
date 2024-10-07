@@ -52,7 +52,7 @@ lista_desafios :-
     ( Entrada = "" -> imprime_menu; Entrada = "r" -> 
         limpar_tela,
         exibe_ranking(Dados, Ranking),
-        writeln(Ranking);
+        writeln(Ranking), ler_entrada(_), lista_desafios;
     number_string(NumeroDesafio, Entrada), opcoes_menu_desafios(NumeroDesafio)).
 
 opcoes_menu_desafios(1) :- inicia_desafio(um_minuto).
