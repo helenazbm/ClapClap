@@ -25,7 +25,7 @@ lista_licoes :-
     conta_licoes_concluidas(Cont),
     exibe_progresso(Cont, Progresso),
     writeln(Progresso),
-    le_dados(Dados),
+    le_status(Dados),
     exibe_licoes_concluidas(Dados, LicoesConcluidas),
     writeln(""),
     writeln(LicoesConcluidas),
@@ -48,7 +48,11 @@ lista_desafios :-
     limpar_tela,
     ler_arquivo('../dados/arteTxt/desafios.txt'),
     ler_entrada(Entrada),
-    ( Entrada = "" -> imprime_menu; Entrada = "r" -> writeln('Exibir o ranking');
+    le_ranking(Dados),
+    ( Entrada = "" -> imprime_menu; Entrada = "r" -> 
+        limpar_tela,
+        exibe_ranking(Dados, Ranking),
+        writeln(Ranking);
     number_string(NumeroDesafio, Entrada), opcoes_menu_desafios(NumeroDesafio)).
 
 opcoes_menu_desafios(1) :- inicia_desafio(um_minuto).
