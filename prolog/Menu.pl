@@ -38,7 +38,7 @@ lista_licoes :-
 exibe_licao(NumeroLicao) :-
     limpar_tela,
     licao(NumeroLicao, _Exercicios, Arquivo),
-    ler_arquivo(Arquivo),
+    ler_instrucao(Arquivo),
     ler_entrada(Entrada),
     downcase_atom(Entrada, Opcao),
     ( Entrada = "" -> lista_licoes; Opcao = 'i' -> inicia_licao(NumeroLicao)

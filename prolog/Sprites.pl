@@ -1,4 +1,4 @@
-:- module(Sprites, [get_letra/2, formata_linhas_texto/3, exibe_progresso/2, exibe_licoes_concluidas/2, exibe_ranking/2]).
+:- module(Sprites, [get_letra/2, formata_linhas_texto/3, exibe_progresso/2, exibe_licoes_concluidas/2, exibe_ranking/2, aplica_cor_instrucao/2]).
 
 :- use_module('./Utils.pl').
 :- use_module('./Controller.pl').
@@ -300,6 +300,39 @@ get_cor("laranja", "\e[38;5;208m").
 get_cor("magenta", "\e[35m").
 get_cor("ciano", "\e[36m").
 get_cor("default", "\e[0m").
+
+tags(["[VERMELHO]", "[VERDE]", "[AMARELO]", "[AZUL]", "[MAGENTA]", "[CIANO]", "[DEFAULT]"]).
+
+    tag_cor("[VERMELHO]", "\e[31m").
+    tag_cor("[VERDE]", "\e[32m").
+    tag_cor("[AMARELO]", "\e[33m").
+    tag_cor("[AZUL]", "\e[34m").
+    tag_cor("[MAGENTA]", "\e[35m").
+    tag_cor("[CIANO]", "\e[36m").
+    tag_cor("[DEFAULT]", "\e[0m").
+
+
+aplica_cor_instrucao(SemCor, LinhaColorida):- 
+    tags(Tags),
+    string_codes(SemCor, ListaDeCaracteres),
+    findall(Tag, encontra_tag(ListaDeCaracteres, Tags, Tag), TagsTexto),
+    substitui_tags_linha(SemCor, TagsTexto, LinhaColorida).
+
+encontra_tag(Lista, Tags, Tag) :-
+    append(_, TagInicio, Lista),
+    append(TagLista, _, TagInicio),
+    member(Tag, Tags),
+    string_codes(Tag, TagLista).
+
+substitui_tags_linha(Linha, [], Linha).
+substitui_tags_linha(Linha, [Tag | Resto], Resultado):- 
+    ( sub_string(Linha, _, _, _, Tag) ->
+        tag_cor(Tag, Cor),
+        replace_substring(Linha, Tag, Cor, NovaLinha),
+        substitui_tags_linha(NovaLinha, Resto, Resultado)
+    ; 
+        substitui_tags_linha(Linha, Resto, Resultado)
+    ).
 
 aplica_cor_conteudo(_, "", "").
 aplica_cor_conteudo(Cor, Conteudo, R) :-
