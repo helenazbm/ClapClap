@@ -115,7 +115,7 @@ verifica_recorde(Tempo, Wpm) :-
     get_wpm_recorde(Tempo, Dados, WpmRecorde),
     (Wpm > WpmRecorde ->
         limpar_tela,
-        ler_arquivo("../dados/arteTxt/recordRanking.txt"),
+        ler_instrucao("../dados/arteTxt/recordRanking.txt"),
         writeln('Nome: '),
         read_line_to_string(user_input, Nome),
         salva_ranking(Tempo, Nome, Wpm),
