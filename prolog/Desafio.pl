@@ -71,7 +71,7 @@ colorir_palavras([PalavraFrase|RestoFrase], []) :-
     ansi_format([fg(red)], '~w ', [PalavraFrase]),
     colorir_palavras(RestoFrase, []).
 
-tempo_desafio(um_minuto, 60).
+tempo_desafio(um_minuto, 10).
 tempo_desafio(dois_minutos, 120).
 tempo_desafio(tres_minutos, 180).
 
@@ -93,6 +93,9 @@ loop_desafio(Inicio, Tempo) :-
     ).
 
 avalia_desafio(Frase, Entrada, Precisao, Tempo, Wpm, Estrelas) :- 
+    format('\nPressione Enter para ver sua avaliação.'),
+    ler_entrada(_),
+    limpar_tela,
     split_string_em_palavras(Frase, PalavrasFrase),
     split_string_em_palavras(Entrada, PalavrasEntrada),
     conta_palavras_desafio(PalavrasEntrada, PalavrasDigitadas), 
@@ -109,8 +112,6 @@ desafio(Tempo) :-
     writeln('\nTempo esgotado! Pressione Enter para ver o seu resultado:'),
     read_line_to_string(user_input, Entrada),
     comparar_frase(Frase, Entrada),
-    format('\nPressione Enter para ver sua avaliação.'),
-    ler_entrada(_),
     avalia_desafio(Frase, Entrada, _, Tempo, _, Estrelas),
     exibe_estrelas_desafio(Estrelas).
 
@@ -120,7 +121,7 @@ menu :-
     writeln('2. 2 minutos'),
     writeln('3. 3 minutos'),
     read(Escolha),
-    (Escolha == 1 -> desafio(60);
+    (Escolha == 1 -> desafio(10);
      Escolha == 2 -> desafio(120);
      Escolha == 3 -> desafio(180);
      writeln('Escolha inválida.'), menu).
