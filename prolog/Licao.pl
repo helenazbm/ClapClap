@@ -31,8 +31,8 @@ salva_dado(Id) :-
 
 conta([], 0).
 conta([(_, Status)|Dados], R) :-
-    atom_string(Status, String),
-    String = "concluida",
+    atom_string(Status, Status),
+    Status2 = "concluida",
     conta(Dados, R2),
     R is R2 + 1, !.
 conta([(_, _)|Dados], R2) :- conta(Dados, R2).
