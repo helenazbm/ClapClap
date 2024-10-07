@@ -380,8 +380,8 @@ aplica_cor_licoes([(Id, Status)], R) :-
     aplica_cor_conteudo(Cor, Id, IdColorido),
     concatena_strings([IdColorido, R2], R), !.
 aplica_cor_licoes([(Id, Status)|Dados], R) :-
-    atom_string(Status, String),
-    get_cor_status(String, Cor),
+    atom_string(Status, Status2),
+    get_cor_status(Status2, Cor),
     aplica_cor_licoes(Dados, R2),
     aplica_cor_conteudo(Cor, Id, IdColorido),
     concatena_strings([IdColorido, ", ", R2], R).
@@ -390,21 +390,42 @@ exibe_licoes_concluidas(Dados, R) :-
     aplica_cor_licoes(Dados, LicoesConcluidas),
     concatena_strings(["                                                    Concluídas: [", LicoesConcluidas, "]"], R).
 
-teste2 :-
-    licao(1, Exercicios, _),
-    nth0(0, Exercicios, Exercicio),
-    corrige_exercicio(['j', 'j', 'j', 'j', 'j', 'j', 'j', 'j'], Exercicio, ExercicioCorrigido),
-    formata_linhas_texto(ExercicioCorrigido, " ", Sprites),
-    unlines(Sprites, R),
-    writeln(R).
+ajusta_wpm(_, 0, "") :- !.
+ajusta_wpm([], N, R) :-
+    N2 is N - 1,
+    ajusta_wpm([], N2, R2),
+    concatena_strings([R2, " "], R).
+ajusta_wpm([Letra|Letras], N, R) :-
+    N2 is N - 1,
+    ajusta_wpm(Letras, N2, R2),
+    concatena_strings([R2, Letra], R).
+
+ajusta_nome(_, 0, "") :- !.
+ajusta_nome([], N, R) :-
+    N2 is N - 1,
+    ajusta_nome([], N2, R2),
+    concatena_strings([" ", R2], R).
+ajusta_nome([Digito|Digitos], N, R) :-
+    N2 is N - 1,
+    ajusta_nome(Digitos, N2, R2),
+    concatena_strings([Digito, R2], R).
+
+formata_linhas_ranking([], "").
+formata_linhas_ranking([(Id, Nome, Wpm)|Dados], R) :-
+    formata_linhas_ranking(Dados, R2),
+    atom_chars(Nome, CharsNome),
+    ajusta_nome(CharsNome, 5, Nome2),
+    atom_chars(Wpm, CharsWpm),
+    ajusta_wpm(CharsWpm, 3, Wpm2),
+    concatena_strings(["                                                             ", Id, " min", "   --------------- ", Nome2, " --------------- ", Wpm2, "\n", R2], R).
+
+formata_ranking(Dados, R) :-
+    ler_arquivo("../dados/arteTxt/ranking.txt"),
+    aplica_cor_conteudo("azul", "                                                             Desafio --------------- Nome ---------------- WPM\n", Cabecalho),
+    aplica_cor_conteudo("azul", "                                                           _____________________________________________________\n\n", Linha),
+    formata_linhas_ranking(Dados, LinhasFormatadas),
+    concatena_strings([Linha, Cabecalho, LinhasFormatadas, Linha], R).
 
 teste :-
-    licao(1, Exercicios, _),
-    nth0(3, Exercicios, Exercicio),
-    formata_linhas_texto(Exercicio, " ", Sprites),
-    unlines(Sprites, R),
-    writeln(R).
-
-teste3 :-
-    exibe_licoes_concluidas([(1,concluida),(2,concluida),(3,pendente),(4,pendente)], R),
+    formata_ranking([(1,"Ray", 10),(2,"Teste", 80),(3,"Oi",70)], R),
     writeln(R).
