@@ -72,7 +72,7 @@ colorir_palavras([PalavraFrase|RestoFrase], []) :-
     ansi_format([fg(red)], '~w ', [PalavraFrase]),
     colorir_palavras(RestoFrase, []).
 
-tempo_desafio(um_minuto, 10).
+tempo_desafio(um_minuto, 60).
 tempo_desafio(dois_minutos, 120).
 tempo_desafio(tres_minutos, 180).
 
