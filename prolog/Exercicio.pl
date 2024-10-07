@@ -35,8 +35,8 @@ inicia_exercicio(Exercicios, Numero, TotalErros) :-
     limpar_tela,
     avalia_licao(Exercicios, TotalErros, Estrelas),
     nl,
-    ler_entrada(Entrada),
-    (Entrada == "" -> lista_licoes; true).
+    ler_entrada(_),
+    lista_licoes.
 
 avalia_licao(Exercicios, TotalErros, Estrelas) :-
     conta_letras_licao(Exercicios, TotalLetras),
