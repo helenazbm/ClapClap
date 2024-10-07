@@ -30,12 +30,13 @@ le_ranking(Dados) :-
     Dados = []).
 
 altera_ranking(_, _, _, [], []).
-altera_ranking(IdExercicio, NovoNome, NovoWpm, [(Id, Nome, Wpm)|Dados], [(Id, NovoNome, NovoWpm)|Dados2]) :-
-    IdExercicio =:= Id,
-    altera_ranking(IdExercicio, NovoNome, NovoWpm, Dados, Dados2), !.
-altera_ranking(IdExercicio, _, _, [(Id, Nome, Wpm)|Dados], [(Id, Nome, Wpm)|Dados2]) :-
-    IdExercicio =\= Id,
-    altera_ranking(IdExercicio, NovoNome, NovoWpm, Dados, Dados2).
+altera_ranking(IdRanking, NovoNome, NovoWpm, [(Id, Nome, Wpm)|Dados], [NovoRanking|Dados2]) :-
+    IdRanking =:= Id,
+    format(atom(NovoRanking), '(~w,"~w",~w)', [IdRanking, NovoNome, NovoWpm]),
+    altera_ranking(IdRanking, NovoNome, NovoWpm, Dados, Dados2), !.
+altera_ranking(IdRanking, _, _, [(Id, Nome, Wpm)|Dados], [(Id, Nome, Wpm)|Dados2]) :-
+    IdRanking =\= Id,
+    altera_ranking(IdRanking, NovoNome, NovoWpm, Dados, Dados2).
 
 salva_ranking(Id, NovoNome, NovoWpm) :-
     le_ranking(Dados),
