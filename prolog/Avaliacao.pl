@@ -26,21 +26,29 @@ exibe_estrelas_licao(Precisao, _) :-
     Precisao < 20.0,
     ler_arquivo("../dados/arteTxt/avaliacoes/zeroEstrela.txt"),
     insere_espaços(68, Espaços),
-    format('~sSua precisão de acertos foi de: ~2f%', [Espaços, Precisao]). 
+    format('~sSua precisão de acertos foi de: ~2f%', [Espaços, Precisao]),
+    insere_espaços(60, Espaços2),
+    format('\n\n~s * Pressione Enter para voltar ao Menu de Lições *', [Espaços2]).
 exibe_estrelas_licao(Precisao, _) :-
     Precisao =< 60.0,
     ler_arquivo("../dados/arteTxt/avaliacoes/licao/umaEstrela.txt"),
     insere_espaços(66, Espaços),
-    format('~sSua precisão de acertos foi de: ~2f%', [Espaços, Precisao]).
+    format('~sSua precisão de acertos foi de: ~2f%', [Espaços, Precisao]),
+    insere_espaços(60, Espaços2),
+    format('\n\n~s * Pressione Enter para voltar ao Menu de Lições *', [Espaços2]).
 exibe_estrelas_licao(Precisao, _) :-
     Precisao =< 90.0,
     ler_arquivo("../dados/arteTxt/avaliacoes/duasEstrelas.txt"),
     insere_espaços(66, Espaços),
-    format('~sSua precisão de acertos foi de: ~2f%', [Espaços, Precisao]).
+    format('~sSua precisão de acertos foi de: ~2f%', [Espaços, Precisao]),
+    insere_espaços(60, Espaços2),
+    format('\n\n~s * Pressione Enter para voltar ao Menu de Lições *', [Espaços2]).
 exibe_estrelas_licao(Precisao, _) :-
     ler_arquivo("../dados/arteTxt/avaliacoes/licao/tresEstrelas.txt"),
     insere_espaços(64, Espaços),
-    format('~sSua precisão de acertos foi de: ~2f%', [Espaços, Precisao]).
+    format('~sSua precisão de acertos foi de: ~2f%', [Espaços, Precisao]),
+    insere_espaços(60, Espaços2),
+    format('\n\n~s * Pressione Enter para voltar ao Menu de Lições *', [Espaços2]).
 
 conta_palavras_desafio(PalavrasEntrada, PalavrasDigitadas) :-
     length(PalavrasEntrada, PalavrasDigitadas).
@@ -66,13 +74,21 @@ atribui_estrelas_desafio(Wpm, Precisao, Estrelas) :-
 
 exibe_estrelas_desafio(Estrelas) :-
     Estrelas == 0,
-    ler_arquivo("../dados/arteTxt/avaliacoes/zeroEstrela.txt").
+    ler_arquivo("../dados/arteTxt/avaliacoes/zeroEstrela.txt"),
+    insere_espaços(60, Espaços),
+    format('\n\n~s * Pressione Enter para voltar ao Menu de Lições *', [Espaços]).
 exibe_estrelas_desafio(Estrelas) :-
     Estrelas == 1,
-    ler_arquivo("../dados/arteTxt/avaliacoes/desafio/umaEstrela.txt").
+    ler_arquivo("../dados/arteTxt/avaliacoes/desafio/umaEstrela.txt"),
+    insere_espaços(60, Espaços),
+    format('\n\n~s * Pressione Enter para voltar ao Menu de Lições *', [Espaços]).
 exibe_estrelas_desafio(Estrelas) :-
     Estrelas == 2,
-    ler_arquivo("../dados/arteTxt/avaliacoes/duasEstrelas.txt").
+    ler_arquivo("../dados/arteTxt/avaliacoes/duasEstrelas.txt"),
+    insere_espaços(60, Espaços),
+    format('\n\n~s * Pressione Enter para voltar ao Menu de Lições *', [Espaços]).
 exibe_estrelas_desafio(Estrelas) :-
     Estrelas == 3,
-    ler_arquivo("../dados/arteTxt/avaliacoes/desafio/tresEstrelas.txt").
+    ler_arquivo("../dados/arteTxt/avaliacoes/desafio/tresEstrelas.txt"),
+    insere_espaços(60, Espaços),
+    format('\n\n~s * Pressione Enter para voltar ao Menu de Lições *', [Espaços]).
