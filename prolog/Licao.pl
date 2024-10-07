@@ -31,8 +31,7 @@ salva_status(Id) :-
 
 conta([], 0).
 conta([(_, Status)|Dados], R) :-
-    atom_string(Status, Status),
-    Status2 = "concluida",
+    Status = concluida,
     conta(Dados, R2),
     R is R2 + 1, !.
 conta([(_, _)|Dados], R2) :- conta(Dados, R2).
@@ -46,3 +45,9 @@ inicia_licao(NumeroLicao) :-
     licao(NumeroLicao, Exercicios, _),
     salva_status(NumeroLicao),
     inicia_exercicio(Exercicios, 0, 0).
+
+teste :-
+    le_status(Dados),
+    writeln(Dados),
+    conta(Dados, R),
+    writeln(R).
