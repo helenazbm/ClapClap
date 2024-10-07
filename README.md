@@ -14,10 +14,24 @@ Para usar o ClapClap! é bem simples. Primeiro, clone o repositório usando o co
 ```
 git clone https://github.com/helenazbm/ClapClap.git
 ```
-Após isso, na raiz do projeto, execute o comando a seguir para instalar todos as importações necessárias para jogar no ClapClap!
+### Haskell
+Na raiz do projeto, execute o comando a seguir para instalar todos as importações necessárias para jogar no ClapClap!
 ```bash
 ./install.sh
 ```
+### Prolog
+O compilador SWI-PL é necessário para a execução do ClapClap!
+Após a instalação do compilador, execute os seguintes comandos:
+```
+cd prolog
+```
+```
+swipl Main.pl
+```
+```
+main.
+```
+
 Em seguida, você verá a seguinte tela:
 
 ![Captura de tela de 2024-08-29 23-48-34](https://github.com/user-attachments/assets/4c4ec094-b330-4a10-918a-d96166cf0c7c)
