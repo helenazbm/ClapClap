@@ -1,4 +1,4 @@
-:- module(Avaliacao, [conta_erros_exercicio/2, conta_letras_licao/2, calcula_precisao_licao/3, exibe_estrelas_licao/2, conta_palavras_desafio/2, conta_palavras_corretas_desafio/3, calcula_precisao_desafio/3, calcula_wpm/3, exibe_estrelas_desafio/3]).
+:- module(_, [conta_erros_exercicio/2, conta_letras_licao/2, calcula_precisao_licao/3, exibe_estrelas_licao/2, conta_palavras_desafio/2, conta_palavras_corretas_desafio/3, calcula_precisao_desafio/3, calcula_wpm/3, exibe_estrelas_desafio/3]).
 
 :- use_module('./Utils.pl').
 
@@ -66,28 +66,28 @@ calcula_precisao_desafio(PalavrasDigitadas, PalavrasCorretas, Precisao) :-
 calcula_wpm(PalavrasDigitadas, Tempo, Wpm) :-
     Wpm is PalavrasDigitadas // Tempo.
 
-exibe_estrelas_desafio(Wpm, Precisao, Estrelas) :-
+exibe_estrelas_desafio(Wpm, Precisao, _) :-
     (Precisao < 20.0 ; Wpm < 20),
     insere_espaços(56, Espaços),
     format('~sSua  velocidade foi de: ~w wpm com ~2f% de precisão.\n\n\n', [Espaços, Wpm, Precisao]),
     ler_arquivo("../dados/arteTxt/avaliacoes/zeroEstrela.txt"),
     insere_espaços(66, Espaços2),
     format('\n~s * Pressione Enter para ver o ranking *', [Espaços2]).
-exibe_estrelas_desafio(Wpm, Precisao, Estrelas) :-
+exibe_estrelas_desafio(Wpm, Precisao, _) :-
     (Precisao =< 60.0 ; Wpm =< 30),
     insere_espaços(56, Espaços),
     format('~sSua  velocidade foi de: ~w wpm com ~2f% de precisão.\n\n\n', [Espaços, Wpm, Precisao]),
     ler_arquivo("../dados/arteTxt/avaliacoes/desafio/umaEstrela.txt"),
     insere_espaços(66, Espaços2),
     format('\n~s * Pressione Enter para ver o ranking *', [Espaços2]).
-exibe_estrelas_desafio(Wpm, Precisao, Estrelas) :-
+exibe_estrelas_desafio(Wpm, Precisao, _) :-
     (Precisao =< 90.0 ; Wpm =< 40),
     insere_espaços(56, Espaços),
     format('~sSua  velocidade foi de: ~w wpm com ~2f% de precisão.\n\n\n', [Espaços, Wpm, Precisao]),
     ler_arquivo("../dados/arteTxt/avaliacoes/duasEstrelas.txt"),
     insere_espaços(66, Espaços2),
     format('\n~s * Pressione Enter para ver o ranking *', [Espaços2]).
-exibe_estrelas_desafio(Wpm, Precisao, Estrelas) :-
+exibe_estrelas_desafio(Wpm, Precisao, _) :-
     (Precisao > 90.0 ; Wpm > 40),
     insere_espaços(56, Espaços),
     format('~sSua  velocidade foi de: ~w wpm com ~2f% de precisão.\n\n\n', [Espaços, Wpm, Precisao]),

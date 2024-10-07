@@ -1,4 +1,4 @@
-:- module(Sprites, [get_letra/2, formata_linhas_texto/3, exibe_progresso/2, exibe_licoes_concluidas/2, exibe_ranking/2, aplica_cor_instrucao/2]).
+:- module(_, [get_letra/2, formata_linhas_texto/3, exibe_progresso/2, exibe_licoes_concluidas/2, exibe_ranking/2, aplica_cor_instrucao/2]).
 
 :- use_module('./Utils.pl').
 :- use_module('./Controller.pl').
@@ -321,7 +321,7 @@ aplica_cor_instrucao(SemCor, LinhaColorida):-
 encontra_tag(Lista, Tags, Tag) :-
     append(_, _, Lista),
     member(Tag, Tags),
-    string_codes(Tag, TagTexto).
+    string_codes(Tag, _).
 
 substitui_tags_linha(Linha, [], Linha).
 substitui_tags_linha(Linha, [Tag | Resto], Resultado):- 
@@ -382,9 +382,9 @@ replica(N, Caracter, R) :-
 get_cor_progresso(Total, "verde") :- Total =:= 15, !.
 get_cor_progresso(Total, "amarelo") :- Total >= 10, !.
 get_cor_progresso(Total, "laranja") :- Total >= 5, !.
-get_cor_progresso(Total, "vermelho").
+get_cor_progresso(_, "vermelho").
 
-preenche_progresso(Cor, 0, R) :- replica(45, '░', R).
+preenche_progresso(_, 0, R) :- replica(45, '░', R).
 preenche_progresso(Cor, Total, R) :-
     TotalBlocos = 45,
     BlocosPreenchidos = Total * 3,

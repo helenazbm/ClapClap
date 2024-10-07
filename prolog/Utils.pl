@@ -1,4 +1,4 @@
-:- module(Utils, [limpar_tela/0, delay/0,ler_entrada/1, ler_arquivo/1, ler_instrucao/1, concatena_strings/2, unlines/2, lines/2, insere_espaços/2, replace_substring/4]).
+:- module(_, [limpar_tela/0, delay/0,ler_entrada/1, ler_arquivo/1, ler_instrucao/1, concatena_strings/2, unlines/2, lines/2, insere_espaços/2, replace_substring/4]).
 
 :- use_module('./Sprites.pl').
 

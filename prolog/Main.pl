@@ -1,4 +1,4 @@
-:- module(Main, [main/0]).
+:- module(_, [main/0]).
 :- use_module('Menu.pl').
 
 main :-

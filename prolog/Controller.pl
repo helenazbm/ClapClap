@@ -1,4 +1,4 @@
-:- module(Controller, [licao/3]).
+:- module(_, [licao/3]).
 
 ex(1, Char, 
     [[Char, "default"], [Char, "default"], [Char, "default"], [Char, "default"],

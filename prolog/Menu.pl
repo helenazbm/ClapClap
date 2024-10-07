@@ -1,4 +1,4 @@
-:- module(Menu, [imprime_menu/0, exibe_licao/1, lista_licoes/0, lista_desafios/0]).
+:- module(_, [imprime_menu/0, exibe_licao/1, lista_licoes/0, lista_desafios/0]).
 
 :- use_module('./Utils.pl').
 :- use_module('./Controller.pl').

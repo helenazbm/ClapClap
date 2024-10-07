@@ -1,4 +1,4 @@
-:- module(Desafio, [inicia_desafio/1, le_ranking/1]).
+:- module(_, [inicia_desafio/1, le_ranking/1]).
 
 :- use_module(library(ansi_term)).
 :- use_module('./Utils.pl').
@@ -31,7 +31,7 @@ le_ranking(Dados) :-
         close(Stream) ; 
     Dados = []).
 
-get_wpm_recorde(IdRanking, [(Id, _, Wpm)|Dados], Wpm) :-
+get_wpm_recorde(IdRanking, [(Id, _, Wpm)|_], Wpm) :-
     IdRanking =:= Id, !.
 get_wpm_recorde(IdRanking, [_|Dados], R) :-
     get_wpm_recorde(IdRanking, Dados, R).

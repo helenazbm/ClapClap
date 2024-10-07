@@ -1,4 +1,4 @@
-:- module(Exercicio, [corrige_exercicio/3, inicia_exercicio/3]).
+:- module(_, [corrige_exercicio/3, inicia_exercicio/3]).
 :- use_module('./Utils.pl').
 :- use_module('./Sprites.pl').
 :- use_module('./Controller.pl').
@@ -31,9 +31,9 @@ inicia_exercicio(Exercicios, Numero, TotalErros) :-
     ProximoNumero is Numero + 1,
     inicia_exercicio(Exercicios, ProximoNumero, TotalErrosAtualizado).
 
-inicia_exercicio(Exercicios, Numero, TotalErros) :-
+inicia_exercicio(Exercicios, _, TotalErros) :-
     limpar_tela,
-    avalia_licao(Exercicios, TotalErros, Estrelas),
+    avalia_licao(Exercicios, TotalErros, _),
     nl,
     ler_entrada(_),
     lista_licoes.
@@ -49,5 +49,5 @@ corrige_exercicio([], [[Gab, _]|Gabarito], [[Gab, "vermelho"]|R]) :-
 corrige_exercicio([En|Entrada], [[Gab, _]|Gabarito], [[Gab, "verde"]|R]) :-
     En = Gab,
     corrige_exercicio(Entrada, Gabarito, R), !.
-corrige_exercicio([En|Entrada], [[Gab, _]|Gabarito], [[Gab, "vermelho"]|R]) :- 
+corrige_exercicio([_|Entrada], [[Gab, _]|Gabarito], [[Gab, "vermelho"]|R]) :- 
     corrige_exercicio(Entrada, Gabarito, R).

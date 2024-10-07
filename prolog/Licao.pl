@@ -1,4 +1,4 @@
-:- module(Licao, [conta_licoes_concluidas/1, inicia_licao/1, le_status/1, salva_status/1]).
+:- module(_, [conta_licoes_concluidas/1, inicia_licao/1, le_status/1, salva_status/1]).
 
 :- use_module('./Exercicio.pl').
 :- use_module('./Controller.pl').
@@ -13,7 +13,7 @@ le_status(Dados) :-
     Dados = []).
 
 altera_status(_, [], []).
-altera_status(IdExercicio, [(Id, Status)|Dados], [(Id, "concluida")|Dados2]) :-
+altera_status(IdExercicio, [(Id, _)|Dados], [(Id, "concluida")|Dados2]) :-
     IdExercicio =:= Id,
     altera_status(IdExercicio, Dados, Dados2), !.
 altera_status(IdExercicio, [(Id, Status)|Dados], [(Id, Status)|Dados2]) :-
