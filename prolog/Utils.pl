@@ -40,4 +40,3 @@ insere_espaços(N, Espaços) :-
     N1 is N - 1,
     insere_espaços(N1, EspaçosAnteriores),
     string_concat(' ', EspaçosAnteriores, Espaços).
-

@@ -4,7 +4,6 @@
 :- use_module('./Controller.pl').
 :- use_module('./Exercicio.pl').
 :- use_module('./Avaliacao.pl').
-
     
 inicia_exercicio(Exercicios, Numero, TotalErros) :-
     length(Exercicios, Tamanho),

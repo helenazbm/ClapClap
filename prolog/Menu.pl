@@ -66,4 +66,3 @@ sair :-
     limpar_tela,
     ler_arquivo('../dados/arteTxt/sair.txt'),
     halt.
-
