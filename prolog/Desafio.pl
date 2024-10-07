@@ -31,6 +31,11 @@ le_ranking(Dados) :-
         close(Stream) ; 
     Dados = []).
 
+get_wpm_recorde(IdRanking, [(Id, _, Wpm)|Dados], Wpm) :-
+    IdRanking =:= Id, !.
+get_wpm_recorde(IdRanking, [_|Dados], R) :-
+    get_wpm_recorde(IdRanking, Dados, R).
+
 altera_ranking(_, _, _, [], []).
 altera_ranking(IdRanking, NovoNome, NovoWpm, [(Id, _, _)|Dados], [NovoRanking|Dados2]) :-
     IdRanking =:= Id,
@@ -73,7 +78,7 @@ colorir_palavras([PalavraFrase|RestoFrase], []) :-
     ansi_format([fg(red)], '~w ', [PalavraFrase]),
     colorir_palavras(RestoFrase, []).
 
-tempo_desafio(um_minuto, 7).
+tempo_desafio(um_minuto, 60).
 tempo_desafio(dois_minutos, 120).
 tempo_desafio(tres_minutos, 180).
 
@@ -101,17 +106,11 @@ avalia_desafio(Frase, Entrada, Precisao, Tempo, Wpm, Estrelas) :-
     conta_palavras_corretas_desafio(PalavrasFrase, PalavrasEntrada, PalavrasCorretas), 
     calcula_precisao_desafio(PalavrasDigitadas, PalavrasCorretas, Precisao),
     calcula_wpm(PalavrasDigitadas, Tempo, Wpm),
-    TempoMin is Tempo//60,
     insere_espaços(70, Espaços),
-    format('\n~sVocê fez o desafio de ~w min.\n', [Espaços, TempoMin]),
-    exibe_estrelas_desafio(Wpm, Precisao, Estrelas),
-    nl,
-    ler_entrada(_),
-    limpar_tela,
-    exibe_ranking(Dados, R),
-    writeln(R).
+    format('\n~sVocê fez o desafio de ~w min.\n', [Espaços, Tempo]),
+    exibe_estrelas_desafio(Wpm, Precisao, Estrelas).
 
-verifica_recorde(Tempo, Wpm, Nome) :-
+verifica_recorde(Tempo, Wpm) :-
     le_ranking(Dados),
     get_wpm_recorde(Tempo, Dados, WpmRecorde),
     (Wpm > WpmRecorde ->
@@ -119,12 +118,14 @@ verifica_recorde(Tempo, Wpm, Nome) :-
         ler_arquivo("../dados/arteTxt/recordRanking.txt"),
         writeln('Nome: '),
         read_line_to_string(user_input, Nome),
-        salva_ranking(Tempo, Nome, Wpm)).
-
-get_wpm_recorde(IdRanking, [(Id, _, Wpm)|Dados], Wpm) :-
-    IdRanking =:= Id, !.
-get_wpm_recorde(IdRanking, [_|Dados], R) :-
-    get_wpm_recorde(IdRanking, Dados, R).
+        salva_ranking(Tempo, Nome, Wpm),
+        limpar_tela,
+        le_ranking(NovosDados),
+        exibe_ranking(NovosDados, R),
+        writeln(R);
+    limpar_tela,
+    exibe_ranking(Dados, R),
+    writeln(R)).
 
 desafio(Tempo) :-
     exibir_frase(Frase),
@@ -137,7 +138,12 @@ desafio(Tempo) :-
     format('\nFim do desafio! Pressione Enter para ver a sua velocidade e precisão.'),
     ler_entrada(_),
     limpar_tela,
-    avalia_desafio(Frase, Entrada, _, Tempo, _, _),
+    TempoMin is Tempo//60,
+    avalia_desafio(Frase, Entrada, _, TempoMin, Wpm, _),
+    nl,
+    ler_entrada(_),
+    limpar_tela,
+    verifica_recorde(TempoMin, Wpm),
     nl,
     ler_entrada(_),
     lista_desafios.    

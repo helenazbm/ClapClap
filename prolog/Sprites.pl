@@ -428,20 +428,20 @@ ajusta_wpm([], N, R) :-
     N2 is N - 1,
     ajusta_wpm([], N2, R2),
     concatena_strings([R2, " "], R).
-ajusta_wpm([Letra|Letras], N, R) :-
+ajusta_wpm([Digito|Digitos], N, R) :-
     N2 is N - 1,
-    ajusta_wpm(Letras, N2, R2),
-    concatena_strings([R2, Letra], R).
+    ajusta_wpm(Digitos, N2, R2),
+    concatena_strings([Digito, R2], R).
 
 ajusta_nome(_, 0, "") :- !.
 ajusta_nome([], N, R) :-
     N2 is N - 1,
     ajusta_nome([], N2, R2),
     concatena_strings([" ", R2], R).
-ajusta_nome([Digito|Digitos], N, R) :-
+ajusta_nome([Letra|Letras], N, R) :-
     N2 is N - 1,
-    ajusta_nome(Digitos, N2, R2),
-    concatena_strings([Digito, R2], R).
+    ajusta_nome(Letras, N2, R2),
+    concatena_strings([Letra, R2], R).
 
 formata_ranking([], "").
 formata_ranking([(Id, Nome, Wpm)|Dados], R) :-
