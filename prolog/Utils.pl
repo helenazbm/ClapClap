@@ -1,4 +1,4 @@
-:- module(Utils, [limpar_tela/0, delay/0,ler_entrada/1, ler_arquivo/1, concatena_strings/2, unlines/2, lines/2]).
+:- module(Utils, [limpar_tela/0, delay/0,ler_entrada/1, ler_arquivo/1, concatena_strings/2, unlines/2, lines/2, insere_espaços/2]).
 
 :- use_module('./Sprites.pl').
 
@@ -33,3 +33,11 @@ concatena_strings([H|T], R) :-
 
 unlines(Strings, R) :- atomic_list_concat(Strings, '\n', R).
 lines(String, Lines) :- atomic_list_concat(Lines, '\n', String).
+
+insere_espaços(0, '').
+insere_espaços(N, Espaços) :-
+    N > 0,
+    N1 is N - 1,
+    insere_espaços(N1, EspaçosAnteriores),
+    string_concat(' ', EspaçosAnteriores, Espaços).
+

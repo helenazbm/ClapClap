@@ -40,7 +40,7 @@ inicia_exercicio(Exercicios, Numero, TotalErros) :-
 avalia_licao(Exercicios, TotalErros, Estrelas) :-
     conta_letras_licao(Exercicios, TotalLetras),
     calcula_precisao_licao(TotalLetras, TotalErros, Precisao),
-    atribui_estrelas_licao(Precisao, Estrelas).
+    exibe_estrelas_licao(Precisao, Estrelas).
 
 corrige_exercicio(_, [], []).
 corrige_exercicio([], [[Gab, _]|Gabarito], [[Gab, "vermelho"]|R]) :-
