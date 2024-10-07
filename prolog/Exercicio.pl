@@ -4,6 +4,7 @@
 :- use_module('./Controller.pl').
 :- use_module('./Exercicio.pl').
 :- use_module('./Avaliacao.pl').
+:- use_module('./Menu.pl').
     
 inicia_exercicio(Exercicios, Numero, TotalErros) :-
     length(Exercicios, Tamanho),
@@ -33,8 +34,9 @@ inicia_exercicio(Exercicios, Numero, TotalErros) :-
 inicia_exercicio(Exercicios, Numero, TotalErros) :-
     limpar_tela,
     avalia_licao(Exercicios, TotalErros, Estrelas),
-    length(Exercicios, Tamanho),
-    Numero >= Tamanho.
+    nl,
+    ler_entrada(Entrada),
+    (Entrada == "" -> lista_licoes; true).
 
 avalia_licao(Exercicios, TotalErros, Estrelas) :-
     conta_letras_licao(Exercicios, TotalLetras),
