@@ -72,7 +72,7 @@ colorir_palavras([PalavraFrase|RestoFrase], []) :-
     ansi_format([fg(red)], '~w ', [PalavraFrase]),
     colorir_palavras(RestoFrase, []).
 
-tempo_desafio(um_minuto, 60).
+tempo_desafio(um_minuto, 7).
 tempo_desafio(dois_minutos, 120).
 tempo_desafio(tres_minutos, 180).
 
@@ -94,9 +94,6 @@ loop_desafio(Inicio, Tempo) :-
     ).
 
 avalia_desafio(Frase, Entrada, Precisao, Tempo, Wpm, Estrelas) :- 
-    format('\nPressione Enter para ver sua avaliação.'),
-    ler_entrada(_),
-    limpar_tela,
     split_string_em_palavras(Frase, PalavrasFrase),
     split_string_em_palavras(Entrada, PalavrasEntrada),
     conta_palavras_desafio(PalavrasEntrada, PalavrasDigitadas), 
@@ -104,12 +101,29 @@ avalia_desafio(Frase, Entrada, Precisao, Tempo, Wpm, Estrelas) :-
     calcula_precisao_desafio(PalavrasDigitadas, PalavrasCorretas, Precisao),
     calcula_wpm(PalavrasDigitadas, Tempo, Wpm),
     TempoMin is Tempo//60,
+    verifica_recorde(TempoMin, Wpm, Nome),
+    writeln(Nome),
     insere_espaços(70, Espaços),
     format('\n~sVocê fez o desafio de ~w min.\n', [Espaços, TempoMin]),
     exibe_estrelas_desafio(Wpm, Precisao, Estrelas),
     nl,
     ler_entrada(_),
     lista_desafios.
+
+verifica_recorde(Tempo, Wpm, Nome) :-
+    le_ranking(Dados),
+    get_wpm_recorde(Tempo, Dados, WpmRecorde),
+    (Wpm > WpmRecorde ->
+        limpar_tela,
+        ler_arquivo("../dados/arteTxt/recordRanking.txt"),
+        writeln('Nome: '),
+        read_line_to_string(user_input, Nome),
+        salva_ranking(Tempo, Nome, Wpm)).
+
+get_wpm_recorde(IdRanking, [(Id, _, Wpm)|Dados], Wpm) :-
+    IdRanking =:= Id, !.
+get_wpm_recorde(IdRanking, [_|Dados], R) :-
+    get_wpm_recorde(IdRanking, Dados, R).
 
 desafio(Tempo) :-
     exibir_frase(Frase),
@@ -119,4 +133,7 @@ desafio(Tempo) :-
     writeln('\nTempo esgotado! Pressione Enter para ver o seu resultado:'),
     read_line_to_string(user_input, Entrada),
     comparar_frase(Frase, Entrada),
+    format('\nPressione Enter para ver sua avaliação.'),
+    ler_entrada(_),
+    limpar_tela,
     avalia_desafio(Frase, Entrada, _, Tempo, _, _).    
