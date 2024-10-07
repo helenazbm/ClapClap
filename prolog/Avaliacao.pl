@@ -1,4 +1,4 @@
-:- module(Avaliacao, [conta_erros_exercicio/2, conta_letras_licao/2, calcula_precisao_licao/3, exibe_estrelas_licao/2, conta_palavras_desafio/2, conta_palavras_corretas_desafio/3, calcula_precisao_desafio/3, calcula_wpm/3, atribui_estrelas_desafio/3, exibe_estrelas_desafio/1]).
+:- module(Avaliacao, [conta_erros_exercicio/2, conta_letras_licao/2, calcula_precisao_licao/3, exibe_estrelas_licao/2, conta_palavras_desafio/2, conta_palavras_corretas_desafio/3, calcula_precisao_desafio/3, calcula_wpm/3, exibe_estrelas_desafio/3]).
 
 :- use_module('./Utils.pl').
 
@@ -66,29 +66,31 @@ calcula_precisao_desafio(PalavrasDigitadas, PalavrasCorretas, Precisao) :-
 calcula_wpm(PalavrasDigitadas, Tempo, Wpm) :-
     Wpm is (PalavrasDigitadas * 60) // Tempo.
 
-atribui_estrelas_desafio(Wpm, Precisao, Estrelas) :-
-    (Precisao < 20.0 ; Wpm < 20) -> Estrelas is 0;
-    (Precisao =< 60.0 ; Wpm =< 30) -> Estrelas is 1;
-    (Precisao =< 90.0 ; Wpm =< 40) -> Estrelas is 2;
-    Estrelas is 3.
-
-exibe_estrelas_desafio(Estrelas) :-
-    Estrelas == 0,
+exibe_estrelas_desafio(Wpm, Precisao, Estrelas) :-
+    (Precisao < 20.0 ; Wpm < 20),
+    insere_espaços(60, Espaços),
+    format('~sSua  velocidade foi de: ~w wpm com ~2f% de precisão.\n\n\n', [Espaços, Wpm, Precisao]),
     ler_arquivo("../dados/arteTxt/avaliacoes/zeroEstrela.txt"),
+    insere_espaços(60, Espaços2),
+    format('\n~s * Pressione Enter para voltar ao Menu de Lições *', [Espaços2]).
+exibe_estrelas_desafio(Wpm, Precisao, Estrelas) :-
+    (Precisao =< 60.0 ; Wpm =< 30),
     insere_espaços(60, Espaços),
-    format('\n\n~s * Pressione Enter para voltar ao Menu de Lições *', [Espaços]).
-exibe_estrelas_desafio(Estrelas) :-
-    Estrelas == 1,
+    format('~sSua  velocidade foi de: ~w wpm com ~2f% de precisão.\n\n\n', [Espaços, Wpm, Precisao]),
     ler_arquivo("../dados/arteTxt/avaliacoes/desafio/umaEstrela.txt"),
+    insere_espaços(60, Espaços2),
+    format('\n~s * Pressione Enter para voltar ao Menu de Lições *', [Espaços2]).
+exibe_estrelas_desafio(Wpm, Precisao, Estrelas) :-
+    (Precisao =< 90.0 ; Wpm =< 40),
     insere_espaços(60, Espaços),
-    format('\n\n~s * Pressione Enter para voltar ao Menu de Lições *', [Espaços]).
-exibe_estrelas_desafio(Estrelas) :-
-    Estrelas == 2,
+    format('~sSua  velocidade foi de: ~w wpm com ~2f% de precisão.\n\n\n', [Espaços, Wpm, Precisao]),
     ler_arquivo("../dados/arteTxt/avaliacoes/duasEstrelas.txt"),
+    insere_espaços(60, Espaços2),
+    format('\n~s * Pressione Enter para voltar ao Menu de Lições *', [Espaços2]).
+exibe_estrelas_desafio(Wpm, Precisao, Estrelas) :-
+    (Precisao > 90.0 ; Wpm > 40),
     insere_espaços(60, Espaços),
-    format('\n\n~s * Pressione Enter para voltar ao Menu de Lições *', [Espaços]).
-exibe_estrelas_desafio(Estrelas) :-
-    Estrelas == 3,
+    format('~sSua  velocidade foi de: ~w wpm com ~2f% de precisão.\n\n\n', [Espaços, Wpm, Precisao]),
     ler_arquivo("../dados/arteTxt/avaliacoes/desafio/tresEstrelas.txt"),
-    insere_espaços(60, Espaços),
-    format('\n\n~s * Pressione Enter para voltar ao Menu de Lições *', [Espaços]).
+    insere_espaços(60, Espaços2),
+    format('\n~s * Pressione Enter para voltar ao Menu de Lições *', [Espaços2]).
