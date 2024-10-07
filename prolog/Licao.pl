@@ -45,4 +45,4 @@ inicia_licao(NumeroLicao) :-
     limpar_tela,
     licao(NumeroLicao, Exercicios, _),
     salva_dado(NumeroLicao),
-    inicia_exercicio(Exercicios, 0).
+    inicia_exercicio(Exercicios, 0, 0).
