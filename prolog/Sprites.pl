@@ -319,10 +319,9 @@ aplica_cor_instrucao(SemCor, LinhaColorida):-
     substitui_tags_linha(SemCor, TagsTexto, LinhaColorida).
 
 encontra_tag(Lista, Tags, Tag) :-
-    append(_, TagInicio, Lista),
-    append(TagLista, _, TagInicio),
+    append(_, _, Lista),
     member(Tag, Tags),
-    string_codes(Tag, TagLista).
+    string_codes(Tag, TagTexto).
 
 substitui_tags_linha(Linha, [], Linha).
 substitui_tags_linha(Linha, [Tag | Resto], Resultado):- 
