@@ -1,4 +1,4 @@
-:- module(Sprites, [get_letra/2, formata_linhas_texto/3, exibe_progresso/2, exibe_licoes_concluidas/2]).
+:- module(Sprites, [get_letra/2, formata_linhas_texto/3, exibe_progresso/2, exibe_licoes_concluidas/2, exibe_ranking/2]).
 
 :- use_module('./Utils.pl').
 :- use_module('./Controller.pl').
@@ -410,22 +410,22 @@ ajusta_nome([Digito|Digitos], N, R) :-
     ajusta_nome(Digitos, N2, R2),
     concatena_strings([Digito, R2], R).
 
-formata_linhas_ranking([], "").
-formata_linhas_ranking([(Id, Nome, Wpm)|Dados], R) :-
-    formata_linhas_ranking(Dados, R2),
+formata_ranking([], "").
+formata_ranking([(Id, Nome, Wpm)|Dados], R) :-
+    formata_ranking(Dados, R2),
     atom_chars(Nome, CharsNome),
     ajusta_nome(CharsNome, 5, Nome2),
     atom_chars(Wpm, CharsWpm),
     ajusta_wpm(CharsWpm, 3, Wpm2),
     concatena_strings(["                                                             ", Id, " min", "   --------------- ", Nome2, " --------------- ", Wpm2, "\n", R2], R).
 
-formata_ranking(Dados, R) :-
+exibe_ranking(Dados, R) :-
     ler_arquivo("../dados/arteTxt/ranking.txt"),
     aplica_cor_conteudo("azul", "                                                             Desafio --------------- Nome ---------------- WPM\n", Cabecalho),
     aplica_cor_conteudo("azul", "                                                           _____________________________________________________\n\n", Linha),
-    formata_linhas_ranking(Dados, LinhasFormatadas),
+    formata_ranking(Dados, LinhasFormatadas),
     concatena_strings([Linha, Cabecalho, LinhasFormatadas, Linha], R).
 
 teste :-
-    formata_ranking([(1,"Ray", 10),(2,"Teste", 80),(3,"Oi",70)], R),
+    exibe_ranking([(1,"Ray", 10),(2,"Teste", 80),(3,"Oi",70)], R),
     writeln(R).

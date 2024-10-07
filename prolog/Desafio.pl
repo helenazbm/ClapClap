@@ -1,4 +1,4 @@
-:- module(Desafio, [inicia_desafio/1]).
+:- module(Desafio, [inicia_desafio/1, le_ranking/1]).
 
 :- use_module(library(ansi_term)).
 :- use_module('./Utils.pl').
@@ -21,6 +21,30 @@ frase_aleatoria("\nalan turing foi um matemático e cientista da computação br
 frase_aleatoria("\nestruturas de dados são maneiras de organizar e armazenar informações para que sejam fáceis de acessar e modificar. imagine uma caixa de ferramentas com compartimentos para diferentes tipos de ferramentas. da mesma forma, as estruturas de dados ajudam a organizar informações em um computador. a lista é uma estrutura que armazena uma sequência de itens, permitindo adicionar, remover e acessar qualquer item facilmente, como uma lista de compras. a pilha funciona como uma pilha de pratos onde você só pode adicionar ou remover itens do topo, ideal para quando a ordem de entrada e saída é importante. a fila é semelhante a uma fila de pessoas, onde o primeiro a entrar é o primeiro a sair, útil para processos onde a ordem é crucial, como em sistemas de impressão. as árvores são estruturas hierárquicas, como uma árvore genealógica, organizando dados em um formato de ramificação que facilita a busca e a organização. as /tabelas/tabelas hash ajudam a encontrar informações rapidamente, funcionando como um índice em um livro, onde um código é usado para acessar diretamente a informação desejada. cada tipo de estrutura de dados tem suas vantagens e desvantagens, e a escolha certa depende da tarefa específica. compreender essas estruturas é essencial para criar programas que sejam eficientes e funcionem bem, economizando tempo e recursos no processamento de dados.\n").
 frase_aleatoria("\na orientação a objetos é um estilo de programação que usa objetos para organizar o código. imagine objetos como peças de um quebra-cabeça, onde cada peça tem características e comportamentos específicos. por exemplo, em um sistema de gerenciamento de biblioteca, um objeto pode representar um livro, com atributos como título e autor, e métodos como emprestar e devolver. esses objetos são criados a partir de classes, que são como moldes que definem as características e comportamentos comuns. a encapsulação é um princípio importante, onde cada objeto é responsável por suas próprias informações e ações, tornando o código mais modular e fácil de entender. a herança permite criar novas classes baseadas em classes existentes, compartilhando características e comportamentos, enquanto o polimorfismo permite que objetos diferentes usem a mesma interface de forma diferente, facilitando a extensão e a manutenção do código. a orientação a objetos ajuda a criar software mais organizado e flexível, tornando o desenvolvimento mais eficiente e a manutenção mais simples, permitindo que desenvolvedores construam sistemas complexos de forma mais gerenciável.\n").
 
+le_ranking(Dados) :-
+    (exists_file("tabelas/tabela_ranking.txt") -> 
+        open("tabelas/tabela_ranking.txt", read, Stream), 
+        read(Stream, DadosAux), 
+        (DadosAux == end_of_file -> Dados = [] ; Dados = DadosAux),
+        close(Stream) ; 
+    Dados = []).
+
+altera_ranking(_, _, _, [], []).
+altera_ranking(IdExercicio, NovoNome, NovoWpm, [(Id, Nome, Wpm)|Dados], [(Id, NovoNome, NovoWpm)|Dados2]) :-
+    IdExercicio =:= Id,
+    altera_ranking(IdExercicio, NovoNome, NovoWpm, Dados, Dados2), !.
+altera_ranking(IdExercicio, _, _, [(Id, Nome, Wpm)|Dados], [(Id, Nome, Wpm)|Dados2]) :-
+    IdExercicio =\= Id,
+    altera_ranking(IdExercicio, NovoNome, NovoWpm, Dados, Dados2).
+
+salva_ranking(Id, NovoNome, NovoWpm) :-
+    le_ranking(Dados),
+    altera_ranking(Id, NovoNome, NovoWpm, Dados, DadosAtual),
+    open("tabelas/tabela_ranking.txt", write, Stream),
+    write(Stream, DadosAtual),
+    write(Stream, "."),
+    nl(Stream),
+    close(Stream).
 
 exibir_frase(Frase) :-
     findall(F, frase_aleatoria(F), Frases),
